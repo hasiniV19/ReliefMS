@@ -8,21 +8,17 @@ use mysqli;
 
 class Database
 {
-    private $_host = "localhost";
-    private $_username = "root";
-    private $_password = "jimin13jk1";
-    private $_database = "epsilon";
+    private $_host;
+    private $_username;
+    private $_password;
+    private $_database;
 
     public $conn = null;
 
 
     function __construct()
     {
-//        $this->_host = DB_HOST;
-//        $this->_username = DB_USER;
-//        $this->_password = DB_PASSWORD;
-//        $this->_database = DB_NAME;
-
+        $this->set_db_attributes();
         $this->conn = new mysqli($this->_host, $this->_username, $this->_password, $this->_database);
         if ($this->conn->connect_error) {
             echo "Fail" . $this->conn->connect_error;
@@ -30,6 +26,12 @@ class Database
 
     }
 
+    public function set_db_attributes(){
+        $this->_host = 'localhost';
+        $this->_username = $_ENV['DB_USER'];
+        $this->_password = $_ENV['DB_PASSWORD'];
+        $this->_database = $_ENV['DB_NAME'];
+    }
     // can define predefined function to insert,update
     public function insert($sql, $array)
     {

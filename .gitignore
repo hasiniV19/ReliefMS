@@ -1,6 +1,5 @@
 vendor
 composer.json
 composer.lock
-DatabaseConfig.php
-config
 .idea
+.env
