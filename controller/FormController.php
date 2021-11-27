@@ -1,0 +1,44 @@
+<?php
+
+
+namespace app\controller;
+
+use app\core\Controller;
+use app\core\Request;
+use app\core\Response;
+use app\model\VolunteerApplication;
+
+class FormController extends Controller
+{
+
+    public function addApplication(Request $request, Response $response)
+    {
+        if($request->isPost()){
+            $body = $request->getBody();
+//            echo '<pre>';
+//            var_dump($body);
+//            echo '</pre>';
+//            exit;
+            // validate data
+            if($this->validate($body)){
+                $model = new VolunteerApplication();
+                $model->setAttributes($body);
+                if($model->save()){
+                    $response->redirect("http://localhost:8080/");
+                    exit;
+                    echo "saved successfully";
+                }
+            }
+
+
+        }
+
+        return $this->render("form", "main");
+    }
+
+    public function validate($data):bool
+    {
+        var_dump($data);
+        return true;
+    }
+}
