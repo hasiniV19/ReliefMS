@@ -15,5 +15,7 @@ $app->route()->get("/", [SiteController::class, "home"]);
 $app->route()->get("/", [SiteController::class, "homepage"]);
 $app->route()->get("/form", [FormController::class, "addApplication"]);
 $app->route()->post("/form", [FormController::class, "addApplication"]);
+$app->route()->get("/volunteerApplication", [FormController::class, "addVolunteerApplication"]);
+$app->route()->post("/volunteerApplication", [FormController::class, "addVolunteerApplication"]);
 //phpinfo();
 $app->run();
