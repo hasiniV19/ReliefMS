@@ -21,5 +21,7 @@ $app->route()->get("/form", [FormController::class, "addApplication"]);
 $app->route()->post("/form", [FormController::class, "addApplication"]);
 $app->route()->get("/volunteerApplication", [FormController::class, "addVolunteerApplication"]);
 $app->route()->post("/volunteerApplication", [FormController::class, "addVolunteerApplication"]);
+
+$app->route()->get("/msrApplication", [FormController::class, "addMSRApplication"]);
 //phpinfo();
 $app->run();
