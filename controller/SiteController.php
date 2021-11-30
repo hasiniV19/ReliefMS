@@ -12,4 +12,9 @@ class SiteController extends Controller
     {
         return $this->render("confirmation", "main", ["id"=>1, "name"=>"hasini"]);
     }
+
+    public function raiseFundForm()
+    {
+        return $this->render("raiseFundForm","main");
+    }
 }

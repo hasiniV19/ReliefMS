@@ -12,6 +12,7 @@ $dotenv->load();
 $app = new App();
 //$app->route()->get("/home", function (){return "hello world";});
 $app->route()->get("/", [SiteController::class, "home"]);
+$app->route()->get("/raiseFundForm", [SiteController::class, "raiseFundForm"]);
 $app->route()->get("/form", [FormController::class, "addApplication"]);
 $app->route()->post("/form", [FormController::class, "addApplication"]);
 //phpinfo();
