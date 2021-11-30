@@ -32,21 +32,6 @@ h3 {
     color: #6f42c1 !important
 }
 
-button {
-    font-size: calc(12px + (13 - 12) * ((100vw - 360px) / (1600 - 320))) !important;
-    background-color: #2CA6FB !important;
-    padding-left: calc(20px + (28 - 20) * ((100vw - 360px) / (1600 - 360))) !important;
-    padding-right: calc(20px + (28 - 20) * ((100vw - 360px) / (1600 - 360))) !important;
-    padding-top: calc(10px + (12 - 10) * ((100vw - 360px) / (1600 - 360))) !important;
-    padding-bottom: calc(10px + (12 - 10) * ((100vw - 360px) / (1600 - 360))) !important
-}
-
-button:focus {
-    -moz-box-shadow: none !important;
-    -webkit-box-shadow: none !important;
-    box-shadow: none !important;
-    outline-width: 0
-}
 
 footer {
     color: #caced1 !important
@@ -83,5 +68,3 @@ a.nav-link{
     margin-left: 20px;
     color: #ff6666;
 }
-
-.col-md-4

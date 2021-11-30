@@ -43,9 +43,9 @@
             </div>
             <div class="col-md-4">
                 <img id="pp" class="bd-placeholder-img rounded-circle" width="140" height="140" src="img/volunteer.jpg" role="img" aria-label="Placeholder: 140x140" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#777"></rect><text x="50%" y="50%" fill="#777" dy=".3em"></text>
-                <h2>Be a Volunteer</h2>
+                <h2>Volunteer</h2>
                 <p>Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Vestibulum id ligula porta felis euismod semper. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
-                <div class="text-center"><a class="btn btn-secondary" href="#">Be a Volunteer Now &raquo;</a></div>
+                <div class="text-center"><a class="btn btn-secondary" href="#">Volunteer Now &raquo;</a></div>
             </div>
         </div>
 
