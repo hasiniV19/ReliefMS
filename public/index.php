@@ -24,4 +24,8 @@ $app->route()->post("/volunteerApplication", [FormController::class, "addVolunte
 
 $app->route()->get("/msrApplication", [FormController::class, "addMSRApplication"]);
 //phpinfo();
+$app->route()->get("/adminHome", [SiteController::class, "addAdminHome"]);
+
+$app->route()->get("/donorHome", [SiteController::class, "addDonorHome"]);
+
 $app->run();

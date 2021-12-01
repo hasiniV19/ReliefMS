@@ -22,6 +22,15 @@ class SiteController extends Controller
     public function homepage()
     {
         return $this->render("testhome","main");
+    }
 
+    public function addAdminHome()
+    {
+        return $this->render("adminHome","main");
+    }
+
+    public function addDonorHome()
+    {
+        return $this->render("donorHome","main");
     }
 }
