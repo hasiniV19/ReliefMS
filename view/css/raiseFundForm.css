@@ -25,6 +25,20 @@ body{
     /*background-color: #f7f7f7;*/
 }
 
+.submit-button {
+    margin-top: 20px;
+    font-size: 0.8rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    border-radius: 30px;
+    padding: 10px 30px;
+    width: 60%;
+    margin-left: auto;
+    margin-right: auto;
+    background: #6f42c1;
+    border-color: #6f42c1;
+    text-align: center;
+}
 /*.input-label {
     font-size: 0.7rem;
     color: #393939;
