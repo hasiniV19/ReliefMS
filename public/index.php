@@ -5,6 +5,7 @@ use app\controller\SiteController;
 use app\controller\FormController;
 use app\controller\DisplayController;
 use app\controller\ListViewController;
+use app\controller\AuthController;
 
 require_once __DIR__."/../vendor/autoload.php";
 
@@ -90,4 +91,5 @@ $app->route()->get("/msRecipients", [ListViewController::class, "displayMSReci"]
 $app->route()->get("/volunteers", [ListViewController::class, "displayVolunteers"]);
 $app->route()->get("/donors", [ListViewController::class, "displayDonors"]);
 
+$app->route()->get("/login", [AuthController::class, "login"]);
 $app->run();

@@ -58,18 +58,18 @@
         <div class="form-row" >
             <div class=" col-md-6 list">
                 <h4>Aid Donations</h4>
-                <div><a href="https://www.freepik.com/free-vector/hand-drawn-clothing-donation-illustration_12065298.htm?query=donate"><label for=""  class=" form-control input-field">xyz</label></a></div>
-                <div><a href=""><label for=""  class=" form-control input-field">xyz</label></a></div>
-                <div><a href=""><label for=""  class=" form-control input-field">xyz</label></a></div>
-                <div><a href=""><label for=""  class=" form-control input-field">xyz</label></a></div>
+                <div><a href="" class="view-link"><label for=""  class=" form-control input-field ">xyz</label></a></div>
+                <div><a href="" class="view-link"><label for=""  class=" form-control input-field ">xyz</label></a></div>
+                <div><a href="" class="view-link"><label for=""  class=" form-control input-field ">xyz</label></a></div>
+                <div><a href="" class="view-link"><label for=""  class=" form-control input-field ">xyz</label></a></div>
             </div>
 
             <div class="col-md-6 list">
                 <h4>Money Donations</h4>
-                <div><a href=""><label for=""  class=" form-control input-field">xyz</label></a></div>
-                <div><a href=""><label for=""  class=" form-control input-field">xyz</label></a></div>
-                <div><a href=""><label for=""  class=" form-control input-field">xyz</label></a></div>
-                <div><a href=""><label for=""  class=" form-control input-field">xyz</label></a></div>
+                <div><a href="" class="view-link"><label for=""  class=" form-control input-field ">xyz</label></a></div>
+                <div><a href="" class="view-link"><label for=""  class=" form-control input-field ">xyz</label></a></div>
+                <div><a href="" class="view-link"><label for=""  class=" form-control input-field ">xyz</label></a></div>
+                <div><a href="" class="view-link"><label for=""  class=" form-control input-field ">xyz</label></a></div>
             </div>
 
         </div>

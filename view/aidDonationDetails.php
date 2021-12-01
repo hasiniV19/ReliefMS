@@ -26,18 +26,14 @@
                 <label for="station" class="input-label">pqrst</label>
             </div>
         </div>
-        <!-- <div class="form-row">
-          <div class=" col-md-8">
-            <label for="-title" class="input-title"></label>
+        <div class="form-row">
+          <div class=" col-md-5">
+            <label for="recipient-title" class="input-title">Recipient</label>
           </div>
-          <div class=" col-md-8">
-            <label for="" class="input-label"></label>
+          <div class=" col-md-7">
+            <label for="recipient" class="input-label"><a href="">Recipient Name</a></label>
           </div>
-        </div> -->
-
-        <!-- <div class="text-center">
-            <button type="submit" class="btn btn-primary submit-button">Submit</button>
-        </div> -->
+        </div>
 
         <div class="form-btn-row form-row text-center">
             <div class="col-md-4 btn-row">

@@ -64,6 +64,10 @@ body{
     background-color: #f7f7f7;
 }
 
+.view-link:hover {
+    text-decoration: none;
+    cursor: pointer;
+}
 
 
 
