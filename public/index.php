@@ -28,11 +28,48 @@ $app->route()->post("/volunteerApplication", [FormController::class, "addVolunte
 
 $app->route()->get("/donorApplication", [FormController::class, "addDonorApplication"]);
 $app->route()->post("/donorApplication", [FormController::class, "addDonorApplication"]);
+
 $app->route()->get("/donorDetails", [DisplayController::class, "displayDonorDetails"]);
 $app->route()->post("/donorDetails", [DisplayController::class, "displayDonorDetails"]);
+
 $app->route()->get("/volunteerDetails", [DisplayController::class, "displayVolunteerDetails"]);
 $app->route()->post("/volunteerDetails", [DisplayController::class, "displayVolunteerDetails"]);
 
+$app->route()->get("/confirmation", [DisplayController::class, "displayConfirmationMessage"]);
+$app->route()->post("/confirmation", [DisplayController::class, "displayConfirmationMessage"]);
+
+$app->route()->get("/thankYou", [DisplayController::class, "displayThankYou"]);
+$app->route()->post("/thankYou", [DisplayController::class, "displayThankYou"]);
+
+$app->route()->get("/fsrDetailsAdmin", [DisplayController::class, "displayFSRDetailsAdmin"]);
+$app->route()->post("/fsrDetailsAdmin", [DisplayController::class, "displayFSRDetailsAdmin"]);
+
+$app->route()->get("/fsrDetailsDonor", [DisplayController::class, "displayFSRDetailsDonor"]);
+$app->route()->post("/fsrDetailsDonor", [DisplayController::class, "displayFSRDetailsDonor"]);
+
+$app->route()->get("/msrDetailsAdmin", [DisplayController::class, "displayMSRDetailsAdmin"]);
+$app->route()->post("/msrDetailsAdmin", [DisplayController::class, "displayMSRDetailsAdmin"]);
+
+$app->route()->get("/msrDetailsDonor", [DisplayController::class, "displayMSRDetailsDonor"]);
+$app->route()->post("/msrDetailsDonor", [DisplayController::class, "displayMSRDetailsDonor"]);
+
+$app->route()->get("/moneyDonationDetails", [DisplayController::class, "displayMoneyDonationDetails"]);
+$app->route()->post("/moneyDonationDetails", [DisplayController::class, "displayMoneyDonationDetails"]);
+
+$app->route()->get("/aidDonationDetails", [DisplayController::class, "displayAidDonationDetails"]);
+$app->route()->post("/aidDonationDetails", [DisplayController::class, "displayAidDonationDetails"]);
+
+$app->route()->get("/approvedMSRDetails", [DisplayController::class, "displayApprovedMSRDetails"]);
+$app->route()->post("/approvedMSRDetails", [DisplayController::class, "displayApprovedMSRDetails"]);
+
+$app->route()->get("/approvedFSRDetails", [DisplayController::class, "displayApprovedFSRDetails"]);
+$app->route()->post("/approvedFSRDetails", [DisplayController::class, "displayApprovedFSRDetails"]);
+
+$app->route()->get("/aidedMSRDetails", [DisplayController::class, "displayAidedMSRDetails"]);
+$app->route()->post("/aidedMSRDetails", [DisplayController::class, "displayAidedMSRDetails"]);
+
+$app->route()->get("/aidedFSRDetails", [DisplayController::class, "displayAidedFSRDetails"]);
+$app->route()->post("/aidedFSRDetails", [DisplayController::class, "displayAidedFSRDetails"]);
 
 $app->route()->get("/msrApplication", [FormController::class, "addMSRApplication"]);
 
