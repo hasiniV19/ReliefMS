@@ -84,6 +84,10 @@ $app->route()->get("/fsrApplication", [FormController::class, "addFSRApplication
 $app->route()->post("/fsrApplication", [FormController::class, "addFSRApplication"]);
 
 $app->route()->get("/approvedRecipients", [ListViewController::class, "displayApprReci"]);
-
+$app->route()->get("/aidedRecipients", [ListViewController::class, "displayAidedReci"]);
+$app->route()->get("/fsRecipients", [ListViewController::class, "displayFSReci"]);
+$app->route()->get("/msRecipients", [ListViewController::class, "displayMSReci"]);
+$app->route()->get("/volunteers", [ListViewController::class, "displayVolunteers"]);
+$app->route()->get("/donors", [ListViewController::class, "displayDonors"]);
 
 $app->run();
