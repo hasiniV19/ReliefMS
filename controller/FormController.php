@@ -41,9 +41,16 @@ class FormController extends Controller
         return $this->render("volunteerApplication", "main");
     }
 
+
     public function addDonorApplication(Request $request, Response $response)
     {
         return $this->render("donorApplication", "main");
+    }
+
+    public function addMSRApplication(Request $request, Response $response)
+    {
+        return $this->render("msrApplication", "main");
+
     }
 
     public function validate($data):bool
