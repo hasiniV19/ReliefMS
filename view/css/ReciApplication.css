@@ -1,5 +1,5 @@
 body{
-    background: rgba(111, 66, 193, 0.1);
+    background: rgba(111, 66, 193, 0.1) !important;
 }
 
 .submit-button {
@@ -42,6 +42,15 @@ body{
     margin-bottom: 0.05rem;
 }
 
-.row-2 {
+/* bottom row */
+.btm-row {
     margin-top: 3vw;
+}
+
+.hidden {
+    display: none;
+}
+
+.show {
+    display: block;
 }

@@ -78,4 +78,8 @@ $app->route()->get("/adminHome", [SiteController::class, "addAdminHome"]);
 
 $app->route()->get("/donorHome", [SiteController::class, "addDonorHome"]);
 
+$app->route()->post("/msrApplication", [FormController::class, "addMSRApplication"]);
+$app->route()->get("/fsrApplication", [FormController::class, "addFSRApplication"]);
+$app->route()->post("/fsrApplication", [FormController::class, "addFSRApplication"]);
+
 $app->run();

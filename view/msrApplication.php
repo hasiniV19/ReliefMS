@@ -15,14 +15,12 @@
 
                 <div class="form-group">
                     <label for="no-members" class="input-label">Number of Covid Patients</label>
-                    <input type="number" class="form-control input-field" placeholder="How covid patients in your family" min="1" max="6" id="no-members" aria-describedby="">
+                    <input type="number" class="form-control input-field" placeholder="How covid patients in your family" min="1" max="6" id="no-patients" aria-describedby="">
                 </div>
                 <div class="form-group">
                     <label for="mobile" class="input-label">Mobile Number</label>
                     <input type="tel" class="form-control input-field" placeholder="Enter Telephone Number" id="mobile" aria-describedby="">
                 </div>
-
-
             </div>
         </div>
 
@@ -35,6 +33,9 @@
             </div>
 
         </div>
+    </div>
+
+    <div class="row hidden" id="patient-forms">
     </div>
     <div class="row">
         <div class="col-md-6 col-sm-12">
@@ -89,4 +90,7 @@
 
 <script>
     <?php include "js/addStudents.js"; ?>
+</script>
+<script>
+    <?php include "js/addPatientForm.js"; ?>
 </script>

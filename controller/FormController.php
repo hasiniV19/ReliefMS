@@ -53,6 +53,10 @@ class FormController extends Controller
 
     }
 
+    public function addFSRApplication(Request $request, Response $response)
+    {
+        return $this->render("fsrApplication", "main");
+    }
     public function validate($data):bool
     {
         var_dump($data);

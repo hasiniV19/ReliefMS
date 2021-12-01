@@ -45,7 +45,7 @@
 
         </div>
     </div>
-    <div class="row row-2">
+    <div class="row btm-row">
         <div class="col-md-6 col-sm-12">
             <div>
                 <div class="input-label">Are there any students with learning material needs</div>
