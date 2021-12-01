@@ -4,6 +4,7 @@ use app\core\App;
 use app\controller\SiteController;
 use app\controller\FormController;
 use app\controller\DisplayController;
+use app\controller\ListViewController;
 
 require_once __DIR__."/../vendor/autoload.php";
 
@@ -81,5 +82,8 @@ $app->route()->get("/donorHome", [SiteController::class, "addDonorHome"]);
 $app->route()->post("/msrApplication", [FormController::class, "addMSRApplication"]);
 $app->route()->get("/fsrApplication", [FormController::class, "addFSRApplication"]);
 $app->route()->post("/fsrApplication", [FormController::class, "addFSRApplication"]);
+
+$app->route()->get("/approvedRecipients", [ListViewController::class, "displayApprReci"]);
+
 
 $app->run();

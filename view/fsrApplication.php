@@ -65,7 +65,8 @@
         </div>
 
         <div class="col-md-6 col-sm-12 row"> <!-- other needs -->
-            <label class="col-md-3 input-label" ">Other Needs</label>
+            <label class="col-12 mb-4 input-label" style="color: #ff6666">We provide you package with necessary items </label>
+            <label class="col-md-3 input-label">Other Needs</label>
             <div class="col-md-9">
                 <div class="form-group">
                     <input type="text" class="form-control input-field" placeholder="Enter Your Need" id="" aria-describedby="">

@@ -3,7 +3,7 @@
 body {
     font-family: 'Rubik', sans-serif;
     height: 100% !important;
-    background-color: #F8F9FB !important
+    /*background-color: #F8F9FB !important*/
 }
 
 .container-fluid {
@@ -48,11 +48,11 @@ li {
 }
 
 .row-1 {
-    background-color: #1E242A !important
+    background-color: white !important
 }
 
 .row-2 {
-    background-color: #28323C !important
+    background-color: white !important
 }
 
 .navbar{padding: 0.05rem 3rem !important;}

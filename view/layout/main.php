@@ -50,16 +50,16 @@
 </header>
 {{content-body}}
 
-<div class="container-fluid pb-0 mb-0 justify-content-center text-light ">
+<div class="container-fluid pb-0 mb-0 justify-content-center text-light footer-container">
 
     <footer>
         <div class="row justify-content-center mt-0 pt-0 row-1 mb-0 px-sm-3 px-2">
             <div class="col-12">
                 <div class="row my-4 row-1 no-gutters">
-                    <div class="col-sm-3 col-auto text-center"><small> <span><img src="img/logo.png" class="img-fluid " width="100">Epsilon Foundation</span></small></div>
+                    <div class="col-sm-3 col-auto text-center" style="color: #ff6666"><small> <span><img src="img/logo.png" class="img-fluid " width="100">Epsilon Foundation</span></small></div>
                     <div class="col-md-3 col-auto "></div>
                     <div class="col-md-3 col-auto"></div>
-                    <div class="col my-auto text-md-left text-right ">
+                    <div class="col my-auto text-md-left text-right " style="color: #ff6666">
                         <small> <span><img src="https://i.imgur.com/N90KDYM.png" class="img-fluid " width="25">Epsilon Foundation</span></small>
                     </div>
                 </div>
