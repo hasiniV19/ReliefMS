@@ -5,6 +5,7 @@ use app\controller\SiteController;
 use app\controller\FormController;
 use app\controller\DisplayController;
 use app\controller\ListViewController;
+use app\controller\AuthController;
 
 require_once __DIR__."/../vendor/autoload.php";
 
@@ -84,6 +85,11 @@ $app->route()->get("/fsrApplication", [FormController::class, "addFSRApplication
 $app->route()->post("/fsrApplication", [FormController::class, "addFSRApplication"]);
 
 $app->route()->get("/approvedRecipients", [ListViewController::class, "displayApprReci"]);
+$app->route()->get("/aidedRecipients", [ListViewController::class, "displayAidedReci"]);
+$app->route()->get("/fsRecipients", [ListViewController::class, "displayFSReci"]);
+$app->route()->get("/msRecipients", [ListViewController::class, "displayMSReci"]);
+$app->route()->get("/volunteers", [ListViewController::class, "displayVolunteers"]);
+$app->route()->get("/donors", [ListViewController::class, "displayDonors"]);
 
-
+$app->route()->get("/login", [AuthController::class, "login"]);
 $app->run();
