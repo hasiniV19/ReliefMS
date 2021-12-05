@@ -86,12 +86,6 @@
             </div>
         </div>
     </div>
-<!--    <div class="row hidden" id="student-details">-->
-<!--        Number of students-->
-<!--        <div class="col-md-6">-->
-<!---->
-<!--        </div>-->
-<!--    </div>-->
     <div class="text-center">
         <button type="submit" class="btn btn-primary submit-button">Submit</button>
     </div>

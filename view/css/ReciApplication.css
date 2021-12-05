@@ -4,6 +4,15 @@ body{
 
 .submit-button {
     margin-top: 20px;
+    font-size: 0.8rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    border-radius: 30px;
+    padding: 10px 30px;
+    width: 150px;
+    background: #6f42c1;
+    border-color: #6f42c1;
+    text-align: center;
 }
 
 .submit-button:hover{
@@ -35,7 +44,7 @@ body{
 }
 
 .input-label {
-    font-size: 0.7rem;
+    /*font-size: 0.7rem;*/
     color: #393939;
     text-transform: uppercase;
     font-weight: 400;
@@ -53,4 +62,9 @@ body{
 
 .show {
     display: block;
+}
+
+.form-border {
+    border-radius: 0.25rem;
+    border: 1px solid #6f42c1;
 }
