@@ -3,7 +3,7 @@ noPatients.addEventListener("change", addForm);
 let patientForm = document.getElementById("patient-forms");
 
 function addForm(){
-    numPatients = noPatients.value;
+    let numPatients = noPatients.value;
     if(numPatients > 6){
         numPatients = 6;
     }
