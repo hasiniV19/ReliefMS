@@ -57,6 +57,13 @@ class FormController extends Controller
     {
         return $this->render("fsrApplication", "main");
     }
+
+    public function addAidDonation(Request $request, Response $response)
+    {
+        return $this->render("aidDonationReq", "main");
+    }
+
+
     public function validate($data):bool
     {
         var_dump($data);
