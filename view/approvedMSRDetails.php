@@ -9,14 +9,15 @@
     <form class="container form-container col-lg-6 col-md-8 col-10">
         <h2 class="title">Approved MSR Details</h2>
 
-        <!--        <div class="form-row">-->
-        <!--            <div class=" col-md-5">-->
-        <!--                <label for="name-title" class="input-title">Name</label>-->
-        <!--            </div>-->
-        <!--            <div class=" col-md-7">-->
-        <!--                <label for="name" class="input-label">Piyumi Chan Mahaarachchi</label>-->
-        <!--            </div>-->
-        <!--        </div>-->
+
+        <div class="form-row">
+            <div class=" col-md-5">
+                <label for="name-title" class="input-title">Name</label>
+            </div>
+            <div class=" col-md-7">
+                <label for="name" class="input-label">Piyumi Chan Mahaarachchi</label>
+            </div>
+        </div>
 
         <div class="form-row">
             <div class=" col-md-5">
@@ -33,6 +34,15 @@
             </div>
             <div class=" col-md-7">
                 <label for="mobile" class="input-label">0765867087</label>
+            </div>
+        </div>
+
+        <div class="form-row">
+            <div class=" col-md-5">
+                <label for="gs-division-title" class="input-title">Grama Niladari Division</label>
+            </div>
+            <div class=" col-md-7">
+                <label for="gs-division" class="input-label">Ella</label>
             </div>
         </div>
 
@@ -72,6 +82,154 @@
                 <label for="other-needs" class="input-label">...</label>
             </div>
         </div>
+
+        <div class="form-row">
+            <div class=" col-md-5">
+                <label for="submitted-date-title" class="input-title">Submitted Date</label>
+            </div>
+            <div class=" col-md-7">
+                <label for="submit-date" class="input-label">2021/08/12</label>
+            </div>
+        </div>
+
+        <div class="form-row">
+            <div class=" col-md-5">
+                <label for="status-title" class="input-title">Status</label>
+            </div>
+            <div class=" col-md-7">
+                <label for="status" class="input-label">approved</label>
+            </div>
+        </div>
+
+        <hr class="mb-4">
+        <h5 class="res-title">Residents Details</h5>
+        <div class="row">
+
+            <div class="form-2 col-md-5">
+
+                <div class="form-row">
+                    <div class=" col-md-5">
+                        <label for="res-name-title" class="input-title">Name</label>
+                    </div>
+                    <div class=" col-md-7">
+                        <label for="res-name" class="input-label">ABC Mahaarachchi</label>
+                    </div>
+                </div>
+
+
+                <div class="form-row">
+                    <div class=" col-md-5">
+                        <label for="res-age-title" class="input-title">Age</label>
+                    </div>
+                    <div class=" col-md-7">
+                        <label for="res-age" class="input-label">12</label>
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class=" col-md-5">
+                        <label for="res-gender-title" class="input-title">Gender</label>
+                    </div>
+                    <div class=" col-md-7">
+                        <label for="res-gender" class="input-label">male</label>
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class=" col-md-5">
+                        <label for="covid-status-title" class="input-title">Covid Status</label>
+                    </div>
+                    <div class=" col-md-7">
+                        <label for="covid-status" class="input-label">positive</label>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="form-2 col-md-5">
+
+                <div class="form-row">
+                    <div class=" col-md-5">
+                        <label for="res-name-title" class="input-title">Name</label>
+                    </div>
+                    <div class=" col-md-7">
+                        <label for="res-name" class="input-label">ABC Mahaarachchi</label>
+                    </div>
+                </div>
+
+
+                <div class="form-row">
+                    <div class=" col-md-5">
+                        <label for="res-age-title" class="input-title">Age</label>
+                    </div>
+                    <div class=" col-md-7">
+                        <label for="res-age" class="input-label">12</label>
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class=" col-md-5">
+                        <label for="res-gender-title" class="input-title">Gender</label>
+                    </div>
+                    <div class=" col-md-7">
+                        <label for="res-gender" class="input-label">male</label>
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class=" col-md-5">
+                        <label for="covid-status-title" class="input-title">Covid Status</label>
+                    </div>
+                    <div class=" col-md-7">
+                        <label for="covid-status" class="input-label">positive</label>
+                    </div>
+                </div>
+
+            </div>
+            <div class="form-2 col-md-5">
+
+                <div class="form-row">
+                    <div class=" col-md-5">
+                        <label for="res-name-title" class="input-title">Name</label>
+                    </div>
+                    <div class=" col-md-7">
+                        <label for="res-name" class="input-label">ABC Mahaarachchi</label>
+                    </div>
+                </div>
+
+
+                <div class="form-row">
+                    <div class=" col-md-5">
+                        <label for="res-age-title" class="input-title">Age</label>
+                    </div>
+                    <div class=" col-md-7">
+                        <label for="res-age" class="input-label">12</label>
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class=" col-md-5">
+                        <label for="res-gender-title" class="input-title">Gender</label>
+                    </div>
+                    <div class=" col-md-7">
+                        <label for="res-gender" class="input-label">male</label>
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class=" col-md-5">
+                        <label for="covid-status-title" class="input-title">Covid Status</label>
+                    </div>
+                    <div class=" col-md-7">
+                        <label for="covid-status" class="input-label">positive</label>
+                    </div>
+                </div>
+
+            </div>
+
+
+        </div>
+
         <!-- <div class="form-row">
           <div class=" col-md-8">
             <label for="-title" class="input-title"></label>
