@@ -7,25 +7,35 @@
 </style>
 
 <form class="container form-container" method="post" action="/msrApplication">
-    <h2 class="title">Common Details</h2>
+    <h2 class="title mt-5 mt-3">Common Details</h2>
     <div class="row">
 
         <div class="col-md-6 col-sm-12"> <!-- common details -->
             <div class="form-part">
 
                 <div class="form-group">
-                    <label for="no-members" class="input-label">Number of Covid Patients</label>
-                    <input type="number" class="form-control input-field" placeholder="How covid patients in your family" min="1" max="6" id="no-patients" aria-describedby="">
+                    <label for="name" class="input-label">Full Name</label>
+                    <input type="text" class="form-control input-field" placeholder="Enter Your Name" id="name" aria-describedby="">
                 </div>
                 <div class="form-group">
                     <label for="mobile" class="input-label">Mobile Number</label>
                     <input type="tel" class="form-control input-field" placeholder="Enter Telephone Number" id="mobile" aria-describedby="">
                 </div>
+                <div class="form-group">
+                    <label for="no-members" class="input-label">Number of Covid Patients</label>
+                    <input type="number" class="form-control input-field" placeholder="How covid patients in your family" min="1" max="6" id="no-patients" aria-describedby="">
+                </div>
+
             </div>
         </div>
 
         <div class="col-md-6 col-sm-12"> <!-- financial details -->
             <div class="form-part">
+
+                <div class="form-group">
+                    <label for="gs-division" class="input-label">Gramasewaka Division</label>
+                    <input type="text" class="form-control input-field" placeholder="Enter Your Gramasewaka Division" id="gs-division" aria-describedby="">
+                </div>
                 <div class="form-group">
                     <label for="address" class="input-label">Address</label>
                     <textarea class="form-control input-field" placeholder="Enter Address" id="address" aria-describedby="" rows="3"></textarea>
@@ -38,7 +48,7 @@
     <div class="row hidden" id="patient-forms">
 
     </div>
-    <div class="row">
+    <div class="row btm-row">
         <div class="col-md-6 col-sm-12">
             <div>
                 <div class="input-label">Are there any students with learning material needs</div>
@@ -79,12 +89,6 @@
             </div>
         </div>
     </div>
-    <!--    <div class="row hidden" id="student-details">-->
-    <!--        Number of students-->
-    <!--        <div class="col-md-6">-->
-    <!---->
-    <!--        </div>-->
-    <!--    </div>-->
     <div class="text-center">
         <button type="submit" class="btn btn-primary submit-button">Submit</button>
     </div>
