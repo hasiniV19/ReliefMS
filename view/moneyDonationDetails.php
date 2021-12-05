@@ -26,6 +26,24 @@
                 <label for="amount" class="input-label">2000</label>
             </div>
         </div>
+
+        <div class="form-row">
+            <div class=" col-md-5">
+                <label for="submitted-date-title" class="input-title">Submitted Date</label>
+            </div>
+            <div class=" col-md-7">
+                <label for="submit-date" class="input-label">2021/08/12</label>
+            </div>
+        </div>
+
+        <div class="form-row">
+            <div class=" col-md-5">
+                <label for="status-title" class="input-title">Status</label>
+            </div>
+            <div class=" col-md-7">
+                <label for="status" class="input-label">pending</label>
+            </div>
+        </div>
         <!-- <div class="form-row">
           <div class=" col-md-8">
             <label for="-title" class="input-title"></label>
