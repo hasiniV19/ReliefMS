@@ -17,7 +17,7 @@
 
     <title>Homepage</title>
 </head>
-<body class="d-flex flex-column min-vh-100">
+<body >
 <header>
     <nav id="navbar" class="navbar navbar-expand-lg   fixed-top">
         <a id="logo" href="#" class="visible-md visible-lg">
@@ -89,3 +89,4 @@
 <script src="https://kit.fontawesome.com/0141c575ad.js" crossorigin="anonymous"></script>
 </body>
 </html>
+

@@ -9,19 +9,19 @@
 
 
 <div class="container">
-    <div class="row">
-        <div class="col-lg-2 col-md-2 col-1"></div>
-        <div class="py-5 text-center col-lg-auto col-md-auto col-auto   col-md-8 col-10 ">
-            <h2 class="title">Your Donation Will Make a Difference</h2>
-            <p class="lead">Your donation will be added to our separate Epsilon foundation fund and will be monitered by
-                our
-                team and deplay it to reach needies.</p>
-        </div>
-        <div class="col-lg-2 col-md-2 col-1"></div>
-    </div>
+<!--    <div class="row">-->
+<!--        <div class="py-5 text-center  col-md-8 col-10 ">-->
+<!---->
+<!--        </div>-->
+<!---->
+<!--    </div>-->
 
     <div class="row">
         <form class="container form-container needs-validation col-lg-8 col-md-8 col-10 py-3" novalidate>
+            <h2 class="title text-center py-3">Your Donation Will Make a Difference</h2>
+            <p class="lead text-center py-2">Your donation will be added to our separate Epsilon foundation fund and will be monitored by
+                our
+                team and deploy it to reach needies.</p>
             <div class="row">
                 <div class="col-md-6 mb-3">
                     <label for="firstName" class="input-label">First name</label>
@@ -98,7 +98,7 @@
     </div>
     <br>
 </div>
-</div>
+
 
 <script src="raisefundform-validation.js"></script>
-</body>
+
