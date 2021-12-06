@@ -20,8 +20,11 @@
 <body>
 <header>
     <nav id="navbar" class="navbar navbar-expand-lg   fixed-top">
-        <img src="img/logo2.png" class="img-fluid " width="80">
-        <a class="navbar-brand" href="#">Epsilon Foundation</a>
+        <a id="logo" href="#" class="visible-md visible-lg">
+            <img src="img/logo2.png" class="img-fluid " width="80">
+        </a>
+
+        <a id="name" class="navbar-brand" href="#">Epsilon Foundation</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -50,24 +53,38 @@
 </header>
 {{content-body}}
 
-<div class="container-fluid pb-0 mb-0 justify-content-center text-light footer-container">
-
-    <footer>
-        <div class="row justify-content-center mt-0 pt-0 row-1 mb-0 px-sm-3 px-2">
-            <div class="col-12">
-                <div class="row my-4 row-1 no-gutters">
-                    <div class="col-sm-3 col-auto text-center" style="color: #ff6666"><small> <span><img src="img/logo.png" class="img-fluid " width="100">Epsilon Foundation</span></small></div>
-                    <div class="col-md-3 col-auto "></div>
-                    <div class="col-md-3 col-auto"></div>
-                    <div class="col my-auto text-md-left text-right " style="color: #ff6666">
-                        <small> <span><img src="https://i.imgur.com/N90KDYM.png" class="img-fluid " width="25">Epsilon Foundation</span></small>
-                    </div>
+<footer class="footer-16371">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-9 text-center">
+                <div class="footer-site-logo mb-4">
+                    <a href="#">Epsilon Foundation</a>
                 </div>
+                <ul class="list-unstyled nav-links mb-5">
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">About</a></li>
+                    <li><a href="#">Donate</a></li>
+                    <li><a href="#">Login</a></li>
+                    <li><a href="#">Contact</a></li>
+                </ul>
+
+                <div class="social mb-4">
+                    <h3>Stay Safe. Stay home.</h3>
+
+                </div>
+
+                <div class="copyright">
+                    <small id= "cpy">&copy; Team Epsilon. All Rights Reserved.</small>
+                </div>
+
+
             </div>
         </div>
-    </footer>
-</div>
-
+    </div>
+</footer>
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 <script><?php include "navbarscroll.js"?></script>
 <script src="https://kit.fontawesome.com/0141c575ad.js" crossorigin="anonymous"></script>
 </body>
