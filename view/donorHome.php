@@ -16,22 +16,27 @@
                 <div class="row">
                     <div class="col-lg-6 col-md-6 col-sm-6 col-12">
                         <div class="media-v1 bg-1">
+                            <a href="">
                             <div class="icon-wrap">
-                                <span class="button__icon"><i class="fas fa-hands-helping"></i></span>
+                                <span class="button__icon"><i class="fas fa-donate"></i></span>
                             </div>
+                            </a>
                             <div class="body">
-                                <h3>Donate Money</h3>
+                                <a href=""><h3>Donate Money</h3></a>
                                 <!--<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odio, debitis!</p>-->
                             </div>
                         </div>
                     </div>
                     <div class="col-lg-6 col-md-6 col-sm-6 col-12">
                         <div class="media-v1 bg-1">
+                            <a href="">
                             <div class="icon-wrap">
-                                <span class="button__icon"><i class="fas fa-donate"></i></span>
+
+                                <span class="button__icon"><i class="fas fa-hands-helping"></i></span>
                             </div>
+                            </a>
                             <div class="body">
-                                <h3>Donate Aids</h3>
+                                <a href=""><h3>Donate Aids</h3></a>
                                 <!--<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odio, debitis!</p>-->
                             </div>
                         </div>
