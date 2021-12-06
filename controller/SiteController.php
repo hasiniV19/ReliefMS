@@ -21,7 +21,7 @@ class SiteController extends Controller
 
     public function homepage()
     {
-        return $this->render("testhome","main");
+        return $this->render("testhome","homeLayout");
     }
 
     public function addAdminHome()

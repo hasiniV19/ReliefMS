@@ -100,13 +100,13 @@
         </div>
 
         <div class="form-btn-row form-row text-center">
-            <div class="col-md-4 btn-row">
+            <div class="col-md-4 btn-row ">
                 <button type="submit" class="btn btn-primary submit-button">Go Back</button>
             </div>
-            <div class="col-md-4 btn-row ">
+            <div class="col-md-4 btn-row">
                 <button type="submit" class="btn btn-danger submit-button">Decline</button>
             </div>
-            <div class="col-md-4  btn-row">
+            <div class="col-md-4  btn-row ">
                 <button type="submit" class="btn btn-success submit-button">Approve</button>
             </div>
 
