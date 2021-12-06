@@ -35,7 +35,7 @@
             <label for="address" class="input-label">Address</label>
             <textarea class="form-control input-field" id="address" aria-describedby="" rows="3" readonly>63D, Sooriyakantha Watta, Watareka East, Galle</textarea>
             <div class="">
-                <button type="button" id="edit" class="btn btn-primary float-right">Edit</button>
+                <button type="button" id="edit" class="btn float-right" style="color: #6f42c1; font-weight: bold">Edit</button>
             </div>
         </div>
 

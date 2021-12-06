@@ -41,7 +41,7 @@ body{
 }
 
 .input-label {
-    font-size: 0.7rem;
+    /*font-size: 0.7rem;*/
     color: #393939;
     text-transform: uppercase;
     font-weight: 400;

@@ -25,14 +25,14 @@ function addForm(){
                 '</div>'+
                 '<div class="form-group">'+
                     '<label for="gender" class="input-label">Gender</label>'+
-                    '<div class="form-control input-field" style="height: 4.4rem;">'+
-                        '<div class="contact-form-radio ">'+
+                    '<div class="form-control input-field">'+
+                        '<div class="form-check form-check-inline">'+
                             '<input class="input-radio100" id="radio1" type="radio" name="gender" value="male">'+
-                                '<label class="label-radio100" for="radio1">Male</label>'+
+                                '<label class="label-radio100" for="radio1"> Male</label>'+
                         '</div>'+
-                        '<div class="contact-form-radio">'+
+                        '<div class="form-check form-check-inline">'+
                             '<input class="input-radio100" id="radio2" type="radio" name="gender" value="female">'+
-                                '<label class="label-radio100" for="radio2">Female</label>'+
+                                '<label class="label-radio100" for="radio2"> Female</label>'+
                         '</div>'+
                     '</div>'+
                 '</div>'+
