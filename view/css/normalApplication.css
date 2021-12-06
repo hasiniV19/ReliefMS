@@ -3,13 +3,13 @@ body{
 }
 
 .submit-button {
-    margin-top: 20px;
+    margin: 20px;
     font-size: 0.8rem;
     font-weight: bold;
     text-transform: uppercase;
     border-radius: 30px;
     padding: 10px 30px;
-    width: 40%;
+    width: 150px;
     background: #6f42c1;
     border-color: #6f42c1;
     text-align: center;
