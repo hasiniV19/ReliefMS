@@ -10,7 +10,7 @@ body{
     text-transform: uppercase;
     border-radius: 30px;
     padding: 10px 30px;
-    width: 60%;
+    width: 150px;
     background: #6f42c1;
     border-color: #6f42c1;
     text-align: center;
@@ -67,13 +67,13 @@ body{
 }
 
 .go-back-button{
-    margin-top: 20px;
+    margin: 20px;
     font-size: 0.8rem;
     font-weight: bold;
     text-transform: uppercase;
     border-radius: 30px;
     padding: 10px 30px;
-    width: 40%;
+    width: 150px;
     background: #6f42c1;
     border-color: #6f42c1;
     text-align: center;
@@ -84,10 +84,11 @@ body{
     border-color: #4b2b88;
 }
 
-.form-2{
-    margin: 0 15px 15px 15px;
-    background: rgba(111,66,193,0.2);
+
+.f-margin{
     padding: 15px;
+    margin-bottom: 15px;
+    background: rgba(111,66,193,0.2);
     box-shadow: 0 15px 30px 0 rgb(0 0 0 / 5%);
     border-radius: 7px;
 }
