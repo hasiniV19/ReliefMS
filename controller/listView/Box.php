@@ -15,13 +15,11 @@ class Box implements BoxView
 
     public function getBoxTitle(): string
     {
-        // TODO: Implement getBoxTitle() method.
         return $this->boxTitle;
     }
 
     public function getBoxStatus(): string
     {
-        // TODO: Implement getBoxStatus() method.
         return $this->boxStatus;
     }
 
