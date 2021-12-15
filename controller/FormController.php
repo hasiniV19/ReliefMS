@@ -7,9 +7,11 @@ use app\core\Controller;
 use app\core\Request;
 use app\core\Response;
 use app\model\VolunteerApplication;
+use app\controller\Application;
 
 class FormController extends Controller
 {
+    private Application $application;
 
     public function addApplication(Request $request, Response $response)
     {
@@ -38,6 +40,11 @@ class FormController extends Controller
 
     public function addVolunteerApplication(Request $request, Response $response)
     {
+        $this->application = new Application();
+        if($request->isPost())
+        {
+            $body = $request->getBody();
+        }
         return $this->render("volunteerApplication", "main");
     }
 
