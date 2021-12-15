@@ -102,7 +102,7 @@
         </div>
 
         <hr class="mb-4">
-        <h5 class="res-title">Residents Details</h5>
+        <h5 class="res-title">Patients Details</h5>
         <div class="row">
 
             <div class="form-2 col-md-6">
