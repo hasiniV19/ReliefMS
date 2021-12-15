@@ -2,8 +2,8 @@
 
 namespace app\controller;
 
-use app\controller\listView\BoxView;
-use app\controller\listView\BoxFactory;
+use app\core\BoxView;
+use app\factory\BoxFactory;
 use app\core\Controller;
 use app\core\Request;
 use app\core\Response;

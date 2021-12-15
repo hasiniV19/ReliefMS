@@ -1,6 +1,7 @@
 <?php
 
-namespace app\controller\listView;
+namespace app\model\listView;
+use app\core\BoxView;
 
 class Box implements BoxView
 {

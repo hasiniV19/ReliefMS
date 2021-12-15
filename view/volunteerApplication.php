@@ -6,7 +6,7 @@
 </style>
 
 <div class="row">
-    <form method="post" class="container form-container col-lg-6 col-md-8 col-10">
+    <form method="post" action="/volunteerApplication" class="container form-container col-lg-6 col-md-8 col-10">
         <h2 class="title py-lg-1 py-sm-8">Volunteer Application</h2>
 
         <div class="form-group">
