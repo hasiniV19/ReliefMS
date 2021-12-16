@@ -44,6 +44,14 @@ class FormController extends Controller
         if($request->isPost())
         {
             $body = $request->getBody();
+            if($this->validate($body)){
+                $model = new VolunteerApplication();
+                $model->setAttributes($body);
+                if($model->save()) {
+                    $response->redirect("http://localhost:8080/confirmation");
+                    exit;
+                }
+            }
         }
         return $this->render("volunteerApplication", "main");
     }
@@ -57,7 +65,6 @@ class FormController extends Controller
     public function addMSRApplication(Request $request, Response $response)
     {
         return $this->render("msrApplication", "main");
-
     }
 
     public function addFSRApplication(Request $request, Response $response)
