@@ -6,8 +6,10 @@ namespace app\core\database;
 use mysqli;
 
 
-class Database
+class Database implements GenericDB
 {
+    private $mysqli;
+
     private $_host;
     private $_username;
     private $_password;
