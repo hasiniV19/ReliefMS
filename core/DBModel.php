@@ -30,9 +30,6 @@ abstract class DBModel
             return false;
         }
         return true;
-
-
-
     }
 
     abstract public function getTableName();

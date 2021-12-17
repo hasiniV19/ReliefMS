@@ -15,6 +15,7 @@ class DisplayController extends Controller{
 
     public function displayVolunteerDetails(Request $request, Response $response)
     {
+
         return $this->render("volunteerDetails", "main");
     }
 

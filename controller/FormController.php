@@ -7,9 +7,11 @@ use app\core\Controller;
 use app\core\Request;
 use app\core\Response;
 use app\model\VolunteerApplication;
+use app\controller\Application;
 
 class FormController extends Controller
 {
+    private Application $application;
 
     public function addApplication(Request $request, Response $response)
     {
@@ -38,6 +40,19 @@ class FormController extends Controller
 
     public function addVolunteerApplication(Request $request, Response $response)
     {
+        $this->application = new Application();
+        if($request->isPost())
+        {
+            $body = $request->getBody();
+            if($this->validate($body)){
+                $model = new VolunteerApplication();
+                $model->setAttributes($body);
+                if($model->save()) {
+                    $response->redirect("http://localhost:8080/confirmation");
+                    exit;
+                }
+            }
+        }
         return $this->render("volunteerApplication", "main");
     }
 
@@ -50,7 +65,6 @@ class FormController extends Controller
     public function addMSRApplication(Request $request, Response $response)
     {
         return $this->render("msrApplication", "main");
-
     }
 
     public function addFSRApplication(Request $request, Response $response)

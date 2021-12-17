@@ -1,6 +1,8 @@
 <?php
 
-namespace app\controller\listView;
+namespace app\factory;
+use app\core\BoxView;
+use app\model\listView\Box;
 
 class BoxFactory
 {

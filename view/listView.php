@@ -1,5 +1,5 @@
 <?php
-use app\controller\listView\BoxView;
+use app\core\BoxView;
 
 /** @var $boxes */
 /** @var $title */
@@ -22,7 +22,7 @@ use app\controller\listView\BoxView;
             $boxStatus = strtolower($box->getBoxStatus());
             if($boxStatus === "medical" || $boxStatus === "approved"){
                 echo "<div class='status-bar border border-success text-success'>";
-            } if($boxStatus === "declined"){
+            } else if($boxStatus === "declined"){
                 echo "<div class='status-bar border border-danger text-danger'>";
             }else{
                 echo "<div class='status-bar border border-warning text-warning'>";

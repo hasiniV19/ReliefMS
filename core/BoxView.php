@@ -1,6 +1,6 @@
 <?php
 
-namespace app\controller\listView;
+namespace app\core;
 
 interface BoxView
 {
