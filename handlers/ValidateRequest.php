@@ -6,6 +6,8 @@ class ValidateRequest
 {
     private string $key;
     private $value;
+    private $isValid;
+    private $validError;
 
     public function __construct(string $key, $value)
     {
@@ -26,5 +28,25 @@ class ValidateRequest
     public function setValue($value)
     {
         $this->value = $value;
+    }
+
+    public function setIsValid($isValid)
+    {
+        $this->isValid = $isValid;
+    }
+
+    public function setValidError($validError)
+    {
+        $this->validError = $validError;
+    }
+
+    public function getIsValid()
+    {
+        return $this->isValid;
+    }
+
+    public function getValidError()
+    {
+        return $this->validError;
     }
 }
