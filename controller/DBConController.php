@@ -1,32 +1,33 @@
 <?php
 
-namespace app\core\database;
-
+namespace app\controller;
 
 use mysqli;
 
-
-class Database
-{
+class DBConController{
+    private $_connection;
     private $_host;
-    private $_username;
     private $_password;
+    private $_username;
     private $_database;
+
     private static $_instance;
 
-    public $conn = null;
+    private function __construct(){
+        $this->_connection = new mysqli($this->_host, $this->_password, $this->_username, $this->_database);
 
-
-    private function __construct()
-    {
-        $this->set_db_attributes();
-        $this->conn = new mysqli($this->_host, $this->_username, $this->_password, $this->_database);
-        if ($this->conn->connect_error) {
-            echo "Fail" . $this->conn->connect_error;
+        /* Test if connection succeeded */
+        if (mysqli_connect_errno()) {
+            die("Database connection failed: " .
+                mysqli_connect_error() . " (" .
+                mysqli_connect_errno() . ")"
+            );
         }
-
     }
 
+    /*
+      Get instance of the database
+     */
     public static function getInstance()
     {
         if(!self::$_instance){
@@ -35,15 +36,17 @@ class Database
         return self::$_instance;
     }
 
+    public function getConnection()
+    {
+        return $this->_connection;
+    }
+
     public function __clone()
     {
         trigger_error('Clone is not allowed.',E_USER_ERROR);
     }
 
-    public function getConnection()
-    {
-        return $this->conn;
-    }
+
 
     public function set_db_attributes(){
         $this->_host = 'localhost';
@@ -51,10 +54,11 @@ class Database
         $this->_password = $_ENV['DB_PASSWORD'];
         $this->_database = $_ENV['DB_NAME'];
     }
+
     // can define predefined function to insert,update
     public function insert($sql, $array)
     {
-        $result = $this->conn->prepare($sql);
+        $result = $this->_connection->prepare($sql);
         $types = $this->get_types($array);
         var_dump($types);
         $result->bind_param($types, ...$array);
@@ -64,7 +68,7 @@ class Database
     public function get_record($sql, $type, $id)
     {
 
-        $statement = $this->conn->prepare($sql);
+        $statement = $this->_connection->prepare($sql);
         $statement->bind_param($type, $id);
         $statement->execute();
         $result = $statement->get_result();
@@ -75,7 +79,7 @@ class Database
 
     public function set_status($sql, $status, $id)
     {
-        $statement = $this->conn->prepare($sql);
+        $statement = $this->_connection->prepare($sql);
         var_dump($statement);
         $statement->bind_param('si', $status, $id);
         $statement->execute();
@@ -97,6 +101,8 @@ class Database
 
     public function close()
     {
-        mysqli_close($this->conn);
+        mysqli_close($this->_connection);
     }
+
+
 }
