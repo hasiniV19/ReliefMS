@@ -1,5 +1,5 @@
 <?php
-
+use app\core\App;
 ?>
 
 <style>
@@ -51,6 +51,12 @@
         </div>
     </nav>
 </header>
+
+<?php if(App::$app->session->getFlash('success')): ?>
+<div class="alert alert-success"></div>
+    <?php echo App::$app->session->getFlash('success');?>
+<?php endif; ?>
+
 {{content-body}}
 
 <footer class="footer-16371 mt-auto">
