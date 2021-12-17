@@ -10,7 +10,7 @@ abstract class DBModel
 {
     protected Database $connection;
     public function __construct(){
-        $this->connection = new Database();
+        $this->connection = Database::getInstance();
     }
 
     public function save()
