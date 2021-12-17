@@ -32,6 +32,16 @@ abstract class DBModel
         return true;
     }
 
+//    public function getLastID()
+//    {
+//        if ($connection->query($sql) === TRUE) {
+//            $last_id = $connection->insert_id;
+//            echo "New record created successfully. Last inserted ID is: " . $last_id;
+//        } else {
+//            echo "Error: " . $sql . "<br>" . $connection->error;
+//        }
+//    }
+
     abstract public function getTableName();
 
     abstract public function getCols();
