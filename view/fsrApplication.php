@@ -5,7 +5,7 @@
     <?php include "css/ReciApplication.css";?>
 </style>
 
-<form class="container form-container" method="post" action="/fsrApplication">
+<form class="container form-container" method="post" action="/fsrApplication" enctype="multipart/form-data">
     <div class="row">
         <div class="col-md-6 col-sm-12"> <!-- common details -->
             <div class="form-part">

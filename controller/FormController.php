@@ -101,6 +101,10 @@ class FormController extends Controller
 
     public function addFSRApplication(Request $request, Response $response)
     {
+        if($request->isPost()){
+
+
+        }
         return $this->render("fsrApplication", "main");
     }
 

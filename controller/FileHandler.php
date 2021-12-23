@@ -30,6 +30,8 @@ class FileHandler
 
     public function getFile()
     {
+        if($_FILES["fileToUpload"]["size"] == 0){
 
+        }
     }
 }
