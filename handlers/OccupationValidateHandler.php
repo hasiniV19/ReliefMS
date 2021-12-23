@@ -9,17 +9,15 @@ class OccupationValidateHandler extends ValidateHandler
     {
         if($validateRequest->getKey() === "occupation"){
             if(empty($validateRequest->getValue())){
-                $this->validError = "*Enter your occupation";
-                $this->isValid = false;
+                $validateRequest->setValidError("*Enter your occupation");
+                $validateRequest->setIsValid(false);
 
             }else{
                 $occupation = $validateRequest->getValue();
                 $occupation = filter_var($occupation, FILTER_SANITIZE_STRING);
                 if(!preg_match("/^[a-zA-Z-' ]*$/", $occupation)){
-                    $this->validError = "*Invalid occupation";
-                    $this->isValid = false;
-                } else {
-                    $this->isValid = true;
+                    $validateRequest->setValidError("*Invalid occupation");
+                    $validateRequest->setIsValid(false);
                 }
                 $validateRequest->setValue($occupation);
             }

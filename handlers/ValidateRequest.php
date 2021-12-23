@@ -13,6 +13,7 @@ class ValidateRequest
     {
         $this->key = $key;
         $this->value = $value;
+        $this->isValid = true;
     }
 
     public function getKey()

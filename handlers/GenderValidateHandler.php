@@ -7,16 +7,13 @@ class GenderValidateHandler extends ValidateHandler
 
     protected function validateRequestImp(ValidateRequest $validateRequest)
     {
-
-
         if ($validateRequest->getKey() === "gender") {
             if (empty($validateRequest->getValue())) {
-                $this->validError = "Invalid submission. Please try again";
-                $this->isValid = false;
+                $validateRequest->setValidError("Invalid submission. Please try again");
+                $validateRequest->setIsValid(false);
 
             } else {
                 $gender = $validateRequest->getValue();
-                $this->isValid = true;
 
                 $validateRequest->setValue($gender);
             }

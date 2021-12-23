@@ -9,16 +9,14 @@ class AgeValidateHandler extends ValidateHandler
     {
         if($validateRequest->getKey() === "age"){
             if(empty($validateRequest->getValue())){
-                $this->validError = "Enter your age";
-                $this->isValid = false;
+                $validateRequest->setValidError("Enter your age");
+                $validateRequest->setIsValid(false);
 
             }else{
                 $age = $validateRequest->getValue();
                 if(!filter_var($age, FILTER_VALIDATE_INT)){
-                    $this->validError = "*Only numbers allowed";
-                    $this->isValid = false;
-                } else {
-                    $this->isValid = true;
+                    $validateRequest->setValidError("*Only numbers allowed");
+                    $validateRequest->setIsValid(false);
                 }
                 $validateRequest->setValue($age);
             }

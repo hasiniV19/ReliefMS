@@ -9,17 +9,15 @@ class AddressValidateHandler extends ValidateHandler
     {
         if($validateRequest->getKey() === "address"){
             if(empty($validateRequest->getValue())){
-                $this->validError = "Address is required.";
-                $this->isValid = false;
+                $validateRequest->setValidError("Address is required.");
+                $validateRequest->setIsValid(false);
 
             }else{
                 $address = $validateRequest->getValue();
                 $address = filter_var($address, FILTER_SANITIZE_STRING);
                 if(!preg_match('/[A-Za-z0-9\-\\,.]+/', $address)){
-                    $this->validError = "*Invalid address";
-                    $this->isValid = false;
-                } else {
-                    $this->isValid = true;
+                    $validateRequest->setValidError("*Invalid address");
+                    $validateRequest->setIsValid(false);
                 }
                 $validateRequest->setValue($address);
             }

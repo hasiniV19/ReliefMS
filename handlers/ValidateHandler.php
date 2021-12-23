@@ -4,8 +4,8 @@ namespace app\handlers;
 
 abstract class ValidateHandler
 {
-    protected $isValid;
-    protected $validError;
+//    protected $isValid;
+//    protected $validError;
 
     protected ValidateHandler $successor;
 
@@ -29,13 +29,13 @@ abstract class ValidateHandler
         }
     }
 
-    public function isValid()
-    {
-        return $this->isValid;
-    }
-
-    public function getValidError()
-    {
-        return $this->validError;
-    }
+//    public function isValid()
+//    {
+//        return $this->isValid;
+//    }
+//
+//    public function getValidError()
+//    {
+//        return $this->validError;
+//    }
 }   

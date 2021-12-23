@@ -16,6 +16,7 @@ use app\controller\Application;
 
 class FormController extends Controller
 {
+    private  array $validateRequests;
     private Application $application;
 
     public function addApplication(Request $request, Response $response)
@@ -46,6 +47,7 @@ class FormController extends Controller
     public function validate($data): bool
     {
 //        var_dump($data);
+        $this->validateRequests = [];
         $nameValidateHandler = new NameValidateHandler();
         $addressValidateHandler = new AddressValidateHandler();
         $ageValidateHandler = new AgeValidateHandler();
@@ -58,9 +60,11 @@ class FormController extends Controller
             $validateRequest = new ValidateRequest($key, $value);
             $nameValidateHandler->validateRequest($validateRequest);
             $data[$key] = $validateRequest->getValue();
-            $isValid = $nameValidateHandler->isValid();
-            $isAllValid = $isValid;
-            $validError = $nameValidateHandler->getValidError();
+            $isValid = $validateRequest->getIsValid();
+            if ($isValid === false){
+                $this->validateRequests[$key] = $validateRequest;
+                $isAllValid = $isValid;
+            }
         }
         return $isAllValid;
     }
@@ -79,6 +83,7 @@ class FormController extends Controller
                 }
             } else {
                 var_dump("not valid name");
+                return $this->render("volunteerApplication", "main", $this->validateRequests);
             }
         }
         return $this->render("volunteerApplication", "main");
