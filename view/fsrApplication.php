@@ -39,7 +39,7 @@
                 </div>
                 <div class="form-group">
                     <label for="exampleFormControlFile1" class="input-label">Gramasewaka Certificate</label>
-                    <input type="file" class="form-control-file" id="exampleFormControlFile1">
+                    <input type="file" name="fileToUpload" id="fileToUpload" class="form-control-file" >
                 </div>
             </div>
 
