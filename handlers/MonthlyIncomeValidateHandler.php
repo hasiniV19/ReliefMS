@@ -7,18 +7,18 @@ class MonthlyIncomeValidateHandler extends ValidateHandler
 
     protected function validateRequestImp(ValidateRequest $validateRequest)
     {
-        if($validateRequest->getKey() === "monthly_income") {
+        if($validateRequest->getKey() === "monthly_income" || $validateRequest->getKey() === "amount") {
             if (empty($validateRequest->getValue())) {
-                $validateRequest->setValidError("Enter your monthly income");
+                $validateRequest->setValidError("Please fill this field");
                 $validateRequest->setIsValid(false);
 
             }}else{
-            $monthly_income = $validateRequest->getValue();
-            if(!filter_var($monthly_income, FILTER_VALIDATE_FLOAT)){
-                $validateRequest->setValidError("*Invalid monthly income");
+            $amount = $validateRequest->getValue();
+            if(!filter_var($amount, FILTER_VALIDATE_FLOAT)){
+                $validateRequest->setValidError("*Invalid input");
                 $validateRequest->setIsValid(false);
             }
-            $validateRequest->setValue($monthly_income);
+            $validateRequest->setValue($amount);
         }
         }
 }
