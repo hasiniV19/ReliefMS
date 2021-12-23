@@ -45,9 +45,9 @@
         </div>
     </div>
 
-<!--    <div class="row hidden" id="patient-forms">-->
-<!---->
-<!--    </div>-->
+    <div class="row hidden" id="patient-forms">
+
+    </div>
     <div class="row btm-row">
         <div class="col-md-6 col-sm-12">
             <div>

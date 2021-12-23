@@ -58,7 +58,6 @@ class Database implements GenericDB
     {
         $result = $this->conn->prepare($sql);
         $types = $this->get_types($array);
-        var_dump($types);
         $result->bind_param($types, ...$array);
         $result->execute();
         return $this->conn->insert_id;
