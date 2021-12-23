@@ -61,6 +61,7 @@ class Database implements GenericDB
         var_dump($types);
         $result->bind_param($types, ...$array);
         $result->execute();
+        return $this->conn->insert_id;
     }
 
     public function get_record($sql, $type, $id)

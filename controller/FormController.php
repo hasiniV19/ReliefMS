@@ -91,17 +91,21 @@ class FormController extends Controller
             {
                 $bodyRecipient = [];
                 $bodyRecipient['recipient_type']='msr';
-                $model_1 = new RecipientApplication();
-                $model_1->setAttributes($bodyRecipient);
+                $resipientModel = new RecipientApplication();
+                $resipientModel->setAttributes($bodyRecipient);
 
-                if ($model_1->save()){
-                    //$recipient_id = $model_1->getUserID();
-                    $body['recipient_id'] = 19;
+                for ($i = 1; $i <= 5; $i++){
 
-                    $model_2 = new msrApplication();
-                    $model_2->setAttributes($body);
+                }
 
-                    if($model_2->save()){
+                if ($resipientModel->save()){
+                    $recipient_id = $resipientModel->getLastID();
+                    $body['recipient_id'] = $recipient_id;
+
+                    $msrModel = new msrApplication();
+                    $msrModel->setAttributes($body);
+
+                    if($msrModel->save()){
                         $response->redirect("http://localhost:8080/confirmation");
                         exit;
                     }

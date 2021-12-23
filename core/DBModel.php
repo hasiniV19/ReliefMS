@@ -9,6 +9,7 @@ use app\core\database\Database;
 abstract class DBModel
 {
     protected Database $connection;
+    protected $lastId;
     public function __construct(){
         $this->connection = Database::getInstance();
     }
@@ -25,11 +26,16 @@ abstract class DBModel
         $sql = "INSERT INTO $table (".implode(",", $cols).") VALUES(".implode(",",$attributes).")";
 
         try {
-            $this->connection->insert($sql, $values);
+            $this->lastId = $this->connection->insert($sql, $values);
         } catch (\mysqli_sql_exception $error){
             return false;
         }
         return true;
+    }
+
+    public function getLastID()
+    {
+        return $this->lastId;
     }
 
 //    public function getLastID()
