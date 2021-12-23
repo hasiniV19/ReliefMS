@@ -5,7 +5,7 @@
     <?php include "css/ReciApplication.css";?>
 </style>
 
-<form class="container form-container" method="post" action="/fsrApplication">
+<form class="container form-container" method="post" action="/fsrApplication" enctype="multipart/form-data">
     <div class="row">
         <div class="col-md-6 col-sm-12"> <!-- common details -->
             <div class="form-part">
@@ -39,7 +39,9 @@
                 </div>
                 <div class="form-group">
                     <label for="exampleFormControlFile1" class="input-label">Gramasewaka Certificate</label>
-                    <input type="file" name="gms_certificate" class="form-control-file" id="exampleFormControlFile1">
+
+                    <input type="file" name="fileToUpload" id="fileToUpload" class="form-control-file" >
+
                 </div>
             </div>
 
