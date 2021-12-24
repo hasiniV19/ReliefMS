@@ -16,8 +16,10 @@ use app\handlers\ValidateRequest;
         <div class="form-group">
             <label for="name" class="input-label">Full Name</label>
             <input name="name" type="text" class="form-control input-field" placeholder="Enter Your Name" id="name" aria-describedby=""
-            value="<?php echo $name->getValue();?>">
-            <span><?php echo $name->getValidError();?></span>
+                   value="<?php if (isset($name)) echo $name->getValue();?>"
+            >
+            <span><?php if (isset($name)) echo $name->getValidError();?></span>
+
         </div>
 
         <div class="form-group">
