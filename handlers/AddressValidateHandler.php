@@ -9,7 +9,7 @@ class AddressValidateHandler extends ValidateHandler
     {
         if($validateRequest->getKey() === "address"){
             if(empty($validateRequest->getValue())){
-                $validateRequest->setValidError("Address is required.");
+                $validateRequest->setValidError("*Address is required.");
                 $validateRequest->setIsValid(false);
 
             }else{

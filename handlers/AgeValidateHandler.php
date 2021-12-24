@@ -9,7 +9,7 @@ class AgeValidateHandler extends ValidateHandler
     {
         if($validateRequest->getKey() === "age"){
             if(empty($validateRequest->getValue())){
-                $validateRequest->setValidError("Enter your age");
+                $validateRequest->setValidError("*Enter your age");
                 $validateRequest->setIsValid(false);
 
             }else{

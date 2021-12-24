@@ -228,6 +228,8 @@ class FormController extends Controller
                 }
 
 
+            }else{
+                return $this->render("fsrApplication", "main", $this->validateRequests);
             }
         }
         return $this->render("fsrApplication", "main");

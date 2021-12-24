@@ -9,7 +9,7 @@ class MonthlyIncomeValidateHandler extends ValidateHandler
     {
         if($validateRequest->getKey() === "monthly_income" || $validateRequest->getKey() === "amount") {
             if (empty($validateRequest->getValue())) {
-                $validateRequest->setValidError("Please fill this field");
+                $validateRequest->setValidError("*Please fill this field");
                 $validateRequest->setIsValid(false);
 
             }}else{
