@@ -42,6 +42,7 @@
 
                     <input type="file" name="fileToUpload" id="fileToUpload" class="form-control-file" >
 
+
                 </div>
             </div>
 
@@ -63,6 +64,7 @@
             <div class="form-group hidden" id="student-details">
                 <label for="no-students" class="input-label">Number of Students</label>
                 <input type="number" name="no_students" class="form-control input-field" placeholder="How many students in your family" min="1" max="4" id="no-members" aria-describedby="">
+
             </div>
         </div>
 

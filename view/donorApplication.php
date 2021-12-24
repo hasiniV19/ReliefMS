@@ -33,7 +33,10 @@
 
         <div class="form-group">
             <label for="district" class="input-label">District</label>
+
+
             <input type="text" name="district" class="form-control input-field" placeholder="Enter Your District" id="district" aria-describedby="">
+
         </div>
 
         <div class="text-center">
