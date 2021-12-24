@@ -33,6 +33,34 @@ abstract class DBModel
         return true;
     }
 
+    public function update()
+    {
+        $table = $this->getTableName();
+        $cols = $this->getCols();
+        $numCols = count($cols);
+        $values = $this->getValues();
+        $attributes = [];
+        $query = "UPDATE $table SET ";
+        foreach ($cols as $key=>$value) {
+            if($key === $numCols-1){
+                break;
+            }
+            $query .= $value . "= ?";
+            if($key !== $numCols -2){
+                $query .= ",";
+            }
+        }
+
+        $query .= "WHERE ".$cols[$numCols-1]. "=?";
+
+        try {
+            $this->connection->update($query, $values);
+        } catch (\mysqli_sql_exception $error){
+            return false;
+        }
+        return true;
+
+    }
     public function getLastID()
     {
         return $this->lastId;

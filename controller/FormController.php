@@ -213,8 +213,6 @@ class FormController extends Controller
                     $fsrModel = new fsrApplication();
                     $fsrModel->setAttributes($body);
 
-
-
                     if($fsrModel->save()){
                         $fileHandler = new FileHandler("uploads/", "fileToUpload");
                         $fsrId = $fsrModel->getLastID();
