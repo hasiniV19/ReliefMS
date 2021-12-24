@@ -24,8 +24,10 @@ use app\handlers\NameValidateHandler;
 use app\handlers\OccupationValidateHandler;
 use app\handlers\ValidateHandler;
 use app\handlers\ValidateRequest;
+use app\model\FsrFileModel;
 
 use app\model\DonorApplication;
+use app\model\OtherNeedModel;
 use app\model\RecipientApplication;
 
 use app\model\VolunteerApplication;
@@ -36,7 +38,7 @@ use http\Message\Body;
 
 class FormController extends Controller
 {
-    private  array $validateRequests;
+    private array $validateRequests;
     private Application $application;
 
     public function addApplication(Request $request, Response $response)
@@ -103,14 +105,14 @@ class FormController extends Controller
 
         foreach ($data as $key => $value) {
 //            if ($key === "name" || $key === "address" ||$key === "age" ||$key === "mobile" ||$key === "occupation") {
-                $validateRequest = new ValidateRequest($key, $value);
-                $nameValidateHandler->validateRequest($validateRequest);
-                $data[$key] = $validateRequest->getValue();
-                $isValid = $validateRequest->getIsValid();
-                if ($isValid === false) {
-                    $this->validateRequests[$key] = $validateRequest;
-                    $isAllValid = $isValid;
-                }
+            $validateRequest = new ValidateRequest($key, $value);
+            $nameValidateHandler->validateRequest($validateRequest);
+            $data[$key] = $validateRequest->getValue();
+            $isValid = $validateRequest->getIsValid();
+            if ($isValid === false) {
+                $this->validateRequests[$key] = $validateRequest;
+                $isAllValid = $isValid;
+            }
 
         }
         return $isAllValid;
@@ -120,8 +122,7 @@ class FormController extends Controller
     {
 
         //$this->application = new Application();
-        if($request->isPost())
-        {
+        if ($request->isPost()) {
 
             $body = $request->getBody();
             if ($this->validate($body)) {
@@ -141,14 +142,13 @@ class FormController extends Controller
 
     public function addDonorApplication(Request $request, Response $response)
     {
-        if($request->isPost())
-        {
+        if ($request->isPost()) {
             $body = $request->getBody();
             var_dump($body);
-            if($this->validate($body)){
+            if ($this->validate($body)) {
                 $model = new DonorApplication();
                 $model->setAttributes($body);
-                if($model->save()) {
+                if ($model->save()) {
                     $response->redirect("http://localhost:8080/confirmation");
                     exit;
                 }
@@ -160,29 +160,27 @@ class FormController extends Controller
 
     public function addMSRApplication(Request $request, Response $response)
     {
-        if ($request->isPost())
-        {
+        if ($request->isPost()) {
             $body = $request->getBody();
 
-            if($this->validate($body))
-            {
+            if ($this->validate($body)) {
                 $bodyRecipient = [];
-                $bodyRecipient['recipient_type']='msr';
+                $bodyRecipient['recipient_type'] = 'msr';
                 $recipientModel = new RecipientApplication();
                 $recipientModel->setAttributes($bodyRecipient);
 
-                for ($i = 1; $i <= 5; $i++){
+                for ($i = 1; $i <= 5; $i++) {
 
                 }
 
-                if ($recipientModel->save()){
+                if ($recipientModel->save()) {
                     $recipient_id = $recipientModel->getLastID();
                     $body['recipient_id'] = $recipient_id;
 
                     $msrModel = new msrApplication();
                     $msrModel->setAttributes($body);
 
-                    if($msrModel->save()){
+                    if ($msrModel->save()) {
                         $response->redirect("http://localhost:8080/confirmation");
                         exit;
                     }
@@ -196,23 +194,17 @@ class FormController extends Controller
 
     public function addFSRApplication(Request $request, Response $response)
     {
-        if ($request->isPost())
-        {
+        if ($request->isPost()) {
             $body = $request->getBody();
 
 
-            if($this->validate($body))
-            {
+            if ($this->validate($body)) {
                 $bodyRecipient = [];
-                $bodyRecipient['recipient_type']='fsr';
+                $bodyRecipient['recipient_type'] = 'fsr';
                 $recipientModel = new RecipientApplication();
                 $recipientModel->setAttributes($bodyRecipient);
 
-                for ($i = 1; $i <= 5; $i++){
-                    unset($body["need".$i]);
-                }
-
-                if ($recipientModel->save()){
+                if ($recipientModel->save()) {
                     $recipient_id = $recipientModel->getLastID();
                     $body['recipient_id'] = $recipient_id;
 //                    $body['gms_certificate'] =
@@ -220,20 +212,34 @@ class FormController extends Controller
                     $fsrModel = new fsrApplication();
                     $fsrModel->setAttributes($body);
 
-                    if($fsrModel->save()){
+                    if ($fsrModel->save()) {
                         $fileHandler = new FileHandler("uploads/", "fileToUpload");
                         $fsrId = $fsrModel->getLastID();
                         $fileValidateRequest = $fileHandler->getFile($fsrId);
-                        if ($fileValidateRequest !== false){
-                            if($this->validateFile($fileValidateRequest)){
+                        if ($fileValidateRequest !== false) {
+                            if ($this->validateFile($fileValidateRequest)) {
                                 $fileHandler->saveFile();
-                            }
-                            else {
+                                $fileModel = new FsrFileModel();
+                                $gmsBody = ["fsr_id" => $fsrId, "gms_certificate" => $fileValidateRequest->getValue()->getFileName()];
+                                var_dump($gmsBody);
+                                $fileModel->setAttributes($gmsBody);
+                                if ($fileModel->update()) {
+                                    $otherNeedModel = new OtherNeedModel();
+
+                                    for ($i = 1; $i <= 5; $i++) {
+                                        if (!empty($body["need".$i])) {
+                                            $otherNeedModel->setAttributes(["recipient_id" => $recipient_id, "need" => $body["need" . $i]]);
+                                            $otherNeedModel->save();
+                                        }
+                                        unset($body["need" . $i]);
+                                    }
+                                    $response->redirect("http://localhost:8080/confirmation");
+                                    exit;
+                                }
+                            } else {
                                 $this->validateRequests["fileToUpload"] = $fileValidateRequest;
                             }
                         }
-//                        $response->redirect("http://localhost:8080/confirmation");
-//                        exit;
                     }
                 }
 
@@ -243,7 +249,7 @@ class FormController extends Controller
         return $this->render("fsrApplication", "main");
     }
 
-    public function validateFile(ValidateRequest $fileValidateRequest):bool
+    public function validateFile(ValidateRequest $fileValidateRequest): bool
     {
         $fileValidator = new FileValidator();
         $fileValidator->validateRequest($fileValidateRequest);
