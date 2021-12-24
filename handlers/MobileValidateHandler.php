@@ -13,7 +13,7 @@ class MobileValidateHandler extends ValidateHandler
             }else{
                 $contact_number = $validateRequest->getValue();
                 $contact_number = filter_var($contact_number, FILTER_SANITIZE_STRING);
-                if(!preg_match("/(0)?[0-9]{9}/", $contact_number)) {
+                if(strlen($contact_number) != 10 || !preg_match("/(0)?[0-9]{9}/", $contact_number)) {
                     $validateRequest->setValidError("*Invalid contact number");
                     $validateRequest->setIsValid(false);
                 }

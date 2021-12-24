@@ -25,8 +25,6 @@ use app\handlers\ValidateRequest;
         <div class="form-group">
             <label for="name" class="input-label">Full Name</label>
             <input name="name" type="text" class="form-control input-field" placeholder="Enter Your Name" id="name" aria-describedby=""
-           
-
                    value="<?php if (isset($name)) echo $name->getValue();?>">
 
             <span class="err-msg"><?php if (isset($name)) echo $name->getValidError();?></span>
@@ -46,7 +44,6 @@ use app\handlers\ValidateRequest;
                 <label for="age" class="input-label">Age</label>
                 <input name="age" type="number" class="form-control input-field" placeholder="Enter Age" id="age" min="1" max="99" aria-describedby=""
                        value="<?php if (isset($age)) echo $age->getValue();?>">
-
                 <span class="err-msg"><?php if (isset($age)) echo $age->getValidError();?></span>
             </div>
             <div class="form-group col-md-6">
