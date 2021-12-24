@@ -9,9 +9,18 @@ use app\core\Response;
 
 use app\handlers\AddressValidateHandler;
 use app\handlers\AgeValidateHandler;
+use app\handlers\DayValidateHandler;
+use app\handlers\DefaultValidateHandler;
+use app\handlers\DistrictValidateHandler;
 use app\handlers\FileValidator;
 use app\handlers\FileValidateRequest;
+use app\handlers\GenderValidateHandler;
+use app\handlers\HaveVehicleValidateHandler;
+use app\handlers\IsThereStudentsValidateHandler;
+use app\handlers\MobileValidateHandler;
+use app\handlers\MonthlyIncomeValidateHandler;
 use app\handlers\NameValidateHandler;
+use app\handlers\OccupationValidateHandler;
 use app\handlers\ValidateHandler;
 use app\handlers\ValidateRequest;
 
@@ -56,28 +65,48 @@ class FormController extends Controller
 
     public function validate($data): bool
     {
-//        var_dump($data);
-//        $this->validateRequests = [];
-//        $nameValidateHandler = new NameValidateHandler();
-//        $addressValidateHandler = new AddressValidateHandler();
+        $this->validateRequests = [];
+        $nameValidateHandler = new NameValidateHandler();
+        $addressValidateHandler = new AddressValidateHandler();
 //        $ageValidateHandler = new AgeValidateHandler();
+//        $dayValidateHandler = new DayValidateHandler();
+//        $districtValidateHandler = new DistrictValidateHandler();
+//        $genderValidateHandler = new GenderValidateHandler();
+//        $haveVehicleValidateHandler = new HaveVehicleValidateHandler();
+//        $isThereStudentsValidateHandler = new IsThereStudentsValidateHandler();
+//        $mobileValidateHandler = new MobileValidateHandler();
+//        $monthlyIncomeValidateHandler = new MonthlyIncomeValidateHandler();
+//        $occupationValidateHandler = new OccupationValidateHandler();
 //
-//        $nameValidateHandler->setSuccessor($addressValidateHandler);
+//        $defaultValidateHandler = new DefaultValidateHandler();
+
+        $nameValidateHandler->setSuccessor($addressValidateHandler);
 //        $addressValidateHandler->setSuccessor($ageValidateHandler);
-//        $isAllValid = true;
-//
-//        foreach ($data as $key => $value) {
-//            $validateRequest = new ValidateRequest($key, $value);
-//            $nameValidateHandler->validateRequest($validateRequest);
-//            $data[$key] = $validateRequest->getValue();
-//            $isValid = $validateRequest->getIsValid();
-//            if ($isValid === false){
-//                $this->validateRequests[$key] = $validateRequest;
-//                $isAllValid = $isValid;
-//            }
-//        }
-//        return $isAllValid;
-        return true;
+//        $ageValidateHandler->setSuccessor($dayValidateHandler);
+//        $dayValidateHandler->setSuccessor($districtValidateHandler);
+//        $districtValidateHandler->setSuccessor($genderValidateHandler);
+//        $genderValidateHandler->setSuccessor($haveVehicleValidateHandler);
+//        $haveVehicleValidateHandler->setSuccessor($isThereStudentsValidateHandler);
+//        $isThereStudentsValidateHandler->setSuccessor($mobileValidateHandler);
+//        $mobileValidateHandler->setSuccessor($monthlyIncomeValidateHandler);
+//        $monthlyIncomeValidateHandler->setSuccessor($occupationValidateHandler);
+//        $occupationValidateHandler->setSuccessor($defaultValidateHandler);
+
+        $isAllValid = true;
+
+        foreach ($data as $key => $value) {
+            if ($key === "name" || $key === "address") {
+                $validateRequest = new ValidateRequest($key, $value);
+                $nameValidateHandler->validateRequest($validateRequest);
+                $data[$key] = $validateRequest->getValue();
+                $isValid = $validateRequest->getIsValid();
+                if ($isValid === false) {
+                    $this->validateRequests[$key] = $validateRequest;
+                    $isAllValid = $isValid;
+                }
+            }
+        }
+        return $isAllValid;
     }
 
     public function addVolunteerApplication(Request $request, Response $response)
@@ -96,7 +125,7 @@ class FormController extends Controller
                     exit;
                 }
             } else {
-                var_dump("not valid name");
+                var_dump($this->validateRequests["address"]);
                 return $this->render("volunteerApplication", "main", $this->validateRequests);
             }
         }

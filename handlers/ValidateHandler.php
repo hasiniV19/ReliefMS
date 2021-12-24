@@ -6,6 +6,7 @@ abstract class ValidateHandler
 {
     protected ValidateHandler $successor;
 
+
     public function setSuccessor(ValidateHandler $successor):void
     {
         $this->successor = $successor;
