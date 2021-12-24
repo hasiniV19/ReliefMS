@@ -28,7 +28,9 @@ use app\handlers\ValidateRequest;
            
 
                    value="<?php if (isset($name)) echo $name->getValue();?>">
+
             <span class="err-msg"><?php if (isset($name)) echo $name->getValidError();?></span>
+
 
         </div>
 
