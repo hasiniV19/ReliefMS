@@ -36,7 +36,7 @@
                 <input name="occupation" type="text" class="form-control input-field" placeholder="Enter Occupation" id="occupation" aria-describedby="">
             </div>
             <div class="form-group col-md-6">
-                <label for="availabe_day" class="input-label">Available Day</label>
+                <label for="available_day" class="input-label">Available Day</label>
                 <select name="available_day" id="inputState" class="form-control input-field">
                     <option selected disabled hidden>Choose here</option>
                     <option value="sunday">Sunday</option>
