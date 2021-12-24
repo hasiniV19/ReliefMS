@@ -1,4 +1,8 @@
 <?php
+use app\handlers\ValidateRequest;
+
+/*** @var $name */
+
 ?>
 
 <style>
@@ -11,7 +15,9 @@
 
         <div class="form-group">
             <label for="name" class="input-label">Full Name</label>
-            <input name="name" type="text" class="form-control input-field" placeholder="Enter Your Name" id="name" aria-describedby="">
+            <input name="name" type="text" class="form-control input-field" placeholder="Enter Your Name" id="name" aria-describedby=""
+            value="<?php echo $name->getValue();?>">
+            <span><?php echo $name->getValidError();?></span>
         </div>
 
         <div class="form-group">
@@ -37,9 +43,9 @@
             </div>
             <div class="form-group col-md-6">
                 <label for="available_day" class="input-label">Available Day</label>
-                <select name="available_day" id="inputState" class="form-control input-field">
-                    <option selected disabled hidden>Choose here</option>
-                    <option value="sunday">Sunday</option>
+                <select name="available_day" id="inputState" class="form-control input-field" required>
+<!--                    <option selected disabled hidden>Choose here</option>-->
+                    <option value="sunday" selected>Sunday</option>
                     <option value="monday">Monday</option>
                     <option value="tuesday">Tuesday</option>
                     <option value="wednesday">Wednesday</option>
@@ -55,7 +61,7 @@
                 <label for="gender" class="input-label">Gender</label>
                 <div class="form-control input-field" style="height: 4.4rem;">
                     <div class="contact-form-radio ">
-                        <input class="input-radio100" id="radio1" type="radio" name="gender" value="male">
+                        <input class="input-radio100" id="radio1" type="radio" name="gender" value="male" checked>
                         <label class="label-radio100" for="radio1">
                             Male
                         </label>
@@ -74,16 +80,16 @@
                 <label for="vehicle" class="input-label">Do You Have a Vehicle?</label>
                 <div class="form-control input-field" style="height: 4.4rem;">
                     <div class="contact-form-radio ">
-                        <input class="input-radio100" id="radio3" type="radio" name="have_vehicle" value=1>
+                        <input class="input-radio100" id="radio3" type="radio" name="have_vehicle" value=0 checked>
                         <label class="label-radio100" for="radio3">
-                            Yes
+                            No
                         </label>
                     </div>
 
                     <div class="contact-form-radio">
-                        <input class="input-radio100" id="radio4" type="radio" name="have_vehicle" value=0>
+                        <input class="input-radio100" id="radio4" type="radio" name="have_vehicle" value=1 >
                         <label class="label-radio100" for="radio4">
-                            No
+                            Yes
                         </label>
                     </div>
                 </div>

@@ -72,32 +72,19 @@ class FormController extends Controller
         $ageValidateHandler = new AgeValidateHandler();
         $mobileValidateHandler = new MobileValidateHandler();
         $occupationValidateHandler = new OccupationValidateHandler();
-
-//        $dayValidateHandler = new DayValidateHandler();
-//        $districtValidateHandler = new DistrictValidateHandler();
-//        $genderValidateHandler = new GenderValidateHandler();
-//        $haveVehicleValidateHandler = new HaveVehicleValidateHandler();
-//        $isThereStudentsValidateHandler = new IsThereStudentsValidateHandler();
-
-//        $monthlyIncomeValidateHandler = new MonthlyIncomeValidateHandler();
-
-//
-//        $defaultValidateHandler = new DefaultValidateHandler();
+        $districtValidateHandler = new DistrictValidateHandler();
+        $monthlyIncomeValidateHandler = new MonthlyIncomeValidateHandler();
+        $defaultValidateHandler = new DefaultValidateHandler();
         $finalValidateHandler = new FinalValidateHandler();
 
         $nameValidateHandler->setSuccessor($addressValidateHandler);
         $addressValidateHandler->setSuccessor($ageValidateHandler);
         $ageValidateHandler->setSuccessor($mobileValidateHandler);
         $mobileValidateHandler->setSuccessor($occupationValidateHandler);
-        $occupationValidateHandler->setSuccessor($finalValidateHandler);
-//        $dayValidateHandler->setSuccessor($districtValidateHandler);
-//        $districtValidateHandler->setSuccessor($genderValidateHandler);
-//        $genderValidateHandler->setSuccessor($haveVehicleValidateHandler);
-//        $haveVehicleValidateHandler->setSuccessor($isThereStudentsValidateHandler);
-//        $isThereStudentsValidateHandler->setSuccessor($mobileValidateHandler);
-
-//        $monthlyIncomeValidateHandler->setSuccessor($occupationValidateHandler);
-
+        $occupationValidateHandler->setSuccessor($districtValidateHandler);
+        $districtValidateHandler->setSuccessor($monthlyIncomeValidateHandler);
+        $monthlyIncomeValidateHandler->setSuccessor($defaultValidateHandler);
+        $defaultValidateHandler->setSuccessor($finalValidateHandler);
 
         $isAllValid = true;
 
@@ -107,10 +94,12 @@ class FormController extends Controller
                 $nameValidateHandler->validateRequest($validateRequest);
                 $data[$key] = $validateRequest->getValue();
                 $isValid = $validateRequest->getIsValid();
-                if ($isValid === false) {
-                    $this->validateRequests[$key] = $validateRequest;
-                    $isAllValid = $isValid;
-                }
+                $this->validateRequests[$key] = $validateRequest;
+
+            if ($isValid === false) {
+
+                $isAllValid = $isValid;
+            }
 
         }
         return $isAllValid;
@@ -144,7 +133,7 @@ class FormController extends Controller
         if($request->isPost())
         {
             $body = $request->getBody();
-            var_dump($body);
+            //var_dump($body);
             if($this->validate($body)){
                 $model = new DonorApplication();
                 $model->setAttributes($body);
@@ -152,6 +141,9 @@ class FormController extends Controller
                     $response->redirect("http://localhost:8080/confirmation");
                     exit;
                 }
+            }
+            else{
+                return $this->render("donorApplication", "main", $this->validateRequests);
             }
         }
 
