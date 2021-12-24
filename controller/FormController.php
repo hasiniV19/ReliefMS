@@ -14,6 +14,7 @@ use app\handlers\DefaultValidateHandler;
 use app\handlers\DistrictValidateHandler;
 use app\handlers\FileValidator;
 use app\handlers\FileValidateRequest;
+use app\handlers\FinalValidateHandler;
 use app\handlers\GenderValidateHandler;
 use app\handlers\HaveVehicleValidateHandler;
 use app\handlers\IsThereStudentsValidateHandler;
@@ -68,34 +69,40 @@ class FormController extends Controller
         $this->validateRequests = [];
         $nameValidateHandler = new NameValidateHandler();
         $addressValidateHandler = new AddressValidateHandler();
-//        $ageValidateHandler = new AgeValidateHandler();
+        $ageValidateHandler = new AgeValidateHandler();
+        $mobileValidateHandler = new MobileValidateHandler();
+        $occupationValidateHandler = new OccupationValidateHandler();
+
 //        $dayValidateHandler = new DayValidateHandler();
 //        $districtValidateHandler = new DistrictValidateHandler();
 //        $genderValidateHandler = new GenderValidateHandler();
 //        $haveVehicleValidateHandler = new HaveVehicleValidateHandler();
 //        $isThereStudentsValidateHandler = new IsThereStudentsValidateHandler();
-//        $mobileValidateHandler = new MobileValidateHandler();
+
 //        $monthlyIncomeValidateHandler = new MonthlyIncomeValidateHandler();
-//        $occupationValidateHandler = new OccupationValidateHandler();
+
 //
 //        $defaultValidateHandler = new DefaultValidateHandler();
+        $finalValidateHandler = new FinalValidateHandler();
 
         $nameValidateHandler->setSuccessor($addressValidateHandler);
-//        $addressValidateHandler->setSuccessor($ageValidateHandler);
-//        $ageValidateHandler->setSuccessor($dayValidateHandler);
+        $addressValidateHandler->setSuccessor($ageValidateHandler);
+        $ageValidateHandler->setSuccessor($mobileValidateHandler);
+        $mobileValidateHandler->setSuccessor($occupationValidateHandler);
+        $occupationValidateHandler->setSuccessor($finalValidateHandler);
 //        $dayValidateHandler->setSuccessor($districtValidateHandler);
 //        $districtValidateHandler->setSuccessor($genderValidateHandler);
 //        $genderValidateHandler->setSuccessor($haveVehicleValidateHandler);
 //        $haveVehicleValidateHandler->setSuccessor($isThereStudentsValidateHandler);
 //        $isThereStudentsValidateHandler->setSuccessor($mobileValidateHandler);
-//        $mobileValidateHandler->setSuccessor($monthlyIncomeValidateHandler);
+
 //        $monthlyIncomeValidateHandler->setSuccessor($occupationValidateHandler);
-//        $occupationValidateHandler->setSuccessor($defaultValidateHandler);
+
 
         $isAllValid = true;
 
         foreach ($data as $key => $value) {
-            if ($key === "name" || $key === "address") {
+//            if ($key === "name" || $key === "address" ||$key === "age" ||$key === "mobile" ||$key === "occupation") {
                 $validateRequest = new ValidateRequest($key, $value);
                 $nameValidateHandler->validateRequest($validateRequest);
                 $data[$key] = $validateRequest->getValue();
@@ -104,7 +111,7 @@ class FormController extends Controller
                     $this->validateRequests[$key] = $validateRequest;
                     $isAllValid = $isValid;
                 }
-            }
+
         }
         return $isAllValid;
     }
@@ -125,7 +132,7 @@ class FormController extends Controller
                     exit;
                 }
             } else {
-                var_dump($this->validateRequests["address"]);
+//                var_dump($this->validateRequests["name"]);
                 return $this->render("volunteerApplication", "main", $this->validateRequests);
             }
         }

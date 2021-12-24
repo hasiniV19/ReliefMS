@@ -19,6 +19,8 @@ abstract class ValidateHandler
         if(!$handledByThisNode && $this->successor != null)
         {
             $this->successor->validateRequest($validateRequest);
+        }else{
+            return ;
         }
     }
 
