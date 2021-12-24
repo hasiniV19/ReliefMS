@@ -57,8 +57,6 @@ class FormController extends Controller
                     echo "saved successfully";
                 }
             }
-
-
         }
 
         return $this->render("form", "main");
