@@ -20,11 +20,11 @@
 <body >
 <header>
     <nav id="navbar" class="navbar navbar-expand-lg   fixed-top">
-        <a id="logo" href="#" class="visible-md visible-lg">
+        <a id="logo" href="<?php echo 'http://localhost:8080/'?>" class="visible-md visible-lg">
             <img src="img/logo2.png" class="img-fluid " width="80">
         </a>
 
-        <a id="name" class="navbar-brand" href="#">Epsilon Foundation</a>
+        <a id="name" class="navbar-brand" href="<?php echo 'http://localhost:8080/'?>">Epsilon Foundation</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -38,10 +38,10 @@
                     <a class="nav-link" href="">About</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Donate</a>
+                    <a class="nav-link" href="<?php echo 'http://localhost:8080/donorApplication'?>">Donate</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Login</a>
+                    <a class="nav-link" href="<?php echo 'http://localhost:8080/login'?>">Login</a>
                 </li>
 
                 <li class="nav-item">
@@ -61,10 +61,10 @@
                     <a href="#">Epsilon Foundation</a>
                 </div>
                 <ul class="list-unstyled nav-links mb-5">
-                    <li><a href="#">Home</a></li>
+                    <li><a href="<?php echo 'http://localhost:8080/'?>">Home</a></li>
                     <li><a href="#">About</a></li>
-                    <li><a href="#">Donate</a></li>
-                    <li><a href="#">Login</a></li>
+                    <li><a href="<?php echo 'http://localhost:8080/login'?>">Donate</a></li>
+                    <li><a href="<?php echo 'http://localhost:8080/login'?>">Login</a></li>
                     <li><a href="#">Contact</a></li>
                 </ul>
 
