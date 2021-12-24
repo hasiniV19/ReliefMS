@@ -6,7 +6,7 @@
 </style>
 
 <div class="row">
-    <form class="container form-container col-lg-6 col-md-8 col-10">
+    <form method="post" action="/donorApplication" class="container form-container col-lg-6 col-md-8 col-10">
         <h2 class="title">Donor Application</h2>
 
         <div class="form-group">
@@ -34,12 +34,13 @@
         <div class="form-group">
             <label for="district" class="input-label">District</label>
 
+
             <input type="text" name="district" class="form-control input-field" placeholder="Enter Your District" id="district" aria-describedby="">
 
         </div>
 
         <div class="text-center">
-            <button type="submit" class="btn btn-primary submit-button">Submit</button>
+            <button type="submit" name="submit" class="btn btn-primary submit-button">Submit</button>
         </div>
     </form>
 

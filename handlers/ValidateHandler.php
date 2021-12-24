@@ -4,15 +4,7 @@ namespace app\handlers;
 
 abstract class ValidateHandler
 {
-//    protected $isValid;
-//    protected $validError;
-
     protected ValidateHandler $successor;
-
-//    public function __construct()
-//    {
-//        $this->successor = null;
-//    }
 
     public function setSuccessor(ValidateHandler $successor):void
     {
@@ -29,13 +21,4 @@ abstract class ValidateHandler
         }
     }
 
-//    public function isValid()
-//    {
-//        return $this->isValid;
-//    }
-//
-//    public function getValidError()
-//    {
-//        return $this->validError;
-//    }
 }   

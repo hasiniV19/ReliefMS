@@ -5,7 +5,7 @@
     <?php include "css/ReciApplication.css";?>
 </style>
 
-<form class="container form-container" method="post" action="/fsrApplication">
+<form class="container form-container" method="post" action="/fsrApplication" enctype="multipart/form-data">
     <div class="row">
         <div class="col-md-6 col-sm-12"> <!-- common details -->
             <div class="form-part">
@@ -16,7 +16,7 @@
                 </div>
                 <div class="form-group">
                     <label for="no-members" class="input-label">Number of Family Members</label>
-                    <input type="number" name="no-members" class="form-control input-field" placeholder="How many members in your family" min="1" max="6" id="no-members" aria-describedby="">
+                    <input type="number" name="no_members" class="form-control input-field" placeholder="How many members in your family" min="1" max="6" id="no-members" aria-describedby="">
                 </div>
                 <div class="form-group">
                     <label for="mobile" class="input-label">Mobile Number</label>
@@ -35,11 +35,14 @@
                 <h2 class="title">Financial Details</h2>
                 <div class="form-group">
                     <label for="income" class="input-label">Monthly Income</label>
-                    <input type="text" class="form-control input-field" placeholder="Enter Your Monthly Income" id="income" aria-describedby="">
+                    <input type="text" name="monthly_income" class="form-control input-field" placeholder="Enter Your Monthly Income" id="income" aria-describedby="">
                 </div>
                 <div class="form-group">
                     <label for="exampleFormControlFile1" class="input-label">Gramasewaka Certificate</label>
-                    <input type="file" name="gms_certificate" class="form-control-file" id="exampleFormControlFile1">
+
+                    <input type="file" name="fileToUpload" id="fileToUpload" class="form-control-file" >
+
+
                 </div>
             </div>
 
@@ -60,7 +63,8 @@
             </div>
             <div class="form-group hidden" id="student-details">
                 <label for="no-students" class="input-label">Number of Students</label>
-                <input type="number" name="no-students" class="form-control input-field" placeholder="How many students in your family" min="1" max="4" id="no-members" aria-describedby="">
+                <input type="number" name="no_students" class="form-control input-field" placeholder="How many students in your family" min="1" max="4" id="no-members" aria-describedby="">
+
             </div>
         </div>
 
@@ -69,19 +73,19 @@
             <label class="col-md-3 input-label">Other Needs</label>
             <div class="col-md-9">
                 <div class="form-group">
-                    <input type="text" class="form-control input-field" placeholder="Enter Your Need" id="" aria-describedby="">
+                    <input name="need1" type="text" class="form-control input-field" placeholder="Enter Your Need" id="" aria-describedby="">
                 </div>
                 <div class="form-group">
-                    <input type="text" class="form-control input-field" placeholder="Enter Your Need" id="" aria-describedby="">
+                    <input name="need2" type="text" class="form-control input-field" placeholder="Enter Your Need" id="" aria-describedby="">
                 </div>
                 <div class="form-group">
-                    <input type="text" class="form-control input-field" placeholder="Enter Your Need" id="" aria-describedby="">
+                    <input name="need3" type="text" class="form-control input-field" placeholder="Enter Your Need" id="" aria-describedby="">
                 </div>
                 <div class="form-group">
-                    <input type="text" class="form-control input-field" placeholder="Enter Your Need" id="" aria-describedby="">
+                    <input name="need4" type="text" class="form-control input-field" placeholder="Enter Your Need" id="" aria-describedby="">
                 </div>
                 <div class="form-group">
-                    <input type="text" class="form-control input-field" placeholder="Enter Your Need" id="" aria-describedby="">
+                    <input name="need5" type="text" class="form-control input-field" placeholder="Enter Your Need" id="" aria-describedby="">
                 </div>
             </div>
         </div>
