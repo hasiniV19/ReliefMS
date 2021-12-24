@@ -12,19 +12,19 @@
                 <h2 class="title">Common Details</h2>
                 <div class="form-group">
                     <label for="name" class="input-label">Full Name</label>
-                    <input type="text" class="form-control input-field" placeholder="Enter Your Name" id="name" aria-describedby="">
+                    <input type="text" name="name" class="form-control input-field" placeholder="Enter Your Name" id="name" aria-describedby="">
                 </div>
                 <div class="form-group">
                     <label for="no-members" class="input-label">Number of Family Members</label>
-                    <input type="number" class="form-control input-field" placeholder="How many members in your family" min="1" max="6" id="no-members" aria-describedby="">
+                    <input type="number" name="no-members" class="form-control input-field" placeholder="How many members in your family" min="1" max="6" id="no-members" aria-describedby="">
                 </div>
                 <div class="form-group">
                     <label for="mobile" class="input-label">Mobile Number</label>
-                    <input type="tel" class="form-control input-field" placeholder="Enter Telephone Number" id="mobile" aria-describedby="">
+                    <input type="tel" name="mobile" class="form-control input-field" placeholder="Enter Telephone Number" id="mobile" aria-describedby="">
                 </div>
                 <div class="form-group">
                     <label for="address" class="input-label">Address</label>
-                    <textarea class="form-control input-field" placeholder="Enter Address" id="address" aria-describedby="" rows="3"></textarea>
+                    <textarea name="address" class="form-control input-field" placeholder="Enter Address" id="address" aria-describedby="" rows="3"></textarea>
                 </div>
 
             </div>
@@ -39,7 +39,7 @@
                 </div>
                 <div class="form-group">
                     <label for="exampleFormControlFile1" class="input-label">Gramasewaka Certificate</label>
-                    <input type="file" class="form-control-file" id="exampleFormControlFile1">
+                    <input type="file" name="gms_certificate" class="form-control-file" id="exampleFormControlFile1">
                 </div>
             </div>
 
@@ -50,17 +50,17 @@
             <div>
                 <div class="input-label">Are there any students with learning material needs</div>
                 <div class="form-check form-check-inline">
-                    <input class="form-check-input input-field" type="radio" name="inlineRadioOptions" id="yes" value="option1">
+                    <input class="form-check-input input-field" type="radio" name="is_there_students" id="yes" value="1">
                     <label class="form-check-label input-label" for="inlineRadio1">yes</label>
                 </div>
                 <div class="form-check form-check-inline">
-                    <input class="form-check-input input-field" type="radio" name="inlineRadioOptions" id="no" value="option2">
+                    <input class="form-check-input input-field" type="radio" name="is_there_students" id="no" value="0">
                     <label class="form-check-label input-label" for="inlineRadio2">no</label>
                 </div>
             </div>
             <div class="form-group hidden" id="student-details">
                 <label for="no-students" class="input-label">Number of Students</label>
-                <input type="number" class="form-control input-field" placeholder="How many students in your family" min="1" max="4" id="no-members" aria-describedby="">
+                <input type="number" name="no-students" class="form-control input-field" placeholder="How many students in your family" min="1" max="4" id="no-members" aria-describedby="">
             </div>
         </div>
 
