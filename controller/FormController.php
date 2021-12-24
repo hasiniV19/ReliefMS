@@ -111,7 +111,9 @@ class FormController extends Controller
         {
 
             $body = $request->getBody();
+            var_dump("valid");
             if ($this->validate($body)) {
+
                 $model = new VolunteerApplication();
                 $model->setAttributes($body);
                 if ($model->save()) {
@@ -133,6 +135,7 @@ class FormController extends Controller
             $body = $request->getBody();
             //var_dump($body);
             if($this->validate($body)){
+
                 $model = new DonorApplication();
                 $model->setAttributes($body);
                 if($model->save()) {
