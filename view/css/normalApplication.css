@@ -52,6 +52,10 @@ body{
     margin-top: 3vw;
 }
 
+.err-msg{
+    color: crimson;
+}
+
 
 
 
