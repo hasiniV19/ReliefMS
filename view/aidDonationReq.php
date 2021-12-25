@@ -1,4 +1,8 @@
 <?php
+use app\handlers\ValidateRequest;
+
+/*** @var $collecting_method */
+/*** @var $station */
 ?>
 
 <style>
@@ -10,23 +14,23 @@
         <h2 class="title">Aid Donation Request</h2>
         <div class="form-group">
             <label for="collect-method" class="input-label">Collecting Method</label>
-            <select id="collect-method" class="form-control input-field">
+            <select name="collecting_method" id="collect-method" class="form-control input-field">
 <!--                <option selected disabled hidden>Choose here</option>-->
-                <option value="station" selected>Station</option>
-                <option value="home" >Home</option>
+                <option value="station" selected <?php if(isset($collecting_method) && $collecting_method->getValue() == "station") echo "selected"?>>Station</option>
+                <option value="home" <?php if(isset($collecting_method) && $collecting_method->getValue() == "home") echo "selected"?> >Home</option>
             </select>
         </div>
 
         <!-- stations dropdown -->
         <div class="form-group" id="station-part">
             <label for="station" class="input-label">Station</label>
-            <select id="station" class="form-control input-field">
-                <option selected disabled hidden>Choose here</option>
-                <option value="Galle">Galle</option>
-                <option value="Matara">Matara</option>
-                <option value="Colombo">Colombo</option>
-                <option value="Gampaha">Gampaha</option>
-                <option value="Ampara">Ampara</option>
+            <select name="station" id="station" class="form-control input-field">
+<!--                <option selected disabled hidden>Choose here</option>-->
+                <option value="Galle" selected <?php if(isset($station) && $station->getValue() == "Galle") echo "selected"?>>Galle</option>
+                <option value="Matara" <?php if(isset($station) && $station->getValue() == "Matara") echo "selected"?>>Matara</option>
+                <option value="Colombo" <?php if(isset($station) && $station->getValue() == "Colombo") echo "selected"?>>Colombo</option>
+                <option value="Gampaha" <?php if(isset($station) && $station->getValue() == "Gampaha") echo "selected"?>>Gampaha</option>
+                <option value="Ampara" <?php if(isset($station) && $station->getValue() == "Ampara") echo "selected"?>>Ampara</option>
             </select>
         </div>
 
