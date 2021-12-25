@@ -14,10 +14,10 @@ class SiteController extends Controller
     }
 
 
-    public function raiseFundForm()
-    {
-        return $this->render("raiseFundForm","main");
-    }
+//    public function raiseFundForm()
+//    {
+//        return $this->render("raiseFundForm","main");
+//    }
 
     public function homepage()
     {
