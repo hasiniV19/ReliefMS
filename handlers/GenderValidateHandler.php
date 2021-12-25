@@ -9,7 +9,7 @@ class GenderValidateHandler extends ValidateHandler
     {
         if ($validateRequest->getKey() === "gender") {
             if (empty($validateRequest->getValue())) {
-                $validateRequest->setValidError("Invalid submission. Please try again");
+                $validateRequest->setValidError("*Invalid submission. Please try again");
                 $validateRequest->setIsValid(false);
 
             } else {
