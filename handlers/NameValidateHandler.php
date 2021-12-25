@@ -9,7 +9,7 @@ class NameValidateHandler extends ValidateHandler
     {
         if($validateRequest->getKey() === "name"){
             if(empty($validateRequest->getValue())){
-                $validateRequest->setValidError("Full name is required.");
+                $validateRequest->setValidError("*Full name is required.");
                 $validateRequest->setIsValid(false);
             }else{
                 $name = $validateRequest->getValue();

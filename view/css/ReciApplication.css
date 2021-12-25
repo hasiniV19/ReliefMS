@@ -68,3 +68,7 @@ body{
     border-radius: 0.25rem;
     border: 1px solid #ff6666;
 }
+
+.err-msg{
+    color: crimson;
+}
