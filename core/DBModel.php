@@ -51,7 +51,7 @@ abstract class DBModel
             }
         }
 
-        $query .= "WHERE ".$cols[$numCols-1]. "=?";
+        $query .= " WHERE ".$cols[$numCols-1]. "=?";
 
         try {
             $this->connection->update($query, $values);
