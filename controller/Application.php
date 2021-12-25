@@ -2,7 +2,7 @@
 
 namespace app\controller;
 
-class Application
+class Application implements IApplication
 {
     const DRAFT = 'DRAFT';
     const SUBMITTED = 'SUBMITTED';
@@ -46,6 +46,4 @@ class Application
     {
         $this->state = $value;
     }
-
-
 }
