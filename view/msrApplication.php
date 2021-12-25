@@ -88,7 +88,7 @@ use app\handlers\ValidateRequest;
             </div>
             <div class="form-group hidden" id="student-details">
                 <label for="no-students" class="input-label">Number of Students</label>
-                <input type="number" name="no_students" class="form-control input-field" placeholder="How many students in your family" min="1" max="4" id="no-members" aria-describedby=""
+                <input type="number" name="no_students" class="form-control input-field" placeholder="How many students in your family" min="1" max="4" id="no-students" aria-describedby=""
                        value="<?php if (isset($no_students)) echo $no_students->getValue();?>">
             </div>
         </div>
