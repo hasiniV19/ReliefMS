@@ -6,6 +6,7 @@ use app\core\Controller;
 use app\core\Request;
 use app\core\Response;
 use app\model\VolunteerApplication;
+use app\model\VolunteerDetails;
 
 class DisplayController extends Controller{
     public function displayDonorDetails(Request $request, Response $response)
@@ -15,6 +16,8 @@ class DisplayController extends Controller{
 
     public function displayVolunteerDetails(Request $request, Response $response)
     {
+        $volunteerModel = new VolunteerDetails();
+
 
         return $this->render("volunteerDetails", "main");
     }

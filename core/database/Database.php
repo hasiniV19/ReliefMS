@@ -63,11 +63,12 @@ class Database implements GenericDB
         return $this->conn->insert_id;
     }
 
-    public function get_record($sql, $type, $id)
+    public function get_record($sql, $data)
     {
 
         $statement = $this->conn->prepare($sql);
-        $statement->bind_param($type, $id);
+        $types = $this->get_types($data);
+        $statement->bind_param($types,... $data);
         $statement->execute();
         $result = $statement->get_result();
         $data = $result->fetch_assoc();
