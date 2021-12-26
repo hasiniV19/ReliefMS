@@ -15,7 +15,7 @@ class VolunteerDetails extends DBModel
 
     public function getCols()
     {
-        return ['name', 'address', 'age', 'gender', 'occupation', 'available_day', 'have_vehicle', 'status', 'mobile', 'volunteer_id'];
+        return ['name', 'address', 'age', 'gender', 'occupation', 'available_day', 'have_vehicle', 'status', 'mobile', 'date','volunteer_id'];
     }
 
     public function getValues()

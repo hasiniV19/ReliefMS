@@ -18,8 +18,11 @@ class DisplayController extends Controller{
     {
         $volunteerModel = new VolunteerDetails();
 
-
-        return $this->render("volunteerDetails", "main");
+        $volunteerBody = ["volunteer_id"=>3];
+        $volunteerModel->setAttributes($volunteerBody);
+        $volunteerApplication = new Application($volunteerModel);
+        $data = $volunteerModel->retrieve();
+        return $this->render("volunteerDetails", "main", $data);
     }
 
     public function displayConfirmationMessage(Request $request, Response $response)

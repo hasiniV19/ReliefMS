@@ -65,7 +65,6 @@ class Database implements GenericDB
 
     public function get_record($sql, $data)
     {
-
         $statement = $this->conn->prepare($sql);
         $types = $this->get_types($data);
         $statement->bind_param($types,... $data);

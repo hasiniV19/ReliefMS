@@ -40,7 +40,7 @@ abstract class DBModel
         $numCols = count($cols);
         $values = $this->getValues();
 
-        $query = "SELECT";
+        $query = "SELECT ";
 
         foreach ($cols as $key=>$value) {
             if($key === $numCols-1){
@@ -55,7 +55,7 @@ abstract class DBModel
         $query .= " FROM $table WHERE ".$cols[$numCols-1]. "=?";
 
         try {
-            return $this->connection->get_record($query,$values );
+            return $this->connection->get_record($query,$values);
         } catch (\mysqli_sql_exception $error){
             return false;
         }
