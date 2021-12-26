@@ -44,7 +44,7 @@
                     </span>
                 <div class="input-field">
                     <i class="fas fa-lock"></i>
-                    <input id="password"name="password" type="password" placeholder="Password" value="" required/>
+                    <input pattern="/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$/" id="password" name="password" type="password" placeholder="Password" value="" required/>
                 </div>
                 <span class="passwordInfo" style="color:#5f6368;">
                         Use 8 or more characters with a mix of letters and numbers

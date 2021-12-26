@@ -17,11 +17,12 @@ function addForm(){
                 '<h5 style="color: #ff6666; font-weight: lighter">Patient ' + num  +'</h5>'+
                 '<div class="form-group">\n' +
                 '                    <label for="name" class="input-label">Full Name</label>\n' +
-                '                    <input name="nameOfPatient'+num+ '" type="text" class="form-control input-field" placeholder="Enter Your Name" id="name" aria-describedby="">\n' +
+                '                    <input pattern="^[a-zA-Z-\' ]*$" title="Only white space and charaters are allowed" name="nameOfPatient'+num+ '" id="nop'+num+'" type="text" class="form-control input-field nameOP" placeholder="Enter Your Name" aria-describedby="" required>' +
+                '<span id="nop'+num+'-err"></span>'+
                 '                </div>'+
                 '<div class="form-group">\n'+
                     '<label for="age" class="input-label">Age</label>\n'+
-                    '<input name="ageOfPatient' +num +'" type="number" class="form-control input-field" placeholder="Enter Age" id="age" min="1" max="99" aria-describedby="">\n'+
+                    '<input name="ageOfPatient' +num +'" type="number" class="form-control input-field" placeholder="Enter Age" id="age" min="1" max="99" aria-describedby="" required>\n'+
                 '</div>'+
                 '<div class="form-group">'+
                     '<label for="gender" class="input-label">Gender</label>'+
