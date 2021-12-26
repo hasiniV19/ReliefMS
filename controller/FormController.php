@@ -277,9 +277,9 @@ class FormController extends Controller
                         if ($this->validateFile($fileValidateRequest)) {
                             $fileHandler->saveFile();
                             $fileModel = new RaiseFundFileModel();
-                            $recieptBody = ["m_donation_id" => $m_donation_id, "reciept_name" => $fileValidateRequest->getValue()->getFileName()];
-                            var_dump($recieptBody);
-                            $fileModel->setAttributes($recieptBody);
+                            $receiptBody = ["m_donation_id" => $m_donation_id, "receipt_name" => $fileValidateRequest->getValue()->getFileName()];
+                            var_dump($receiptBody);
+                            $fileModel->setAttributes($receiptBody);
                             if ($fileModel->update()) {
 
                                 $response->redirect("http://localhost:8080/confirmation");

@@ -5,7 +5,7 @@ use app\core\DBModel;
 
 class RaiseFundFileModel extends DBModel
 {
-    private $reciept_name;
+    private $receipt_name;
     private $m_donation_id;
 
     public function getTableName()
@@ -15,12 +15,12 @@ class RaiseFundFileModel extends DBModel
 
     public function getCols()
     {
-        return ["reciept_name", "m_donation_id"];
+        return ["receipt_name", "m_donation_id"];
     }
 
     public function getValues()
     {
-        return [$this->reciept_name, $this->m_donation_id];
+        return [$this->receipt_name, $this->m_donation_id];
     }
 
     public function setAttributes($data)
