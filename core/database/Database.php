@@ -75,6 +75,23 @@ class Database implements GenericDB
 
     }
 
+    public function get_records($sql, $data)
+    {
+        $statement = $this->conn->prepare($sql);
+        $types = $this->get_types($data);
+        $statement->bind_param($types,... $data);
+        $statement->execute();
+        $result = $statement->get_result();
+        $data =[];
+        //var_dump($data);
+        while ($row = $result->fetch_assoc()){
+            //var_dump($row);
+            array_push($data,$row);
+        }
+        //var_dump($data);
+        return $data;
+    }
+
     public function set_status($sql, $status, $id)
     {
         $statement = $this->conn->prepare($sql);

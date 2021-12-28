@@ -5,13 +5,23 @@ namespace app\controller;
 use app\core\Controller;
 use app\core\Request;
 use app\core\Response;
-use app\model\VolunteerApplication;
+use app\model\DonorDetailsModel;
+use app\model\FsrDetailsModel;
+use app\model\OtherNeedDetailsModel;
+use app\model\RecipientDetailsModel;
+use app\model\VolunteerApplicationModel;
 use app\model\VolunteerDetails;
 
 class DisplayController extends Controller{
     public function displayDonorDetails(Request $request, Response $response)
     {
-        return $this->render("donorDetails", "main");
+        $donorModel = new DonorDetailsModel();
+
+        $donorBody = ["donor_id"=>2];
+        $donorModel->setAttributes($donorBody);
+        $data = $donorModel->retrieve();
+
+        return $this->render("donorDetails", "main", $data);
     }
 
     public function displayVolunteerDetails(Request $request, Response $response)
@@ -37,7 +47,34 @@ class DisplayController extends Controller{
 
     public function displayFSRDetailsAdmin(Request $request, Response $response)
     {
-        return $this->render("fsrDetailsAdmin", "main");
+        $fsrDetailsModel = new FsrDetailsModel();
+        $fsrBody = ["fsr_id"=>16];
+        $fsrDetailsModel->setAttributes($fsrBody);
+        $data_fsr = $fsrDetailsModel->retrieve();
+
+
+        $recipientDetailsModel = new RecipientDetailsModel();
+        $recipientBody = ["recipient_id"=>25];
+        $recipientDetailsModel->setAttributes($recipientBody);
+        $data_recipient = $recipientDetailsModel->retrieve();
+
+
+        $otherNeedDetailsModel = new OtherNeedDetailsModel();
+        $needBody = ["recipient_id"=>25];
+        $otherNeedDetailsModel->setAttributes($needBody);
+        $data_need = $otherNeedDetailsModel->retrieve_records();
+
+        $data_needs = [];
+        foreach ($data_need as $data){
+            array_push($data_needs, $data["need"]);
+        }
+
+        $needs = implode(",", $data_needs);
+
+        $data = array_merge($data_fsr,$data_recipient);
+        $data["needs"] = $needs;
+
+        return $this->render("fsrDetailsAdmin", "main", $data);
     }
 
     public function displayFSRDetailsDonor(Request $request, Response $response)

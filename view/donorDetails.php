@@ -1,4 +1,11 @@
 <?php
+
+/*** @var $name */
+/*** @var $address */
+/*** @var $age */
+/*** @var $mobile */
+/*** @var $district */
+
 ?>
 
 <style>
@@ -15,7 +22,7 @@
                 <label for="name-title" class="input-title">Name</label>
             </div>
             <div class=" col-md-8">
-                <label for="name" class="input-label">Piyumi Chan Mahaarachchi</label>
+                <label for="name" class="input-label"><?php if (isset($name)) echo $name; ?></label>
             </div>
         </div>
 
@@ -24,7 +31,7 @@
                 <label for="address-title" class="input-title">Address</label>
             </div>
             <div class=" col-md-8">
-                <label for="address" class="input-label">Pawani, Middle Lane, Ella Road, Kurundugaha, Elpitiya</label>
+                <label for="address" class="input-label"><?php if (isset($address)) echo $address; ?></label>
             </div>
         </div>
 
@@ -33,7 +40,7 @@
                 <label for="age-title" class="input-title">Age</label>
             </div>
             <div class=" col-md-8">
-                <label for="age" class="input-label">22</label>
+                <label for="age" class="input-label"><?php if (isset($age)) echo $age; ?></label>
             </div>
         </div>
 
@@ -42,7 +49,7 @@
                 <label for="mobile-title" class="input-title">Mobile Number</label>
             </div>
             <div class=" col-md-8">
-                <label for="mobile" class="input-label">0765867087</label>
+                <label for="mobile" class="input-label"><?php if (isset($mobile)) echo $mobile; ?></label>
             </div>
         </div>
 
@@ -51,7 +58,7 @@
                 <label for="district-title" class="input-title">District</label>
             </div>
             <div class=" col-md-8">
-                <label for="district" class="input-label">Galle</label>
+                <label for="district" class="input-label"><?php if (isset($district)) echo $district; ?></label>
             </div>
         </div>
 
