@@ -91,6 +91,22 @@ abstract class DBModel
         return true;
 
     }
+
+    public function delete()
+    {
+        $table = $this->getTableName();
+        $cols = $this->getCols();
+        $values = $this->getValues();
+        $sql = "DELETE FROM $table WHERE $cols[0] =?";
+
+        try {
+            $this->connection->delete($sql, $values);
+        } catch (\mysqli_sql_exception $error){
+            return false;
+        }
+        return true;
+
+    }
     public function getLastID()
     {
         return $this->lastId;

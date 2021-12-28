@@ -7,7 +7,8 @@ class AgeValidateHandler extends ValidateHandler
 
     protected function validateRequestImp(ValidateRequest $validateRequest)
     {
-        if($validateRequest->getKey() === "age"){
+        $str = $validateRequest->getKey();
+        if(substr($str, 0,3)=== "age"){
             if(empty($validateRequest->getValue())){
                 $validateRequest->setValidError("*Enter your age");
                 $validateRequest->setIsValid(false);

@@ -91,6 +91,14 @@ class Database implements GenericDB
         $result->execute();
     }
 
+    public function delete($query, $data)
+    {
+        $result = $this->conn->prepare($query);
+        $types = $this->get_types($data);
+        $result->bind_param($types, ...$data);
+        $result->execute();
+    }
+
     // get types of element in an array
     private function get_types($array)
     {

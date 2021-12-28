@@ -7,7 +7,8 @@ class NameValidateHandler extends ValidateHandler
 
     protected function validateRequestImp(ValidateRequest $validateRequest)
     {
-        if($validateRequest->getKey() === "name"){
+        $str = $validateRequest->getKey();
+        if(substr($str, 0,4)=== "name"){
             if(empty($validateRequest->getValue())){
                 $validateRequest->setValidError("*Full name is required.");
                 $validateRequest->setIsValid(false);

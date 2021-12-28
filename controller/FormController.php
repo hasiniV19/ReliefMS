@@ -10,7 +10,7 @@ use app\core\Response;
 use app\handlers\AddressValidateHandler;
 use app\handlers\AgeValidateHandler;
 use app\handlers\DayValidateHandler;
-use app\handlers\DefaultValidateHandler;
+use app\handlers\GSDivisionValidateHandler;
 use app\handlers\DistrictValidateHandler;
 use app\handlers\FileValidator;
 use app\handlers\FileValidateRequest;
@@ -22,16 +22,21 @@ use app\handlers\MobileValidateHandler;
 use app\handlers\MonthlyIncomeValidateHandler;
 use app\handlers\NameValidateHandler;
 use app\handlers\OccupationValidateHandler;
+use app\handlers\OtherNeedValidateHandler;
 use app\handlers\ValidateHandler;
 use app\handlers\ValidateRequest;
+use app\model\FsRecipientDeleteModel;
 use app\model\FsrFileModel;
 
 use app\model\DonorApplication;
 use app\model\OtherNeedModel;
+use app\model\QuarantResidents;
+
 use app\model\RaiseFundApplication;
 use app\model\RaiseFundFileModel;
 use app\model\RecipientApplication;
 
+use app\model\RecipientDeleteModel;
 use app\model\VolunteerApplication;
 use app\model\fsrApplication;
 use app\model\msrApplication;
@@ -76,7 +81,8 @@ class FormController extends Controller
         $occupationValidateHandler = new OccupationValidateHandler();
         $districtValidateHandler = new DistrictValidateHandler();
         $monthlyIncomeValidateHandler = new MonthlyIncomeValidateHandler();
-        $defaultValidateHandler = new DefaultValidateHandler();
+        $gSDivisionValidateHandler = new GSDivisionValidateHandler();
+        $otherNeedValidateHandler = new OtherNeedValidateHandler();
         $finalValidateHandler = new FinalValidateHandler();
 
         $nameValidateHandler->setSuccessor($addressValidateHandler);
@@ -85,8 +91,9 @@ class FormController extends Controller
         $mobileValidateHandler->setSuccessor($occupationValidateHandler);
         $occupationValidateHandler->setSuccessor($districtValidateHandler);
         $districtValidateHandler->setSuccessor($monthlyIncomeValidateHandler);
-        $monthlyIncomeValidateHandler->setSuccessor($defaultValidateHandler);
-        $defaultValidateHandler->setSuccessor($finalValidateHandler);
+        $monthlyIncomeValidateHandler->setSuccessor($gSDivisionValidateHandler);
+        $gSDivisionValidateHandler->setSuccessor($otherNeedValidateHandler);
+        $otherNeedValidateHandler->setSuccessor($finalValidateHandler);
 
         $isAllValid = true;
 
@@ -176,8 +183,28 @@ class FormController extends Controller
                     $msrModel->setAttributes($body);
 
                     if ($msrModel->save()) {
-                        $response->redirect("http://localhost:8080/confirmation");
-                        exit;
+                        $msrId = $msrModel->getLastID();
+                        $qrModel = new QuarantResidents();
+                        $otherNeedModel = new OtherNeedModel();
+
+                        $numQResidents = $this->validateRequests["num_quarant_residents"]->getValue();
+
+                        for ($i = 1; $i <= $numQResidents; $i++){
+                            $data = ["name"=>$body["nameOfPatient".$i], "msr_id"=>(int)$msrId, "age"=>(int)$body["ageOfPatient".$i], "gender"=>$body["gender".$i], "covid_status"=>$body["covid_status".$i]];
+                            $qrModel->setAttributes($data);
+                            $qrModel->save();
+                        }
+
+                        for ($i = 1; $i <= 5; $i++) {
+                            if (!empty($body["need".$i])) {
+                                $otherNeedModel->setAttributes(["recipient_id" => $recipient_id, "need" => $body["need" . $i]]);
+                                $otherNeedModel->save();
+                            }
+                            unset($body["need" . $i]);
+                        }
+
+//                        $response->redirect("http://localhost:8080/confirmation");
+//                        exit;
                     }
                 }
 
@@ -214,7 +241,8 @@ class FormController extends Controller
                         $fileHandler = new FileHandler("uploads/", "fileToUpload");
                         $fsrId = $fsrModel->getLastID();
                         $fileValidateRequest = $fileHandler->getFile($fsrId);
-                        if ($fileValidateRequest !== false) {
+                        $this->validateRequests["fileToUpload"] = $fileValidateRequest;
+                        if ($fileValidateRequest->getIsValid() !== false) {
                             if ($this->validateFile($fileValidateRequest)) {
                                 $fileHandler->saveFile();
                                 $fileModel = new FsrFileModel();
@@ -235,8 +263,24 @@ class FormController extends Controller
                                     exit;
                                 }
                             } else {
-                                $this->validateRequests["fileToUpload"] = $fileValidateRequest;
+                                $fSRecipientDeleteModel = new FsRecipientDeleteModel();
+                                $fSRecipientDeleteModel->setAttributes(["fsr_id"=>$fsrId]);
+                                $fSRecipientDeleteModel->delete();
+
+                                $recipientDeleteModel = new RecipientDeleteModel();
+                                $recipientDeleteModel->setAttributes(['recipient_id'=>$recipient_id]);
+                                $recipientDeleteModel->delete();
+                                return $this->render("fsrApplication", "main", $this->validateRequests);
                             }
+                        } else {
+                            $fSRecipientDeleteModel = new FsRecipientDeleteModel();
+                            $fSRecipientDeleteModel->setAttributes(["fsr_id"=>$fsrId]);
+                            $fSRecipientDeleteModel->delete();
+
+                            $recipientDeleteModel = new RecipientDeleteModel();
+                            $recipientDeleteModel->setAttributes(['recipient_id'=>$recipient_id]);
+                            $recipientDeleteModel->delete();
+                            return $this->render("fsrApplication", "main", $this->validateRequests);
                         }
                     }
                 }

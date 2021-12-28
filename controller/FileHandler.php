@@ -35,13 +35,17 @@ class FileHandler
 
     public function getFile($request_id)
     {
+        $fileValidateRequest = new ValidateRequest($this->fileInputName, "");
         if($_FILES["fileToUpload"]["size"] === 0){
-            return false;
+            $fileValidateRequest->setIsValid(false);
+            $fileValidateRequest->setValidError("*GS certificate is required");
+            return $fileValidateRequest;
         }
         $this->targetFile = $this->targetDir.$request_id.$_FILES[$this->fileInputName]["name"];
         $this->fileName = $_FILES[$this->fileInputName]["name"];
         $this->fileType = strtolower(pathinfo($this->targetFile, PATHINFO_EXTENSION));
         $file = new File($this->targetFile, $this->fileName, $this->fileType, $_FILES[$this->fileInputName]['size']);
-        return new ValidateRequest($this->fileInputName, $file);
+        $fileValidateRequest->setValue($file);
+        return $fileValidateRequest;
     }
 }
