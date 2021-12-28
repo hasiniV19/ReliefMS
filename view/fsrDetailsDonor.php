@@ -1,4 +1,12 @@
 <?php
+
+/*** @var $no_members */
+/*** @var $monthly_income */
+/*** @var $gms_certificate */
+/*** @var $is_there_students */
+/*** @var $no_students */
+/*** @var $needs */
+
 ?>
 
 <style>
@@ -41,7 +49,7 @@
                 <label for="no-members-title" class="input-title">Number of Family Members</label>
             </div>
             <div class=" col-md-7">
-                <label for="no-members" class="input-label">3</label>
+                <label for="no-members" class="input-label"><?php if (isset($no_members)) echo $no_members; ?></label>
             </div>
         </div>
 
@@ -50,7 +58,7 @@
                 <label for="income-title" class="input-title">Monthly Income</label>
             </div>
             <div class=" col-md-7">
-                <label for="income" class="input-label">20000</label>
+                <label for="income" class="input-label"><?php if (isset($monthly_income)) echo $monthly_income; ?></label>
             </div>
         </div>
 
@@ -59,7 +67,7 @@
                 <label for="gms-certificate-title" class="input-title">Gramasewaka Certificate</label>
             </div>
             <div class=" col-md-7">
-                <label for="gms-certificate" class="input-label">.....</label>
+                <label for="gms-certificate" class="input-label"><?php if (isset($gms_certificate)) echo $gms_certificate; ?></label>
             </div>
         </div>
 
@@ -68,7 +76,7 @@
                 <label for="student-title" class="input-title">Are there any Students?</label>
             </div>
             <div class=" col-md-7">
-                <label for="student" class="input-label">Yes</label>
+                <label for="student" class="input-label"><?php if (isset($is_there_students)) echo $is_there_students; ?></label>
             </div>
         </div>
 
@@ -77,7 +85,7 @@
                 <label for="no-student-title" class="input-title">Number of students</label>
             </div>
             <div class=" col-md-7">
-                <label for="no-student" class="input-label">1</label>
+                <label for="no-student" class="input-label"><?php if (isset($no_students)) echo $no_students; ?></label>
             </div>
         </div>
 
@@ -86,7 +94,7 @@
                 <label for="other-needs-title" class="input-title">Other Needs</label>
             </div>
             <div class=" col-md-7">
-                <label for="other-needs" class="input-label">...</label>
+                <label for="other-needs" class="input-label"><?php if (isset($needs)) echo $needs; ?></label>
             </div>
         </div>
 

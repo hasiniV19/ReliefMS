@@ -37,7 +37,7 @@ use app\model\RaiseFundFileModel;
 use app\model\RecipientApplication;
 
 use app\model\RecipientDeleteModel;
-use app\model\VolunteerApplication;
+use app\model\VolunteerApplicationModel;
 use app\model\fsrApplication;
 use app\model\msrApplication;
 use app\controller\Application;
@@ -58,7 +58,7 @@ class FormController extends Controller
 //            exit;
             // validate data
             if ($this->validate($body)) {
-                $model = new VolunteerApplication();
+                $model = new VolunteerApplicationModel();
                 $model->setAttributes($body);
                 if ($model->save()) {
                     $response->redirect("http://localhost:8080/");
@@ -124,7 +124,7 @@ class FormController extends Controller
             var_dump("valid");
             if ($this->validate($body)) {
 
-                $model = new VolunteerApplication();
+                $model = new VolunteerApplicationModel();
                 $model->setAttributes($body);
                 if ($model->save()) {
                     $response->redirect("http://localhost:8080/confirmation");
@@ -203,8 +203,8 @@ class FormController extends Controller
                             unset($body["need" . $i]);
                         }
 
-//                        $response->redirect("http://localhost:8080/confirmation");
-//                        exit;
+                        $response->redirect("http://localhost:8080/confirmation");
+                        exit;
                     }
                 }
 

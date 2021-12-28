@@ -4,7 +4,7 @@ namespace app\model;
 
 use app\core\DBModel;
 
-class VolunteerApplication extends DBModel
+class VolunteerApplicationModel extends DBModel
 {
     private $name;
     private $address;
