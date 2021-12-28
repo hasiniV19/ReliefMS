@@ -146,7 +146,34 @@ class DisplayController extends Controller{
 
     public function displayApprovedFSRDetails(Request $request, Response $response)
     {
-        return $this->render("approvedFSRDetails", "main");
+        $fsrDetailsModel = new FsrDetailsModel();
+        $fsrBody = ["fsr_id"=>1];
+        $fsrDetailsModel->setAttributes($fsrBody);
+        $data_fsr = $fsrDetailsModel->retrieve();
+
+
+        $recipientDetailsModel = new RecipientDetailsModel();
+        $recipientBody = ["recipient_id"=>1];
+        $recipientDetailsModel->setAttributes($recipientBody);
+        $data_recipient = $recipientDetailsModel->retrieve();
+
+
+        $otherNeedDetailsModel = new OtherNeedDetailsModel();
+        $needBody = ["recipient_id"=>1];
+        $otherNeedDetailsModel->setAttributes($needBody);
+        $data_need = $otherNeedDetailsModel->retrieve_records();
+
+        $data_needs = [];
+        foreach ($data_need as $data){
+            array_push($data_needs, $data["need"]);
+        }
+
+        $needs = implode(",", $data_needs);
+
+        $data = array_merge($data_fsr,$data_recipient);
+        $data["needs"] = $needs;
+
+        return $this->render("fsrDetailsAdmin", "main", $data);
     }
 
     public function displayAidedMSRDetails(Request $request, Response $response)
