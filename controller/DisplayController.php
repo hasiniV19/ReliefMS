@@ -224,7 +224,35 @@ class DisplayController extends Controller{
 
     public function displayAidedMSRDetails(Request $request, Response $response)
     {
-        return $this->render("aidedMSRDetails", "main");
+        $msrDetailsModel = new MsrDetailsModel();
+        $msrBody = ["msr_id"=>3];
+        $msrDetailsModel->setAttributes($msrBody);
+        $data_msr = $msrDetailsModel->retrieve();
+
+
+        $recipientDetailsModel = new RecipientDetailsModel();
+        $recipientBody = ["recipient_id"=>27];
+        $recipientDetailsModel->setAttributes($recipientBody);
+        $data_recipient = $recipientDetailsModel->retrieve();
+
+
+        $otherNeedDetailsModel = new OtherNeedDetailsModel();
+        $needBody = ["recipient_id"=>27];
+        $otherNeedDetailsModel->setAttributes($needBody);
+        $data_need = $otherNeedDetailsModel->retrieve_records();
+
+        $data_needs = [];
+        foreach ($data_need as $data){
+            array_push($data_needs, $data["need"]);
+        }
+
+        $needs = implode(",", $data_needs);
+
+        $data = array_merge($data_msr,$data_recipient);
+        $data["needs"] = $needs;
+
+        return $this->render("aidedMSRDetails", "main", $data);
+
     }
 
     public function displayAidedFSRDetails(Request $request, Response $response)
