@@ -3,6 +3,7 @@
 
 namespace app\controller;
 
+use app\core\App;
 use app\core\Controller;
 use app\core\Request;
 use app\core\Response;
@@ -143,6 +144,7 @@ class FormController extends Controller
         if ($request->isPost()) {
             $body = $request->getBody();
             //var_dump($body);
+            $body["user_id"] = App::$app->session->get("user_id");
             if($this->validate($body)){
 
                 $model = new DonorApplication();

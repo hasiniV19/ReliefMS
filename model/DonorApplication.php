@@ -26,7 +26,7 @@ class DonorApplication extends DBModel
 
     public function getValues()
     {
-        return [5, $this->name, $this->mobile, $this->address, $this->age, $this->district];
+        return [$this->user_id, $this->name, $this->mobile, $this->address, $this->age, $this->district];
     }
 
     public function setAttributes($data){

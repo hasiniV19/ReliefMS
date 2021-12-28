@@ -388,12 +388,12 @@ input.invalid {
     display: block;
 }
 
-#repasswordError {
+#re-password-error {
     display: none;
     font-size: 0.8em;
 }
 
-#repasswordError.visible {
+#re-password-error.visible {
     display: block;
 }
 

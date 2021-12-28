@@ -90,6 +90,10 @@ $app->route()->get("/volunteers", [ListViewController::class, "displayVolunteers
 $app->route()->get("/donors", [ListViewController::class, "displayDonors"]);
 
 $app->route()->get("/login", [AuthController::class, "login"]);
+$app->route()->post("/login", [AuthController::class, "login"]);
+
+$app->route()->get("/register", [AuthController::class, "register"]);
+$app->route()->post("/register", [AuthController::class, "register"]);
 
 $app->route()->get("/aidDonationRequest", [FormController::class, "addAidDonation"]);
 $app->run();

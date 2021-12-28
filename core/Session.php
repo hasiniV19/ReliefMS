@@ -12,7 +12,7 @@ class Session
         $flashMessages = $_SESSION[self::FLASH_KEY] ?? [];
         foreach ($flashMessages as $key => &$flashMessage) {
             // Mark to be removed
-            $flashMessages['remove'] = true;
+            $flashMessage['remove'] = true;
         }
 
         $_SESSION[self::FLASH_KEY] = $flashMessages;
