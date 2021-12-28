@@ -66,12 +66,12 @@ class DisplayController extends Controller{
         $details = $model->retrive();
         return $this->render("aidDonationDetails", "main", $details);
 
-        if ($request->isPost()){
-            $aidDonation = new AidDonationApplication(new Application());
-           if(isset($_POST["approve"])){
-                $aidDonation->approve();
-           }
-        }
+//        if ($request->isPost()){
+//            $aidDonation = new AidDonationApplication(new Application());
+//           if(isset($_POST["approve"])){
+//                $aidDonation->approve();
+//           }
+//        }
     }
 
     public function displayApprovedMSRDetails(Request $request, Response $response)
