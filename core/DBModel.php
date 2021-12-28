@@ -33,6 +33,36 @@ abstract class DBModel
         return true;
     }
 
+    public function retrieve()
+    {
+        $table = $this->getTableName();
+        $cols = $this->getCols();
+        $numCols = count($cols);
+        $values = $this->getValues();
+
+        $query = "SELECT ";
+
+        foreach ($cols as $key=>$value) {
+            if($key === $numCols-1){
+                break;
+            }
+            $query .= $value;
+            if($key !== $numCols -2){
+                $query .= ",";
+            }
+        }
+//        $query .= " WHERE ".$cols[$numCols-1]. "=?";
+        $query .= " FROM $table WHERE ".$cols[$numCols-1]. "=?";
+
+        try {
+            return $this->connection->get_record($query,$values);
+        } catch (\mysqli_sql_exception $error){
+            return false;
+        }
+
+
+    }
+
     public function update()
     {
         $table = $this->getTableName();
@@ -80,5 +110,6 @@ abstract class DBModel
 
     abstract public function getCols();
     abstract public function getValues();
+
 
 }

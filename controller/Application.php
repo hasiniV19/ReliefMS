@@ -2,6 +2,8 @@
 
 namespace app\controller;
 
+use app\core\DBModel;
+
 class Application implements IApplication
 {
     const DRAFT = 'DRAFT';
@@ -10,11 +12,14 @@ class Application implements IApplication
     const APPROVED = 'APPROVED';
     const CLOSED = 'CLOSED';
 
+    private $dbModel;
     protected $state;
 
-    public function __construct(array $attributes = [])
+    public function __construct(DBModel $dbModel, array $attributes = [])
     {
-        $this->state = new DraftState($this);
+        $this->dbModel = $dbModel;
+        $this->state = $dbModel->retrieve()['status'];
+
     }
 
     public function submit()

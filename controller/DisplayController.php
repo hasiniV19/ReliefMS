@@ -6,6 +6,7 @@ use app\core\Controller;
 use app\core\Request;
 use app\core\Response;
 use app\model\VolunteerApplication;
+use app\model\VolunteerDetails;
 
 class DisplayController extends Controller{
     public function displayDonorDetails(Request $request, Response $response)
@@ -15,8 +16,13 @@ class DisplayController extends Controller{
 
     public function displayVolunteerDetails(Request $request, Response $response)
     {
+        $volunteerModel = new VolunteerDetails();
 
-        return $this->render("volunteerDetails", "main");
+        $volunteerBody = ["volunteer_id"=>3];
+        $volunteerModel->setAttributes($volunteerBody);
+        $volunteerApplication = new Application($volunteerModel);
+        $data = $volunteerModel->retrieve();
+        return $this->render("volunteerDetails", "main", $data);
     }
 
     public function displayConfirmationMessage(Request $request, Response $response)
@@ -60,12 +66,12 @@ class DisplayController extends Controller{
         $details = $model->retrive();
         return $this->render("aidDonationDetails", "main", $details);
 
-        if ($request->isPost()){
-            $aidDonation = new AidDonationApplication(new Application());
-           if(isset($_POST["approve"])){
-                $aidDonation->approve();
-           }
-        }
+//        if ($request->isPost()){
+//            $aidDonation = new AidDonationApplication(new Application());
+//           if(isset($_POST["approve"])){
+//                $aidDonation->approve();
+//           }
+//        }
     }
 
     public function displayApprovedMSRDetails(Request $request, Response $response)
