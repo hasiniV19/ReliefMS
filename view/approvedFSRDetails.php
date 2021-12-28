@@ -1,4 +1,17 @@
 <?php
+
+/*** @var $name */
+/*** @var $address */
+/*** @var $mobile */
+/*** @var $no_members */
+/*** @var $monthly_income */
+/*** @var $gms_certificate */
+/*** @var $is_there_students */
+/*** @var $no_students */
+/*** @var $needs */
+/*** @var $date */
+/*** @var $status */
+
 ?>
 
 <style>
@@ -14,7 +27,7 @@
                 <label for="name-title" class="input-title">Name</label>
             </div>
             <div class=" col-md-7">
-                <label for="name" class="input-label">Piyumi Chan Mahaarachchi</label>
+                <label for="name" class="input-label"><?php if (isset($name)) echo $name; ?></label>
             </div>
         </div>
 
@@ -23,7 +36,7 @@
                 <label for="address-title" class="input-title">Address</label>
             </div>
             <div class=" col-md-7">
-                <label for="address" class="input-label">Pawani, Middle Lane, Ella Road, Kurundugaha, Elpitiya</label>
+                <label for="address" class="input-label"><?php if (isset($address)) echo $address; ?></label>
             </div>
         </div>
 
@@ -32,7 +45,7 @@
                 <label for="mobile-title" class="input-title">Mobile Number</label>
             </div>
             <div class=" col-md-7">
-                <label for="mobile" class="input-label">0765867087</label>
+                <label for="mobile" class="input-label"><?php if (isset($mobile)) echo $mobile; ?></label>
             </div>
         </div>
 
@@ -41,7 +54,7 @@
                 <label for="no-members-title" class="input-title">Number of Family Members</label>
             </div>
             <div class=" col-md-7">
-                <label for="no-members" class="input-label">3</label>
+                <label for="no-members" class="input-label"><?php if (isset($no_members)) echo $no_members; ?></label>
             </div>
         </div>
 
@@ -50,7 +63,7 @@
                 <label for="income-title" class="input-title">Monthly Income</label>
             </div>
             <div class=" col-md-7">
-                <label for="income" class="input-label">20000</label>
+                <label for="income" class="input-label"><?php if (isset($monthly_income)) echo $monthly_income; ?></label>
             </div>
         </div>
 
@@ -59,7 +72,7 @@
                 <label for="gms-certificate-title" class="input-title">Gramasewaka Certificate</label>
             </div>
             <div class=" col-md-7">
-                <label for="gms-certificate" class="input-label">.....</label>
+                <label for="gms-certificate" class="input-label"><?php if (isset($gms_certificate)) echo $gms_certificate; ?></label>
             </div>
         </div>
 
@@ -68,7 +81,7 @@
                 <label for="student-title" class="input-title">Are there any Students?</label>
             </div>
             <div class=" col-md-7">
-                <label for="student" class="input-label">Yes</label>
+                <label for="student" class="input-label"><?php if (isset($is_there_students)) echo $is_there_students; ?></label>
             </div>
         </div>
 
@@ -77,7 +90,7 @@
                 <label for="no-student-title" class="input-title">Number of students</label>
             </div>
             <div class=" col-md-7">
-                <label for="no-student" class="input-label">1</label>
+                <label for="no-student" class="input-label"><?php if (isset($no_students)) echo $no_students; ?></label>
             </div>
         </div>
 
@@ -86,7 +99,7 @@
                 <label for="other-needs-title" class="input-title">Other Needs</label>
             </div>
             <div class=" col-md-7">
-                <label for="other-needs" class="input-label">...</label>
+                <label for="other-needs" class="input-label"><?php if (isset($needs)) echo $needs; ?></label>
             </div>
         </div>
 
@@ -95,7 +108,7 @@
                 <label for="submitted-date-title" class="input-title">Submitted Date</label>
             </div>
             <div class=" col-md-7">
-                <label for="submit-date" class="input-label">2021/08/12</label>
+                <label for="submit-date" class="input-label"><?php if (isset($date)) echo $date; ?></label>
             </div>
         </div>
 
@@ -104,7 +117,7 @@
                 <label for="status-title" class="input-title">Status</label>
             </div>
             <div class=" col-md-7">
-                <label for="status" class="input-label">pending</label>
+                <label for="status" class="input-label"><?php if (isset($status)) echo $status; ?></label>
             </div>
         </div>
 

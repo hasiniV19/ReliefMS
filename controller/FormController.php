@@ -203,8 +203,8 @@ class FormController extends Controller
                             unset($body["need" . $i]);
                         }
 
-//                        $response->redirect("http://localhost:8080/confirmation");
-//                        exit;
+                        $response->redirect("http://localhost:8080/confirmation");
+                        exit;
                     }
                 }
 
