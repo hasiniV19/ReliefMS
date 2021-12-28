@@ -15,7 +15,8 @@ $dotenv->load();
 $app = new App();
 //$app->route()->get("/home", function (){return "hello world";});
 
-$app->route()->get("/raiseFundForm", [SiteController::class, "raiseFundForm"]);
+$app->route()->get("/raiseFundForm", [FormController::class, "raiseFundForm"]);
+$app->route()->post("/raiseFundForm", [FormController::class, "raiseFundForm"]);
 
 $app->route()->get("/", [SiteController::class, "homepage"]);
 

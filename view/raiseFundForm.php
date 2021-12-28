@@ -1,5 +1,6 @@
 <?php
-
+use app\handlers\ValidateRequest;
+/*** @var $amount */
 ?>
 
 <!--<body class="bg-light">-->
@@ -9,12 +10,7 @@
 
 
 <div class="container">
-<!--    <div class="row">-->
-<!--        <div class="py-5 text-center  col-md-8 col-10 ">-->
-<!---->
-<!--        </div>-->
-<!---->
-<!--    </div>-->
+
 
     <div class="row">
         <form class="container form-container needs-validation col-lg-8 col-md-8 col-10 py-3" novalidate>
@@ -64,11 +60,13 @@
                     <div class="input-group-prepend">
                         <span class="input-group-text">Rs.</span>
                     </div>
-                    <input type="text" class="form-control input-field" id="donation-amount" placeholder="Donation Amount"
-                           required>
-                    <div class="invalid-feedback" style="width: 100%;">
-                        Your dontion amount is required.
-                    </div>
+                    <input type="text" name="amount" class="form-control input-field" id="donation-amount" placeholder="Donation Amount"
+                           value="<?php if (isset($amount)) echo $amount->getValue();?>">
+                    <span class="err-msg"><?php if (isset($amount)) echo $amount->getValidError();?></span>
+<!--                    <div class="invalid-feedback" style="width: 100%;">-->
+<!--                        Your dontion amount is required.-->
+<!--                    </div>-->
+
                 </div>
             </div>
             <br>
@@ -76,9 +74,12 @@
                 <label for="upload-title" class="input-label">Upload a copy(photo) of your deposit slip/transaction receipt.</label>
                 <div class="input-group">
                     <div class="custom-file">
-                        <input type="file" class="custom-file-input input-field" id="inputGroupFile04"
-                               aria-describedby="inputGroupFileAddon04">
-                        <label class="custom-file-label " for="inputGroupFile04">Choose file</label>
+<!--                        <input type="file" class="custom-file-input input-field" id="inputGroupFile04"-->
+<!--                               aria-describedby="inputGroupFileAddon04">-->
+<!--                        <label class="custom-file-label " for="inputGroupFile04">Choose file</label>-->
+                        <input type="file" name="fileToUpload" id="fileToUpload" class="form-control-file"
+                               value="<?php if (isset($fileToUpload)) echo $fileToUpload->getValue()->getFileName();?>">
+                        <span class="err-msg"><?php if (isset($fileToUpload)) echo $fileToUpload->getValidError();?></span>
                     </div>
                 </div>
                 <div class="invalid-feedback">

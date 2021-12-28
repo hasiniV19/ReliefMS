@@ -31,6 +31,9 @@ use app\model\FsrFileModel;
 use app\model\DonorApplication;
 use app\model\OtherNeedModel;
 use app\model\QuarantResidents;
+
+use app\model\RaiseFundApplication;
+use app\model\RaiseFundFileModel;
 use app\model\RecipientApplication;
 
 use app\model\RecipientDeleteModel;
@@ -300,6 +303,42 @@ class FormController extends Controller
     public function addAidDonation(Request $request, Response $response)
     {
         return $this->render("aidDonationReq", "main");
+    }
+
+    public function raiseFundForm(Request $request,Response $response)
+    {
+        if ($request->isPost()) {
+            $body = $request->getBody();
+
+            if ($this->validate($body)) {
+                $model = new RaiseFundApplication();
+                $model->setAttributes($body);
+                if ($model->save()) {
+                    $fileHandler = new FileHandler("uploads/", "fileToUpload");
+                    $m_donation_id = $model->getLastID();
+                    $fileValidateRequest = $fileHandler->getFile($m_donation_id);
+                    if ($fileValidateRequest !== false) {
+                        if ($this->validateFile($fileValidateRequest)) {
+                            $fileHandler->saveFile();
+                            $fileModel = new RaiseFundFileModel();
+                            $receiptBody = ["m_donation_id" => $m_donation_id, "receipt_name" => $fileValidateRequest->getValue()->getFileName()];
+                            var_dump($receiptBody);
+                            $fileModel->setAttributes($receiptBody);
+                            if ($fileModel->update()) {
+
+                                $response->redirect("http://localhost:8080/confirmation");
+                                exit;
+                            } else {
+                                $this->validateRequests["fileToUpload"] = $fileValidateRequest;
+                            }
+                        }
+                    }
+                }
+            }else{
+                return $this->render("raiseFundForm","main", $this->validateRequests);
+            }
+        }
+        return $this->render("raiseFundForm","main");
     }
 
 }
