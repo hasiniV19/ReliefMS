@@ -160,7 +160,34 @@ class DisplayController extends Controller{
 
     public function displayApprovedMSRDetails(Request $request, Response $response)
     {
-        return $this->render("approvedMSRDetails", "main");
+        $msrDetailsModel = new MsrDetailsModel();
+        $msrBody = ["msr_id"=>2];
+        $msrDetailsModel->setAttributes($msrBody);
+        $data_msr = $msrDetailsModel->retrieve();
+
+
+        $recipientDetailsModel = new RecipientDetailsModel();
+        $recipientBody = ["recipient_id"=>3];
+        $recipientDetailsModel->setAttributes($recipientBody);
+        $data_recipient = $recipientDetailsModel->retrieve();
+
+
+        $otherNeedDetailsModel = new OtherNeedDetailsModel();
+        $needBody = ["recipient_id"=>3];
+        $otherNeedDetailsModel->setAttributes($needBody);
+        $data_need = $otherNeedDetailsModel->retrieve_records();
+
+        $data_needs = [];
+        foreach ($data_need as $data){
+            array_push($data_needs, $data["need"]);
+        }
+
+        $needs = implode(",", $data_needs);
+
+        $data = array_merge($data_msr,$data_recipient);
+        $data["needs"] = $needs;
+
+        return $this->render("approvedMSRDetails", "main", $data);
     }
 
     public function displayApprovedFSRDetails(Request $request, Response $response)
