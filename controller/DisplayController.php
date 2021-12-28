@@ -136,7 +136,25 @@ class DisplayController extends Controller{
 
     public function displayMSRDetailsDonor(Request $request, Response $response)
     {
-        return $this->render("msrDetailsDonor", "main");
+        $msrDetailsModel = new MsrDetailsModel();
+        $msrBody = ["msr_id"=>2];
+        $msrDetailsModel->setAttributes($msrBody);
+        $data_msr = $msrDetailsModel->retrieve();
+
+        $otherNeedDetailsModel = new OtherNeedDetailsModel();
+        $needBody = ["recipient_id"=>3];
+        $otherNeedDetailsModel->setAttributes($needBody);
+        $data_need = $otherNeedDetailsModel->retrieve_records();
+
+        $data_needs = [];
+        foreach ($data_need as $data){
+            array_push($data_needs, $data["need"]);
+        }
+
+        $needs = implode(",", $data_needs);
+        $data_msr["needs"] = $needs;
+
+        return $this->render("msrDetailsDonor", "main", $data_msr);
     }
 
     public function displayMoneyDonationDetails(Request $request, Response $response)
