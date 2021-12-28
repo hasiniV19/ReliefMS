@@ -79,7 +79,26 @@ class DisplayController extends Controller{
 
     public function displayFSRDetailsDonor(Request $request, Response $response)
     {
-        return $this->render("fsrDetailsDonor", "main");
+        $fsrDetailsDonorModel = new FsrDetailsModel();
+        $fsrBody = ["fsr_id" => 1];
+        $fsrDetailsDonorModel->setAttributes($fsrBody);
+        $data_fsr = $fsrDetailsDonorModel->retrieve();
+
+        $otherNeedDetailsModel = new OtherNeedDetailsModel();
+        $needBody = ["recipient_id"=>1];
+        $otherNeedDetailsModel->setAttributes($needBody);
+        $data_need = $otherNeedDetailsModel->retrieve_records();
+
+        $data_needs = [];
+        foreach ($data_need as $data){
+            array_push($data_needs, $data["need"]);
+        }
+
+        $needs = implode(",", $data_needs);
+        $data_fsr["needs"] = $needs;
+
+
+        return $this->render("fsrDetailsDonor", "main",$data_fsr);
     }
 
     public function displayMSRDetailsAdmin(Request $request, Response $response)
