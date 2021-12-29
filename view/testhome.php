@@ -33,7 +33,19 @@
                 <img id="pp" class="bd-placeholder-img rounded-circle" width="140" height="140" src="img/help.jpg" role="img" aria-label="Placeholder: 140x140" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#777"></rect><text x="50%" y="50%" fill="#777" dy=".3em"></text>
                 <h2>Get Help</h2>
                 <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
-                <div class="text-center"><a class="btn btn-secondary" href="#" >Get Help Now &raquo;</a></div>
+                <div class="dropdown show">
+                    <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Get Help Now &raquo;
+                    </a>
+
+                    <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                        <a class="dropdown-item" href="<?php echo 'http://localhost:8080/fsrApplication'?>">Financial Support</a>
+                        <a class="dropdown-item" href="<?php echo 'http://localhost:8080/msrApplication'?>">Medical Support</a>
+
+                    </div>
+                </div>
+<!--                <div class="text-center"><a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Get Help Now &raquo;</a>-->
+<!--                </div>-->
             </div>
             <div class="col-md-4">
                 <img id="pp" class="bd-placeholder-img rounded-circle" width="140" height="140" src="img/donate.jpg" role="img" aria-label="Placeholder: 140x140" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#777"></rect><text x="50%" y="50%" fill="#777" dy=".3em"></text>
