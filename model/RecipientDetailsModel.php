@@ -15,7 +15,7 @@ class RecipientDetailsModel extends DBModel
 
     public function getCols()
     {
-        return ["date","status","recipient_id"];
+        return ["date","status","recipient_type","recipient_id"];
     }
 
     public function getValues()

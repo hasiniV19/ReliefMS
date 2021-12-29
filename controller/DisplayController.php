@@ -32,9 +32,9 @@ class DisplayController extends Controller{
     {
         $volunteerModel = new VolunteerDetails();
 
-        $volunteerBody = ["volunteer_id"=>3];
+        $volunteerBody = ["volunteer_id"=>6];
         $volunteerModel->setAttributes($volunteerBody);
-        $volunteerApplication = new Application($volunteerModel);
+        //$volunteerApplication = new Application($volunteerModel);
         $data = $volunteerModel->retrieve();
         return $this->render("volunteerDetails", "main", $data);
     }
@@ -193,6 +193,17 @@ class DisplayController extends Controller{
         $aidDonationBody = ["a_donation_id"=>1];
         $aidDonationDetailsModel->setAttributes($aidDonationBody);
         $data_aid = $aidDonationDetailsModel->retrieve();
+
+        $recipient_id = $data_aid["recipient_id"];
+
+        $recipientModel = new RecipientDetailsModel();
+        $recipientModel->setAttributes(["recipient_id"=>$recipient_id]);
+        $recipient_type = $recipientModel->retrieve()["recipient_type"];
+
+        if ($recipient_type === "msr"){
+            $msrModel = new MsrDetailsModel();
+
+        }
 
         $donationDetailsModel = new DonationDetailsModel();
         $donationBody = ["donation_id"=>2];
