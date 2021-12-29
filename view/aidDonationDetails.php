@@ -1,4 +1,12 @@
 <?php
+
+/*** @var $collecting_method */
+/*** @var $station */
+/*** @var $recipient_id */
+/*** @var $date */
+/*** @var $status */
+/*** @var $name */
+
 ?>
 
 <style>
@@ -14,7 +22,7 @@
                 <label for="method-title" class="input-title">Collecting Method</label>
             </div>
             <div class=" col-md-7">
-                <label for="method" class="input-label">abcdef</label>
+                <label for="method" class="input-label"><?php if (isset($collecting_method)) echo $collecting_method; ?></label>
             </div>
         </div>
 
@@ -23,16 +31,16 @@
                 <label for="station-title" class="input-title">Station</label>
             </div>
             <div class=" col-md-7">
-                <label for="station" class="input-label">pqrst</label>
+                <label for="station" class="input-label"><?php if (isset($station)) echo $station; ?></label>
             </div>
         </div>
 
         <div class="form-row">
             <div class=" col-md-5">
-                <label for="recipient-title" class="input-title">Recipient</label>
+                <label for="recipient-title" class="input-title">Recipient Name</label>
             </div>
             <div class=" col-md-7">
-                <label for="recipient" class="input-label"><a href="">Recipient Name</a></label>
+                <label for="recipient" class="input-label"><a href=""><?php if (isset($name)) echo $name; ?></a></label>
             </div>
         </div>
 
@@ -42,7 +50,7 @@
                 <label for="submit-date-title" class="input-title">Submitted Date</label>
             </div>
             <div class=" col-md-7">
-                <label for="submit-date" class="input-label">2021/08/12</label>
+                <label for="submit-date" class="input-label"><?php if (isset($date)) echo $date; ?></label>
             </div>
         </div>
 
@@ -51,7 +59,7 @@
                 <label for="status-title" class="input-title">Status</label>
             </div>
             <div class=" col-md-7">
-                <label for="status" class="input-label">pending</label>
+                <label for="status" class="input-label"><?php if (isset($status)) echo $status; ?></label>
             </div>
         </div>
 

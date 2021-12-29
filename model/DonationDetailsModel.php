@@ -4,24 +4,23 @@ namespace app\model;
 
 use app\core\DBModel;
 
-class FsrDetailsModel extends DBModel
+class DonationDetailsModel extends DBModel
 {
-    private $fsr_id;
-    private $recipient_id;
+    private $donation_id;
 
     public function getTableName()
     {
-        return "fsrecipients";
+        return "donation_requests";
     }
 
     public function getCols()
     {
-        return ["name", "no_members", "monthly_income", "gms_certificate", "address", "mobile", "is_there_students", "no_students", "fsr_id", "recipient_id"];
+        return ["date", "status", "donation_id"];
     }
 
     public function getValues()
     {
-        return [$this->recipient_id];
+        return [$this->donation_id];
     }
 
     public function setAttributes($data){

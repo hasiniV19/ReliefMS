@@ -5,8 +5,11 @@ namespace app\controller;
 use app\core\Controller;
 use app\core\Request;
 use app\core\Response;
+use app\model\AidDonationDetailsModel;
+use app\model\DonationDetailsModel;
 use app\model\DonorDetailsModel;
 use app\model\FsrDetailsModel;
+use app\model\MoneyDonationDetailsModel;
 use app\model\MsrDetailsModel;
 use app\model\OtherNeedDetailsModel;
 use app\model\RecipientDetailsModel;
@@ -29,9 +32,9 @@ class DisplayController extends Controller{
     {
         $volunteerModel = new VolunteerDetails();
 
-        $volunteerBody = ["volunteer_id"=>3];
+        $volunteerBody = ["volunteer_id"=>6];
         $volunteerModel->setAttributes($volunteerBody);
-        $volunteerApplication = new Application($volunteerModel);
+        //$volunteerApplication = new Application($volunteerModel);
         $data = $volunteerModel->retrieve();
         return $this->render("volunteerDetails", "main", $data);
     }
@@ -49,7 +52,7 @@ class DisplayController extends Controller{
     public function displayFSRDetailsAdmin(Request $request, Response $response)
     {
         $fsrDetailsModel = new FsrDetailsModel();
-        $fsrBody = ["fsr_id"=>16];
+        $fsrBody = ["recipient_id"=>25];
         $fsrDetailsModel->setAttributes($fsrBody);
         $data_fsr = $fsrDetailsModel->retrieve();
 
@@ -81,7 +84,7 @@ class DisplayController extends Controller{
     public function displayFSRDetailsDonor(Request $request, Response $response)
     {
         $fsrDetailsDonorModel = new FsrDetailsModel();
-        $fsrBody = ["fsr_id" => 1];
+        $fsrBody = ["recipient_id" => 1];
         $fsrDetailsDonorModel->setAttributes($fsrBody);
         $data_fsr = $fsrDetailsDonorModel->retrieve();
 
@@ -105,7 +108,7 @@ class DisplayController extends Controller{
     public function displayMSRDetailsAdmin(Request $request, Response $response)
     {
         $msrDetailsModel = new MsrDetailsModel();
-        $msrBody = ["msr_id"=>3];
+        $msrBody = ["recipient_id"=>27];
         $msrDetailsModel->setAttributes($msrBody);
         $data_msr = $msrDetailsModel->retrieve();
 
@@ -137,7 +140,7 @@ class DisplayController extends Controller{
     public function displayMSRDetailsDonor(Request $request, Response $response)
     {
         $msrDetailsModel = new MsrDetailsModel();
-        $msrBody = ["msr_id"=>2];
+        $msrBody = ["recipient_id"=>3];
         $msrDetailsModel->setAttributes($msrBody);
         $data_msr = $msrDetailsModel->retrieve();
 
@@ -159,27 +162,69 @@ class DisplayController extends Controller{
 
     public function displayMoneyDonationDetails(Request $request, Response $response)
     {
-        return $this->render("moneyDonationDetails", "main");
+        $moneyDonationDetailsModel = new MoneyDonationDetailsModel();
+        $moneyDonationBody = ["m_donation_id"=>1];
+        $moneyDonationDetailsModel->setAttributes($moneyDonationBody);
+        $data_money = $moneyDonationDetailsModel->retrieve();
+
+        $donationDetailsModel = new DonationDetailsModel();
+        $donationBody = ["donation_id"=>1];
+        $donationDetailsModel->setAttributes($donationBody);
+        $data_donation = $donationDetailsModel->retrieve();
+
+        $data = array_merge($data_money,$data_donation);
+
+        return $this->render("moneyDonationDetails", "main", $data);
     }
 
     public function displayAidDonationDetails(Request $request, Response $response)
     {
-        $model = new AidDonationDetails();
-        $details = $model->retrive();
-        return $this->render("aidDonationDetails", "main", $details);
 
+//        $model = new AidDonationDetails();
+//        $details = $model->retrive();
+//        return $this->render("aidDonationDetails", "main", $details);
 //        if ($request->isPost()){
 //            $aidDonation = new AidDonationApplication(new Application());
 //           if(isset($_POST["approve"])){
 //                $aidDonation->approve();
 //           }
 //        }
+        $aidDonationDetailsModel = new AidDonationDetailsModel();
+        $aidDonationBody = ["a_donation_id"=>1];
+        $aidDonationDetailsModel->setAttributes($aidDonationBody);
+        $data_aid = $aidDonationDetailsModel->retrieve();
+
+        $recipient_id = $data_aid["recipient_id"];
+
+        $recipientModel = new RecipientDetailsModel();
+        $recipientModel->setAttributes(["recipient_id"=>$recipient_id]);
+        $recipient_type = $recipientModel->retrieve()["recipient_type"];
+
+        $recipient_details = [];
+        if ($recipient_type === "msr"){
+            $msrModel = new MsrDetailsModel();
+            $msrModel->setAttributes(["recipient_id"=>$recipient_id]);
+            $recipient_details = $msrModel->retrieve();
+        } else {
+            $fsrModel = new FsrDetailsModel();
+            $fsrModel->setAttributes(["recipient_id"=>$recipient_id]);
+            $recipient_details = $fsrModel->retrieve();
+        }
+
+        $donationDetailsModel = new DonationDetailsModel();
+        $donationBody = ["donation_id"=>2];
+        $donationDetailsModel->setAttributes($donationBody);
+        $data_donation = $donationDetailsModel->retrieve();
+
+        $data = array_merge($data_aid,$data_donation, $recipient_details);
+
+        return $this->render("aidDonationDetails", "main", $data);
     }
 
     public function displayApprovedMSRDetails(Request $request, Response $response)
     {
         $msrDetailsModel = new MsrDetailsModel();
-        $msrBody = ["msr_id"=>2];
+        $msrBody = ["recipient_id"=>3];
         $msrDetailsModel->setAttributes($msrBody);
         $data_msr = $msrDetailsModel->retrieve();
 
@@ -211,7 +256,7 @@ class DisplayController extends Controller{
     public function displayApprovedFSRDetails(Request $request, Response $response)
     {
         $fsrDetailsModel = new FsrDetailsModel();
-        $fsrBody = ["fsr_id"=>1];
+        $fsrBody = ["recipient_id"=>1];
         $fsrDetailsModel->setAttributes($fsrBody);
         $data_fsr = $fsrDetailsModel->retrieve();
 
@@ -243,7 +288,7 @@ class DisplayController extends Controller{
     public function displayAidedMSRDetails(Request $request, Response $response)
     {
         $msrDetailsModel = new MsrDetailsModel();
-        $msrBody = ["msr_id"=>3];
+        $msrBody = ["recipient_id"=>27];
         $msrDetailsModel->setAttributes($msrBody);
         $data_msr = $msrDetailsModel->retrieve();
 
@@ -276,7 +321,7 @@ class DisplayController extends Controller{
     public function displayAidedFSRDetails(Request $request, Response $response)
     {
         $fsrDetailsModel = new FsrDetailsModel();
-        $fsrBody = ["fsr_id"=>16];
+        $fsrBody = ["recipient_id"=>25];
         $fsrDetailsModel->setAttributes($fsrBody);
         $data_fsr = $fsrDetailsModel->retrieve();
 
