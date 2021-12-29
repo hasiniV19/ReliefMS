@@ -1,11 +1,17 @@
 <?php
-
+use app\core\App;
+use app\core\Session;
 ?>
 
 <style>
     <?php include "css/donorHome.css"; ?>
 </style>
 <div class="site-section bg-primary-light">
+    <?php if(App::$app->session->getFlash("success")): ?>
+    <div class="alert alert-success" role="alert">
+        <?php echo App::$app->session->getFlash("success");?>
+    </div>
+    <?php endif;?>
     <div class="container">
         <div class="py-5 text-center">
             <h1 class="admin-title">Donor Home</h1>
@@ -22,7 +28,7 @@
                             </div>
                             </a>
                             <div class="body">
-                                <a href=""><h3>Donate Money</h3></a>
+                                <a href="<?php echo 'http://localhost:8080/raiseFundForm'?>"><h3>Donate Money</h3></a>
                                 <!--<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odio, debitis!</p>-->
                             </div>
                         </div>
@@ -36,7 +42,7 @@
                             </div>
                             </a>
                             <div class="body">
-                                <a href=""><h3>Donate Aids</h3></a>
+                                <a href="<?php echo 'http://localhost:8080/approvedRecipients'?>"><h3>Donate Aids</h3></a>
                                 <!--<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odio, debitis!</p>-->
                             </div>
                         </div>
