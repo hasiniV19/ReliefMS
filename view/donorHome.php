@@ -28,7 +28,7 @@ use app\core\Session;
                             </div>
                             </a>
                             <div class="body">
-                                <a href=""><h3>Donate Money</h3></a>
+                                <a href="<?php echo 'http://localhost:8080/raiseFundForm'?>"><h3>Donate Money</h3></a>
                                 <!--<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odio, debitis!</p>-->
                             </div>
                         </div>
@@ -42,7 +42,7 @@ use app\core\Session;
                             </div>
                             </a>
                             <div class="body">
-                                <a href=""><h3>Donate Aids</h3></a>
+                                <a href="<?php echo 'http://localhost:8080/approvedRecipients'?>"><h3>Donate Aids</h3></a>
                                 <!--<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odio, debitis!</p>-->
                             </div>
                         </div>
