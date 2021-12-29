@@ -93,6 +93,21 @@ abstract class DBModel
 
     }
 
+    public function retrieve_all()
+    {
+        $table = $this->getTableName();
+
+        $query = "SELECT * FROM $table";
+
+
+        try {
+            return $this->connection->get_all($query);
+        } catch (\mysqli_sql_exception $error){
+            return false;
+        }
+
+    }
+
     public function update()
     {
         $table = $this->getTableName();
