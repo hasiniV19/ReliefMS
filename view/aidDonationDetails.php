@@ -37,7 +37,7 @@
 
         <div class="form-row">
             <div class=" col-md-5">
-                <label for="recipient-title" class="input-title">Recipient</label>
+                <label for="recipient-title" class="input-title">Recipient Name</label>
             </div>
             <div class=" col-md-7">
                 <label for="recipient" class="input-label"><a href=""><?php if (isset($name)) echo $name; ?></a></label>

@@ -16,7 +16,7 @@ class FsrDetailsModel extends DBModel
 
     public function getCols()
     {
-        return ["name", "no_members", "monthly_income", "gms_certificate", "address", "mobile", "is_there_students", "no_students", "fsr_id"];
+        return ["name", "no_members", "monthly_income", "gms_certificate", "address", "mobile", "is_there_students", "no_students", "fsr_id", "recipient_id"];
     }
 
     public function getValues()

@@ -52,7 +52,7 @@ class DisplayController extends Controller{
     public function displayFSRDetailsAdmin(Request $request, Response $response)
     {
         $fsrDetailsModel = new FsrDetailsModel();
-        $fsrBody = ["fsr_id"=>16];
+        $fsrBody = ["recipient_id"=>25];
         $fsrDetailsModel->setAttributes($fsrBody);
         $data_fsr = $fsrDetailsModel->retrieve();
 
@@ -84,7 +84,7 @@ class DisplayController extends Controller{
     public function displayFSRDetailsDonor(Request $request, Response $response)
     {
         $fsrDetailsDonorModel = new FsrDetailsModel();
-        $fsrBody = ["fsr_id" => 1];
+        $fsrBody = ["recipient_id" => 1];
         $fsrDetailsDonorModel->setAttributes($fsrBody);
         $data_fsr = $fsrDetailsDonorModel->retrieve();
 
@@ -108,7 +108,7 @@ class DisplayController extends Controller{
     public function displayMSRDetailsAdmin(Request $request, Response $response)
     {
         $msrDetailsModel = new MsrDetailsModel();
-        $msrBody = ["msr_id"=>3];
+        $msrBody = ["recipient_id"=>27];
         $msrDetailsModel->setAttributes($msrBody);
         $data_msr = $msrDetailsModel->retrieve();
 
@@ -140,7 +140,7 @@ class DisplayController extends Controller{
     public function displayMSRDetailsDonor(Request $request, Response $response)
     {
         $msrDetailsModel = new MsrDetailsModel();
-        $msrBody = ["msr_id"=>2];
+        $msrBody = ["recipient_id"=>3];
         $msrDetailsModel->setAttributes($msrBody);
         $data_msr = $msrDetailsModel->retrieve();
 
@@ -224,7 +224,7 @@ class DisplayController extends Controller{
     public function displayApprovedMSRDetails(Request $request, Response $response)
     {
         $msrDetailsModel = new MsrDetailsModel();
-        $msrBody = ["msr_id"=>2];
+        $msrBody = ["recipient_id"=>3];
         $msrDetailsModel->setAttributes($msrBody);
         $data_msr = $msrDetailsModel->retrieve();
 
@@ -256,7 +256,7 @@ class DisplayController extends Controller{
     public function displayApprovedFSRDetails(Request $request, Response $response)
     {
         $fsrDetailsModel = new FsrDetailsModel();
-        $fsrBody = ["fsr_id"=>1];
+        $fsrBody = ["recipient_id"=>1];
         $fsrDetailsModel->setAttributes($fsrBody);
         $data_fsr = $fsrDetailsModel->retrieve();
 
@@ -288,7 +288,7 @@ class DisplayController extends Controller{
     public function displayAidedMSRDetails(Request $request, Response $response)
     {
         $msrDetailsModel = new MsrDetailsModel();
-        $msrBody = ["msr_id"=>3];
+        $msrBody = ["recipient_id"=>27];
         $msrDetailsModel->setAttributes($msrBody);
         $data_msr = $msrDetailsModel->retrieve();
 
@@ -321,7 +321,7 @@ class DisplayController extends Controller{
     public function displayAidedFSRDetails(Request $request, Response $response)
     {
         $fsrDetailsModel = new FsrDetailsModel();
-        $fsrBody = ["fsr_id"=>16];
+        $fsrBody = ["recipient_id"=>25];
         $fsrDetailsModel->setAttributes($fsrBody);
         $data_fsr = $fsrDetailsModel->retrieve();
 
