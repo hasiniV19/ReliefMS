@@ -7,17 +7,36 @@ use app\factory\BoxFactory;
 use app\core\Controller;
 use app\core\Request;
 use app\core\Response;
+use app\model\ListViewModel;
+use app\model\RecipientsStatusModel;
 
 class ListViewController extends Controller
 {
     private BoxFactory $boxViewFactory;
 
-    public function __construct(){}
+    public function __construct(){
+    }
 
     public function displayApprReci(Request $request, Response $response)
     {
-        $details = [["reciName"=>"Hasini", "reciType"=>"financial"], ["reciName"=>"Dinithi", "reciType"=>"medical"]];
-        return $this->displayListView($details, 'reciName', 'reciType', 'Recipients');
+        $reciStatusModel = new RecipientsStatusModel();
+        $reciStatusModel->setAttributes(["status"=>"approved", "table"=>"fsrecipients"]);
+        $detailsFSR = $reciStatusModel->retrieve_records();
+
+        foreach ($detailsFSR as &$detail){
+
+            $detail["recipient_type"] = "Financial";
+        }
+
+        $reciStatusModel->setAttributes(["status"=>"approved", "table"=>"msrecipients"]);
+        $detailsMSR = $reciStatusModel->retrieve_records();
+
+        foreach ($detailsMSR as &$detail){
+            $detail["recipient_type"] = "Medical";
+        }
+
+        $details = array_merge($detailsFSR, $detailsMSR);
+        return $this->displayListView($details, 'name', 'recipient_type', 'Recipients');
     }
 
     public function displayAidedReci(Request $request, Response $response)

@@ -86,7 +86,24 @@ class Database implements GenericDB
         //var_dump($data);
         while ($row = $result->fetch_assoc()){
             //var_dump($row);
-            array_push($data,$row);
+            $data[] = $row;
+        }
+        //var_dump($data);
+        return $data;
+    }
+
+    public function get_all($query)
+    {
+        $statement = $this->conn->prepare($query);
+//        $types = $this->get_types($data);
+//        $statement->bind_param($types,... $data);
+        $statement->execute();
+        $result = $statement->get_result();
+        $data =[];
+        //var_dump($data);
+        while ($row = $result->fetch_assoc()){
+            //var_dump($row);
+            $data[] = $row;
         }
         //var_dump($data);
         return $data;
