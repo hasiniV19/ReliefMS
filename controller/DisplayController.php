@@ -5,8 +5,11 @@ namespace app\controller;
 use app\core\Controller;
 use app\core\Request;
 use app\core\Response;
+use app\model\AidDonationDetailsModel;
+use app\model\DonationDetailsModel;
 use app\model\DonorDetailsModel;
 use app\model\FsrDetailsModel;
+use app\model\MoneyDonationDetailsModel;
 use app\model\MsrDetailsModel;
 use app\model\OtherNeedDetailsModel;
 use app\model\RecipientDetailsModel;
@@ -159,21 +162,46 @@ class DisplayController extends Controller{
 
     public function displayMoneyDonationDetails(Request $request, Response $response)
     {
-        return $this->render("moneyDonationDetails", "main");
+        $moneyDonationDetailsModel = new MoneyDonationDetailsModel();
+        $moneyDonationBody = ["m_donation_id"=>1];
+        $moneyDonationDetailsModel->setAttributes($moneyDonationBody);
+        $data_money = $moneyDonationDetailsModel->retrieve();
+
+        $donationDetailsModel = new DonationDetailsModel();
+        $donationBody = ["donation_id"=>1];
+        $donationDetailsModel->setAttributes($donationBody);
+        $data_donation = $donationDetailsModel->retrieve();
+
+        $data = array_merge($data_money,$data_donation);
+
+        return $this->render("moneyDonationDetails", "main", $data);
     }
 
     public function displayAidDonationDetails(Request $request, Response $response)
     {
-        $model = new AidDonationDetails();
-        $details = $model->retrive();
-        return $this->render("aidDonationDetails", "main", $details);
 
+//        $model = new AidDonationDetails();
+//        $details = $model->retrive();
+//        return $this->render("aidDonationDetails", "main", $details);
 //        if ($request->isPost()){
 //            $aidDonation = new AidDonationApplication(new Application());
 //           if(isset($_POST["approve"])){
 //                $aidDonation->approve();
 //           }
 //        }
+        $aidDonationDetailsModel = new AidDonationDetailsModel();
+        $aidDonationBody = ["a_donation_id"=>1];
+        $aidDonationDetailsModel->setAttributes($aidDonationBody);
+        $data_aid = $aidDonationDetailsModel->retrieve();
+
+        $donationDetailsModel = new DonationDetailsModel();
+        $donationBody = ["donation_id"=>2];
+        $donationDetailsModel->setAttributes($donationBody);
+        $data_donation = $donationDetailsModel->retrieve();
+
+        $data = array_merge($data_aid,$data_donation);
+
+        return $this->render("aidDonationDetails", "main", $data);
     }
 
     public function displayApprovedMSRDetails(Request $request, Response $response)

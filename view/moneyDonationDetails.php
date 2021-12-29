@@ -1,4 +1,11 @@
 <?php
+
+/*** @var $receipt_name */
+/*** @var $amount */
+/*** @var $date */
+/*** @var $status */
+
+
 ?>
 
 <style>
@@ -14,7 +21,7 @@
                 <label for="reci-name-title" class="input-title">Receipt Name</label>
             </div>
             <div class=" col-md-7">
-                <label for="reci-name" class="input-label">abcdefg</label>
+                <label for="reci-name" class="input-label"><?php if (isset($receipt_name)) echo $receipt_name; ?></label>
             </div>
         </div>
 
@@ -23,7 +30,7 @@
                 <label for="amount-title" class="input-title">Amount</label>
             </div>
             <div class=" col-md-7">
-                <label for="amount" class="input-label">2000</label>
+                <label for="amount" class="input-label"><?php if (isset($amount)) echo $amount; ?></label>
             </div>
         </div>
 
@@ -32,7 +39,7 @@
                 <label for="submitted-date-title" class="input-title">Submitted Date</label>
             </div>
             <div class=" col-md-7">
-                <label for="submit-date" class="input-label">2021/08/12</label>
+                <label for="submit-date" class="input-label"><?php if (isset($date)) echo $date; ?></label>
             </div>
         </div>
 
@@ -41,7 +48,7 @@
                 <label for="status-title" class="input-title">Status</label>
             </div>
             <div class=" col-md-7">
-                <label for="status" class="input-label">pending</label>
+                <label for="status" class="input-label"><?php if (isset($status)) echo $status; ?></label>
             </div>
         </div>
         <!-- <div class="form-row">
