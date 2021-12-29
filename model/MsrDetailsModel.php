@@ -8,6 +8,7 @@ class MsrDetailsModel extends DBModel
 {
 
     private $msr_id;
+    private $recipient_id;
 
     public function getTableName()
     {
@@ -16,12 +17,12 @@ class MsrDetailsModel extends DBModel
 
     public function getCols()
     {
-        return ["address", "num_quarant_residents", "is_there_students", "no_students", "mobile", "name", "gs_division", "msr_id"];
+        return ["msr_id","address", "num_quarant_residents", "is_there_students", "no_students", "mobile", "name", "gs_division", "recipient_id"];
     }
 
     public function getValues()
     {
-        return [$this->msr_id];
+        return [$this->recipient_id];
     }
 
     public function setAttributes($data){

@@ -7,6 +7,7 @@ use app\core\DBModel;
 class FsrDetailsModel extends DBModel
 {
     private $fsr_id;
+    private $recipient_id;
 
     public function getTableName()
     {
@@ -20,7 +21,7 @@ class FsrDetailsModel extends DBModel
 
     public function getValues()
     {
-        return [$this->fsr_id];
+        return [$this->recipient_id];
     }
 
     public function setAttributes($data){

@@ -200,9 +200,15 @@ class DisplayController extends Controller{
         $recipientModel->setAttributes(["recipient_id"=>$recipient_id]);
         $recipient_type = $recipientModel->retrieve()["recipient_type"];
 
+        $recipient_details = [];
         if ($recipient_type === "msr"){
             $msrModel = new MsrDetailsModel();
-
+            $msrModel->setAttributes(["recipient_id"=>$recipient_id]);
+            $recipient_details = $msrModel->retrieve();
+        } else {
+            $fsrModel = new FsrDetailsModel();
+            $fsrModel->setAttributes(["recipient_id"=>$recipient_id]);
+            $recipient_details = $fsrModel->retrieve();
         }
 
         $donationDetailsModel = new DonationDetailsModel();
@@ -210,7 +216,7 @@ class DisplayController extends Controller{
         $donationDetailsModel->setAttributes($donationBody);
         $data_donation = $donationDetailsModel->retrieve();
 
-        $data = array_merge($data_aid,$data_donation);
+        $data = array_merge($data_aid,$data_donation, $recipient_details);
 
         return $this->render("aidDonationDetails", "main", $data);
     }

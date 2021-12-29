@@ -5,6 +5,7 @@
 /*** @var $recipient_id */
 /*** @var $date */
 /*** @var $status */
+/*** @var $name */
 
 ?>
 
@@ -39,7 +40,7 @@
                 <label for="recipient-title" class="input-title">Recipient</label>
             </div>
             <div class=" col-md-7">
-                <label for="recipient" class="input-label"><a href=""><?php if (isset($recipient_id)) echo $recipient_id; ?></a></label>
+                <label for="recipient" class="input-label"><a href=""><?php if (isset($name)) echo $name; ?></a></label>
             </div>
         </div>
 
