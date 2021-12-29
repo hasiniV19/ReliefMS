@@ -38,7 +38,7 @@ use app\core\App;
                     <a class="nav-link" href="#">About</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="<?php echo 'http://localhost:8080/donorApplication'?>">Donate</a>
+                    <a class="nav-link" href="<?php echo 'http://localhost:8080/login'?>">Donate</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="<?php echo 'http://localhost:8080/login'?>">Login</a>
@@ -52,10 +52,6 @@ use app\core\App;
     </nav>
 </header>
 
-<?php if(App::$app->session->getFlash('success')): ?>
-<div class="alert alert-success"></div>
-    <?php echo App::$app->session->getFlash('success');?>
-<?php endif; ?>
 
 {{content-body}}
 

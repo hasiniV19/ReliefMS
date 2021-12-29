@@ -1,11 +1,17 @@
 <?php
-
+use app\core\App;
+use app\core\Session;
 ?>
 
 <style>
     <?php include "css/donorHome.css"; ?>
 </style>
 <div class="site-section bg-primary-light">
+    <?php if(App::$app->session->getFlash("success")): ?>
+    <div class="alert alert-success" role="alert">
+        <?php echo App::$app->session->getFlash("success");?>
+    </div>
+    <?php endif;?>
     <div class="container">
         <div class="py-5 text-center">
             <h1 class="admin-title">Donor Home</h1>

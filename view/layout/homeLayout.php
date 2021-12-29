@@ -38,7 +38,7 @@
                     <a class="nav-link" href="">About</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="<?php echo 'http://localhost:8080/donorApplication'?>">Donate</a>
+                    <a class="nav-link" href="<?php echo 'http://localhost:8080/login'?>">Donate</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="<?php echo 'http://localhost:8080/login'?>">Login</a>
