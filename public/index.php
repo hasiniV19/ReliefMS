@@ -6,6 +6,7 @@ use app\controller\FormController;
 use app\controller\DisplayController;
 use app\controller\ListViewController;
 use app\controller\AuthController;
+use app\controller\ProfileUpdateController;
 
 require_once __DIR__."/../vendor/autoload.php";
 
@@ -97,5 +98,12 @@ $app->route()->post("/register", [AuthController::class, "register"]);
 
 $app->route()->get("/aidDonationRequest", [FormController::class, "addAidDonation"]);
 $app->route()->post("/aidDonationRequest", [FormController::class, "addAidDonation"]);
+
+
+//$app->route()->get("/donorProfile", [FormController::class, "addDonorProfile"]);
+//$app->route()->post("/donorProfile", [AuthController::class, "addDonorProfile"]);
+
+$app->route()->get("/donorProfile", [ProfileUpdateController::class, "updateDonorProfile"]);
+$app->route()->post("/donorProfile", [ProfileUpdateController::class, "updateDonorProfile"]);
 
 $app->run();
