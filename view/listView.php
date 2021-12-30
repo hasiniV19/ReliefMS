@@ -40,17 +40,37 @@ use app\core\App;
                         if ($boxStatus === "financial") {
                             echo "fsrDetailsDonor?recipient_id=".$boxId;
                         } elseif ($boxStatus === "medical") {
-
+                            echo "msrDetailsDonor?recipient_id=".$boxId;
                         }
                     } elseif ($userType === "admin") {
 
-
+                        if ($boxStatus === "financial") {
+                            echo "approvedFSRDetails?recipient_id=".$boxId;
+                        } elseif ($boxStatus === "medical") {
+                            echo "approvedMSRDetails?recipient_id=".$boxId;
+                        }
+                    }
+                    break;
+                case "msRecipients":
+                    if ($userType === "admin") {
+                        echo "msrDetailsAdmin?recipient_id=".$boxId;
+                    } else // error
+                    break;
+                case "volunteers":
+                    if ($userType === "admin"){
+                        echo "volunteerDetails?volunteer_id=".$boxId;
+                    }
+                    break;
+                case "donors":
+                    if ($userType === "admin") {
+                        echo "donorDetails?donor_id=".$boxId;
                     }
                     break;
                 case "fsRecipient":
                     if ($userType === "admin"){
                         echo "fsrDetailsAdmin?recipient_id=".$boxId;
                     }
+                    break;
             }
 
             echo "' >View</a>

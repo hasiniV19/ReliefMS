@@ -20,9 +20,13 @@ use app\model\VolunteerDetails;
 class DisplayController extends Controller{
     public function displayDonorDetails(Request $request, Response $response)
     {
+        $body = $request->getBody();
+        $donorId = $body["donor_id"];
+        App::$app->session->set("donor_id", $donorId);
+        App::$app->session->set("view_type", "donors");
         $donorModel = new DonorDetailsModel();
 
-        $donorBody = ["donor_id"=>2];
+        $donorBody = ["donor_id"=>$donorId];
         $donorModel->setAttributes($donorBody);
         $data = $donorModel->retrieve();
 
@@ -31,9 +35,13 @@ class DisplayController extends Controller{
 
     public function displayVolunteerDetails(Request $request, Response $response)
     {
+        $body = $request->getBody();
+        $volunteerId = $body["volunteer_id"];
+        App::$app->session->set("volunteer_id", $volunteerId);
+        App::$app->session->set("view_type", "volunteers");
         $volunteerModel = new VolunteerDetails();
 
-        $volunteerBody = ["volunteer_id"=>6];
+        $volunteerBody = ["volunteer_id"=>$volunteerId];
         $volunteerModel->setAttributes($volunteerBody);
         //$volunteerApplication = new Application($volunteerModel);
         $data = $volunteerModel->retrieve();
@@ -116,20 +124,25 @@ class DisplayController extends Controller{
 
     public function displayMSRDetailsAdmin(Request $request, Response $response)
     {
+        $body = $request->getBody();
+        $recipientId = $body["recipient_id"];
+        App::$app->session->set("recipient_id", $recipientId);
+        App::$app->session->set("recipient_type", "msr");
+
         $msrDetailsModel = new MsrDetailsModel();
-        $msrBody = ["recipient_id"=>27];
+        $msrBody = ["recipient_id"=>$recipientId];
         $msrDetailsModel->setAttributes($msrBody);
         $data_msr = $msrDetailsModel->retrieve();
 
 
         $recipientDetailsModel = new RecipientDetailsModel();
-        $recipientBody = ["recipient_id"=>27];
+        $recipientBody = ["recipient_id"=>$recipientId];
         $recipientDetailsModel->setAttributes($recipientBody);
         $data_recipient = $recipientDetailsModel->retrieve();
 
 
         $otherNeedDetailsModel = new OtherNeedDetailsModel();
-        $needBody = ["recipient_id"=>27];
+        $needBody = ["recipient_id"=>$recipientId];
         $otherNeedDetailsModel->setAttributes($needBody);
         $data_need = $otherNeedDetailsModel->retrieve_records();
 
@@ -148,13 +161,17 @@ class DisplayController extends Controller{
 
     public function displayMSRDetailsDonor(Request $request, Response $response)
     {
+        $body = $request->getBody();
+        $recipientId = $body["recipient_id"];
+        App::$app->session->set("recipient_id", $recipientId);
+        App::$app->session->set("recipient_type", "msr");
         $msrDetailsModel = new MsrDetailsModel();
-        $msrBody = ["recipient_id"=>3];
+        $msrBody = ["recipient_id"=>$recipientId];
         $msrDetailsModel->setAttributes($msrBody);
         $data_msr = $msrDetailsModel->retrieve();
 
         $otherNeedDetailsModel = new OtherNeedDetailsModel();
-        $needBody = ["recipient_id"=>3];
+        $needBody = ["recipient_id"=>$recipientId];
         $otherNeedDetailsModel->setAttributes($needBody);
         $data_need = $otherNeedDetailsModel->retrieve_records();
 
@@ -232,20 +249,24 @@ class DisplayController extends Controller{
 
     public function displayApprovedMSRDetails(Request $request, Response $response)
     {
+        $body = $request->getBody();
+        $recipientId = $body["recipient_id"];
+        App::$app->session->set("recipient_id", $recipientId);
+        App::$app->session->set("recipient_type", "msr");
         $msrDetailsModel = new MsrDetailsModel();
-        $msrBody = ["recipient_id"=>3];
+        $msrBody = ["recipient_id"=>$recipientId];
         $msrDetailsModel->setAttributes($msrBody);
         $data_msr = $msrDetailsModel->retrieve();
 
 
         $recipientDetailsModel = new RecipientDetailsModel();
-        $recipientBody = ["recipient_id"=>3];
+        $recipientBody = ["recipient_id"=>$recipientId];
         $recipientDetailsModel->setAttributes($recipientBody);
         $data_recipient = $recipientDetailsModel->retrieve();
 
 
         $otherNeedDetailsModel = new OtherNeedDetailsModel();
-        $needBody = ["recipient_id"=>3];
+        $needBody = ["recipient_id"=>$recipientId];
         $otherNeedDetailsModel->setAttributes($needBody);
         $data_need = $otherNeedDetailsModel->retrieve_records();
 
@@ -264,20 +285,24 @@ class DisplayController extends Controller{
 
     public function displayApprovedFSRDetails(Request $request, Response $response)
     {
+        $body = $request->getBody();
+        $recipientId = $body["recipient_id"];
+        App::$app->session->set("recipient_id", $recipientId);
+        App::$app->session->set("recipient_type", "fsr");
         $fsrDetailsModel = new FsrDetailsModel();
-        $fsrBody = ["recipient_id"=>1];
+        $fsrBody = ["recipient_id"=>$recipientId];
         $fsrDetailsModel->setAttributes($fsrBody);
         $data_fsr = $fsrDetailsModel->retrieve();
 
 
         $recipientDetailsModel = new RecipientDetailsModel();
-        $recipientBody = ["recipient_id"=>1];
+        $recipientBody = ["recipient_id"=>$recipientId];
         $recipientDetailsModel->setAttributes($recipientBody);
         $data_recipient = $recipientDetailsModel->retrieve();
 
 
         $otherNeedDetailsModel = new OtherNeedDetailsModel();
-        $needBody = ["recipient_id"=>1];
+        $needBody = ["recipient_id"=>$recipientId];
         $otherNeedDetailsModel->setAttributes($needBody);
         $data_need = $otherNeedDetailsModel->retrieve_records();
 
