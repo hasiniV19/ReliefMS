@@ -7,8 +7,10 @@ use app\factory\BoxFactory;
 use app\core\Controller;
 use app\core\Request;
 use app\core\Response;
+use app\model\DonorDetailsModel;
 use app\model\ListViewModel;
 use app\model\RecipientsStatusModel;
+use app\model\VolunteerDetails;
 
 class ListViewController extends Controller
 {
@@ -53,20 +55,24 @@ class ListViewController extends Controller
 
     public function displayMSReci(Request $request, Response $response)
     {
-        $details = [["msReciName"=>"Hasini", "district"=>"Galle"], ["msReciName"=>"Dinithi", "district"=>"Matara"]];
-        return $this->displayListView($details, 'msReciName', 'district', 'Medical Support Recipients');
+        $reciStatusModel = new RecipientsStatusModel();
+        $reciStatusModel->setAttributes(["status"=>"pending", "table"=>"msrecipients"]);
+        $details = $reciStatusModel->retrieve_records();
+        return $this->displayListView($details, 'name', 'status', 'Medical Support Recipients', 'msRecipients', 'recipient_id');
     }
 
     public function displayVolunteers(Request $request, Response $response)
     {
-        $details = [["volName"=>"Hasini", "status"=>"financial"], ["volName"=>"Dinithi", "status"=>"medical"]];
-        return $this->displayListView($details, 'volName', 'status', 'Volunteers');
+        $volunteerModel = new VolunteerDetails();
+        $details = $volunteerModel->retrieve_all();
+        return $this->displayListView($details, 'name', 'status', 'Volunteers', 'volunteers', 'volunteer_id');
     }
 
     public function displayDonors(Request $request, Response $response)
     {
-        $details = [["donorName"=>"Hasini", "district"=>"Galle"], ["donorName"=>"Dinithi", "district"=>"Matara"]];
-        return $this->displayListView($details, 'donorName', 'district', 'Donors');
+        $donorModel = new DonorDetailsModel();
+        $details = $donorModel->retrieve_all();
+        return $this->displayListView($details, 'name', 'district', 'Donors', 'donors', 'donor_id');
     }
 
     private function displayListView($details, $boxTitle, $boxStatus, $title, $type, $id){
