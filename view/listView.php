@@ -44,8 +44,15 @@ use app\core\App;
                         }
                     } elseif ($userType === "admin") {
 
+
+                    }
+                    break;
+                case "fsRecipient":
+                    if ($userType === "admin"){
+                        echo "fsrDetailsAdmin?recipient_id=".$boxId;
                     }
             }
+
             echo "' >View</a>
                     </div>
                 </div>    
