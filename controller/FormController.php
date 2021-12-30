@@ -83,6 +83,9 @@ class FormController extends Controller
         $donorModel->setAttributes(["user_id"=>$user_id]);
         $donorDetails = $donorModel->retrieve();
 
+        foreach ($donorDetails as $key=>$value){
+            $this->validateRequests[$key] = new ValidateRequest($key, $value);
+        }
         if ($request->isPost()) {
             $body = $request->getBody();
             //var_dump($body);
@@ -91,8 +94,8 @@ class FormController extends Controller
 
                 $model = new DonorApplication();
                 $model->setAttributes($body);
-                if ($model->save()) {
-                    App::$app->session->setFlash("success","Your profile has been updated Successfully");
+                if ($model->update()) {
+                    App::$app->session->setFlash("success","Your profile has been updated Successfully &#10003;");
                     $response->redirect("http://localhost:8080/donorHome");
                     exit;
                 }
@@ -103,7 +106,7 @@ class FormController extends Controller
         }
 
 
-        return $this->render("donorProfile", "main", $donorDetails);
+        return $this->render("donorProfile", "main", $this->validateRequests);
     }
 
     public function validate($data): bool

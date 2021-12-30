@@ -21,12 +21,12 @@ class DonorApplication extends DBModel
 
     public function getCols()
     {
-        return ['user_id', 'name', 'mobile', 'address', 'age', 'district'];
+        return ['name', 'mobile', 'address', 'age', 'district', 'user_id'];
     }
 
     public function getValues()
     {
-        return [$this->user_id, $this->name, $this->mobile, $this->address, $this->age, $this->district];
+        return [$this->name, $this->mobile, $this->address, $this->age, $this->district, $this->user_id];
     }
 
     public function setAttributes($data){
