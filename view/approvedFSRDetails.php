@@ -124,11 +124,11 @@
 
         <div class="form-btn-row form-row text-center">
             <div class="col-md-6 btn-row " id="btn-1">
-                <button type="submit" class="btn btn-primary submit-button">Go Back</button>
+                <button type="submit" class="btn btn-primary submit-button" style="width: 200px">Go Back</button>
             </div>
 
             <div class="col-md-6  btn-row" id="btn-2">
-                <button type="submit" class="btn btn-success submit-button">Mark as Aided</button>
+                <button type="submit" class="btn btn-success submit-button" style="width: 200px">Mark as Aided</button>
             </div>
 
 
