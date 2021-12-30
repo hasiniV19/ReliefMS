@@ -1,15 +1,11 @@
 <?php
 
 namespace app\model;
-use app\core\DBModel;
 
-class QuarantResidents extends DBModel
+class QuarantDetailsModel extends \app\core\DBModel
 {
-    private $name;
+
     private $msr_id;
-    private $age;
-    private $gender;
-    private $covid_status;
 
     public function getTableName()
     {
@@ -18,12 +14,12 @@ class QuarantResidents extends DBModel
 
     public function getCols()
     {
-        return ["name", "age", "gender", "covid_status", "msr_id"];
+        return ["msr_id"];
     }
 
     public function getValues()
     {
-        return [$this->name, $this->age, $this->gender, $this->covid_status, $this->msr_id];
+        return [$this->msr_id];
     }
 
     public function setAttributes($data)

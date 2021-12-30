@@ -13,6 +13,8 @@ use app\model\FsrDetailsModel;
 use app\model\MoneyDonationDetailsModel;
 use app\model\MsrDetailsModel;
 use app\model\OtherNeedDetailsModel;
+use app\model\QuarantDetailsModel;
+use app\model\QuarantResidents;
 use app\model\RecipientDetailsModel;
 use app\model\VolunteerApplicationModel;
 use app\model\VolunteerDetails;
@@ -32,6 +34,8 @@ class DisplayController extends Controller{
 
         return $this->render("donorDetails", "main", $data);
     }
+
+
 
     public function displayVolunteerDetails(Request $request, Response $response)
     {
@@ -146,6 +150,11 @@ class DisplayController extends Controller{
         $otherNeedDetailsModel->setAttributes($needBody);
         $data_need = $otherNeedDetailsModel->retrieve_records();
 
+        // quarant residents
+        $msrId = $data_msr["msr_id"];
+        $quarantResidentsModel = new QuarantDetailsModel();
+        $quarantResidentsModel->setAttributes(["msr_id"=>$msrId]);
+        $quarantResidentDetails = $quarantResidentsModel->retrieve_records();
         $data_needs = [];
         foreach ($data_need as $data){
             array_push($data_needs, $data["need"]);
@@ -155,6 +164,7 @@ class DisplayController extends Controller{
 
         $data = array_merge($data_msr,$data_recipient);
         $data["needs"] = $needs;
+        $data["quarantResidents"] = $quarantResidentDetails;
 
         return $this->render("msrDetailsAdmin", "main", $data);
     }
