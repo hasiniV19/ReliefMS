@@ -56,6 +56,7 @@ class Database implements GenericDB
     // can define predefined function to insert,update
     public function insert($sql, $array)
     {
+//        var_dump($sql, $array);
         $result = $this->conn->prepare($sql);
         $types = $this->get_types($array);
         $result->bind_param($types, ...$array);

@@ -3,6 +3,7 @@ use app\handlers\ValidateRequest;
 
 /*** @var $collecting_method */
 /*** @var $station */
+/*** @var $address */
 ?>
 
 <style>
@@ -10,7 +11,7 @@ use app\handlers\ValidateRequest;
 </style>
 
 <div class="row">
-    <form class="container form-container col-lg-5 col-md-7 col-9">
+    <form method="post" action="/aidDonationRequest" class="container form-container col-lg-5 col-md-7 col-9">
         <h2 class="title">Aid Donation Request</h2>
         <div class="form-group">
             <label for="collect-method" class="input-label">Collecting Method</label>
@@ -37,7 +38,7 @@ use app\handlers\ValidateRequest;
         <!-- home address -->
         <div class="form-group hidden" id="address-part">
             <label for="address" class="input-label">Address</label>
-            <textarea name="address" class="form-control input-field" id="address" aria-describedby="" rows="3" readonly>63D, Sooriyakantha Watta, Watareka East, Galle</textarea>
+            <textarea name="address" class="form-control input-field" id="address" aria-describedby="" rows="3" readonly><?php if (isset($address)) echo $address;?></textarea>
             <div class="">
                 <button name="edit" type="button" id="edit" class="btn float-right" style="color: #6f42c1; font-weight: bold">Edit</button>
             </div>
