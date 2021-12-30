@@ -51,6 +51,19 @@ use app\core\App;
                         }
                     }
                     break;
+
+
+                case "aidedRecipients":
+                    if ($userType === "admin"){
+                        if ($boxStatus === "financial") {
+                            echo "aidedFSRDetails?recipient_id=".$boxId;
+                        } elseif ($boxStatus === "medical") {
+                            echo "aidedMSRDetails?recipient_id=".$boxId;
+                        }
+                    }
+                    break;
+
+
                 case "msRecipients":
                     if ($userType === "admin") {
                         echo "msrDetailsAdmin?recipient_id=".$boxId;

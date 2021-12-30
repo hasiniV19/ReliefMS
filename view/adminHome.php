@@ -75,13 +75,13 @@
                             </div>
                         </div>
                         <div class="media-v1 bg-1">
-                            <a href="">
+                            <a href="<?php echo 'http://localhost:8080/aidedRecipients'?>">
                             <div class="icon-wrap">
                                 <span class="button__icon"><i class="fas fa-first-aid"></i></span>
                             </div>
                             </a>
                             <div class="body">
-                                <a href=""><h3>Aided</h3></a>
+                                <a href="<?php echo 'http://localhost:8080/aidedRecipients'?>"><h3>Aided</h3></a>
                                <!-- <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odio, debitis!</p>-->
                             </div>
                         </div>

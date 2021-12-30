@@ -43,8 +43,23 @@ class ListViewController extends Controller
 
     public function displayAidedReci(Request $request, Response $response)
     {
-        $details = [["reciName"=>"Hasini", "reciType"=>"financial"], ["reciName"=>"Dinithi", "reciType"=>"medical"]];
-        return $this->displayListView($details, 'reciName', 'reciType', 'Aided Recipients');
+        $reciStatusModel = new RecipientsStatusModel();
+        $reciStatusModel->setAttributes(["status"=>"aided", "table"=>"fsrecipients"]);
+        $detailsFSR = $reciStatusModel->retrieve_records();
+        foreach ($detailsFSR as &$detail){
+            $detail["recipient_type"] = "Financial";
+        }
+
+        $reciStatusModel->setAttributes(["status"=>"aided", "table"=>"msrecipients"]);
+        $detailsMSR = $reciStatusModel->retrieve_records();
+        foreach ($detailsMSR as &$detail){
+            $detail["recipient_type"] = "Medical";
+        }
+
+        $details = array_merge($detailsFSR, $detailsMSR);
+
+        //$details = [["reciName"=>"Hasini", "reciType"=>"financial"], ["reciName"=>"Dinithi", "reciType"=>"medical"]];
+        return $this->displayListView($details, 'name', 'recipient_type', 'Aided Recipients', 'aidedRecipients', 'recipient_id');
     }
 
     public function displayFSReci(Request $request, Response $response)

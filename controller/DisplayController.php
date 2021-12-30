@@ -321,20 +321,24 @@ class DisplayController extends Controller{
 
     public function displayAidedMSRDetails(Request $request, Response $response)
     {
+        $body = $request->getBody();
+        $recipientId = $body["recipient_id"];
+        App::$app->session->set("recipient_id", $recipientId);
+        App::$app->session->set("recipient_type", "msr");
         $msrDetailsModel = new MsrDetailsModel();
-        $msrBody = ["recipient_id"=>27];
+        $msrBody = ["recipient_id"=>$recipientId];
         $msrDetailsModel->setAttributes($msrBody);
         $data_msr = $msrDetailsModel->retrieve();
 
 
         $recipientDetailsModel = new RecipientDetailsModel();
-        $recipientBody = ["recipient_id"=>27];
+        $recipientBody = ["recipient_id"=>$recipientId];
         $recipientDetailsModel->setAttributes($recipientBody);
         $data_recipient = $recipientDetailsModel->retrieve();
 
 
         $otherNeedDetailsModel = new OtherNeedDetailsModel();
-        $needBody = ["recipient_id"=>27];
+        $needBody = ["recipient_id"=>$recipientId];
         $otherNeedDetailsModel->setAttributes($needBody);
         $data_need = $otherNeedDetailsModel->retrieve_records();
 
@@ -354,20 +358,25 @@ class DisplayController extends Controller{
 
     public function displayAidedFSRDetails(Request $request, Response $response)
     {
+        $body = $request->getBody();
+        $recipientId = $body["recipient_id"];
+        App::$app->session->set("recipient_id", $recipientId);
+        App::$app->session->set("recipient_type", "fsr");
+
         $fsrDetailsModel = new FsrDetailsModel();
-        $fsrBody = ["recipient_id"=>25];
+        $fsrBody = ["recipient_id"=>$recipientId];
         $fsrDetailsModel->setAttributes($fsrBody);
         $data_fsr = $fsrDetailsModel->retrieve();
 
 
         $recipientDetailsModel = new RecipientDetailsModel();
-        $recipientBody = ["recipient_id"=>25];
+        $recipientBody = ["recipient_id"=>$recipientId];
         $recipientDetailsModel->setAttributes($recipientBody);
         $data_recipient = $recipientDetailsModel->retrieve();
 
 
         $otherNeedDetailsModel = new OtherNeedDetailsModel();
-        $needBody = ["recipient_id"=>25];
+        $needBody = ["recipient_id"=>$recipientId];
         $otherNeedDetailsModel->setAttributes($needBody);
         $data_need = $otherNeedDetailsModel->retrieve_records();
 
