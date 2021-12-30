@@ -7,8 +7,8 @@ use app\model\listView\Box;
 class BoxFactory
 {
 
-    public function getBoxView(string $boxTitle, string $boxStatus): BoxView
+    public function getBoxView(string $boxTitle, string $boxStatus, $boxType, $boxId): BoxView
     {
-        return new Box($boxTitle, $boxStatus);
+        return new Box($boxTitle, $boxStatus, $boxType, $boxId);
     }
 }

@@ -7,11 +7,15 @@ class Box implements BoxView
 {
     private string $boxTitle;
     private string $boxStatus;
+    private string $boxType;
+    private int $boxId;
 
-    public function __construct(string $boxTitle, string $boxStatus)
+    public function __construct(string $boxTitle, string $boxStatus, string $boxType, string $boxId)
     {
         $this->boxTitle = $boxTitle;
         $this->boxStatus = $boxStatus;
+        $this->boxType = $boxType;
+        $this->boxId = $boxId;
     }
 
     public function getBoxTitle(): string
@@ -22,6 +26,22 @@ class Box implements BoxView
     public function getBoxStatus(): string
     {
         return $this->boxStatus;
+    }
+
+    /**
+     * @return string
+     */
+    public function getBoxType(): string
+    {
+        return $this->boxType;
+    }
+
+    /**
+     * @return int|string
+     */
+    public function getBoxId() : int
+    {
+        return $this->boxId;
     }
 
 }

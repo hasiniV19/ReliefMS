@@ -1,5 +1,6 @@
 <?php
 use app\core\BoxView;
+use app\core\App;
 
 /** @var $boxes */
 /** @var $title */
@@ -29,7 +30,23 @@ use app\core\BoxView;
             }
             echo $boxStatus;
             echo        "</div>
-                        <a class='link ' href='' >View</a>
+                        <a class='link ' href='http://localhost:8080/";
+            $userType = App::$app->session->get("user_type");
+            $boxType = $box->getBoxType();
+            $boxId = $box->getBoxId();
+            switch ($boxType){
+                case "approvedRecipients":
+                    if ($userType === "donor"){
+                        if ($boxStatus === "financial") {
+                            echo "fsrDetailsDonor?recipient_id=".$boxId;
+                        } elseif ($boxStatus === "medical") {
+
+                        }
+                    } elseif ($userType === "admin") {
+
+                    }
+            }
+            echo "' >View</a>
                     </div>
                 </div>    
             

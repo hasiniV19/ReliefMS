@@ -2,6 +2,7 @@
 
 namespace app\controller;
 
+use app\core\App;
 use app\core\Controller;
 use app\core\Request;
 use app\core\Response;
@@ -83,13 +84,17 @@ class DisplayController extends Controller{
 
     public function displayFSRDetailsDonor(Request $request, Response $response)
     {
+        $body = $request->getBody();
+        $recipientId = $body["recipient_id"];
+        App::$app->session->set("recipient_id", $recipientId);
+        App::$app->session->set("recipient_type", "fsr");
         $fsrDetailsDonorModel = new FsrDetailsModel();
-        $fsrBody = ["recipient_id" => 1];
+        $fsrBody = ["recipient_id" => $recipientId];
         $fsrDetailsDonorModel->setAttributes($fsrBody);
         $data_fsr = $fsrDetailsDonorModel->retrieve();
 
         $otherNeedDetailsModel = new OtherNeedDetailsModel();
-        $needBody = ["recipient_id"=>1];
+        $needBody = ["recipient_id"=>$recipientId];
         $otherNeedDetailsModel->setAttributes($needBody);
         $data_need = $otherNeedDetailsModel->retrieve_records();
 
