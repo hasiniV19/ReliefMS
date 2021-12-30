@@ -22,7 +22,7 @@
                                 </div>
                             </a>
                             <div class="body">
-                                <a href=""><h3>Financial Support</h3></a>
+                                <a href="<?php echo 'http://localhost:8080/fsRecipients'?>"><h3>Financial Support</h3></a>
                                 <!--<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odio, debitis!</p>-->
                             </div>
                         </div>

@@ -49,7 +49,14 @@ class ListViewController extends Controller
 
     public function displayFSReci(Request $request, Response $response)
     {
-        $details = [["fsReciName"=>"Hasini", "district"=>"Galle"], ["fsReciName"=>"Dinithi", "district"=>"Matara"]];
+        $reciStatusModel = new RecipientsStatusModel();
+        $reciStatusModel->setAttributes(["status"=>"pending", "table"=>"fsrecipients"]);
+        $details = $reciStatusModel->retrieve_records();
+        return $this->displayListView($details, 'name', 'status', 'Financial Recipients', 'fsRecipient', 'recipient_id');
+
+
+
+
         return $this->displayListView($details, 'fsReciName', 'district', 'Financial Support Recipients');
     }
 

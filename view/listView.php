@@ -43,6 +43,7 @@ use app\core\App;
                             echo "msrDetailsDonor?recipient_id=".$boxId;
                         }
                     } elseif ($userType === "admin") {
+
                         if ($boxStatus === "financial") {
                             echo "approvedFSRDetails?recipient_id=".$boxId;
                         } elseif ($boxStatus === "medical") {
@@ -65,7 +66,13 @@ use app\core\App;
                         echo "donorDetails?donor_id=".$boxId;
                     }
                     break;
+                case "fsRecipient":
+                    if ($userType === "admin"){
+                        echo "fsrDetailsAdmin?recipient_id=".$boxId;
+                    }
+                    break;
             }
+
             echo "' >View</a>
                     </div>
                 </div>    
