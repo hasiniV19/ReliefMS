@@ -36,7 +36,7 @@ class ListViewController extends Controller
         }
 
         $details = array_merge($detailsFSR, $detailsMSR);
-        return $this->displayListView($details, 'name', 'recipient_type', 'Recipients');
+        return $this->displayListView($details, 'name', 'recipient_type', 'Recipients', 'approvedRecipients', 'recipient_id');
     }
 
     public function displayAidedReci(Request $request, Response $response)
@@ -69,11 +69,11 @@ class ListViewController extends Controller
         return $this->displayListView($details, 'donorName', 'district', 'Donors');
     }
 
-    private function displayListView($details, $boxTitle, $boxStatus, $title){
+    private function displayListView($details, $boxTitle, $boxStatus, $title, $type, $id){
         $this->boxViewFactory = new BoxFactory();
         $boxes = [];
         foreach ($details as $detail){
-            $box = $this->boxViewFactory->getBoxView($detail[$boxTitle], $detail[$boxStatus]);
+            $box = $this->boxViewFactory->getBoxView($detail[$boxTitle], $detail[$boxStatus], $type, $detail[$id]);
             $boxes[] = $box;
         }
 
