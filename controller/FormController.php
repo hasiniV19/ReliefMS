@@ -26,6 +26,10 @@ use app\handlers\OccupationValidateHandler;
 use app\handlers\OtherNeedValidateHandler;
 use app\handlers\ValidateHandler;
 use app\handlers\ValidateRequest;
+use app\model\AidDonationModel;
+use app\model\DonationModel;
+use app\model\DonorDetailsModel;
+use app\model\DonorModel;
 use app\model\FsRecipientDeleteModel;
 use app\model\FsrFileModel;
 
@@ -305,7 +309,58 @@ class FormController extends Controller
 
     public function addAidDonation(Request $request, Response $response)
     {
-        return $this->render("aidDonationReq", "main");
+        $user_id = App::$app->session->get("user_id");
+        $donorModel = new DonorModel();
+        $donorModel->setAttributes(["user_id"=>$user_id]);
+        $donorDetails = $donorModel->retrieve();
+        $donorId = $donorDetails["donor_id"];
+        $address = $donorDetails["address"];
+
+        if ($request->isPost()){
+            $body = $request->getBody();
+
+            if ($this->validate($body)){
+
+                $collectingMethod = $body["collecting_method"];
+                if ($collectingMethod === "station"){
+                    $donationModel = new DonationModel();
+                    $donationModel->setAttributes(["donor_id"=>$donorId, "donation_type"=>"aid"]);
+                    if ($donationModel->save()){
+                        $donationId = $donationModel->getLastID();
+                        $recipientId = (int) App::$app->session->get("recipient_id");
+                        $aidDonationModel = new AidDonationModel();
+                        $aidDonationDetails = ["donation_id"=>$donationId, "recipient_id"=>$recipientId,
+                            "collecting_method"=>"station", "station"=>$body["station"]];
+                        $aidDonationModel->setAttributes($aidDonationDetails);
+                        if ($aidDonationModel->save()){
+                            App::$app->session->setFlash("aidDonationSuccess",
+                                "Thank You for Agreeing to Help this Person &#10084; We are grateful for your contribution!");
+                            $response->redirect("http://localhost:8080/approvedRecipients");
+                        }
+                    }
+
+
+
+                } elseif ($collectingMethod === "home") {
+                    $donationModel = new DonationModel();
+                    $donationModel->setAttributes(["donor_id"=>$donorId, "donation_type"=>"aid"]);
+                    if ($donationModel->save()){
+                        $donationId = $donationModel->getLastID();
+                        $recipientId = (int) App::$app->session->get("recipient_id");
+                        $aidDonationModel = new AidDonationModel();
+                        $aidDonationDetails = ["donation_id"=>$donationId, "recipient_id"=>$recipientId,
+                            "collecting_method"=>"home", "station"=>$body["address"]];
+                        $aidDonationModel->setAttributes($aidDonationDetails);
+                        if ($aidDonationModel->save()) {
+                            App::$app->session->setFlash("aidDonationSuccess",
+                                "Thank You for Agreeing to Help this Person &#10084; We are grateful for your contribution!");
+                            $response->redirect("http://localhost:8080/approvedRecipients");
+                        }
+                    }
+                }
+            }
+        }
+        return $this->render("aidDonationReq", "main", ["address"=>$address]);
     }
 
 

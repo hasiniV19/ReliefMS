@@ -326,7 +326,7 @@ class DisplayController extends Controller{
         $data = array_merge($data_fsr,$data_recipient);
         $data["needs"] = $needs;
 
-        return $this->render("fsrDetailsAdmin", "main", $data);
+        return $this->render("approvedFSRDetails", "main", $data);
     }
 
     public function displayAidedMSRDetails(Request $request, Response $response)

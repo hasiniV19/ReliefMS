@@ -113,11 +113,11 @@
 
         <div class="form-btn-row form-row text-center">
             <div class="col-md-6 btn-row " id="btn-1">
-                <button type="submit" class="btn btn-primary submit-button">Go Back</button>
+                <a href="<?php echo 'http://localhost:8080/approvedRecipients'?>" class="btn btn-primary submit-button">Go Back</a>
             </div>
 
             <div class="col-md-6  btn-row" id="btn-2">
-                <button type="submit" class="btn btn-success submit-button">Help</button>
+                <a href="<?php echo 'http://localhost:8080/aidDonationRequest'?>" class="btn btn-success submit-button">Help</a>
             </div>
 
 

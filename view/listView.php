@@ -11,6 +11,11 @@ use app\core\App;
 </style>
 <div class="container">
     <h1 class="title"><?php echo $title?></h1>
+    <?php if(App::$app->session->getFlash("aidDonationSuccess")): ?>
+        <div class="alert alert-success text-center" role="alert">
+            <?php echo App::$app->session->getFlash("aidDonationSuccess");?>
+        </div>
+    <?php endif;?>
     <div class="row">
         <?php foreach ($boxes as $box){
             echo "
