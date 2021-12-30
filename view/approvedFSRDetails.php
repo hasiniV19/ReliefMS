@@ -19,7 +19,7 @@
 </style>
 
 <div class="row">
-    <form class="container form-container col-lg-6 col-md-8 col-10">
+    <form class="container form-container col-lg-6 col-md-8 col-10" method="post" action="/approvedFSRDetails">
         <h2 class="title">Approved FSR Details</h2>
 
         <div class="form-row">

@@ -96,4 +96,6 @@ $app->route()->get("/register", [AuthController::class, "register"]);
 $app->route()->post("/register", [AuthController::class, "register"]);
 
 $app->route()->get("/aidDonationRequest", [FormController::class, "addAidDonation"]);
+$app->route()->post("/aidDonationRequest", [FormController::class, "addAidDonation"]);
+
 $app->run();
