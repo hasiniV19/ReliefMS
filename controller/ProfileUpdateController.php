@@ -8,7 +8,9 @@ use app\core\Request;
 use app\core\Response;
 use app\model\AidDonationDetailsModel;
 use app\model\DonationDetailsModel;
+use app\model\DonorApplication;
 use app\model\DonorDetailsModel;
+use app\model\DonorModel;
 use app\model\DonorProfileModel;
 use app\model\FsrDetailsModel;
 use app\model\MoneyDonationDetailsModel;
@@ -24,19 +26,31 @@ class ProfileUpdateController extends Controller
 {
     public function updateDonorProfile(Request $request, Response $response)
     {
-        $userId = App::$app->session->get("user_id");
-        $body = $request->getBody();
-        var_dump($body);
-//        $body["donor_id"] = App::$app->session->get("donor_id");
-        $donorId = $body["donor_id"];
-        App::$app->session->set("donor_id", $donorId);
-        App::$app->session->set("view_type", "donors");
-        $donorModel = new DonorProfileModel();
+        $user_id = App::$app->session->get("user_id");
+        $donorModel = new DonorModel();
+        $donorModel->setAttributes(["user_id"=>$user_id]);
+        $donorDetails = $donorModel->retrieve();
 
-        $donorBody = ["donor_id"=>$donorId];
-        $donorModel->setAttributes($donorBody);
-        $data = $donorModel->retrieve();
+        if ($request->isPost()) {
+            $body = $request->getBody();
+            //var_dump($body);
+            $body["user_id"] = App::$app->session->get("user_id");
+            if($this->validate($body)){
 
-        return $this->render("donorDetails", "main", $data);
+                $model = new DonorApplication();
+                $model->setAttributes($body);
+                if ($model->save()) {
+                    App::$app->session->setFlash("success","Your Application was Successfully Submitted");
+                    $response->redirect("http://localhost:8080/donorHome");
+                    exit;
+                }
+            }
+            else{
+                return $this->render("donorProfile", "main", $this->validateRequests);
+            }
+        }
+
+
+        return $this->render("donorProfile", "main", $donorDetails);
     }
 }

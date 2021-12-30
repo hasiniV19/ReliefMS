@@ -7,15 +7,15 @@ use app\core\Session;
     <?php include "css/donorHome.css"; ?>
 </style>
 <div class="site-section bg-primary-light">
-    <?php if(App::$app->session->getFlash("success")): ?>
-    <div class="alert alert-success" role="alert">
-        <?php echo App::$app->session->getFlash("success");?>
-    </div>
-    <?php endif;?>
     <div class="container">
         <div class="py-5 text-center">
             <h1 class="admin-title">Donor Home</h1>
         </div>
+        <?php if(App::$app->session->getFlash("success")): ?>
+            <div class="alert alert-success text-center" role="alert">
+                <?php echo App::$app->session->getFlash("success");?>
+            </div>
+        <?php endif;?>
         <div class="row align-items-center">
             <div class="col-lg-1 col-md-1 col-1" ></div>
             <div class="col-lg-10 col-md-10 col-sm-10 col-10">

@@ -103,7 +103,7 @@ $app->route()->post("/aidDonationRequest", [FormController::class, "addAidDonati
 //$app->route()->get("/donorProfile", [FormController::class, "addDonorProfile"]);
 //$app->route()->post("/donorProfile", [AuthController::class, "addDonorProfile"]);
 
-$app->route()->get("/donorProfile", [ProfileUpdateController::class, "updateDonorProfile"]);
-$app->route()->post("/donorProfile", [ProfileUpdateController::class, "updateDonorProfile"]);
+$app->route()->get("/donorProfile", [FormController::class, "updateDonorProfile"]);
+$app->route()->post("/donorProfile", [FormController::class, "updateDonorProfile"]);
 
 $app->run();

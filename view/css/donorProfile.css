@@ -52,6 +52,18 @@ body{
     margin-top: 3vw;
 }
 
+.btn-row {
+    margin-bottom: 3vw;
+}
+
+.form-row{
+    margin-bottom: 1rem;
+}
+
+.form-btn-row{
+    margin-top: 4rem;
+}
+
 
 
 
