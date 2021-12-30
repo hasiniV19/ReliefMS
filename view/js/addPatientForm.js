@@ -41,8 +41,8 @@ function addForm(){
                 '                <label for="covid_status" class="input-label">Covid Status</label>\n' +
                 '                <select name="covid_status'+num+'" id="inputState" class="form-control input-field">\n' +
                 '                    <option value="positive" selected>Positive</option>\n' +
-                '                    <option value="firstContact">First Contact</option>\n' +
-                '                    <option value="secondContact">Second Contact</option>\n' +
+                '                    <option value="first contact">First Contact</option>\n' +
+                '                    <option value="second contact">Second Contact</option>\n' +
                 '                </select>\n' +
                 '</div>'+
                 '</div>'+

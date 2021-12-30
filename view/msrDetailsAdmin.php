@@ -10,7 +10,7 @@
 /*** @var $needs */
 /*** @var $date */
 /*** @var $status */
-
+/*** @var $quarantResidents */
 ?>
 
 <style>
@@ -72,7 +72,10 @@
                 <label for="student-title" class="input-title">Are there any Students?</label>
             </div>
             <div class=" col-md-7">
-                <label for="student" class="input-label"><?php if (isset($is_there_students)) echo $is_there_students; ?></label>
+                <label for="student" class="input-label"><?php if (isset($is_there_students)) {
+                    if ($is_there_students == 0) echo "No";
+                    else echo "Yes";
+                }?></label>
             </div>
         </div>
 
@@ -116,7 +119,9 @@
         <hr class="mb-4">
         <h5 class="res-title">Patients Details</h5>
         <div class="row">
-
+            <?php if (isset($quarantResidents)) {
+                        foreach ($quarantResidents as $quarantResident){
+                            echo '
             <div class="form-2 col-md-6">
                 <div class="f-margin">
                     <div class="form-row">
@@ -124,7 +129,9 @@
                             <label for="res-name-title" class="input-title">Name</label>
                         </div>
                         <div class=" col-md-7">
-                            <label for="res-name" class="input-label">ABC Mahaarachchi</label>
+                            <label for="res-name" class="input-label">';
+                            echo $quarantResident["name"];
+                            echo '</label>
                         </div>
                     </div>
 
@@ -134,7 +141,9 @@
                             <label for="res-age-title" class="input-title">Age</label>
                         </div>
                         <div class=" col-md-7">
-                            <label for="res-age" class="input-label">12</label>
+                            <label for="res-age" class="input-label">';
+                            echo $quarantResident["age"];
+                            echo '</label>
                         </div>
                     </div>
 
@@ -143,7 +152,9 @@
                             <label for="res-gender-title" class="input-title">Gender</label>
                         </div>
                         <div class=" col-md-7">
-                            <label for="res-gender" class="input-label">male</label>
+                            <label for="res-gender" class="input-label">';
+                            echo $quarantResident["gender"];
+                            echo '</label>
                         </div>
                     </div>
 
@@ -152,119 +163,32 @@
                             <label for="covid-status-title" class="input-title">Covid Status</label>
                         </div>
                         <div class=" col-md-7">
-                            <label for="covid-status" class="input-label">positive</label>
+                            <label for="covid-status" class="input-label">';
+                            echo $quarantResident["covid_status"];
+                            echo '</label>
                         </div>
                     </div>
+
+                </div>
+            </div>
+
+
+
+       
+                            ';
+                        }
+                    }
+                    ?>
+
+
+
+
 
                 </div>
 
 
 
-            </div>
 
-            <div class="form-2 col-md-6">
-                <div class="f-margin">
-                    <div class="form-row">
-                        <div class=" col-md-5">
-                            <label for="res-name-title" class="input-title">Name</label>
-                        </div>
-                        <div class=" col-md-7">
-                            <label for="res-name" class="input-label">ABC Mahaarachchi</label>
-                        </div>
-                    </div>
-
-
-                    <div class="form-row">
-                        <div class=" col-md-5">
-                            <label for="res-age-title" class="input-title">Age</label>
-                        </div>
-                        <div class=" col-md-7">
-                            <label for="res-age" class="input-label">12</label>
-                        </div>
-                    </div>
-
-                    <div class="form-row">
-                        <div class=" col-md-5">
-                            <label for="res-gender-title" class="input-title">Gender</label>
-                        </div>
-                        <div class=" col-md-7">
-                            <label for="res-gender" class="input-label">male</label>
-                        </div>
-                    </div>
-
-                    <div class="form-row">
-                        <div class=" col-md-5">
-                            <label for="covid-status-title" class="input-title">Covid Status</label>
-                        </div>
-                        <div class=" col-md-7">
-                            <label for="covid-status" class="input-label">positive</label>
-                        </div>
-                    </div>
-
-                </div>
-
-
-
-            </div>
-
-            <div class="form-2 col-md-6">
-                <div class="f-margin">
-                    <div class="form-row">
-                        <div class=" col-md-5">
-                            <label for="res-name-title" class="input-title">Name</label>
-                        </div>
-                        <div class=" col-md-7">
-                            <label for="res-name" class="input-label">ABC Mahaarachchi</label>
-                        </div>
-                    </div>
-
-
-                    <div class="form-row">
-                        <div class=" col-md-5">
-                            <label for="res-age-title" class="input-title">Age</label>
-                        </div>
-                        <div class=" col-md-7">
-                            <label for="res-age" class="input-label">12</label>
-                        </div>
-                    </div>
-
-                    <div class="form-row">
-                        <div class=" col-md-5">
-                            <label for="res-gender-title" class="input-title">Gender</label>
-                        </div>
-                        <div class=" col-md-7">
-                            <label for="res-gender" class="input-label">male</label>
-                        </div>
-                    </div>
-
-                    <div class="form-row">
-                        <div class=" col-md-5">
-                            <label for="covid-status-title" class="input-title">Covid Status</label>
-                        </div>
-                        <div class=" col-md-7">
-                            <label for="covid-status" class="input-label">positive</label>
-                        </div>
-                    </div>
-
-                </div>
-
-
-
-            </div>
-
-
-
-        </div>
-
-
-        <!-- <div class="form-row">
-          <div class=" col-md-8">
-            <label for="-title" class="input-title"></label>
-          </div>
-          <div class=" col-md-8">
-            <label for="" class="input-label"></label>
-          </div>
-        </div> -->
 
         <div class="form-btn-row form-row text-center">
             <div class="col-md-4 btn-row">

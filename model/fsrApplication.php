@@ -23,12 +23,12 @@ class fsrApplication extends DBModel
 
     public function getCols()
     {
-        return ['recipient_id','name', 'no_members', 'monthly_income', 'address', 'mobile', 'is_there_students', 'no_students'];
+        return ['recipient_id','name', 'no_members', 'monthly_income', 'address', 'mobile', 'is_there_students', 'no_students', 'status'];
     }
 
     public function getValues()
     {
-        return [$this->recipient_id, $this->name, $this->no_members, $this->monthly_income, $this->address, $this->mobile, $this->is_there_students, $this->no_students];
+        return [$this->recipient_id, $this->name, $this->no_members, $this->monthly_income, $this->address, $this->mobile, $this->is_there_students, $this->no_students, 'pending'];
     }
 
     public function setAttributes($data){

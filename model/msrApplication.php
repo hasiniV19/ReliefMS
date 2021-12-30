@@ -13,6 +13,7 @@ class msrApplication extends DBModel
     private $mobile;
     private $name;
     private $gs_division;
+    private $status;
 
     public function getTableName()
     {
@@ -21,12 +22,12 @@ class msrApplication extends DBModel
 
     public function getCols()
     {
-        return ['recipient_id', 'address', 'num_quarant_residents', 'is_there_students', 'no_students', 'mobile', 'name', 'gs_division'];
+        return ['recipient_id', 'address', 'num_quarant_residents', 'is_there_students', 'no_students', 'mobile', 'name', 'gs_division', 'status'];
     }
 
     public function getValues()
     {
-        return [$this->recipient_id, $this->address, $this->num_quarant_residents, $this->is_there_students, $this->no_students, $this->mobile, $this->name, $this->gs_division];
+        return [$this->recipient_id, $this->address, $this->num_quarant_residents, $this->is_there_students, $this->no_students, $this->mobile, $this->name, $this->gs_division, 'pending'];
     }
 
     public function setAttributes($data){
