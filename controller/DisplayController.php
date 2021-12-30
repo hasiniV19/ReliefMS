@@ -136,12 +136,10 @@ class DisplayController extends Controller{
         $msrDetailsModel->setAttributes($msrBody);
         $data_msr = $msrDetailsModel->retrieve();
 
-
         $recipientDetailsModel = new RecipientDetailsModel();
         $recipientBody = ["recipient_id"=>$recipientId];
         $recipientDetailsModel->setAttributes($recipientBody);
         $data_recipient = $recipientDetailsModel->retrieve();
-
 
         $otherNeedDetailsModel = new OtherNeedDetailsModel();
         $needBody = ["recipient_id"=>$recipientId];
@@ -153,6 +151,7 @@ class DisplayController extends Controller{
         $quarantResidentsModel = new QuarantDetailsModel();
         $quarantResidentsModel->setAttributes(["msr_id"=>$msrId]);
         $quarantResidentDetails = $quarantResidentsModel->retrieve_records();
+
         $data_needs = [];
         foreach ($data_need as $data){
             array_push($data_needs, $data["need"]);
@@ -261,22 +260,26 @@ class DisplayController extends Controller{
         $recipientId = $body["recipient_id"];
         App::$app->session->set("recipient_id", $recipientId);
         App::$app->session->set("recipient_type", "msr");
+
         $msrDetailsModel = new MsrDetailsModel();
         $msrBody = ["recipient_id"=>$recipientId];
         $msrDetailsModel->setAttributes($msrBody);
         $data_msr = $msrDetailsModel->retrieve();
-
 
         $recipientDetailsModel = new RecipientDetailsModel();
         $recipientBody = ["recipient_id"=>$recipientId];
         $recipientDetailsModel->setAttributes($recipientBody);
         $data_recipient = $recipientDetailsModel->retrieve();
 
-
         $otherNeedDetailsModel = new OtherNeedDetailsModel();
         $needBody = ["recipient_id"=>$recipientId];
         $otherNeedDetailsModel->setAttributes($needBody);
         $data_need = $otherNeedDetailsModel->retrieve_records();
+
+        $msrId = $data_msr["msr_id"];
+        $quarantResidentsModel = new QuarantDetailsModel();
+        $quarantResidentsModel->setAttributes(["msr_id"=>$msrId]);
+        $quarantResidentDetails = $quarantResidentsModel->retrieve_records();
 
         $data_needs = [];
         foreach ($data_need as $data){
@@ -287,6 +290,7 @@ class DisplayController extends Controller{
 
         $data = array_merge($data_msr,$data_recipient);
         $data["needs"] = $needs;
+        $data["quarantResidents"] = $quarantResidentDetails;
 
         return $this->render("approvedMSRDetails", "main", $data);
     }
@@ -333,6 +337,7 @@ class DisplayController extends Controller{
         $recipientId = $body["recipient_id"];
         App::$app->session->set("recipient_id", $recipientId);
         App::$app->session->set("recipient_type", "msr");
+
         $msrDetailsModel = new MsrDetailsModel();
         $msrBody = ["recipient_id"=>$recipientId];
         $msrDetailsModel->setAttributes($msrBody);
@@ -350,6 +355,11 @@ class DisplayController extends Controller{
         $otherNeedDetailsModel->setAttributes($needBody);
         $data_need = $otherNeedDetailsModel->retrieve_records();
 
+        $msrId = $data_msr["msr_id"];
+        $quarantResidentsModel = new QuarantDetailsModel();
+        $quarantResidentsModel->setAttributes(["msr_id"=>$msrId]);
+        $quarantResidentDetails = $quarantResidentsModel->retrieve_records();
+
         $data_needs = [];
         foreach ($data_need as $data){
             array_push($data_needs, $data["need"]);
@@ -359,6 +369,7 @@ class DisplayController extends Controller{
 
         $data = array_merge($data_msr,$data_recipient);
         $data["needs"] = $needs;
+        $data["quarantResidents"] = $quarantResidentDetails;
 
         return $this->render("aidedMSRDetails", "main", $data);
 
