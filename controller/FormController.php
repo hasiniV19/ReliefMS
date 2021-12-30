@@ -76,6 +76,36 @@ class FormController extends Controller
         return $this->render("form", "main");
     }
 
+    public function updateDonorProfile(Request $request, Response $response)
+    {
+        $user_id = App::$app->session->get("user_id");
+        $donorModel = new DonorModel();
+        $donorModel->setAttributes(["user_id"=>$user_id]);
+        $donorDetails = $donorModel->retrieve();
+
+        if ($request->isPost()) {
+            $body = $request->getBody();
+            //var_dump($body);
+            $body["user_id"] = App::$app->session->get("user_id");
+            if($this->validate($body)){
+
+                $model = new DonorApplication();
+                $model->setAttributes($body);
+                if ($model->save()) {
+                    App::$app->session->setFlash("success","Your profile has been updated Successfully");
+                    $response->redirect("http://localhost:8080/donorHome");
+                    exit;
+                }
+            }
+            else{
+                return $this->render("donorProfile", "main", $this->validateRequests);
+            }
+        }
+
+
+        return $this->render("donorProfile", "main", $donorDetails);
+    }
+
     public function validate($data): bool
     {
         $this->validateRequests = [];
