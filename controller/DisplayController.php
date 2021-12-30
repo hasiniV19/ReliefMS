@@ -35,6 +35,8 @@ class DisplayController extends Controller{
         return $this->render("donorDetails", "main", $data);
     }
 
+
+
     public function displayVolunteerDetails(Request $request, Response $response)
     {
         $body = $request->getBody();
