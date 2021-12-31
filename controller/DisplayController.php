@@ -19,6 +19,8 @@ use app\model\QuarantResidents;
 use app\model\RecipientDetailsModel;
 use app\model\VolunteerApplicationModel;
 use app\model\VolunteerDetails;
+use app\applications\Application;
+use app\model\VolunteerUpdateModel;
 
 class DisplayController extends Controller{
     public function displayDonorDetails(Request $request, Response $response)
@@ -60,6 +62,29 @@ class DisplayController extends Controller{
 
     public function displayVolunteerDetails(Request $request, Response $response)
     {
+        if ($request->isPost()){
+            $volunteerId = App::$app->session->get("volunteer_id");
+            $volunteerModel = new VolunteerDetails();
+            $volunteerUpdateModel = new VolunteerUpdateModel();
+
+            $volunteerBody = ["volunteer_id"=>$volunteerId];
+            $volunteerModel->setAttributes($volunteerBody);
+            $volunteerUpdateModel->setAttributes($volunteerBody);
+
+            $volunteerApplication = new Application($volunteerModel->retrieve()['status'], $volunteerUpdateModel);
+            if (isset($_POST["approve"])) {
+                $volunteerApplication->approve();
+                $response->redirect("http://localhost:8080/volunteers");
+                exit;
+            }
+
+            if (isset($_POST["decline"])) {
+                $volunteerApplication->decline();
+                $response->redirect("http://localhost:8080/volunteers");
+                exit;
+            }
+        }
+
         $body = $request->getBody();
         $volunteerId = $body["volunteer_id"];
         App::$app->session->set("volunteer_id", $volunteerId);
@@ -68,7 +93,7 @@ class DisplayController extends Controller{
 
         $volunteerBody = ["volunteer_id"=>$volunteerId];
         $volunteerModel->setAttributes($volunteerBody);
-        //$volunteerApplication = new Application($volunteerModel);
+
         $data = $volunteerModel->retrieve();
         return $this->render("volunteerDetails", "main", $data);
     }
