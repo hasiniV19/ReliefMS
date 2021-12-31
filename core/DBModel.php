@@ -9,8 +9,9 @@ use app\core\database\Database;
 abstract class DBModel
 {
     protected Database $connection;
+    protected $lastId;
     public function __construct(){
-        $this->connection = new Database();
+        $this->connection = Database::getInstance();
     }
 
     public function save()
@@ -25,19 +26,151 @@ abstract class DBModel
         $sql = "INSERT INTO $table (".implode(",", $cols).") VALUES(".implode(",",$attributes).")";
 
         try {
-            $this->connection->insert($sql, $values);
+            $this->lastId = $this->connection->insert($sql, $values);
+        } catch (\mysqli_sql_exception $error){
+            return false;
+        }
+        return true;
+    }
+
+    public function retrieve()
+    {
+        $table = $this->getTableName();
+        $cols = $this->getCols();
+        $numCols = count($cols);
+        $values = $this->getValues();
+
+        $query = "SELECT * FROM $table WHERE ".$cols[$numCols-1]. "=?";
+
+//        foreach ($cols as $key=>$value) {
+//            if($key === $numCols-1){
+//                break;
+//            }
+//            $query .= $value;
+//            if($key !== $numCols -2){
+//                $query .= ",";
+//            }
+//        }
+//        $query .= " WHERE ".$cols[$numCols-1]. "=?";
+//        $query .= " FROM $table WHERE ".$cols[$numCols-1]. "=?";
+
+        try {
+            return $this->connection->get_record($query,$values);
+        } catch (\mysqli_sql_exception $error){
+            return false;
+        }
+
+
+    }
+
+    public function retrieve_records()
+    {
+        $table = $this->getTableName();
+        $cols = $this->getCols();
+        $numCols = count($cols);
+        $values = $this->getValues();
+
+        $query = "SELECT * FROM $table WHERE ".$cols[$numCols-1]. "=?";
+
+//        foreach ($cols as $key=>$value) {
+//            if($key === $numCols-1){
+//                break;
+//            }
+//            $query .= $value;
+//            if($key !== $numCols -2){
+//                $query .= ",";
+//            }
+//        }
+//        $query .= " WHERE ".$cols[$numCols-1]. "=?";
+//        $query .= " FROM $table WHERE ".$cols[$numCols-1]. "=?";
+
+        try {
+            return $this->connection->get_records($query,$values);
+        } catch (\mysqli_sql_exception $error){
+            return false;
+        }
+
+
+    }
+
+    public function retrieve_all()
+    {
+        $table = $this->getTableName();
+
+        $query = "SELECT * FROM $table";
+
+
+        try {
+            return $this->connection->get_all($query);
+        } catch (\mysqli_sql_exception $error){
+            return false;
+        }
+
+    }
+
+    public function update()
+    {
+        $table = $this->getTableName();
+        $cols = $this->getCols();
+        $numCols = count($cols);
+        $values = $this->getValues();
+        $attributes = [];
+        $query = "UPDATE $table SET ";
+        foreach ($cols as $key=>$value) {
+            if($key === $numCols-1){
+                break;
+            }
+            $query .= $value . "= ?";
+            if($key !== $numCols -2){
+                $query .= ",";
+            }
+        }
+
+        $query .= " WHERE ".$cols[$numCols-1]. "=?";
+
+        try {
+            $this->connection->update($query, $values);
         } catch (\mysqli_sql_exception $error){
             return false;
         }
         return true;
 
+    }
 
+    public function delete()
+    {
+        $table = $this->getTableName();
+        $cols = $this->getCols();
+        $values = $this->getValues();
+        $sql = "DELETE FROM $table WHERE $cols[0] =?";
+
+        try {
+            $this->connection->delete($sql, $values);
+        } catch (\mysqli_sql_exception $error){
+            return false;
+        }
+        return true;
 
     }
+    public function getLastID()
+    {
+        return $this->lastId;
+    }
+
+//    public function getLastID()
+//    {
+//        if ($connection->query($sql) === TRUE) {
+//            $last_id = $connection->insert_id;
+//            echo "New record created successfully. Last inserted ID is: " . $last_id;
+//        } else {
+//            echo "Error: " . $sql . "<br>" . $connection->error;
+//        }
+//    }
 
     abstract public function getTableName();
 
     abstract public function getCols();
     abstract public function getValues();
+
 
 }

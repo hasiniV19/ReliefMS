@@ -1,0 +1,110 @@
+@import url('https://fonts.googleapis.com/css?family=Rubik&display=swap');
+
+body {
+    font-family: 'Rubik', sans-serif;
+    height: 100% !important;
+    /*background-color: #F8F9FB !important*/
+}
+h1, h2, h3, h4, h5, h6,
+.h1, .h2, .h3, .h4, .h5, .h6 {
+    font-family: "Roboto", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji"; }
+
+
+
+p {
+    font-size: calc(12px + (14 - 12) * ((100vw - 360px) / (1600 - 360))) !important;
+    display: flex;
+}
+#cpy{
+    text-align: center;
+}
+
+
+.social {
+    font-size: 21px !important
+}
+
+.color-text {
+    color: #6f42c1 !important
+}
+
+
+footer {
+    color: #caced1 !important
+}
+
+li {
+    margin-top: 20px;
+    margin-bottom: 20px
+}
+
+.Careers {
+    cursor: pointer;
+    color: #1E88E5
+}
+
+.row-1 {
+    background-color: white !important
+}
+
+.row-2 {
+    background-color: white !important
+}
+
+.navbar{padding: 0.05rem 3rem !important;}
+
+a.navbar-brand{
+    font-size: 30px;
+    /*font-weight: bold;*/
+    color: #ff6666;!important;
+}
+
+a.nav-link{
+    font-weight: bold;
+    margin-left: 20px;
+    color: #ff6666;
+}
+
+a {
+    -webkit-transition: .3s all ease;
+    -o-transition: .3s all ease;
+    transition: .3s all ease; }
+a, a:hover {
+    text-decoration: none !important; }
+
+.content {
+    height: 70vh; }
+
+.footer-16371 {
+    background-color: white;
+    padding-top: 5rem ;
+
+    font-family: "Poppins", sans-serif; }
+.footer-16371 .footer-site-logo {
+    text-align: center;
+    font-size: 2rem;
+    font-weight: 900; }
+.footer-16371 .footer-site-logo a {
+    color: #4200ff; }
+.footer-16371 .nav-links {
+    padding: 0;
+    margin: 0; }
+.footer-16371 .nav-links li {
+    display: inline-block; }
+.footer-16371 .nav-links li a {
+    padding: 10px;
+    color: #000; }
+.footer-16371 .nav-links li a:hover {
+    color: #4200ff; }
+.footer-16371 .social h3 {
+    font-weight: bold;
+    font-size: 18px;
+    color: #000; }
+.footer-16371 .social ul li {
+    display: inline-block; }
+.footer-16371 .social ul li a {
+    display: inline-block;
+    padding: 10px; }
+.footer-16371 .copyright {
+    color: #999999; }
+

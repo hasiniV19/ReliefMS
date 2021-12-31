@@ -4,18 +4,17 @@ namespace app\model;
 
 use app\core\DBModel;
 
-class VolunteerApplication extends DBModel
+class VolunteerApplicationModel extends DBModel
 {
-
-    public $name;
-    public $address;
-    public $age;
-    public $gender;
-    public $occupation;
-    public $available_day;
-    public $have_vehicle;
-    public $status;
-    public $mobile;
+    private $name;
+    private $address;
+    private $age;
+    private $gender;
+    private $occupation;
+    private $available_day;
+    private $have_vehicle;
+    private $status;
+    private $mobile;
 
 
     public function getTableName()

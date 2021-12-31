@@ -6,17 +6,20 @@ namespace app\core\database;
 use mysqli;
 
 
-class Database
+class Database implements GenericDB
 {
+    private $mysqli;
+
     private $_host;
     private $_username;
     private $_password;
     private $_database;
+    private static $_instance;
 
     public $conn = null;
 
 
-    function __construct()
+    private function __construct()
     {
         $this->set_db_attributes();
         $this->conn = new mysqli($this->_host, $this->_username, $this->_password, $this->_database);
@@ -24,6 +27,24 @@ class Database
             echo "Fail" . $this->conn->connect_error;
         }
 
+    }
+
+    public static function getInstance()
+    {
+        if(!self::$_instance){
+            self::$_instance = new self();
+        }
+        return self::$_instance;
+    }
+
+    public function __clone()
+    {
+        trigger_error('Clone is not allowed.',E_USER_ERROR);
+    }
+
+    public function getConnection()
+    {
+        return $this->conn;
     }
 
     public function set_db_attributes(){
@@ -37,21 +58,55 @@ class Database
     {
         $result = $this->conn->prepare($sql);
         $types = $this->get_types($array);
-        var_dump($types);
         $result->bind_param($types, ...$array);
         $result->execute();
+        return $this->conn->insert_id;
     }
 
-    public function get_record($sql, $type, $id)
+    public function get_record($sql, $data)
     {
-
         $statement = $this->conn->prepare($sql);
-        $statement->bind_param($type, $id);
+        $types = $this->get_types($data);
+        $statement->bind_param($types,... $data);
         $statement->execute();
         $result = $statement->get_result();
         $data = $result->fetch_assoc();
         return $data;
 
+    }
+
+    public function get_records($sql, $data)
+    {
+        $statement = $this->conn->prepare($sql);
+        $types = $this->get_types($data);
+        $statement->bind_param($types,... $data);
+        $statement->execute();
+        $result = $statement->get_result();
+        $data =[];
+        //var_dump($data);
+        while ($row = $result->fetch_assoc()){
+            //var_dump($row);
+            $data[] = $row;
+        }
+        //var_dump($data);
+        return $data;
+    }
+
+    public function get_all($query)
+    {
+        $statement = $this->conn->prepare($query);
+//        $types = $this->get_types($data);
+//        $statement->bind_param($types,... $data);
+        $statement->execute();
+        $result = $statement->get_result();
+        $data =[];
+        //var_dump($data);
+        while ($row = $result->fetch_assoc()){
+            //var_dump($row);
+            $data[] = $row;
+        }
+        //var_dump($data);
+        return $data;
     }
 
     public function set_status($sql, $status, $id)
@@ -60,6 +115,22 @@ class Database
         var_dump($statement);
         $statement->bind_param('si', $status, $id);
         $statement->execute();
+    }
+
+    public function update($query, $data)
+    {
+        $result = $this->conn->prepare($query);
+        $types = $this->get_types($data);
+        $result->bind_param($types, ...$data);
+        $result->execute();
+    }
+
+    public function delete($query, $data)
+    {
+        $result = $this->conn->prepare($query);
+        $types = $this->get_types($data);
+        $result->bind_param($types, ...$data);
+        $result->execute();
     }
 
     // get types of element in an array

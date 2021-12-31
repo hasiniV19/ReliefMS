@@ -1,0 +1,23 @@
+body{
+    background: rgba(111, 66, 193, 0.1) !important;
+
+}
+.con-row {
+}
+.con-title, .con-description{
+    color:  #6f42c1;
+}
+
+.con-description{
+    font-size: 1.3rem;
+    font-weight: 500;
+}
+
+.con{
+    color: #4b2b88;
+    margin: 1.5vw;
+}
+
+.con-container{
+    margin-top: 10%;
+}
