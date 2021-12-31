@@ -13,6 +13,8 @@
 /*** @var $date */
 /*** @var $status */
 
+use app\view\DateConverter;
+
 ?>
 
 <style>
@@ -109,7 +111,8 @@
                 <label for="submitted-date-title" class="input-title">Submitted Date</label>
             </div>
             <div class=" col-md-7">
-                <label for="submit-date" class="input-label"><?php if (isset($date)) echo $date; ?></label>
+<!--                <label for="submit-date" class="input-label">--><?php //if (isset($date)) echo date('d/m/Y', strtotime($date)); ?><!--</label>-->
+                <label for="submit-date" class="input-label"><?php if (isset($date)) echo DateConverter::convertdate($date); ?></label>
             </div>
         </div>
 
