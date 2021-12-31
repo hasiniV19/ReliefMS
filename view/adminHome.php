@@ -22,7 +22,7 @@
                                 </div>
                             </a>
                             <div class="body">
-                                <a href="<?php echo 'http://localhost:8080/fsRecipients'?>"><h3>Financial Support</h3></a>
+                                <a href="<?php echo 'http://localhost:8080/fsRecipients'?>"><h3 class="text-center">Financial Support</h3></a>
                                 <!--<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odio, debitis!</p>-->
                             </div>
                         </div>
@@ -33,7 +33,7 @@
                                 </div>
                             </a>
                             <div class="body">
-                                <a href="<?php echo 'http://localhost:8080/approvedRecipients'?>"><h3>Approved</h3></a>
+                                <a href="<?php echo 'http://localhost:8080/approvedRecipients'?>"><h3 class="text-center">Approved</h3></a>
                                 <!--<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odio, debitis!</p>-->
                             </div>
                         </div>
@@ -46,7 +46,7 @@
                                 </div>
                             </a>
                             <div class="body">
-                                <a href="<?php echo 'http://localhost:8080/donors'?>"><h3>Donors</h3></a>
+                                <a href="<?php echo 'http://localhost:8080/donors'?>"><h3 class="text-center">Donors</h3></a>
                                 <!--<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odio, debitis!</p>-->
                             </div>
                         </div>
@@ -57,7 +57,7 @@
                             </div>
                             </a>
                             <div class="body">
-                                <a href="<?php echo 'http://localhost:8080/volunteers'?>"><h3>Volunteers</h3></a>
+                                <a href="<?php echo 'http://localhost:8080/volunteers'?>"><h3 class="text-center">Volunteers</h3></a>
                                 <!--<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odio, debitis!</p>-->
                             </div>
                         </div>
@@ -70,7 +70,7 @@
                             </div>
                             </a>
                             <div class="body">
-                                <a href="<?php echo 'http://localhost:8080/msRecipients'?>"><h3>Covid Patients</h3></a>
+                                <a href="<?php echo 'http://localhost:8080/msRecipients'?>"><h3 class="text-center">Covid Patients</h3></a>
                                 <!--<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odio, debitis!</p>-->
                             </div>
                         </div>
@@ -81,7 +81,7 @@
                             </div>
                             </a>
                             <div class="body">
-                                <a href="<?php echo 'http://localhost:8080/aidedRecipients'?>"><h3>Aided</h3></a>
+                                <a href="<?php echo 'http://localhost:8080/aidedRecipients'?>"><h3 class="text-center">Aided</h3></a>
                                <!-- <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odio, debitis!</p>-->
                             </div>
                         </div>

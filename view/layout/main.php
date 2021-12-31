@@ -69,7 +69,10 @@ use app\core\App;
                     <a href="#">Epsilon Foundation</a>
                 </div>
                 <ul class="list-unstyled nav-links mb-5">
-                    <li><a href="<?php echo 'http://localhost:8080/'?>">Home</a></li>
+                    <?php $user_type = App::$app->session->get('user_type') ?>
+                    <li><a href="<?php if($user_type === 'admin') echo 'http://localhost:8080/adminHome';
+                        elseif ($user_type === 'donor') echo 'http://localhost:8080/donorHome';
+                        else echo 'http://localhost:8080/'?>">Home</a></li>
                     <li><a href="#">About</a></li>
                     <li><a href="<?php echo 'http://localhost:8080/login'?>">Donate</a></li>
                     <li><a href="<?php echo 'http://localhost:8080/login'?>">Login</a></li>
