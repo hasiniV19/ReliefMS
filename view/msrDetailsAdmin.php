@@ -192,7 +192,7 @@
 
         <div class="form-btn-row form-row text-center">
             <div class="col-md-4 btn-row">
-                <button type="submit" class="btn btn-primary submit-button">Go Back</button>
+                <a href="<?php echo 'http://localhost:8080/msRecipients'?>" class="btn btn-primary submit-button">Go Back</a>
             </div>
             <div class="col-md-4 btn-row ">
                 <button type="submit" class="btn btn-danger submit-button">Decline</button>

@@ -22,7 +22,7 @@ use app\core\Session;
                 <div class="row">
                     <div class="col-lg-4 col-md-4 col-12">
                         <div class="media-v1 bg-1">
-                            <a href="">
+                            <a href="<?php echo 'http://localhost:8080/raiseFundForm'?>">
                             <div class="icon-wrap">
                                 <span class="button__icon"><i class="fas fa-donate"></i></span>
                             </div>
@@ -35,7 +35,7 @@ use app\core\Session;
                     </div>
                     <div class="col-lg-4 col-md-4 col-12">
                         <div class="media-v1 bg-1">
-                            <a href="">
+                            <a href="<?php echo 'http://localhost:8080/approvedRecipients'?>">
                             <div class="icon-wrap">
 
                                 <span class="button__icon"><i class="fas fa-hands-helping"></i></span>
@@ -50,7 +50,7 @@ use app\core\Session;
 
                     <div class="col-lg-4 col-md-4 col-12">
                         <div class="media-v1 bg-1">
-                            <a href="">
+                            <a href="<?php echo 'http://localhost:8080/donorProfile'?>">
                                 <div class="icon-wrap">
                                     <span class="button__icon"><i class="fas fa-user-edit"></i></span>
                                 </div>

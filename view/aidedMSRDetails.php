@@ -183,7 +183,7 @@
         </div>
 
         <div class="text-center" >
-            <button type="submit" class="btn btn-primary go-back-button">Go Back</button>
+            <a href="<?php echo 'http://localhost:8080/aidedRecipients'?>" class="btn btn-primary go-back-button">Go Back</a>
         </div>
 
     </form>

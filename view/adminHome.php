@@ -16,7 +16,7 @@
                 <div class="row">
                     <div class="col-lg-4 col-md-4 col-sm-6 col-12 mt-lg-5 mt-md-5">
                         <div class="media-v1 bg-1">
-                            <a href="">
+                            <a href="<?php echo 'http://localhost:8080/fsRecipients'?>">
                                 <div class="icon-wrap">
                                     <span class="button__icon"><i class="fas fa-hands-helping"></i></span>
                                 </div>

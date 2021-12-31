@@ -198,7 +198,7 @@
 
         <div class="form-btn-row form-row text-center">
             <div class="col-md-6 btn-row " id="btn-1">
-                <button type="submit" class="btn btn-primary submit-button" style="width: 200px">Go Back</button>
+                <a href="<?php echo 'http://localhost:8080/approvedRecipients'?>" class="btn btn-primary submit-button" style="width: 200px">Go Back</a>
             </div>
 
             <div class="col-md-6  btn-row" id="btn-2">
