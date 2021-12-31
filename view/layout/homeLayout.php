@@ -35,7 +35,7 @@
                     <a class="nav-link" href="<?php echo 'http://localhost:8080/'?>">Home <span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="">About</a>
+                    <a class="nav-link" href="#about">About</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="<?php echo 'http://localhost:8080/login'?>">Donate</a>
@@ -45,7 +45,7 @@
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Contact</a>
+                    <a class="nav-link"  href="#contact">Contact</a>
                 </li>
             </ul>
         </div>
@@ -62,10 +62,10 @@
                 </div>
                 <ul class="list-unstyled nav-links mb-5">
                     <li><a href="<?php echo 'http://localhost:8080/'?>">Home</a></li>
-                    <li><a href="#">About</a></li>
+                    <li><a href="#about">About</a></li>
                     <li><a href="<?php echo 'http://localhost:8080/login'?>">Donate</a></li>
                     <li><a href="<?php echo 'http://localhost:8080/login'?>">Login</a></li>
-                    <li><a href="#">Contact</a></li>
+                    <li><a href="#contact">Contact</a></li>
                 </ul>
 
                 <div class="social mb-4">

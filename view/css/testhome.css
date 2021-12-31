@@ -1,3 +1,7 @@
+html {
+    scroll-behavior: smooth;
+}
+
 .hero-v1 {
     padding-top: 0;
     border-bottom-right-radius: 50%;
@@ -92,4 +96,23 @@ a.btn.btn-secondary{
 
 #three{
     padding-top: 6vw;
+    /*background-color: white;*/
 }
+
+body {
+    background-color: #eee
+}
+
+.card {
+    padding: 10px;
+    height: 250px;
+    border: none;
+    -webkit-box-shadow: 0px 1px 9px 3px rgba(219, 210, 219, 1);
+    -moz-box-shadow: 0px 1px 9px 3px rgba(219, 210, 219, 1);
+    box-shadow: 0px 1px 9px 3px rgba(219, 210, 219, 1);
+    display: flex;
+    justify-content: center;
+    align-items: center
+}
+
+

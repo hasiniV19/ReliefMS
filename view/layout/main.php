@@ -73,10 +73,10 @@ use app\core\App;
                     <li><a href="<?php if($user_type === 'admin') echo 'http://localhost:8080/adminHome';
                         elseif ($user_type === 'donor') echo 'http://localhost:8080/donorHome';
                         else echo 'http://localhost:8080/'?>">Home</a></li>
-                    <li><a href="#">About</a></li>
+                    <li><a href="#about">About</a></li>
                     <li><a href="<?php echo 'http://localhost:8080/login'?>">Donate</a></li>
                     <li><a href="<?php echo 'http://localhost:8080/login'?>">Login</a></li>
-                    <li><a href="#">Contact</a></li>
+                    <li><a href="#contact">Contact</a></li>
                 </ul>
 
                 <div class="social mb-4">
