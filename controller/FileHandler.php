@@ -29,14 +29,15 @@ class FileHandler
 
     public function saveFile(){
         if (move_uploaded_file($_FILES[$this->fileInputName]["tmp_name"], $this->targetFile)){
-            var_dump("uploaded successfully");
+            return true;
         }
+        return false;
     }
 
     public function getFile($request_id)
     {
         $fileValidateRequest = new ValidateRequest($this->fileInputName, "");
-        if($_FILES["fileToUpload"]["size"] === 0){
+        if($_FILES[$this->fileInputName]["size"] === 0){
             $fileValidateRequest->setIsValid(false);
             $fileValidateRequest->setValidError("*GS certificate is required");
             return $fileValidateRequest;

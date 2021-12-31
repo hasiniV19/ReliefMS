@@ -8,6 +8,7 @@ use app\core\Request;
 use app\core\Response;
 use app\model\AidDonationDetailsModel;
 use app\model\DonationDetailsModel;
+use app\model\DonationListModel;
 use app\model\DonorDetailsModel;
 use app\model\FsrDetailsModel;
 use app\model\MoneyDonationDetailsModel;
@@ -26,13 +27,33 @@ class DisplayController extends Controller{
         $donorId = $body["donor_id"];
         App::$app->session->set("donor_id", $donorId);
         App::$app->session->set("view_type", "donors");
-        $donorModel = new DonorDetailsModel();
 
+        $donorModel = new DonorDetailsModel();
         $donorBody = ["donor_id"=>$donorId];
         $donorModel->setAttributes($donorBody);
-        $data = $donorModel->retrieve();
+        $data_donor = $donorModel->retrieve();
 
-        return $this->render("donorDetails", "main", $data);
+        $donationListModel = new DonationListModel();
+        $donationListModel->setAttributes($donorBody);
+        $data_donations = $donationListModel->retrieve_records();
+
+        $money_donations = [];
+        $aid_donations =[];
+
+        foreach ($data_donations as $donation) {
+            if ($donation["donation_type"] === "money")
+            {
+                $money_donations[]=$donation;
+            }
+            else{
+                $aid_donations[]=$donation;
+            }
+        }
+
+        $data_donor["money_donations"] = $money_donations;
+        $data_donor["aid_donations"] = $aid_donations;
+
+        return $this->render("donorDetails", "main", $data_donor);
     }
 
 
@@ -197,13 +218,16 @@ class DisplayController extends Controller{
 
     public function displayMoneyDonationDetails(Request $request, Response $response)
     {
+        $body = $request->getBody();
+        $donation_id = (int) $body["donation_id"];
+        App::$app->session->set("donation_id", $donation_id);
         $moneyDonationDetailsModel = new MoneyDonationDetailsModel();
-        $moneyDonationBody = ["m_donation_id"=>1];
+        $moneyDonationBody = ["donation_id"=>$donation_id];
         $moneyDonationDetailsModel->setAttributes($moneyDonationBody);
         $data_money = $moneyDonationDetailsModel->retrieve();
 
         $donationDetailsModel = new DonationDetailsModel();
-        $donationBody = ["donation_id"=>1];
+        $donationBody = ["donation_id"=>$donation_id];
         $donationDetailsModel->setAttributes($donationBody);
         $data_donation = $donationDetailsModel->retrieve();
 
@@ -224,8 +248,11 @@ class DisplayController extends Controller{
 //                $aidDonation->approve();
 //           }
 //        }
+        $body = $request->getBody();
+        $donation_id = (int) $body["donation_id"];
         $aidDonationDetailsModel = new AidDonationDetailsModel();
-        $aidDonationBody = ["a_donation_id"=>1];
+        $aidDonationBody = ["donation_id"=> $donation_id];
+        App::$app->session->set("donation_id", $donation_id);
         $aidDonationDetailsModel->setAttributes($aidDonationBody);
         $data_aid = $aidDonationDetailsModel->retrieve();
 
@@ -247,7 +274,7 @@ class DisplayController extends Controller{
         }
 
         $donationDetailsModel = new DonationDetailsModel();
-        $donationBody = ["donation_id"=>2];
+        $donationBody = ["donation_id"=>$donation_id];
         $donationDetailsModel->setAttributes($donationBody);
         $data_donation = $donationDetailsModel->retrieve();
 

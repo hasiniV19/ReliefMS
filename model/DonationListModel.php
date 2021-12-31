@@ -4,23 +4,24 @@ namespace app\model;
 
 use app\core\DBModel;
 
-class AidDonationDetailsModel extends DBModel
+class DonationListModel extends DBModel
 {
-    private $donation_id;
+
+    private $donor_id;
 
     public function getTableName()
     {
-        return "aid_donation_requests";
+        return "donation_requests";
     }
 
     public function getCols()
     {
-        return ["collecting_method","station","recipient_id","a_donation_id", "donation_id"];
+        return ["donor_id"];
     }
 
     public function getValues()
     {
-        return [$this->donation_id];
+        return [$this->donor_id];
     }
 
     public function setAttributes($data){

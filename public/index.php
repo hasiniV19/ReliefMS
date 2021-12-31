@@ -99,10 +99,6 @@ $app->route()->post("/register", [AuthController::class, "register"]);
 $app->route()->get("/aidDonationRequest", [FormController::class, "addAidDonation"]);
 $app->route()->post("/aidDonationRequest", [FormController::class, "addAidDonation"]);
 
-
-//$app->route()->get("/donorProfile", [FormController::class, "addDonorProfile"]);
-//$app->route()->post("/donorProfile", [AuthController::class, "addDonorProfile"]);
-
 $app->route()->get("/donorProfile", [FormController::class, "updateDonorProfile"]);
 $app->route()->post("/donorProfile", [FormController::class, "updateDonorProfile"]);
 
