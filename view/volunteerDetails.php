@@ -17,7 +17,7 @@
 </style>
 
 <div class="row">
-    <form class="container form-container col-lg-6 col-md-8 col-10">
+    <form method="post" action="/volunteerDetails" class="container form-container col-lg-6 col-md-8 col-10">
         <h2 class="title">Volunteer Details</h2>
 
         <div class="form-row">
@@ -117,10 +117,10 @@
                 <button type="submit" class="btn btn-primary submit-button">Go Back</button>
             </div>
             <div class="col-md-4 btn-row">
-                <button type="submit" class="btn btn-danger submit-button">Decline</button>
+                <button name="decline" type="submit" class="btn btn-danger submit-button">Decline</button>
             </div>
             <div class="col-md-4  btn-row ">
-                <button type="submit" class="btn btn-success submit-button">Approve</button>
+                <button name="approve" type="submit" class="btn btn-success submit-button">Approve</button>
             </div>
 
 

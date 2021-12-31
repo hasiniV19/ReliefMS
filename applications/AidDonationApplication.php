@@ -1,6 +1,6 @@
 <?php
 
-namespace app\controller;
+namespace app\applications;
 
 use app\core\DBModel;
 
