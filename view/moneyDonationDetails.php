@@ -1,9 +1,10 @@
 <?php
-
+use app\core\App;
 /*** @var $receipt_name */
 /*** @var $amount */
 /*** @var $date */
 /*** @var $status */
+/*** @var $m_donation_id */
 
 
 ?>
@@ -21,7 +22,9 @@
                 <label for="reci-name-title" class="input-title">Receipt Name</label>
             </div>
             <div class=" col-md-7">
-                <label for="reci-name" class="input-label"><?php if (isset($receipt_name)) echo $receipt_name; ?></label>
+                <label for="reci-name" class="input-label" ><a href="<?php echo 'http://localhost:8080/uploadReceipts/';
+                if (isset($m_donation_id) && isset($receipt_name)) echo $m_donation_id.$receipt_name;
+                ?>"target ="_blank"><?php if (isset($receipt_name)) echo $receipt_name; ?></a></label>
             </div>
         </div>
 
