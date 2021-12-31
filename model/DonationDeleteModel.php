@@ -1,34 +1,32 @@
 <?php
 
 namespace app\model;
+
 use app\core\DBModel;
 
-class RaiseFundApplication extends DBModel
+class DonationDeleteModel extends DBModel
 {
-    private $amount;
     private $donation_id;
 
     public function getTableName()
     {
-        return "money_donation_requests";
+        return "donation_requests";
     }
 
     public function getCols()
     {
-        return ["donation_id","amount"];
+        return ["donation_id"];
     }
 
     public function getValues()
     {
-        return [$this->donation_id, $this->amount];
+        return [$this->donation_id];
     }
 
     public function setAttributes($data)
     {
-        foreach ($data as $key=>$value) {
-            $this->{$key}= $value;
+        foreach ($data as $key=>$value){
+            $this->{$key} = $value;
         }
     }
-
-
 }

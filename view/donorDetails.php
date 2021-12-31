@@ -93,7 +93,9 @@
                         }
                         echo $donation_status;
                         echo "</div>
-                                <a class='link ' href='http://localhost:8080/aidDonationDetails?donation_id ='$donation_id >View</a>
+                                <a class='link' href='http://localhost:8080/aidDonationDetails?donation_id=";
+                        echo $donation_id;
+                        echo "'>View</a>
                             </div>
                         </div>
 
@@ -138,12 +140,11 @@
                         }
                         echo $donation_status;
                                 echo "</div>
-                                <a class='link ' href='http://localhost:8080/moneyDonationDetails?donation_id ='$donation_id >View</a>
+                                <a class='link ' href='http://localhost:8080/moneyDonationDetails?donation_id=$donation_id'>View</a>
                             </div>
                         </div>
 
                     </div>
-                        
                         ";
                     } ?>
 

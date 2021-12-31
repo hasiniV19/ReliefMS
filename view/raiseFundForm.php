@@ -1,6 +1,7 @@
 <?php
 use app\handlers\ValidateRequest;
 /*** @var $amount */
+/*** @var $fileToUpload */
 ?>
 
 <!--<body class="bg-light">-->
@@ -11,44 +12,14 @@ use app\handlers\ValidateRequest;
 
 <div class="container">
 
-
     <div class="row">
-        <form class="container form-container needs-validation col-lg-8 col-md-8 col-10 py-3" novalidate>
+        <form method="post" action="/raiseFundForm" class="container form-container needs-validation col-lg-8 col-md-8 col-10 py-3" enctype="multipart/form-data">
             <h2 class="title text-center py-3">Your Donation Will Make a Difference</h2>
             <p class="lead text-center py-2">Your donation will be added to our fund and will be monitored by
                 our
                 team and deploy to the needies.</p>
 
                 <p class="lead text-center py-2" style="color: #ff6666">Please make sure to mention your name as the narration/description/remark/beneficiary remark to track your payment easily.</p>
-
-
-
-<!--            <div class="row">-->
-<!--                <div class="col-md-6 mb-3">-->
-<!--                    <label for="firstName" class="input-label">First name</label>-->
-<!--                    <input type="text" class="form-control input-field" id="firstName" placeholder="First name" value="" required>-->
-<!--                    <div class="invalid-feedback">-->
-<!--                        Valid first name is required.-->
-<!--                    </div>-->
-<!--                </div>-->
-<!--                <div class="col-md-6 mb-3">-->
-<!--                    <label for="lastName" class="input-label">Last name</label>-->
-<!--                    <input type="text" class="form-control input-field" id="lastName" placeholder="Last name" value="" required>-->
-<!--                    <div class="invalid-feedback">-->
-<!--                        Valid last name is required.-->
-<!--                    </div>-->
-<!--                </div>-->
-<!--            </div>-->
-<!---->
-<!---->
-<!--            <div class="mb-3">-->
-<!--                <label for="nic" class="input-label">NIC Number</label>-->
-<!--                <input type="email" class="form-control input-field" id="nic" placeholder="Your NIC Number">-->
-<!--                <div class="invalid-feedback">-->
-<!--                    Please enter a valid NIC Number.-->
-<!--                </div>-->
-<!--            </div>-->
-
 
             <hr class="mb-4">
 
@@ -63,10 +34,6 @@ use app\handlers\ValidateRequest;
                     <input type="text" name="amount" class="form-control input-field" id="donation-amount" placeholder="Donation Amount"
                            value="<?php if (isset($amount)) echo $amount->getValue();?>">
                     <span class="err-msg"><?php if (isset($amount)) echo $amount->getValidError();?></span>
-<!--                    <div class="invalid-feedback" style="width: 100%;">-->
-<!--                        Your dontion amount is required.-->
-<!--                    </div>-->
-
                 </div>
             </div>
             <br>
@@ -74,12 +41,8 @@ use app\handlers\ValidateRequest;
                 <label for="upload-title" class="input-label">Upload a copy(photo) of your deposit slip/transaction receipt.</label>
                 <div class="input-group">
                     <div class="custom-file">
-<!--                        <input type="file" class="custom-file-input input-field" id="inputGroupFile04"-->
-<!--                               aria-describedby="inputGroupFileAddon04">-->
-<!--                        <label class="custom-file-label " for="inputGroupFile04">Choose file</label>-->
-                        <input type="file" name="fileToUpload" id="fileToUpload" class="form-control-file"
-                               value="<?php if (isset($fileToUpload)) echo $fileToUpload->getValue()->getFileName();?>">
-                        <span class="err-msg"><?php if (isset($fileToUpload)) echo $fileToUpload->getValidError();?></span>
+                        <input type="file" name="fileToUpload" id="fileToUpload" class="form-control-file" value="">
+                        <div class="err-msg"><?php if (isset($fileToUpload)) echo $fileToUpload->getValidError();?></div>
                     </div>
                 </div>
                 <div class="invalid-feedback">

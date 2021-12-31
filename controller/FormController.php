@@ -27,6 +27,7 @@ use app\handlers\OtherNeedValidateHandler;
 use app\handlers\ValidateHandler;
 use app\handlers\ValidateRequest;
 use app\model\AidDonationModel;
+use app\model\DonationDeleteModel;
 use app\model\DonationModel;
 use app\model\DonorDetailsModel;
 use app\model\DonorModel;
@@ -34,6 +35,7 @@ use app\model\FsRecipientDeleteModel;
 use app\model\FsrFileModel;
 
 use app\model\DonorApplication;
+use app\model\MoneyDonationDeleteModel;
 use app\model\OtherNeedModel;
 use app\model\QuarantResidents;
 
@@ -287,7 +289,6 @@ class FormController extends Controller
                                 $fileHandler->saveFile();
                                 $fileModel = new FsrFileModel();
                                 $gmsBody = ["fsr_id" => $fsrId, "gms_certificate" => $fileValidateRequest->getValue()->getFileName()];
-                                var_dump($gmsBody);
                                 $fileModel->setAttributes($gmsBody);
                                 if ($fileModel->update()) {
                                     $otherNeedModel = new OtherNeedModel();
@@ -403,29 +404,68 @@ class FormController extends Controller
             $body = $request->getBody();
 
             if ($this->validate($body)) {
-                $model = new RaiseFundApplication();
-                $model->setAttributes($body);
-                if ($model->save()) {
-                    $fileHandler = new FileHandler("uploads/", "fileToUpload");
-                    $m_donation_id = $model->getLastID();
-                    $fileValidateRequest = $fileHandler->getFile($m_donation_id);
-                    if ($fileValidateRequest !== false) {
-                        if ($this->validateFile($fileValidateRequest)) {
-                            $fileHandler->saveFile();
-                            $fileModel = new RaiseFundFileModel();
-                            $receiptBody = ["m_donation_id" => $m_donation_id, "receipt_name" => $fileValidateRequest->getValue()->getFileName()];
-                            var_dump($receiptBody);
-                            $fileModel->setAttributes($receiptBody);
-                            if ($fileModel->update()) {
 
-                                $response->redirect("http://localhost:8080/confirmation");
-                                exit;
-                            } else {
-                                $this->validateRequests["fileToUpload"] = $fileValidateRequest;
+                $user_id = App::$app->session->get("user_id");
+                $donorModel = new DonorModel();
+                $donorModel->setAttributes(["user_id"=>$user_id]);
+                $donorDetails = $donorModel->retrieve();
+                $donorId = $donorDetails["donor_id"];
+
+                $donationModel = new DonationModel();
+                $donationModel->setAttributes(["donor_id"=>$donorId, "donation_type"=>"money"]);
+                if ($donationModel->save()){
+                    $donationId = $donationModel->getLastID();
+                    $moneyDonation = ["donation_id"=>$donationId, "amount"=>$body["amount"]];
+                    $model = new RaiseFundApplication();
+                    $model->setAttributes($moneyDonation);
+
+                    // save money donation to database and get uploaded file
+                    if ($model->save()) {
+                        $mDonationId = $model->getLastID();
+                        $fileHandler = new FileHandler("uploadReceipts/", "fileToUpload");
+                        $fileValidateRequest = $fileHandler->getFile($mDonationId);
+
+                        if (!$fileValidateRequest->getIsValid())
+                            $fileValidateRequest->setValidError("*Please Upload your receipt");
+
+                        $this->validateRequests["fileToUpload"] = $fileValidateRequest;
+                        if ($fileValidateRequest->getIsValid() !== false) {
+                            if ($this->validateFile($fileValidateRequest)){
+                                $fileHandler->saveFile(); // save file to local directory
+                                $raiseFundFileModel = new RaiseFundFileModel();
+                                $raiseFileBody = ["receipt_name"=>$fileValidateRequest->getValue()->getFileName(), "m_donation_id"=>$mDonationId];
+                                $raiseFundFileModel->setAttributes($raiseFileBody);
+                                if ($raiseFundFileModel->update()) {
+                                    App::$app->session->setFlash("success",
+                                        "We are grateful for your contribution &#10084;");
+                                    $response->redirect("http://localhost:8080/donorHome");
+                                    exit;
+                                }
                             }
+                            else {
+                                $mDonationDeleteModel = new MoneyDonationDeleteModel();
+                                $mDonationDeleteModel->setAttributes(["m_donation_id"=>$mDonationId]);
+                                $mDonationDeleteModel->delete();
+
+                                $donationDeleteModel = new DonationDeleteModel();
+                                $donationDeleteModel->setAttributes(["donation_id"=>$donationId]);
+                                $donationDeleteModel->delete();
+                                return $this->render("raiseFundForm","main", $this->validateRequests);
+                            }
+                        }
+                        else {
+                            $mDonationDeleteModel = new MoneyDonationDeleteModel();
+                            $mDonationDeleteModel->setAttributes(["m_donation_id"=>$mDonationId]);
+                            $mDonationDeleteModel->delete();
+
+                            $donationDeleteModel = new DonationDeleteModel();
+                            $donationDeleteModel->setAttributes(["donation_id"=>$donationId]);
+                            $donationDeleteModel->delete();
+                            return $this->render("raiseFundForm","main", $this->validateRequests);
                         }
                     }
                 }
+
             }else{
                 return $this->render("raiseFundForm","main", $this->validateRequests);
             }
