@@ -13,6 +13,8 @@
 /*** @var $status */
 /*** @var $recipient_id*/
 
+use app\view\DateConverter;
+
 ?>
 
 <style>
@@ -111,7 +113,7 @@
                 <label for="submitted-date-title" class="input-title">Submitted Date</label>
             </div>
             <div class=" col-md-7">
-                <label for="submit-date" class="input-label"><?php if (isset($date)) echo $date; ?></label>
+                <label for="submit-date" class="input-label"><?php if (isset($date)) echo DateConverter::convertdate($date); ?></label>
             </div>
         </div>
 
@@ -127,7 +129,7 @@
 
         <div class="form-btn-row form-row text-center">
             <div class="col-md-6 btn-row " id="btn-1">
-                <button type="submit" class="btn btn-primary submit-button" style="width: 200px">Go Back</button>
+                <a href="<?php echo 'http://localhost:8080/approvedRecipients'?>" class="btn btn-primary submit-button" style="width: 200px">Go Back</a>
             </div>
 
             <div class="col-md-6  btn-row" id="btn-2">

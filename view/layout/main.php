@@ -1,5 +1,8 @@
 <?php
+/*** @var $user_type */
 use app\core\App;
+
+
 ?>
 
 <style>
@@ -32,7 +35,10 @@ use app\core\App;
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item active">
-                    <a class="nav-link" href="<?php echo 'http://localhost:8080/'?>">Home <span class="sr-only">(current)</span></a>
+                    <?php $user_type = App::$app->session->get('user_type') ?>
+                    <a class="nav-link" href="<?php if($user_type === 'admin') echo 'http://localhost:8080/adminHome';
+                    elseif ($user_type === 'donor') echo 'http://localhost:8080/donorHome';
+                    else echo 'http://localhost:8080/'?>">Home <span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#">About</a>
@@ -63,7 +69,10 @@ use app\core\App;
                     <a href="#">Epsilon Foundation</a>
                 </div>
                 <ul class="list-unstyled nav-links mb-5">
-                    <li><a href="<?php echo 'http://localhost:8080/'?>">Home</a></li>
+                    <?php $user_type = App::$app->session->get('user_type') ?>
+                    <li><a href="<?php if($user_type === 'admin') echo 'http://localhost:8080/adminHome';
+                        elseif ($user_type === 'donor') echo 'http://localhost:8080/donorHome';
+                        else echo 'http://localhost:8080/'?>">Home</a></li>
                     <li><a href="#">About</a></li>
                     <li><a href="<?php echo 'http://localhost:8080/login'?>">Donate</a></li>
                     <li><a href="<?php echo 'http://localhost:8080/login'?>">Login</a></li>

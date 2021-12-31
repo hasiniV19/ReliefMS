@@ -22,27 +22,27 @@ use app\core\Session;
                 <div class="row">
                     <div class="col-lg-4 col-md-4 col-12">
                         <div class="media-v1 bg-1">
-                            <a href="">
+                            <a href="<?php echo 'http://localhost:8080/raiseFundForm'?>">
                             <div class="icon-wrap">
                                 <span class="button__icon"><i class="fas fa-donate"></i></span>
                             </div>
                             </a>
                             <div class="body">
-                                <a href="<?php echo 'http://localhost:8080/raiseFundForm'?>"><h3>Donate Money</h3></a>
+                                <a href="<?php echo 'http://localhost:8080/raiseFundForm'?>"><h3 class="text-center">Donate Money</h3></a>
                                 <!--<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odio, debitis!</p>-->
                             </div>
                         </div>
                     </div>
                     <div class="col-lg-4 col-md-4 col-12">
                         <div class="media-v1 bg-1">
-                            <a href="">
+                            <a href="<?php echo 'http://localhost:8080/approvedRecipients'?>">
                             <div class="icon-wrap">
 
                                 <span class="button__icon"><i class="fas fa-hands-helping"></i></span>
                             </div>
                             </a>
                             <div class="body">
-                                <a href="<?php echo 'http://localhost:8080/approvedRecipients'?>"><h3>Donate Aids</h3></a>
+                                <a href="<?php echo 'http://localhost:8080/approvedRecipients'?>"><h3 class="text-center">Donate Aids</h3></a>
                                 <!--<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odio, debitis!</p>-->
                             </div>
                         </div>
@@ -50,13 +50,13 @@ use app\core\Session;
 
                     <div class="col-lg-4 col-md-4 col-12">
                         <div class="media-v1 bg-1">
-                            <a href="">
+                            <a href="<?php echo 'http://localhost:8080/donorProfile'?>">
                                 <div class="icon-wrap">
                                     <span class="button__icon"><i class="fas fa-user-edit"></i></span>
                                 </div>
                             </a>
                             <div class="body">
-                                <a href="<?php echo 'http://localhost:8080/donorProfile'?>"><h3>View Profile</h3></a>
+                                <a href="<?php echo 'http://localhost:8080/donorProfile'?>"><h3 class="text-center">View Profile</h3></a>
                                 <!--<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odio, debitis!</p>-->
                             </div>
                         </div>

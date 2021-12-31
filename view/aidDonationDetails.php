@@ -7,6 +7,8 @@
 /*** @var $status */
 /*** @var $name */
 
+use app\core\App;
+use app\view\DateConverter;
 ?>
 
 <style>
@@ -50,7 +52,7 @@
                 <label for="submit-date-title" class="input-title">Submitted Date</label>
             </div>
             <div class=" col-md-7">
-                <label for="submit-date" class="input-label"><?php if (isset($date)) echo $date; ?></label>
+                <label for="submit-date" class="input-label"><?php if (isset($date)) echo DateConverter::convertdate($date); ?></label>
             </div>
         </div>
 
@@ -66,7 +68,7 @@
 
         <div class="form-btn-row form-row text-center">
             <div class="col-md-4 btn-row">
-                <button type="submit" class="btn btn-primary submit-button">Go Back</button>
+                <a href="<?php echo 'http://localhost:8080/donorDetails?donor_id='.App::$app->session->get('donor_id')?>" class="btn btn-primary submit-button">Go Back</a>
             </div>
             <div class="col-md-4 btn-row ">
                 <button type="submit" class="btn btn-danger submit-button">Decline</button>

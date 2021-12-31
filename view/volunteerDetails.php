@@ -10,6 +10,8 @@
 /*** @var $status */
 /*** @var $mobile */
 /*** @var $date */
+
+use app\view\DateConverter;
 ?>
 
 <style>
@@ -99,7 +101,7 @@
                 <label for="submitted-date-title" class="input-title">Submitted Date</label>
             </div>
             <div class=" col-md-8">
-                <label for="submit-date" class="input-label"><?php if (isset($date)) echo $date; ?></label>
+                <label for="submit-date" class="input-label"><?php if (isset($date)) echo DateConverter::convertdate($date); ?></label>
             </div>
         </div>
 
@@ -114,7 +116,7 @@
 
         <div class="form-btn-row form-row text-center">
             <div class="col-md-4 btn-row ">
-                <button type="submit" class="btn btn-primary submit-button">Go Back</button>
+                <a href="<?php echo 'http://localhost:8080/volunteers'?>" class="btn btn-primary submit-button">Go Back</a>
             </div>
             <div class="col-md-4 btn-row">
                 <button type="submit" class="btn btn-danger submit-button">Decline</button>
