@@ -89,6 +89,9 @@ p{
 a.btn.btn-secondary{
     text-align: center;
 }
+a.btn.btn-secondary:hover{
+    background-color: #4b2b88;
+}
 
 #banner{
     padding-top: 100px;
@@ -118,7 +121,12 @@ a.btn.btn-secondary{
 }
 
 .drop:hover{
-    background-color:#6c757d;
+    background-color: #4b2b88;
+    color: white;
+}
+
+.dropdown-menu{
+    background-color: rgba(111,66,193,0.2);
     color: white;
 }
 
