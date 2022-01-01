@@ -23,7 +23,7 @@ class Application implements IApplication
         $this->state = $this->strToState($state);
     }
 
-    public function getDBModels():DBModel
+    public function getDBModels()
     {
         return $this->dbModels;
     }
