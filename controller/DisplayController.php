@@ -4,6 +4,7 @@ namespace app\controller;
 
 use app\core\App;
 use app\core\Controller;
+use app\core\DBModel;
 use app\core\Request;
 use app\core\Response;
 use app\model\AidDonationDetailsModel;
@@ -16,11 +17,14 @@ use app\model\MsrDetailsModel;
 use app\model\OtherNeedDetailsModel;
 use app\model\QuarantDetailsModel;
 use app\model\QuarantResidents;
+use app\model\RecipientApplication;
 use app\model\RecipientDetailsModel;
+use app\model\RecipientUpdateModel;
 use app\model\VolunteerApplicationModel;
 use app\model\VolunteerDetails;
 use app\applications\Application;
 use app\model\VolunteerUpdateModel;
+use app\applications\ReciApplication;
 
 class DisplayController extends Controller{
     public function displayDonorDetails(Request $request, Response $response)
@@ -108,8 +112,44 @@ class DisplayController extends Controller{
         return $this->render("thankYou", "main");
     }
 
+    public function getApplication( $detailsModel,$recipientUpdateModel)
+    {
+        $recipientId = App::$app->session->get("recipient_id");
+        $comRUpdateModel = new RecipientUpdateModel();
+        $comRUpdateModel->setAttributes(["table"=>"recipients"]);
+
+        $recipientBody = ["recipient_id"=> $recipientId];
+        $detailsModel->setAttributes($recipientBody);
+        $recipientUpdateModel->setAttributes($recipientBody);
+        $comRUpdateModel->setAttributes($recipientBody);
+
+        $recipientApplication = new ReciApplication($detailsModel->retrive()['status'],[$recipientUpdateModel,$comRUpdateModel]);
+
+        return $recipientApplication;
+    }
     public function displayFSRDetailsAdmin(Request $request, Response $response)
     {
+
+        if ($request->isPost()){
+            $fsrDetailsModel = new FsrDetailsModel();
+            $fsrecipientUpdateModel = new RecipientUpdateModel();
+            $fsrecipientUpdateModel->setAttributes(['table'=>'fsrecipients']);
+            $recipientApplication = $this->getApplication($fsrDetailsModel, $fsrecipientUpdateModel);
+
+            if (isset($_POST["approve"])) {
+                $recipientApplication->approve();
+                $response->redirect("http://localhost:8080/fsRecipients");
+                exit;
+            }
+
+            if (isset($_POST["decline"])) {
+                $recipientApplication->decline();
+                $response->redirect("http://localhost:8080/fsRecipients");
+                exit;
+            }
+        }
+
+
         $body = $request->getBody();
         $recipientId = $body["recipient_id"];
         App::$app->session->set("recipient_id", $recipientId);

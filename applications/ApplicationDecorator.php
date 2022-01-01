@@ -2,9 +2,11 @@
 
 namespace app\applications;
 
-abstract class ApplicationDecorator
+use app\states\ApplicationState;
+
+abstract class ApplicationDecorator implements IApplication
 {
-    protected Application $decoratedApplication;
+    protected IApplication $decoratedApplication;
 
     public function __construct(IApplication $decoratedApplication)
     {
@@ -14,5 +16,26 @@ abstract class ApplicationDecorator
     public function approve()
     {
         $this->decoratedApplication->approve();
+    }
+
+    public function decline()
+    {
+        $this->decoratedApplication->decline();
+    }
+
+
+    public function setState(ApplicationState $state)
+    {
+        $this->decoratedApplication->setState($state);
+    }
+
+    public function getState()
+    {
+        return $this->decoratedApplication->getState();
+    }
+
+    public function getDBModels()
+    {
+        return $this->decoratedApplication->getDBModels();
     }
 }
