@@ -9,6 +9,7 @@ use app\core\Response;
 use app\model\AidDonationDetailsModel;
 use app\model\DonationDetailsModel;
 use app\model\DonationListModel;
+use app\model\DonationUpdateModel;
 use app\model\DonorDetailsModel;
 use app\model\FsrDetailsModel;
 use app\model\MoneyDonationDetailsModel;
@@ -243,6 +244,34 @@ class DisplayController extends Controller{
 
     public function displayMoneyDonationDetails(Request $request, Response $response)
     {
+
+        if ($request->isPost()){
+            $donation_id = App::$app->session->get("donation_id");
+            var_dump($donation_id);
+            $donationDetailsModel = new DonationDetailsModel();
+            $donationUpdateModel = new DonationUpdateModel();
+
+            $donationBody = ["donation_id"=>$donation_id];
+            $donationDetailsModel->setAttributes($donationBody);
+            $donationUpdateModel->setAttributes($donationBody);
+
+            $mDonationApplication = new Application($donationDetailsModel->retrieve()['status'], [$donationUpdateModel]);
+            if (isset($_POST["approve"])) {
+                $mDonationApplication->approve();
+                $response->redirect("http://localhost:8080/donorDetails?donor_id=".App::$app->session->get('donor_id'));
+
+                
+                exit;
+            }
+
+            if (isset($_POST["decline"])) {
+                $mDonationApplication->decline();
+                $response->redirect("http://localhost:8080/donorDetails?donor_id=".App::$app->session->get('donor_id'));
+
+                exit;
+            }
+        }
+
         $body = $request->getBody();
         $donation_id = (int) $body["donation_id"];
         App::$app->session->set("donation_id", $donation_id);
