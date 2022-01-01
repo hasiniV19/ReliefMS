@@ -126,7 +126,7 @@
         <div class="row text-center" >
             <!-- Team item-->
             <div class="col-xl-3 col-sm-6 mb-5" id="contact">
-                <div class="bg-white rounded shadow-sm py-5 px-4"><img id="pp" src="img/p2.jpeg" alt="" width="100" class="img-fluid rounded-circle mb-3 img-thumbnail shadow-sm">
+                <div class="bg-white rounded shadow-sm py-5 px-4"><img id="pp" src="img/p2.jpg" alt="" width="100" class="img-fluid rounded-circle mb-3 img-thumbnail shadow-sm">
                     <h5 class="mb-0">Piyumi Chan</h5><span class="small text-uppercase text-muted">CEO - Founder</span>
                     <ul class="social mb-0 list-inline mt-3">
                         <li class="list-inline-item"><a href="https://www.facebook.com/piyumichan.mahaarachchi" class="social-link"><i class="fa fa-facebook-f"></i></a></li>
@@ -144,7 +144,7 @@
                     <h5 class="mb-0">Dasith Samarasinghe</h5><span class="small text-uppercase text-muted">CEO - Founder</span>
                     <ul class="social mb-0 list-inline mt-3">
                         <li class="list-inline-item"><a href="https://www.facebook.com/dasith.kawmal" class="social-link"><i class="fa fa-facebook-f"></i></a></li>
-                        <li class="list-inline-item"><a href="#" class="social-link"><i class="fa fa-twitter"></i></a></li>
+                        <li class="list-inline-item"><a href="https://twitter.com/DasithSamare" class="social-link"><i class="fa fa-twitter"></i></a></li>
                         <li class="list-inline-item"><a href="https://www.instagram.com/dasith_98/?hl=en" class="social-link"><i class="fa fa-instagram"></i></a></li>
                         <li class="list-inline-item"><a href="https://www.linkedin.com/in/dasith-samarasinghe/" class="social-link"><i class="fa fa-linkedin"></i></a></li>
                     </ul>
