@@ -158,14 +158,6 @@
 
         </div>
 
-
-
-
-
-<!--        <div class="text-center" >-->
-<!--            <button type="submit" class="btn btn-primary go-back-button">Go Back</button>-->
-<!--        </div>-->
-
     </form>
 
 </div>

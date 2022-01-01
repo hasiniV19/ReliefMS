@@ -112,7 +112,6 @@ class Database implements GenericDB
     public function set_status($sql, $status, $id)
     {
         $statement = $this->conn->prepare($sql);
-        var_dump($statement);
         $statement->bind_param('si', $status, $id);
         $statement->execute();
     }

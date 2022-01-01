@@ -24,7 +24,6 @@ class ReciApplication implements RApplication
     {
         $this->dbModels = $dbModels;
         $this->state = $this->strToState($state);
-        var_dump($this);
     }
 
     public function getDBModels()
