@@ -20,7 +20,7 @@ use app\view\DateConverter;
 </style>
 
 <div class="row">
-    <form class="container form-container col-lg-6 col-md-8 col-10">
+    <form method="post" action="/approvedMSRDetails" class="container form-container col-lg-6 col-md-8 col-10">
         <h2 class="title">Approved MSR Details</h2>
 
 
@@ -204,7 +204,7 @@ use app\view\DateConverter;
             </div>
 
             <div class="col-md-6  btn-row" id="btn-2">
-                <button type="submit" class="btn btn-success submit-button" style="width: 200px">Mark as Aided</button>
+                <button name="aid" type="submit" class="btn btn-success submit-button" style="width: 200px">Mark as Aided</button>
             </div>
 
         </div>
