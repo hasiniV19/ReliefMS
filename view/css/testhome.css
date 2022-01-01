@@ -117,4 +117,9 @@ a.btn.btn-secondary{
     color: white;
 }
 
+.drop:hover{
+    background-color:#6c757d;
+    color: white;
+}
+
 
