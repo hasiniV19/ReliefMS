@@ -2,6 +2,7 @@
 
 namespace app\controller;
 
+use app\applications\AidDonationApplication;
 use app\core\App;
 use app\core\Controller;
 use app\core\DBModel;
@@ -300,25 +301,36 @@ class DisplayController extends Controller{
         return $this->render("msrDetailsDonor", "main", $data_msr);
     }
 
+    public function getDonationApplication()
+    {
+        $donation_id = App::$app->session->get("donation_id");
+        $donationDetailsModel = new DonationDetailsModel();
+        $donationUpdateModel = new DonationUpdateModel();
+
+        $donationBody = ["donation_id"=>$donation_id];
+        $donationDetailsModel->setAttributes($donationBody);
+        $donationUpdateModel->setAttributes($donationBody);
+
+        $donationApplication = new Application($donationDetailsModel->retrieve()['status'], [$donationUpdateModel]);
+        return $donationApplication;
+    }
+
     public function displayMoneyDonationDetails(Request $request, Response $response)
     {
 
         if ($request->isPost()){
-            $donation_id = App::$app->session->get("donation_id");
-            var_dump($donation_id);
-            $donationDetailsModel = new DonationDetailsModel();
-            $donationUpdateModel = new DonationUpdateModel();
+//            $donation_id = App::$app->session->get("donation_id");
+//            $donationDetailsModel = new DonationDetailsModel();
+//            $donationUpdateModel = new DonationUpdateModel();
+//
+//            $donationBody = ["donation_id"=>$donation_id];
+//            $donationDetailsModel->setAttributes($donationBody);
+//            $donationUpdateModel->setAttributes($donationBody);
 
-            $donationBody = ["donation_id"=>$donation_id];
-            $donationDetailsModel->setAttributes($donationBody);
-            $donationUpdateModel->setAttributes($donationBody);
-
-            $mDonationApplication = new Application($donationDetailsModel->retrieve()['status'], [$donationUpdateModel]);
+            $mDonationApplication = $this->getDonationApplication();
             if (isset($_POST["approve"])) {
                 $mDonationApplication->approve();
                 $response->redirect("http://localhost:8080/donorDetails?donor_id=".App::$app->session->get('donor_id'));
-
-                
                 exit;
             }
 
@@ -351,15 +363,46 @@ class DisplayController extends Controller{
     public function displayAidDonationDetails(Request $request, Response $response)
     {
 
-//        $model = new AidDonationDetails();
-//        $details = $model->retrive();
-//        return $this->render("aidDonationDetails", "main", $details);
-//        if ($request->isPost()){
-//            $aidDonation = new AidDonationApplication(new Application());
-//           if(isset($_POST["approve"])){
-//                $aidDonation->approve();
-//           }
-//        }
+        if ($request->isPost()) {
+            // donation application created
+            $aidDonationApplication = $this->getDonationApplication();
+            $recipient_type = App::$app->session->get("recipient_type");
+
+            if ($recipient_type === "msr") {
+                $msrDetailsModel = new MsrDetailsModel();
+                $msrecipientUpdateModel = new RecipientUpdateModel();
+                $msrecipientUpdateModel->setAttributes(['table'=>'msrecipients']);
+                $recipientApplication = $this->getApplication($msrDetailsModel, $msrecipientUpdateModel);
+            } else {
+                $fsrDetailsModel = new FsrDetailsModel();
+                $fsrecipientUpdateModel = new RecipientUpdateModel();
+                $fsrecipientUpdateModel->setAttributes(['table'=>'fsrecipients']);
+                $recipientApplication = $this->getApplication($fsrDetailsModel, $fsrecipientUpdateModel);
+            }
+
+            if ($recipientApplication){
+                $aidDonation = new AidDonationApplication($aidDonationApplication, $recipientApplication);
+                $donor_id = App::$app->session->get("donor_id");
+                var_dump($_POST);
+                if (isset($_POST["approve"])) {
+                    $aidDonation->approve();
+                    $response->redirect("http://localhost:8080/donorDetails?donor_id=".$donor_id);
+                    exit;
+                }
+
+                if (isset($_POST["decline"])) {
+                    $aidDonation->decline();
+                    $response->redirect("http://localhost:8080/donorDetails?donor_id=".$donor_id);
+                    exit;
+                }
+            }
+            else {
+                var_dump("recipient Application didn't created");
+            }
+
+
+        }
+
         $body = $request->getBody();
         $donation_id = (int) $body["donation_id"];
         $aidDonationDetailsModel = new AidDonationDetailsModel();
@@ -369,6 +412,7 @@ class DisplayController extends Controller{
         $data_aid = $aidDonationDetailsModel->retrieve();
 
         $recipient_id = $data_aid["recipient_id"];
+        App::$app->session->set("recipient_id", $recipient_id);
 
         $recipientModel = new RecipientDetailsModel();
         $recipientModel->setAttributes(["recipient_id"=>$recipient_id]);
@@ -376,10 +420,12 @@ class DisplayController extends Controller{
 
         $recipient_details = [];
         if ($recipient_type === "msr"){
+            App::$app->session->set("recipient_type", "msr");
             $msrModel = new MsrDetailsModel();
             $msrModel->setAttributes(["recipient_id"=>$recipient_id]);
             $recipient_details = $msrModel->retrieve();
         } else {
+            App::$app->session->set("recipient_type", "fsr");
             $fsrModel = new FsrDetailsModel();
             $fsrModel->setAttributes(["recipient_id"=>$recipient_id]);
             $recipient_details = $fsrModel->retrieve();
