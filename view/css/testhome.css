@@ -99,9 +99,6 @@ a.btn.btn-secondary{
     /*background-color: white;*/
 }
 
-body {
-    background-color: #eee
-}
 
 .card {
     padding: 10px;
@@ -113,6 +110,11 @@ body {
     display: flex;
     justify-content: center;
     align-items: center
+}
+
+.drop{
+    background-color: #6f42c1;
+    color: white;
 }
 
 

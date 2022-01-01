@@ -34,7 +34,7 @@
                 <h2>Get Help</h2>
                 <p> Having someone help you doesn't mean you failed. It just means you're not alone. </p>
                 <div class="dropdown show">
-                    <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <a class="btn drop dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         Get Help Now &raquo;
                     </a>
 
