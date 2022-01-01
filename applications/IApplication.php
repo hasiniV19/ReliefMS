@@ -11,5 +11,5 @@ interface IApplication
     public function decline();
     public function setState(ApplicationState $state);
     public function getState();
-    public function getDBModel(): DBModel;
+    public function getDBModels();
 }

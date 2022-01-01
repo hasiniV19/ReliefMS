@@ -71,7 +71,7 @@ class DisplayController extends Controller{
             $volunteerModel->setAttributes($volunteerBody);
             $volunteerUpdateModel->setAttributes($volunteerBody);
 
-            $volunteerApplication = new Application($volunteerModel->retrieve()['status'], $volunteerUpdateModel);
+            $volunteerApplication = new Application($volunteerModel->retrieve()['status'], [$volunteerUpdateModel]);
             if (isset($_POST["approve"])) {
                 $volunteerApplication->approve();
                 $response->redirect("http://localhost:8080/volunteers");

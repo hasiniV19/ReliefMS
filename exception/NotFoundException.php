@@ -7,6 +7,6 @@ class NotFoundException extends \Exception
 
     public function __construct()
     {
-        parent::__construct("Not Found", 404);
+        parent::__construct("notFound", 404);
     }
 }
