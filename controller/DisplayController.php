@@ -123,7 +123,7 @@ class DisplayController extends Controller{
         $recipientUpdateModel->setAttributes($recipientBody);
         $comRUpdateModel->setAttributes($recipientBody);
 
-        $recipientApplication = new ReciApplication($detailsModel->retrive()['status'],[$recipientUpdateModel,$comRUpdateModel]);
+        $recipientApplication = new ReciApplication($detailsModel->retrieve()['status'],[$recipientUpdateModel,$comRUpdateModel]);
 
         return $recipientApplication;
     }
@@ -214,6 +214,24 @@ class DisplayController extends Controller{
 
     public function displayMSRDetailsAdmin(Request $request, Response $response)
     {
+        if ($request->isPost()) {
+            $msrDetailsModel = new MsrDetailsModel();
+            $msrecipientUpdateModel = new RecipientUpdateModel();
+            $msrecipientUpdateModel->setAttributes(['table'=>'msrecipients']);
+            $recipientApplication = $this->getApplication($msrDetailsModel, $msrecipientUpdateModel);
+
+            if (isset($_POST["approve"])) {
+                $recipientApplication->approve();
+                $response->redirect("http://localhost:8080/msRecipients");
+                exit;
+            }
+
+            if (isset($_POST["decline"])) {
+                $recipientApplication->decline();
+                $response->redirect("http://localhost:8080/msRecipients");
+                exit;
+            }
+        }
         $body = $request->getBody();
         $recipientId = $body["recipient_id"];
         App::$app->session->set("recipient_id", $recipientId);
@@ -350,6 +368,19 @@ class DisplayController extends Controller{
 
     public function displayApprovedMSRDetails(Request $request, Response $response)
     {
+        if ($request->isPost()) {
+            $msrDetailsModel = new MsrDetailsModel();
+            $msrecipientUpdateModel = new RecipientUpdateModel();
+            $msrecipientUpdateModel->setAttributes(['table'=>'msrecipients']);
+            $recipientApplication = $this->getApplication($msrDetailsModel, $msrecipientUpdateModel);
+
+            if (isset($_POST["aid"])) {
+                $recipientApplication->aid();
+                $response->redirect("http://localhost:8080/approvedRecipients");
+                exit;
+            }
+        }
+
         $body = $request->getBody();
         $recipientId = $body["recipient_id"];
         App::$app->session->set("recipient_id", $recipientId);
@@ -391,6 +422,18 @@ class DisplayController extends Controller{
 
     public function displayApprovedFSRDetails(Request $request, Response $response)
     {
+        if ($request->isPost()){
+            $fsrDetailsModel = new FsrDetailsModel();
+            $fsrecipientUpdateModel = new RecipientUpdateModel();
+            $fsrecipientUpdateModel->setAttributes(['table'=>'fsrecipients']);
+            $recipientApplication = $this->getApplication($fsrDetailsModel, $fsrecipientUpdateModel);
+
+            if (isset($_POST["aid"])) {
+                $recipientApplication->aid();
+                $response->redirect("http://localhost:8080/approvedRecipients");
+                exit;
+            }
+        }
         $body = $request->getBody();
         $recipientId = $body["recipient_id"];
         App::$app->session->set("recipient_id", $recipientId);
@@ -427,6 +470,7 @@ class DisplayController extends Controller{
 
     public function displayAidedMSRDetails(Request $request, Response $response)
     {
+
         $body = $request->getBody();
         $recipientId = $body["recipient_id"];
         App::$app->session->set("recipient_id", $recipientId);
