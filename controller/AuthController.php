@@ -82,4 +82,11 @@ class AuthController extends Controller
         }
         return $this->render("login", "login_layout");
     }
+
+    public function logout(Request $request, Response $response)
+    {
+        session_destroy();
+        $response->redirect("http://localhost:8080/");
+        exit;
+    }
 }

@@ -93,6 +93,8 @@ $app->route()->get("/donors", [ListViewController::class, "displayDonors"]);
 $app->route()->get("/login", [AuthController::class, "login"]);
 $app->route()->post("/login", [AuthController::class, "login"]);
 
+$app->route()->get("/logout", [AuthController::class, "logout"]);
+
 $app->route()->get("/register", [AuthController::class, "register"]);
 $app->route()->post("/register", [AuthController::class, "register"]);
 
