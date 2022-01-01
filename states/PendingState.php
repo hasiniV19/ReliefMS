@@ -19,14 +19,20 @@ class PendingState implements ApplicationState
     public function approve(IApplication $application)
     {
         $application->setState(new ApprovedState());
-        $application->getDBModel()->setAttributes(["status"=>"approved"]);
-        $application->getDBModel()->update();
+        $dbModels = $application->getDBModels();
+        foreach ($dbModels as $dbModel){
+            $dbModel->setAttributes(["status"=>"approved"]);
+            $dbModel->update();
+        }
     }
 
     public function decline(IApplication $application)
     {
         $application->setState(new DeclinedState());
-        $application->getDBModel()->setAttributes(["status"=>"declined"]);
-        $application->getDBModel()->update();
+        $dbModels = $application->getDBModels();
+        foreach ($dbModels as $dbModel){
+            $dbModel->setAttributes(["status"=>"declined"]);
+            $dbModel->update();
+        }
     }
 }

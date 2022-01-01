@@ -14,18 +14,18 @@ class Application implements IApplication
     const DECLINED = 'declined';
     const PENDING = 'pending';
 
-    private DBModel $dbModel;
+    private $dbModels;
     protected ApplicationState $state;
 
-    public function __construct($state, DBModel $dbModel)
+    public function __construct($state, $dbModels)
     {
-        $this->dbModel = $dbModel;
+        $this->dbModels = $dbModels;
         $this->state = $this->strToState($state);
     }
 
-    public function getDBModel():DBModel
+    public function getDBModels():DBModel
     {
-        return $this->dbModel;
+        return $this->dbModels;
     }
 
     public function strToState(string $state)
