@@ -34,7 +34,7 @@
                 <h2>Get Help</h2>
                 <p> Having someone help you doesn't mean you failed. It just means you're not alone. </p>
                 <div class="dropdown show">
-                    <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <a class="btn drop dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         Get Help Now &raquo;
                     </a>
 
@@ -140,7 +140,7 @@
 
             <!-- Team item-->
             <div class="col-xl-3 col-sm-6 mb-5">
-                <div class="bg-white rounded shadow-sm py-5 px-4"><img id="pp" src="https://bootstrapious.com/i/snippets/sn-about/avatar-3.png" alt="" width="100" class="img-fluid rounded-circle mb-3 img-thumbnail shadow-sm">
+                <div class="bg-white rounded shadow-sm py-5 px-4"><img id="pp" src="img/d.jpg" alt="" width="100" class="img-fluid rounded-circle mb-3 img-thumbnail shadow-sm">
                     <h5 class="mb-0">Dasith Samarasinghe</h5><span class="small text-uppercase text-muted">CEO - Founder</span>
                     <ul class="social mb-0 list-inline mt-3">
                         <li class="list-inline-item"><a href="https://www.facebook.com/dasith.kawmal" class="social-link"><i class="fa fa-facebook-f"></i></a></li>
