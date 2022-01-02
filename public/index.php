@@ -104,4 +104,6 @@ $app->route()->post("/aidDonationRequest", [FormController::class, "addAidDonati
 $app->route()->get("/donorProfile", [FormController::class, "updateDonorProfile"]);
 $app->route()->post("/donorProfile", [FormController::class, "updateDonorProfile"]);
 
+$app->route()->get("/notFound", [SiteController::class, "errorNotFound"]);
+
 $app->run();

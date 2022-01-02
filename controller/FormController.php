@@ -70,7 +70,6 @@ class FormController extends Controller
                 if ($model->save()) {
                     $response->redirect("http://localhost:8080/");
                     exit;
-                    echo "saved successfully";
                 }
             }
         }
