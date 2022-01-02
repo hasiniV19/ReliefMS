@@ -55,6 +55,13 @@ class FormController extends Controller
     private array $validateRequests;
     private Application $application;
 
+    private AuthController $authController;
+
+    public function __construct()
+    {
+        $this->authController = new AuthController();
+    }
+
     public function addApplication(Request $request, Response $response)
     {
         if ($request->isPost()) {
@@ -80,6 +87,11 @@ class FormController extends Controller
 
     public function updateDonorProfile(Request $request, Response $response)
     {
+        $auth = $this->authController->authenticate("donor");
+        if ($auth !== true){
+            return $auth;
+        }
+
         $user_id = App::$app->session->get("user_id");
         $donorModel = new DonorModel();
         $donorModel->setAttributes(["user_id"=>$user_id]);
@@ -139,11 +151,11 @@ class FormController extends Controller
 
         foreach ($data as $key => $value) {
 //            if ($key === "name" || $key === "address" ||$key === "age" ||$key === "mobile" ||$key === "occupation") {
-                $validateRequest = new ValidateRequest($key, $value);
-                $nameValidateHandler->validateRequest($validateRequest);
-                $data[$key] = $validateRequest->getValue();
-                $isValid = $validateRequest->getIsValid();
-                $this->validateRequests[$key] = $validateRequest;
+            $validateRequest = new ValidateRequest($key, $value);
+            $nameValidateHandler->validateRequest($validateRequest);
+            $data[$key] = $validateRequest->getValue();
+            $isValid = $validateRequest->getIsValid();
+            $this->validateRequests[$key] = $validateRequest;
 
             if ($isValid === false) {
 
@@ -180,6 +192,11 @@ class FormController extends Controller
 
     public function addDonorApplication(Request $request, Response $response)
     {
+        $auth = $this->authController->authenticate("donor");
+        if ($auth !== true){
+            return $auth;
+        }
+
         if ($request->isPost()) {
             $body = $request->getBody();
             //var_dump($body);
@@ -343,6 +360,11 @@ class FormController extends Controller
 
     public function addAidDonation(Request $request, Response $response)
     {
+        $auth = $this->authController->authenticate("donor");
+        if ($auth !== true){
+            return $auth;
+        }
+
         $user_id = App::$app->session->get("user_id");
         $donorModel = new DonorModel();
         $donorModel->setAttributes(["user_id"=>$user_id]);
@@ -400,6 +422,11 @@ class FormController extends Controller
 
     public function raiseFundForm(Request $request,Response $response)
     {
+        $auth = $this->authController->authenticate("donor");
+        if ($auth !== true){
+            return $auth;
+        }
+
         if ($request->isPost()) {
             $body = $request->getBody();
 

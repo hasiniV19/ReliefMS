@@ -11,6 +11,13 @@ use app\exception\NotFoundException;
 
 class SiteController extends Controller
 {
+    private AuthController $authController;
+
+    public function __construct()
+    {
+        $this->authController = new AuthController();
+    }
+
     public function homepage(Request $request, Response $response)
     {
         return $this->render("testhome","homeLayout");
@@ -18,11 +25,21 @@ class SiteController extends Controller
 
     public function addAdminHome()
     {
+        $auth = $this->authController->authenticate("admin");
+        if ($auth !== true){
+            return $auth;
+        }
+
         return $this->render("adminHome","main");
     }
 
     public function addDonorHome()
     {
+        $auth = $this->authController->authenticate("donor");
+        if ($auth !== true){
+            return $auth;
+        }
+
         return $this->render("donorHome","main");
     }
 }

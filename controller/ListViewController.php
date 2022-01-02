@@ -14,8 +14,10 @@ use app\model\VolunteerDetails;
 
 class ListViewController extends Controller
 {
+
     private BoxFactory $boxViewFactory;
     private AuthController $authController;
+
 
     public function __construct(){
         $this->authController = new AuthController();
@@ -23,7 +25,7 @@ class ListViewController extends Controller
 
     public function displayApprReci(Request $request, Response $response)
     {
-        $auth = $this->authController->authenticate("admin");
+        $auth = $this->authController->authenticateForTwo();
         if ($auth !== true){
             return $auth;
         }
