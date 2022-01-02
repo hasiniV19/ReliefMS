@@ -5,6 +5,7 @@ use app\core\Request;
 use app\core\Response;
 use app\core\Router;
 use app\core\Session;
+use app\exception\NotFoundException;
 
 class App
 {
@@ -35,8 +36,10 @@ class App
     public function run(){
         try {
             echo $this->router->resolve();
-        } catch (\NotFoundException $error){
+        } catch (NotFoundException $error){
             $this->response->setStatus(404);
+            $this->response->redirect("http://localhost:8080/notFound");
+            exit;
         } catch (\Exception $error){
 
         }
