@@ -200,6 +200,11 @@ class DisplayController extends Controller{
 
     public function displayFSRDetailsDonor(Request $request, Response $response)
     {
+        $auth = $this->authController->authenticate("donor");
+        if ($auth !== true){
+            return $auth;
+        }
+
         $body = $request->getBody();
         $recipientId = $body["recipient_id"];
         App::$app->session->set("recipient_id", $recipientId);
@@ -288,6 +293,11 @@ class DisplayController extends Controller{
 
     public function displayMSRDetailsDonor(Request $request, Response $response)
     {
+        $auth = $this->authController->authenticate("donor");
+        if ($auth !== true){
+            return $auth;
+        }
+
         $body = $request->getBody();
         $recipientId = $body["recipient_id"];
         App::$app->session->set("recipient_id", $recipientId);

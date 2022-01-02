@@ -14,13 +14,23 @@ use app\model\VolunteerDetails;
 
 class ListViewController extends Controller
 {
+
     private BoxFactory $boxViewFactory;
 
-    public function __construct(){
+    private AuthController $authController;
+
+    public function __construct()
+    {
+        $this->authController = new AuthController();
     }
 
     public function displayApprReci(Request $request, Response $response)
     {
+        $auth = $this->authController->authenticateForTwo();
+        if ($auth !== true){
+            return $auth;
+        }
+
         $reciStatusModel = new RecipientsStatusModel();
         $reciStatusModel->setAttributes(["status"=>"approved", "table"=>"fsrecipients"]);
         $detailsFSR = $reciStatusModel->retrieve_records();
