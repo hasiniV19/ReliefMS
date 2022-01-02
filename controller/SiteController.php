@@ -13,11 +13,11 @@ class SiteController extends Controller
 {
     public function homepage(Request $request, Response $response)
     {
-//        try {
-//            throw new NotFoundException();
-//        } catch (NotFoundException $exception) {
-//            return $this->render($exception->getMessage(), "error_layout");
-//        }
+        try {
+            throw new NotFoundException();
+        } catch (NotFoundException $exception) {
+            return $this->render($exception->getMessage(), "main");
+        }
 
         return $this->render("testhome","homeLayout");
     }

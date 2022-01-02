@@ -4,7 +4,7 @@
 <style>
     <?php include "css/error.css"?>
 </style>
-<div class="err_page">
+<div class="err_page container">
     <div class="err_page_left">
         <img src="https://github.com/abhinanduN/codepen/blob/master/err.png?raw=true" width=360px height=250px/>
     </div>
@@ -16,5 +16,3 @@
     </div>
 
 </div>
-<div class="credit">
-    Image downloaded and edited using <a href="https://www.vecteezy.com">vecteezy.com</a></div>

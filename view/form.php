@@ -2,7 +2,6 @@
 ?>
 
 <style>
-    <?php include "css/volunteer_application.css"?>
 </style>
 
 <div class="container form-container">
