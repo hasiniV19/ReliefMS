@@ -143,6 +143,10 @@ class DisplayController extends Controller{
     }
     public function displayFSRDetailsAdmin(Request $request, Response $response)
     {
+        $auth = $this->authController->authenticate("admin");
+        if ($auth !== true){
+            return $auth;
+        }
 
         if ($request->isPost()){
             $fsrDetailsModel = new FsrDetailsModel();
@@ -228,6 +232,11 @@ class DisplayController extends Controller{
 
     public function displayMSRDetailsAdmin(Request $request, Response $response)
     {
+        $auth = $this->authController->authenticate("admin");
+        if ($auth !== true){
+            return $auth;
+        }
+
         if ($request->isPost()) {
             $msrDetailsModel = new MsrDetailsModel();
             $msrecipientUpdateModel = new RecipientUpdateModel();
@@ -457,6 +466,11 @@ class DisplayController extends Controller{
 
     public function displayApprovedMSRDetails(Request $request, Response $response)
     {
+        $auth = $this->authController->authenticate("admin");
+        if ($auth !== true){
+            return $auth;
+        }
+
         if ($request->isPost()) {
             $msrDetailsModel = new MsrDetailsModel();
             $msrecipientUpdateModel = new RecipientUpdateModel();
@@ -511,6 +525,11 @@ class DisplayController extends Controller{
 
     public function displayApprovedFSRDetails(Request $request, Response $response)
     {
+        $auth = $this->authController->authenticate("admin");
+        if ($auth !== true){
+            return $auth;
+        }
+
         if ($request->isPost()){
             $fsrDetailsModel = new FsrDetailsModel();
             $fsrecipientUpdateModel = new RecipientUpdateModel();
@@ -560,6 +579,11 @@ class DisplayController extends Controller{
     public function displayAidedMSRDetails(Request $request, Response $response)
     {
 
+        $auth = $this->authController->authenticate("admin");
+        if ($auth !== true){
+            return $auth;
+        }
+
         $body = $request->getBody();
         $recipientId = $body["recipient_id"];
         App::$app->session->set("recipient_id", $recipientId);
@@ -604,6 +628,11 @@ class DisplayController extends Controller{
 
     public function displayAidedFSRDetails(Request $request, Response $response)
     {
+        $auth = $this->authController->authenticate("admin");
+        if ($auth !== true){
+            return $auth;
+        }
+
         $body = $request->getBody();
         $recipientId = $body["recipient_id"];
         App::$app->session->set("recipient_id", $recipientId);

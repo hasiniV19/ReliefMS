@@ -15,12 +15,19 @@ use app\model\VolunteerDetails;
 class ListViewController extends Controller
 {
     private BoxFactory $boxViewFactory;
+    private AuthController $authController;
 
     public function __construct(){
+        $this->authController = new AuthController();
     }
 
     public function displayApprReci(Request $request, Response $response)
     {
+        $auth = $this->authController->authenticate("admin");
+        if ($auth !== true){
+            return $auth;
+        }
+
         $reciStatusModel = new RecipientsStatusModel();
         $reciStatusModel->setAttributes(["status"=>"approved", "table"=>"fsrecipients"]);
         $detailsFSR = $reciStatusModel->retrieve_records();
@@ -43,6 +50,11 @@ class ListViewController extends Controller
 
     public function displayAidedReci(Request $request, Response $response)
     {
+        $auth = $this->authController->authenticate("admin");
+        if ($auth !== true){
+            return $auth;
+        }
+
         $reciStatusModel = new RecipientsStatusModel();
         $reciStatusModel->setAttributes(["status"=>"aided", "table"=>"fsrecipients"]);
         $detailsFSR = $reciStatusModel->retrieve_records();
@@ -64,19 +76,24 @@ class ListViewController extends Controller
 
     public function displayFSReci(Request $request, Response $response)
     {
+        $auth = $this->authController->authenticate("admin");
+        if ($auth !== true){
+            return $auth;
+        }
         $reciStatusModel = new RecipientsStatusModel();
         $reciStatusModel->setAttributes(["status"=>"pending", "table"=>"fsrecipients"]);
         $details = $reciStatusModel->retrieve_records();
         return $this->displayListView($details, 'name', 'status', 'Financial Recipients', 'fsRecipient', 'recipient_id');
 
-
-
-
-        return $this->displayListView($details, 'fsReciName', 'district', 'Financial Support Recipients');
     }
 
     public function displayMSReci(Request $request, Response $response)
     {
+        $auth = $this->authController->authenticate("admin");
+        if ($auth !== true){
+            return $auth;
+        }
+
         $reciStatusModel = new RecipientsStatusModel();
         $reciStatusModel->setAttributes(["status"=>"pending", "table"=>"msrecipients"]);
         $details = $reciStatusModel->retrieve_records();
