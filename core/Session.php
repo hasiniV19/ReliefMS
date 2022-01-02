@@ -41,6 +41,11 @@ class Session
         return $_SESSION[self::FLASH_KEY][$key]['value'] ?? false;
     }
 
+    public function close()
+    {
+        session_destroy();
+    }
+
     public function __destruct()
     {
         // Iterate over mark to be removed and remove them

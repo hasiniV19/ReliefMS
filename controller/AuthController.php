@@ -85,7 +85,7 @@ class AuthController extends Controller
 
     public function logout(Request $request, Response $response)
     {
-        session_destroy();
+        App::$app->session->close();
         $response->redirect("http://localhost:8080/");
         exit;
     }

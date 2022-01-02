@@ -4,8 +4,8 @@ body
 {
     margin:0;
     padding:0;
-    padding:5%;
     font-family: 'Lato', sans-serif;
+    background: rgba(111, 66, 193, 0.1) !important;
 }
 .err_page
 {
@@ -15,6 +15,8 @@ body
     text-align:center;
     display:flex;
     align-items: center;
+    padding-top: 10%;
+    padding-bottom: 10%;
 }
 .err_page_right
 {
@@ -35,13 +37,19 @@ body
 {	color:#6f42c1;
     font-size:14pt;
 }
-.err_page p
+#err
 {
+    text-align: center !important;
     font-size:14pt;
     color: #737373;
 }
+
+
+
 .err_btn
 {
+    color: #6f42c1;
+    font-weight: bold;
     background:#fff;
     border:2px solid #6f42c1;
     padding:20px;
@@ -50,7 +58,8 @@ body
     cursor:pointer;
     font-size:13pt;
     transition:background 0.5s;
-    text-decoration: none;
+    /*text-decoration: none;*/
+    /*margin-top: 5%;*/
 }
 .err_btn:hover
 {
@@ -87,4 +96,8 @@ body
     {
         visibility:hidden;
     }
+}
+
+.button{
+    margin-top: 60px;
 }
