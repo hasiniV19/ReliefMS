@@ -29,8 +29,20 @@ use app\model\VolunteerUpdateModel;
 use app\applications\ReciApplication;
 
 class DisplayController extends Controller{
+
+    private AuthController $authController;
+
+    public function __construct()
+    {
+        $this->authController = new AuthController();
+    }
     public function displayDonorDetails(Request $request, Response $response)
     {
+        $auth = $this->authController->authenticate("admin");
+        if ($auth !== true){
+            return $auth;
+        }
+
         $body = $request->getBody();
         $donorId = $body["donor_id"];
         App::$app->session->set("donor_id", $donorId);

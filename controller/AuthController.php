@@ -7,6 +7,7 @@ use app\core\Controller;
 use app\core\Request;
 use app\core\Response;
 use app\core\Session;
+use app\exception\NotFoundException;
 use app\model\AuthCreateModel;
 use app\model\AuthModel;
 use app\model\UserCreateModel;
@@ -14,7 +15,6 @@ use app\model\UserModel;
 
 class AuthController extends Controller
 {
-
     public function login(Request $request, Response $response)
     {
         if ($request->isPost()){
@@ -88,5 +88,34 @@ class AuthController extends Controller
         App::$app->session->close();
         $response->redirect("http://localhost:8080/");
         exit;
+    }
+
+    public function authenticate($user_type)
+    {
+        try {
+            if (!App::$app->session->get("user_type")) {
+                throw new NotFoundException();
+            }
+
+            if (App::$app->session->get("user_type") !== $user_type) {
+                throw new NotFoundException();
+            }
+            return true;
+        } catch (NotFoundException $exception) {
+            return $this->render($exception->getMessage(), "main");
+        }
+    }
+
+    public function authenticateForTwo()
+    {
+        try {
+            if (!App::$app->session->get("user_type")) {
+                throw new NotFoundException();
+            }
+
+            return true;
+        } catch (NotFoundException $exception) {
+            return $this->render($exception->getMessage(), "main");
+        }
     }
 }
