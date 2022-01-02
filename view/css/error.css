@@ -39,6 +39,7 @@ body
 }
 .err_page p
 {
+    text-align: center !important;
     font-size:14pt;
     color: #737373;
 }
@@ -53,7 +54,7 @@ body
     font-size:13pt;
     transition:background 0.5s;
     text-decoration: none;
-    margin-top: 5%;
+    /*margin-top: 5%;*/
 }
 .err_btn:hover
 {
@@ -90,4 +91,8 @@ body
     {
         visibility:hidden;
     }
+}
+
+.button{
+    margin-top: 100px;
 }
