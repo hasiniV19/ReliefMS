@@ -85,6 +85,10 @@ class ListViewController extends Controller
 
     public function displayVolunteers(Request $request, Response $response)
     {
+        $auth = $this->authController->authenticate("admin");
+        if ($auth !== true){
+            return $auth;
+        }
         $volunteerModel = new VolunteerDetails();
         $details = $volunteerModel->retrieve_all();
         return $this->displayListView($details, 'name', 'status', 'Volunteers', 'volunteers', 'volunteer_id');
@@ -92,6 +96,10 @@ class ListViewController extends Controller
 
     public function displayDonors(Request $request, Response $response)
     {
+        $auth = $this->authController->authenticate("admin");
+        if ($auth !== true){
+            return $auth;
+        }
         $donorModel = new DonorDetailsModel();
         $details = $donorModel->retrieve_all();
         return $this->displayListView($details, 'name', 'district', 'Donors', 'donors', 'donor_id');

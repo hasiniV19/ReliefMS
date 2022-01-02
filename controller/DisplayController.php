@@ -80,6 +80,10 @@ class DisplayController extends Controller{
 
     public function displayVolunteerDetails(Request $request, Response $response)
     {
+        $auth = $this->authController->authenticate("admin");
+        if ($auth !== true){
+            return $auth;
+        }
         if ($request->isPost()){
             $volunteerId = App::$app->session->get("volunteer_id");
             $volunteerModel = new VolunteerDetails();
@@ -200,6 +204,7 @@ class DisplayController extends Controller{
 
     public function displayFSRDetailsDonor(Request $request, Response $response)
     {
+
         $body = $request->getBody();
         $recipientId = $body["recipient_id"];
         App::$app->session->set("recipient_id", $recipientId);
@@ -288,6 +293,7 @@ class DisplayController extends Controller{
 
     public function displayMSRDetailsDonor(Request $request, Response $response)
     {
+
         $body = $request->getBody();
         $recipientId = $body["recipient_id"];
         App::$app->session->set("recipient_id", $recipientId);
@@ -329,7 +335,10 @@ class DisplayController extends Controller{
 
     public function displayMoneyDonationDetails(Request $request, Response $response)
     {
-
+        $auth = $this->authController->authenticate("admin");
+        if ($auth !== true){
+            return $auth;
+        }
         if ($request->isPost()){
 //            $donation_id = App::$app->session->get("donation_id");
 //            $donationDetailsModel = new DonationDetailsModel();
@@ -374,6 +383,10 @@ class DisplayController extends Controller{
 
     public function displayAidDonationDetails(Request $request, Response $response)
     {
+        $auth = $this->authController->authenticate("admin");
+        if ($auth !== true){
+            return $auth;
+        }
 
         if ($request->isPost()) {
             // donation application created
