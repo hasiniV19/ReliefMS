@@ -431,6 +431,8 @@ class DisplayController extends Controller{
             $recipient_details = $fsrModel->retrieve();
         }
 
+        unset($recipient_details['status']);
+
         $donationDetailsModel = new DonationDetailsModel();
         $donationBody = ["donation_id"=>$donation_id];
         $donationDetailsModel->setAttributes($donationBody);
