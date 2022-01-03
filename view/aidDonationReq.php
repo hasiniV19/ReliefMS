@@ -3,6 +3,7 @@ use app\handlers\ValidateRequest;
 
 /*** @var $collecting_method */
 /*** @var $station */
+/*** @var $addressOriginal */
 /*** @var $address */
 ?>
 
@@ -17,13 +18,14 @@ use app\handlers\ValidateRequest;
             <label for="collect-method" class="input-label">Collecting Method</label>
             <select name="collecting_method" id="collect-method" class="form-control input-field">
 <!--                <option selected disabled hidden>Choose here</option>-->
-                <option value="station" selected>Station</option>
-                <option value="home">Home</option>
+                <option value="home" selected>Home</option>
+                <option value="station">Station</option>
+
             </select>
         </div>
 
         <!-- stations dropdown -->
-        <div class="form-group" id="station-part">
+        <div class="form-group hidden" id="station-part">
             <label for="station" class="input-label">Station</label>
             <select name="station" id="station" class="form-control input-field">
 <!--                <option selected disabled hidden>Choose here</option>-->
@@ -36,9 +38,16 @@ use app\handlers\ValidateRequest;
         </div>
 
         <!-- home address -->
-        <div class="form-group hidden" id="address-part">
+        <div class="form-group" id="address-part">
             <label for="address" class="input-label">Address</label>
-            <textarea name="address" class="form-control input-field" id="address" aria-describedby="" rows="3" readonly><?php if (isset($address)) echo $address;?></textarea>
+            <textarea name="address" class="form-control input-field" id="address" aria-describedby="" rows="3" readonly><?php
+                if (isset($address)) {
+                    echo $address->getValue();
+                }
+                elseif (isset($addressOriginal)) {
+                    echo $addressOriginal;
+                }?></textarea>
+            <span class="err-msg"><?php if (isset($address)) echo $address->getValidError();?></span>
             <div class="">
                 <button name="edit" type="button" id="edit" class="btn float-right" style="color: #6f42c1; font-weight: bold">Edit</button>
             </div>
