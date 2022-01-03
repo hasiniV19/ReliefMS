@@ -18,11 +18,17 @@ use app\core\App;
     <?php endif;?>
     <div class="row">
         <?php foreach ($boxes as $box){
+            $num = 1;
             echo "
                 <div class='box-container col-12 col-lg-4 col-md-6'>
                     <div class='box'>
                         <h2 class=''>";
-            echo $box->getBoxTitle();
+            if ($box->getBoxType() === "approvedRecipients" && App::$app->session->get("user_type") === "donor") {
+                echo "Recipient ".$num;
+            } else {
+                echo $box->getBoxTitle();
+            }
+            $num++;
 
             echo "</h2>";
             $boxStatus = strtolower($box->getBoxStatus());
