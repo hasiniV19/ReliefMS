@@ -20,13 +20,13 @@
 <body >
 <header>
     <nav id="navbar" class="navbar navbar-expand-lg   fixed-top">
-        <a id="logo" href="<?php echo 'http://localhost:8080/'?>" class="visible-md visible-lg">
+        <a id="logo" href="<?php echo 'http://localhost:8080/'?>" class="d-none d-md-block d-lg-block">
             <img src="img/logo2.png" class="img-fluid " width="80">
         </a>
 
         <a id="name" class="navbar-brand" href="<?php echo 'http://localhost:8080/'?>">Epsilon Foundation</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
+        <button class="navbar-toggler" id="nav-tog" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon" id="nav-tog-i"></span>
         </button>
 
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
