@@ -9,7 +9,7 @@ use app\core\App;
 <style>
     <?php include "css/list.css" ?>
 </style>
-<div class="container">
+<div class="container py-5">
     <h1 class="title"><?php echo $title?></h1>
     <?php if(App::$app->session->getFlash("aidDonationSuccess")): ?>
         <div class="alert alert-success text-center" role="alert">

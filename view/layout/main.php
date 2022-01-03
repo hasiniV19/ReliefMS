@@ -80,9 +80,9 @@ use app\core\App;
                     <li><a href="#about">About</a></li>
                     <li><a href="<?php echo 'http://localhost:8080/login'?>">Donate</a></li>
                     <li>    <?php if($user_type === 'admin' || $user_type === 'donor'){ ?>
-                            <a class="nav-link" href="<?php echo 'http://localhost:8080/logout'?>">Logout</a>
+                            <a class="" href="<?php echo 'http://localhost:8080/logout'?>">Logout</a>
                         <?php }else{ ?>
-                            <a class="nav-link" href="<?php echo 'http://localhost:8080/login'?>">Login</a>
+                            <a class="" href="<?php echo 'http://localhost:8080/login'?>">Login</a>
                         <?php } ?></li>
                     <li><a href="#contact">Contact</a></li>
                 </ul>

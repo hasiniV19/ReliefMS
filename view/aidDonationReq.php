@@ -44,7 +44,7 @@ use app\handlers\ValidateRequest;
             </div>
         </div>
 
-        <div class="text-center">
+        <div class="text-center py-5">
             <button type="submit" class="btn btn-primary submit-button">Submit</button>
         </div>
     </form>

@@ -69,19 +69,29 @@ use app\view\DateConverter;
             <button type="submit" class="btn btn-primary submit-button">Submit</button>
         </div> -->
 
-        <div class="form-btn-row form-row text-center">
-            <div class="col-md-4 btn-row">
-                <a href="<?php echo 'http://localhost:8080/donorDetails?donor_id='.App::$app->session->get('donor_id')?>" class="btn btn-primary submit-button">Go Back</a>
+        <?php if ($status === 'declined' || $status === 'approved'){ ?>
+            <div class='text-center' style="padding-top: 2vw">
+                <div class=' btn-row'>
+                    <a href="<?php echo 'http://localhost:8080/donorDetails?donor_id='.App::$app->session->get('donor_id')?>" class='btn btn-primary submit-button'>Go Back</a>
+                </div>
             </div>
-            <div class="col-md-4 btn-row ">
-                <button name="decline" type="submit" class="btn btn-danger submit-button">Decline</button>
-            </div>
-            <div class="col-md-4  btn-row">
-                <button name="approve" type="submit" class="btn btn-success submit-button">Approve</button>
-            </div>
+        <?php }
+        else {?>
+
+            <div class="form-btn-row form-row text-center">
+                <div class="col-md-4 btn-row">
+                    <a href="<?php echo 'http://localhost:8080/donorDetails?donor_id='.App::$app->session->get('donor_id')?>" class="btn btn-primary submit-button">Go Back</a>
+                </div>
+                <div class="col-md-4 btn-row ">
+                    <button name="decline" type="submit" class="btn btn-danger submit-button">Decline</button>
+                </div>
+                <div class="col-md-4  btn-row">
+                    <button name="approve" type="submit" class="btn btn-success submit-button">Approve</button>
+                </div>
 
 
-        </div>
+            </div>
+        <?php } ?>
 
     </form>
 
