@@ -15,9 +15,10 @@ use app\handlers\ValidateRequest;
     <div class="row">
         <form method="post" action="/raiseFundForm" class="container form-container needs-validation col-lg-8 col-md-8 col-10 py-3" enctype="multipart/form-data">
             <h2 class="title text-center py-3">Your Donation Will Make a Difference</h2>
-            <p class="lead text-center py-2 info">Your donation will be added to our fund and will be monitored by our team and deploy to the needies.</p>
-            <p class="lead text-center py-2 info"  style="color: #ff6666">Please make sure to mention your name as the narration/description/remark/beneficiary remark to track your payment easily.</p>
-
+            <div>
+                <p class="lead text-center py-2 info">Your donation will be added to our fund and will be monitored by our team and deploy to the needies.</p>
+                <p class="lead text-center py-2 info"  style="color: #ff6666">Please make sure to mention your name as the narration/ description/ remark/ beneficiary remark to track your payment easily.</p>
+            </div>
             <hr class="mb-4 ">
 
             <h4 class="mb-3">Payment</h4>

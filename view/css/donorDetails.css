@@ -95,17 +95,19 @@ body{
 }
 
 .box a {
-    height: 30%;
+    /*height: 30%;*/
     text-decoration: none;
     padding: 3px;
     float: right;
     /* margin-bottom: 10px; */
+    border-radius: 7px;
 }
 
 .status-bar {
-    height: 30%;
+    /*height: 30%;*/
     padding: 3px;
     display: inline-block;
+    border-radius: 7px;
 }
 
 .link {

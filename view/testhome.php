@@ -111,7 +111,8 @@
 <!---->
                     <ul class="list-unstyled pl-md-5 mb-5">
                         <li class="d-flex text-black mb-2">
-                            <span class="mr-3"><span class="fas fa-map-marker-alt"></span></span> No. 25, Epsilonwatta, Galle, Sri Lanka
+                            <span class="mr-3"><span class="fas fa-map-marker-alt"></span></span> No.85B Colombo - Galle Main Rd, Galle 80000
+
                         </li>
                         <li class="d-flex text-black mb-2"><span class="mr-3"><span class="fas fa-phone-alt"></span></span> +94 912 230 737</li>
                         <li class="d-flex text-black"><span class="mr-3"><span class="fas fa-envelope"></span></span> contact_us@epsilonfoundation.com </li>
