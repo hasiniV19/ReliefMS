@@ -13,6 +13,7 @@
 /*** @var $date */
 /*** @var $status */
 /*** @var $recipient_id*/
+/*** @var $fsr_id*/
 
 use app\view\DateConverter;
 
@@ -77,7 +78,7 @@ use app\view\DateConverter;
             </div>
             <div class=" col-md-7">
                 <label for="gms-certificate" class="input-label" ><a href="<?php echo 'http://localhost:8080/uploads/';
-                    if (isset($recipient_id) && isset($gms_certificate)) echo $recipient_id.$gms_certificate;
+                    if (isset($recipient_id) && isset($gms_certificate)) echo $fsr_id.$gms_certificate;
                     ?>"target ="_blank"><?php if (isset($gms_certificate)) echo $gms_certificate; ?></a></label>
             </div>
         </div>
