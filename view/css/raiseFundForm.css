@@ -50,6 +50,11 @@ body{
 .fields{
     font-size: 17px;
 }
+
+.err-msg{
+    color: crimson;
+}
+
 /*.input-label {
     font-size: 0.7rem;
     color: #393939;

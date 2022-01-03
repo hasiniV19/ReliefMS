@@ -30,18 +30,20 @@ use app\handlers\ValidateRequest;
                     </div>
                     <input type="text" name="amount" class="form-control input-field" id="donation-amount" placeholder="Donation Amount"
                            value="<?php if (isset($amount)) echo $amount->getValue();?>">
-                    <span class="err-msg"><?php if (isset($amount)) echo $amount->getValidError();?></span>
                 </div>
+                <span class="err-msg"><?php if (isset($amount)) echo $amount->getValidError();?></span>
             </div>
+
             <br>
             <div class="mb-3">
                 <label for="upload-title" class="input-label fields">Upload a copy(photo) of your deposit slip/transaction receipt.</label>
                 <div class="input-group">
                     <div class="custom-file">
                         <input type="file" name="fileToUpload" id="fileToUpload" class="form-control-file" value="">
-                        <div class="err-msg"><?php if (isset($fileToUpload)) echo $fileToUpload->getValidError();?></div>
+
                     </div>
                 </div>
+                <div class="err-msg"><?php if (isset($fileToUpload)) echo $fileToUpload->getValidError();?></div>
                 <div class="invalid-feedback">
                     Please upload a copy(photo) of your deposit slip or the transaction receipt.
                 </div>
