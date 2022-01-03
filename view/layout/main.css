@@ -112,3 +112,25 @@ a, a:hover {
 .footer-16371 .copyright {
     color: #999999; }
 
+
+button.navbar-toggler{
+    border: 1px solid black;
+}
+
+
+
+@media screen and (max-width: 470px) {
+    #name {
+        font-size: 5vw;
+    }
+    button.navbar-toggler, button.navbar-toggler.navbar-toggler-icon{
+        max-height: 5vw;
+        max-width: 5vw;
+    }
+}
+
+/*@media screen and (max-width: 768px) {*/
+/*    #name {*/
+/*        font-size: 20px;*/
+/*    }*/
+/*}*/

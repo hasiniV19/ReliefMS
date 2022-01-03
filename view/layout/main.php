@@ -23,7 +23,7 @@ use app\core\App;
 <body class="d-flex flex-column min-vh-100">
 <header>
     <nav id="navbar" class="navbar navbar-expand-lg   fixed-top">
-        <a id="logo" href="<?php echo 'http://localhost:8080/'?>" class="visible-md visible-lg">
+        <a id="logo" href="<?php echo 'http://localhost:8080/'?>" class="d-none d-md-block d-lg-block">
             <img src="img/logo2.png" class="img-fluid " width="80">
         </a>
 
