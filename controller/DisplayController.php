@@ -483,6 +483,7 @@ class DisplayController extends Controller{
         $data_donation = $donationDetailsModel->retrieve();
 
         $data = array_merge($data_aid,$data_donation, $recipient_details);
+        $data["recipient_type"] = $recipient_type;
 
         return $this->render("aidDonationDetails", "main", $data);
     }

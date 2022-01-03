@@ -3,6 +3,7 @@
 namespace app\core\database;
 
 
+use app\exception\ServiceUnavailableException;
 use mysqli;
 
 
@@ -24,9 +25,8 @@ class Database implements GenericDB
         $this->set_db_attributes();
         $this->conn = new mysqli($this->_host, $this->_username, $this->_password, $this->_database);
         if ($this->conn->connect_error) {
-            echo "Fail" . $this->conn->connect_error;
+            throw new ServiceUnavailableException();
         }
-
     }
 
     public static function getInstance()

@@ -6,6 +6,7 @@
 /*** @var $date */
 /*** @var $status */
 /*** @var $name */
+/*** @var $recipient_type */
 
 use app\core\App;
 use app\view\DateConverter;
@@ -42,7 +43,15 @@ use app\view\DateConverter;
                 <label for="recipient-title" class="input-title">Recipient Name</label>
             </div>
             <div class=" col-md-7">
-                <label for="recipient" class="input-label"><a href=""><?php if (isset($name)) echo $name; ?></a></label>
+                <label for="recipient" class="input-label"><a href="<?php
+                    if (isset($recipient_type, $recipient_id)) {
+                        if ($recipient_type === "fsr") {
+                            echo "http://localhost:8080/approvedFSRDetails?recipient_id=".$recipient_id;
+                        } else {
+                            echo "http://localhost:8080/approvedMSRDetails?recipient_id=".$recipient_id;
+                        }
+                    }
+                    ?>"><?php if (isset($name)) echo $name; ?></a></label>
             </div>
         </div>
 

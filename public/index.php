@@ -105,5 +105,6 @@ $app->route()->get("/donorProfile", [FormController::class, "updateDonorProfile"
 $app->route()->post("/donorProfile", [FormController::class, "updateDonorProfile"]);
 
 $app->route()->get("/notFound", [SiteController::class, "errorNotFound"]);
+$app->route()->get("/serviceUnavailable", [SiteController::class, "errorServiceUnavailable"]);
 
 $app->run();
