@@ -59,4 +59,9 @@ class SiteController extends Controller
     {
         return $this->render("notFound", "main");
     }
+
+    public function errorServiceUnavailable()
+    {
+        return $this->render("serviceUnavailable", "main");
+    }
 }

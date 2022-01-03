@@ -71,6 +71,16 @@
                 <h4 class="type-title">Aid Donations</h4>
                 <div class="row">
                     <?php
+                    if (empty($aid_donations)) {
+                        echo "
+                        <div class='don-list  col-12'>
+                        <div class='box-container'>
+                            <div class=''>
+                            No Aid Donations yet
+                            </div>
+                        </div>
+                        </div>";
+                    }
                     $donation_num = 1;
                     foreach ($aid_donations as $aid_donation)
                     {
@@ -118,6 +128,18 @@
                 <div class="row">
 
                     <?php
+
+                    if (empty($money_donation)) {
+                        echo "
+                        <div class='don-list  col-12'>
+                        <div class='box-container'>
+                            <div class=''>
+                            No Money Donations yet
+                            </div>
+                        </div>
+                        </div>";
+                    }
+
                     $donation_num = 1;
                     foreach ($money_donations as $money_donation)
                     {
