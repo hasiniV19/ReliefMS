@@ -4,7 +4,7 @@ namespace app\applications;
 
 use app\states\ApplicationState;
 
-abstract class ApplicationDecorator implements IApplication
+abstract class ComplexApplication implements IApplication
 {
     protected IApplication $decoratedApplication;
 

@@ -129,7 +129,7 @@
 
                     <?php
 
-                    if (empty($money_donation)) {
+                    if (empty($money_donations)) {
                         echo "
                         <div class='don-list  col-12'>
                         <div class='box-container'>
