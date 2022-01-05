@@ -8,7 +8,7 @@ use app\core\database\Database;
 
 abstract class DBModel
 {
-    protected Database $connection;
+    protected Database $connection; // Database should be GenericDB
     protected $lastId;
     public function __construct(){
         $this->connection = Database::getInstance();

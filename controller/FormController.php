@@ -14,7 +14,7 @@ use app\handlers\DayValidateHandler;
 use app\handlers\GSDivisionValidateHandler;
 use app\handlers\DistrictValidateHandler;
 use app\handlers\FileValidator;
-use app\handlers\FileValidateRequest;
+//use app\handlers\FileValidateRequest;
 use app\handlers\FinalValidateHandler;
 use app\handlers\GenderValidateHandler;
 use app\handlers\HaveVehicleValidateHandler;
@@ -53,7 +53,7 @@ use http\Message\Body;
 class FormController extends Controller
 {
     private array $validateRequests;
-    private Application $application;
+//    private Application $application;
 
     private AuthController $authController;
 
