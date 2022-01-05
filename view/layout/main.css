@@ -114,14 +114,14 @@ a, a:hover {
 
 
 button.navbar-toggler{
-    border: 1px solid black;
+    border: 2px solid #6f42c1;
 }
 
 
 
 @media screen and (max-width: 470px) {
     #name {
-        font-size: 5vw;
+        font-size: 7vw;
     }
     button.navbar-toggler, button.navbar-toggler.navbar-toggler-icon{
         max-height: 5vw;
@@ -129,8 +129,12 @@ button.navbar-toggler{
     }
 }
 
-/*@media screen and (max-width: 768px) {*/
-/*    #name {*/
-/*        font-size: 20px;*/
-/*    }*/
-/*}*/
+@media screen and (max-width: 390px) {
+    #name {
+        font-size: 6vw;
+    }
+    button.navbar-toggler, button.navbar-toggler.navbar-toggler-icon{
+        max-height: 5vw;
+        max-width: 6vw;
+    }
+}
