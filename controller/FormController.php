@@ -86,10 +86,8 @@ class FormController extends Controller
 
     public function updateDonorProfile(Request $request, Response $response)
     {
-        $auth = $this->authController->authenticate("donor");
-        if ($auth !== true){
-            return $auth;
-        }
+        $this->authController->authenticate(["donor"]);
+
 
         $user_id = App::$app->session->get("user_id");
         $donorModel = new DonorModel();
@@ -191,10 +189,8 @@ class FormController extends Controller
 
     public function addDonorApplication(Request $request, Response $response)
     {
-        $auth = $this->authController->authenticate("donor");
-        if ($auth !== true){
-            return $auth;
-        }
+        $this->authController->authenticate(["donor"]);
+
 
         if ($request->isPost()) {
             $body = $request->getBody();
@@ -228,10 +224,6 @@ class FormController extends Controller
                 $bodyRecipient['recipient_type'] = 'msr';
                 $recipientModel = new RecipientApplication();
                 $recipientModel->setAttributes($bodyRecipient);
-
-                for ($i = 1; $i <= 5; $i++) {
-
-                }
 
                 if ($recipientModel->save()) {
                     $recipient_id = $recipientModel->getLastID();
@@ -359,10 +351,8 @@ class FormController extends Controller
 
     public function addAidDonation(Request $request, Response $response)
     {
-        $auth = $this->authController->authenticate("donor");
-        if ($auth !== true){
-            return $auth;
-        }
+        $this->authController->authenticate(["donor"]);
+
 
         $user_id = App::$app->session->get("user_id");
         $donorModel = new DonorModel();
@@ -422,10 +412,7 @@ class FormController extends Controller
 
     public function raiseFundForm(Request $request,Response $response)
     {
-        $auth = $this->authController->authenticate("donor");
-        if ($auth !== true){
-            return $auth;
-        }
+        $this->authController->authenticate(["donor"]);
 
         if ($request->isPost()) {
             $body = $request->getBody();

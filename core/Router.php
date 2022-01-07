@@ -5,6 +5,7 @@ namespace app\core;
 
 
 
+use app\controller\SiteController;
 use app\exception\NotFoundException;
 //use NotFoundException;
 
@@ -33,7 +34,23 @@ class Router
     {
         $method = $this->request->getMethod();
         $path = $this->request->getPath();
+
+        if ($path === "/login" && $method === "get" && App::$app->session->get("user_type")) {
+            if (App::$app->session->get("user_type") === "admin"){
+                $controller = new SiteController();
+                return $controller->addAdminHome();
+            }
+
+            if (App::$app->session->get("user_type") === "donor") {
+                $controller = new SiteController();
+                return $controller->addDonorHome();
+            }
+        }
+
+
         $callback = $this->routes[$method][$path] ?? false;
+
+
 
         if(!$callback){
             throw new NotFoundException();

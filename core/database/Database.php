@@ -52,32 +52,18 @@ class Database implements GenericDB
     public function insert($sql, $array)
     {
         $result = $this->conn->prepare($sql);
-        if ($result === false){
-            throw new ServiceUnavailableException();
-        }
         $types = $this->get_types($array);
-        if ($result->bind_param($types, ...$array) === false){
-            throw new ServiceUnavailableException();
-        }
-        if ($result->execute() === false){
-            throw new ServiceUnavailableException();
-        }
+        $result->bind_param($types, ...$array);
+        $result->execute();
         return $this->conn->insert_id;
     }
 
     public function get_record($sql, $data)
     {
         $statement = $this->conn->prepare($sql);
-        if ($statement === false){
-            throw new ServiceUnavailableException();
-        }
         $types = $this->get_types($data);
-        if ($statement->bind_param($types,... $data) === false){
-            throw new ServiceUnavailableException();
-        }
-        if ($statement->execute() === false){
-            throw new ServiceUnavailableException();
-        }
+        $statement->bind_param($types,... $data);
+        $statement->execute();
         $result = $statement->get_result();
         $data = $result->fetch_assoc();
         return $data;
@@ -87,16 +73,9 @@ class Database implements GenericDB
     public function get_records($sql, $data)
     {
         $statement = $this->conn->prepare($sql);
-        if ($statement === false){
-            throw new ServiceUnavailableException();
-        }
         $types = $this->get_types($data);
-        if ($statement->bind_param($types,... $data) === false){
-            throw new ServiceUnavailableException();
-        }
-        if ($statement->execute() === false) {
-            throw new ServiceUnavailableException();
-        }
+        $statement->bind_param($types,... $data);
+        $statement->execute();
         $result = $statement->get_result();
         $data =[];
         //var_dump($data);
@@ -111,12 +90,7 @@ class Database implements GenericDB
     public function get_all($query)
     {
         $statement = $this->conn->prepare($query);
-        if ($statement === false){
-            throw new ServiceUnavailableException();
-        }
-        if ($statement->execute() === false){
-            throw new ServiceUnavailableException();
-        }
+        $statement->execute();
         $result = $statement->get_result();
         $data =[];
         //var_dump($data);
@@ -131,45 +105,24 @@ class Database implements GenericDB
     public function set_status($sql, $status, $id)
     {
         $statement = $this->conn->prepare($sql);
-        if ($statement === false){
-            throw new ServiceUnavailableException();
-        }
-        if ($statement->bind_param('si', $status, $id) === false){
-            throw new ServiceUnavailableException();
-        }
-        if ($statement->execute() === false){
-            throw new ServiceUnavailableException();
-        }
+        $statement->bind_param('si', $status, $id);
+        $statement->execute();
     }
 
     public function update($query, $data)
     {
         $result = $this->conn->prepare($query);
-        if ($result === false){
-            throw new ServiceUnavailableException();
-        }
         $types = $this->get_types($data);
-        if ($result->bind_param($types, ...$data) === false){
-            throw new ServiceUnavailableException();
-        }
-        if ($result->execute() === false){
-            throw new ServiceUnavailableException();
-        }
+        $result->bind_param($types, ...$data);
+        $result->execute();
     }
 
     public function delete($query, $data)
     {
         $result = $this->conn->prepare($query);
-        if ($result === false){
-            throw new ServiceUnavailableException();
-        }
         $types = $this->get_types($data);
-        if ($result->bind_param($types, ...$data) === false){
-            throw new ServiceUnavailableException();
-        }
-        if ($result->execute()){
-            throw new ServiceUnavailableException();
-        }
+        $result->bind_param($types, ...$data);
+        $result->execute();
     }
 
     // get types of element in an array

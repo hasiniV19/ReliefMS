@@ -4,7 +4,7 @@ namespace app\exception;
 
 use Throwable;
 
-class Unauthorized extends \Exception
+class UnauthorizedException extends \Exception
 {
 
     public function __construct()

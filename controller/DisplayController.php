@@ -38,10 +38,7 @@ class DisplayController extends Controller{
     }
     public function displayDonorDetails(Request $request, Response $response)
     {
-        $auth = $this->authController->authenticate("admin");
-        if ($auth !== true){
-            return $auth;
-        }
+        $this->authController->authenticate(["admin"]);
 
         $body = $request->getBody();
         $donorId = $body["donor_id"];
@@ -80,10 +77,8 @@ class DisplayController extends Controller{
 
     public function displayVolunteerDetails(Request $request, Response $response)
     {
-        $auth = $this->authController->authenticate("admin");
-        if ($auth !== true){
-            return $auth;
-        }
+        $this->authController->authenticate(["admin"]);
+
         if ($request->isPost()){
             $volunteerId = App::$app->session->get("volunteer_id");
             $volunteerModel = new VolunteerDetails();
@@ -147,10 +142,7 @@ class DisplayController extends Controller{
     }
     public function displayFSRDetailsAdmin(Request $request, Response $response)
     {
-        $auth = $this->authController->authenticate("admin");
-        if ($auth !== true){
-            return $auth;
-        }
+        $this->authController->authenticate(["admin"]);
 
         if ($request->isPost()){
             $fsrDetailsModel = new FsrDetailsModel();
@@ -209,10 +201,7 @@ class DisplayController extends Controller{
     public function displayFSRDetailsDonor(Request $request, Response $response)
     {
 
-        $auth = $this->authController->authenticate("donor");
-        if ($auth !== true){
-            return $auth;
-        }
+        $this->authController->authenticate(["donor"]);
 
         $body = $request->getBody();
         $recipientId = $body["recipient_id"];
@@ -242,10 +231,7 @@ class DisplayController extends Controller{
 
     public function displayMSRDetailsAdmin(Request $request, Response $response)
     {
-        $auth = $this->authController->authenticate("admin");
-        if ($auth !== true){
-            return $auth;
-        }
+        $this->authController->authenticate(["admin"]);
 
         if ($request->isPost()) {
             $msrDetailsModel = new MsrDetailsModel();
@@ -307,10 +293,8 @@ class DisplayController extends Controller{
 
     public function displayMSRDetailsDonor(Request $request, Response $response)
     {
-        $auth = $this->authController->authenticate("donor");
-        if ($auth !== true){
-            return $auth;
-        }
+        $this->authController->authenticate(["donor"]);
+
 
 
         $body = $request->getBody();
@@ -354,18 +338,9 @@ class DisplayController extends Controller{
 
     public function displayMoneyDonationDetails(Request $request, Response $response)
     {
-        $auth = $this->authController->authenticate("admin");
-        if ($auth !== true){
-            return $auth;
-        }
+        $this->authController->authenticate(["admin"]);
+
         if ($request->isPost()){
-//            $donation_id = App::$app->session->get("donation_id");
-//            $donationDetailsModel = new DonationDetailsModel();
-//            $donationUpdateModel = new DonationUpdateModel();
-//
-//            $donationBody = ["donation_id"=>$donation_id];
-//            $donationDetailsModel->setAttributes($donationBody);
-//            $donationUpdateModel->setAttributes($donationBody);
 
             $mDonationApplication = $this->getDonationApplication();
             if (isset($_POST["approve"])) {
@@ -402,10 +377,8 @@ class DisplayController extends Controller{
 
     public function displayAidDonationDetails(Request $request, Response $response)
     {
-        $auth = $this->authController->authenticate("admin");
-        if ($auth !== true){
-            return $auth;
-        }
+        $this->authController->authenticate(["admin"]);
+
 
         if ($request->isPost()) {
             // donation application created
@@ -490,10 +463,7 @@ class DisplayController extends Controller{
 
     public function displayApprovedMSRDetails(Request $request, Response $response)
     {
-        $auth = $this->authController->authenticate("admin");
-        if ($auth !== true){
-            return $auth;
-        }
+        $this->authController->authenticate(["admin"]);
 
         if ($request->isPost()) {
             $msrDetailsModel = new MsrDetailsModel();
@@ -549,10 +519,7 @@ class DisplayController extends Controller{
 
     public function displayApprovedFSRDetails(Request $request, Response $response)
     {
-        $auth = $this->authController->authenticate("admin");
-        if ($auth !== true){
-            return $auth;
-        }
+        $this->authController->authenticate(["admin"]);
 
         if ($request->isPost()){
             $fsrDetailsModel = new FsrDetailsModel();
@@ -603,10 +570,7 @@ class DisplayController extends Controller{
     public function displayAidedMSRDetails(Request $request, Response $response)
     {
 
-        $auth = $this->authController->authenticate("admin");
-        if ($auth !== true){
-            return $auth;
-        }
+        $this->authController->authenticate(["admin"]);
 
         $body = $request->getBody();
         $recipientId = $body["recipient_id"];
@@ -652,10 +616,7 @@ class DisplayController extends Controller{
 
     public function displayAidedFSRDetails(Request $request, Response $response)
     {
-        $auth = $this->authController->authenticate("admin");
-        if ($auth !== true){
-            return $auth;
-        }
+        $this->authController->authenticate(["admin"]);
 
         $body = $request->getBody();
         $recipientId = $body["recipient_id"];

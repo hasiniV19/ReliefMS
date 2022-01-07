@@ -7,8 +7,10 @@ use app\core\Controller;
 use app\core\Request;
 use app\core\Response;
 use app\core\Session;
+use app\exception\ForbiddenException;
 use app\exception\NotFoundException;
 use app\exception\ServiceUnavailableException;
+use app\exception\UnauthorizedException;
 use app\model\AuthCreateModel;
 use app\model\AuthModel;
 use app\model\UserCreateModel;
@@ -18,7 +20,6 @@ class AuthController extends Controller
 {
     public function login(Request $request, Response $response)
     {
-        try {
             if ($request->isPost()) {
                 $body = $request->getBody();
                 $email = $body["email"];
@@ -56,11 +57,7 @@ class AuthController extends Controller
                 return $this->render("login", "login_layout", $body);
             }
             return $this->render("login", "login_layout");
-        } catch (ServiceUnavailableException $exception) {
-            $response->setStatus(503);
-            $response->redirect("http://localhost:8080/serviceUnavailable");
-            exit;
-        }
+
     }
 
     public function register(Request $request, Response $response)
@@ -97,33 +94,15 @@ class AuthController extends Controller
         exit;
     }
 
-    public function authenticate($user_type)
+    public function authenticate($user_types)
     {
-        try {
             if (!App::$app->session->get("user_type")) {
-                throw new NotFoundException();
+                throw new UnauthorizedException();
             }
 
-            if (App::$app->session->get("user_type") !== $user_type) {
-                throw new NotFoundException();
+            if (!in_array(App::$app->session->get("user_type"), $user_types, true)) {
+                throw new ForbiddenException();
             }
-            return true;
-        } catch (NotFoundException $exception) {
-            return $this->render($exception->getMessage(), "main");
-        }
     }
 
-    public function authenticateForTwo()
-    {
-        try {
-            if (!App::$app->session->get("user_type")) {
-                throw new NotFoundException();
-            }
-
-            return true;
-        } catch (NotFoundException $exception) {
-
-            return $this->render($exception->getMessage(), "main");
-        }
-    }
 }
