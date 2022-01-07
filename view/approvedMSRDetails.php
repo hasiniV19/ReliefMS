@@ -197,17 +197,28 @@ use app\view\DateConverter;
         <!-- <div class="text-center">
             <button type="submit" class="btn btn-primary submit-button">Submit</button>
         </div> -->
+        <?php $donation_id = App::$app->session->get('donation_id') ?>
+        <?php $donor_id = App::$app->session->get('donor_id') ?>
 
-        <div class="form-btn-row form-row text-center">
-            <div class="col-md-6 btn-row " id="btn-1">
-                <a href="<?php echo 'http://localhost:8080/approvedRecipients'?>" class="btn btn-primary submit-button" style="width: 200px">Go Back</a>
+        <?php if ($status === 'aided'){ ?>
+            <div class='text-center' style="padding-top: 2vw">
+                <div class=' btn-row'>
+                    <a href="<?php echo 'http://localhost:8080/aidDonationDetails?donation_id='.$donation_id?>" class='btn btn-primary submit-button'>Go Back</a>
+                </div>
             </div>
+        <?php }
+        else {?>
 
-            <div class="col-md-6  btn-row" id="btn-2">
-                <button name="aid" type="submit" class="btn btn-success submit-button" style="width: 200px">Mark as Aided</button>
+            <div class="form-btn-row form-row text-center">
+                <div class="col-md-6 btn-row " id="btn-1">
+                    <a href="<?php echo 'http://localhost:8080/approvedRecipients'?>" class="btn btn-primary submit-button" style="width: 200px">Go Back</a>
+                </div>
+
+                <div class="col-md-6  btn-row" id="btn-2">
+                    <button name="aid" type="submit" class="btn btn-success submit-button" style="width: 200px">Mark as Aided</button>
+                </div>
             </div>
-
-        </div>
+        <?php } ?>
 
     </form>
 
