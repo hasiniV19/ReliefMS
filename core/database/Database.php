@@ -29,7 +29,7 @@ class Database implements GenericDB
         }
     }
 
-    public static function getInstance()
+    public static function getInstance():GenericDB
     {
         if(!self::$_instance){
             self::$_instance = new self();
