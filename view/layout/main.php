@@ -28,7 +28,7 @@ use app\core\App;
         </a>
 
         <a id="name" class="navbar-brand" href="<?php echo 'http://localhost:8080/'?>">Epsilon Foundation</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <button class="navbar-toggler navbar-light" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
 
@@ -44,7 +44,12 @@ use app\core\App;
                     <a class="nav-link" href="#">About</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="<?php echo 'http://localhost:8080/login'?>">Donate</a>
+                    <?php if( $user_type === 'donor'){ ?>
+                        <a class="nav-link" href="<?php echo 'http://localhost:8080/donorHome'?>">Donate</a>
+                    <?php }else{?>
+                        <a class="nav-link" href="<?php echo 'http://localhost:8080/login'?>">Donate</a>
+                    <?php } ?>
+
                 </li>
                 <li class="nav-item">
                     <?php if($user_type === 'admin' || $user_type === 'donor'){ ?>
