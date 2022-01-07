@@ -89,7 +89,7 @@
                         <div class='don-list  col-12'>
                         <div class='box-container'>
                             <div class='box'>
-                                <h2 class=''>donation $donation_num</h2>";
+                                <h2 class=''>Donation $donation_num</h2>";
                         $donation_status = $aid_donation['status'];
                         $donation_id = $aid_donation['donation_id'];
 
@@ -148,7 +148,7 @@
                         <div class='don-list  col-12'>
                         <div class='box-container'>
                             <div class='box'>
-                                <h2 class=''>donation $donation_num</h2>";
+                                <h2 class=''>Donation $donation_num</h2>";
                         $donation_status = $money_donation['status'];
                         $donation_id = $money_donation['donation_id'];
 
