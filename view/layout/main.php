@@ -219,7 +219,7 @@ use app\core\App;
     <title>Homepage</title>
 </head>
 
-<body onload="load()"  class="d-flex flex-column min-vh-100">
+<body onload="load()"  >
 
 <div id="loader" class="justify-content-center">
     <div class="cssload-tri cssload-invert"></div>
@@ -232,7 +232,7 @@ use app\core\App;
     <div class="cssload-tri"></div>
     <div class="cssload-tri cssload-invert"></div>
 </div>
-<div style="display: none" class="animate-bottom" id="main-page">
+<div style="display: none" class="animate-bottom d-flex flex-column min-vh-100" id="main-page">
 <header>
     <nav id="navbar" class="navbar navbar-expand-lg   fixed-top">
         <a id="logo" href="<?php echo 'http://localhost:8080/'?>" class="d-none d-md-block d-lg-block">
@@ -253,7 +253,8 @@ use app\core\App;
                     else echo 'http://localhost:8080/'?>">Home <span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">About</a>
+                    <a class="nav-link" href="https://www.facebook.com/Epsilon-Foundation-109819364909796
+" target ="_blank">About</a>
                 </li>
                 <li class="nav-item">
                     <?php if( $user_type === 'donor'){ ?>
@@ -272,7 +273,8 @@ use app\core\App;
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Contact</a>
+                    <a class="nav-link" href="https://www.facebook.com/Epsilon-Foundation-109819364909796
+" target ="_blank">Contact</a>
                 </li>
             </ul>
         </div>
@@ -294,7 +296,8 @@ use app\core\App;
                     <li><a href="<?php if($user_type === 'admin') echo 'http://localhost:8080/adminHome';
                         elseif ($user_type === 'donor') echo 'http://localhost:8080/donorHome';
                         else echo 'http://localhost:8080/'?>">Home</a></li>
-                    <li><a href="#about">About</a></li>
+                    <li><a href="https://www.facebook.com/Epsilon-Foundation-109819364909796
+" target ="_blank">About</a></li>
                     <li>
                         <?php if( $user_type === 'donor'){ ?>
                             <a class="" href="<?php echo 'http://localhost:8080/donorHome'?>">Donate</a>
@@ -308,7 +311,8 @@ use app\core\App;
                         <?php }else{ ?>
                             <a class="" href="<?php echo 'http://localhost:8080/login'?>">Login</a>
                         <?php } ?></li>
-                    <li><a href="#contact">Contact</a></li>
+                    <li><a href="https://www.facebook.com/Epsilon-Foundation-109819364909796
+" target ="_blank">Contact</a></li>
                 </ul>
 
                 <div class="social mb-4">
@@ -330,7 +334,7 @@ use app\core\App;
     let myVar;
 
     function load() {
-        myVar = setTimeout(showPage, 1000);
+        myVar = setTimeout(showPage, 2000);
     }
 
     function showPage() {

@@ -97,8 +97,16 @@ use app\handlers\ValidateRequest;
 
         <div class="col-md-6 col-sm-12 row"> <!-- other needs -->
             <label class="col-12 mb-4 input-label" style="color: #ff6666">We provide you package with necessary items </label>
-            <label class="col-md-3 input-label">Other Needs</label>
+            <label class="col-md-3 input-label mb-3">We provide</label>
             <div class="col-md-9">
+                <label for="pack" class="mb-3 font-italic font-weight-bold"><a href="<?php echo 'http://localhost:8080/package/list.pdf';?>"target ="_blank">Relief Pack</a> Other than these things in this list, If you want anything else please mention below.</label>
+            </div>
+
+            <label class="col-md-3 input-label">Other Needs</label>
+
+
+            <div class="col-md-9">
+
                 <div class="form-group">
                     <input name="need1" type="text" class="form-control input-field" placeholder="Enter Your Need" id="" aria-describedby=""
                            value="<?php if (isset($need1)) echo $need1->getValue();?>" >
