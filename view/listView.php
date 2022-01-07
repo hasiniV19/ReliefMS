@@ -18,7 +18,7 @@ use app\core\App;
     <?php endif;?>
     <div class="row">
         <?php foreach ($boxes as $box){
-            $num = 1;
+            $num =1;
             echo "
                 <div class='box-container col-12 col-lg-4 col-md-6'>
                     <div class='box'>
