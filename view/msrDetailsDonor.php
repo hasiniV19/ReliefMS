@@ -79,6 +79,8 @@
             </div>
         </div>
 
+        <span style="color: #ff6666;" class="mb-3 font-italic ">If you want to donate to this person, you should agree to provide the items in <a href="<?php echo 'http://localhost:8080/package/msr.pdf';?>"target ="_blank">this</a> list</span>
+
         <!-- <div class="form-row">
           <div class=" col-md-8">
             <label for="-title" class="input-title"></label>

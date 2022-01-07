@@ -3,6 +3,7 @@
 body {
     font-family: 'Rubik', sans-serif;
     height: 100% !important;
+    margin: 0;
     /*background-color: #F8F9FB !important*/
 }
 html {
@@ -34,7 +35,10 @@ p {
 
 
 footer {
-    color: #caced1 !important
+    color: #caced1 !important;
+    bottom: 0;
+    width: 100%;
+
 }
 
 li {
@@ -82,7 +86,6 @@ a, a:hover {
 .footer-16371 {
     background-color: white;
     padding-top: 5rem ;
-
     font-family: "Poppins", sans-serif; }
 .footer-16371 .footer-site-logo {
     text-align: center;

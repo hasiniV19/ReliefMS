@@ -85,7 +85,7 @@
             <div class="col-lg-6 order-2 order-lg-1"><i class="fa fa-bar-chart fa-2x mb-3 text-primary"></i>
                 <h2 class="font-weight-light">Our Aim</h2>
                 <p class="font-italic text-muted mb-4 font-weight-bold font-italic">Providing a platform for the people who need support and the people who are willing to give a helping hand during this pandemic.</p><a href="https://www.facebook.com/Epsilon-Foundation-109819364909796
-" class="btn btn-light px-5 rounded-pill shadow-sm">Learn More</a>
+" target ="_blank" class="btn btn-light px-5 rounded-pill shadow-sm">Learn More</a>
             </div>
             <div class="col-lg-5 px-5 mx-auto order-1 order-lg-2"><img src="https://bootstrapious.com/i/snippets/sn-about/img-1.jpg" alt="" class="img-fluid mb-4 mb-lg-0"></div>
         </div>
@@ -97,7 +97,7 @@
                 <p class="font-italic text-muted mb-4 font-weight-bold font-italic">People who have been in home quarantine </p>
                 <p class="font-italic text-muted mb-4 font-weight-bold font-italic">People who are willing to give a helping hand</p>
                 <a href="https://www.facebook.com/Epsilon-Foundation-109819364909796
-" class="btn btn-light px-5 rounded-pill shadow-sm">Learn More</a>
+" target ="_blank" class="btn btn-light px-5 rounded-pill shadow-sm">Learn More</a>
             </div>
         </div>
     </div>
