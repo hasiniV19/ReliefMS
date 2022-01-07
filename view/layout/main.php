@@ -83,7 +83,14 @@ use app\core\App;
                         elseif ($user_type === 'donor') echo 'http://localhost:8080/donorHome';
                         else echo 'http://localhost:8080/'?>">Home</a></li>
                     <li><a href="#about">About</a></li>
-                    <li><a href="<?php echo 'http://localhost:8080/login'?>">Donate</a></li>
+                    <li>
+                        <?php if( $user_type === 'donor'){ ?>
+                            <a class="" href="<?php echo 'http://localhost:8080/donorHome'?>">Donate</a>
+                        <?php }else{?>
+                            <a class="" href="<?php echo 'http://localhost:8080/login'?>">Donate</a>
+                        <?php } ?>
+
+                    </li>
                     <li>    <?php if($user_type === 'admin' || $user_type === 'donor'){ ?>
                             <a class="" href="<?php echo 'http://localhost:8080/logout'?>">Logout</a>
                         <?php }else{ ?>
