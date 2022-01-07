@@ -25,10 +25,7 @@ class ListViewController extends Controller
 
     public function displayApprReci(Request $request, Response $response)
     {
-        $auth = $this->authController->authenticateForTwo();
-        if ($auth !== true){
-            return $auth;
-        }
+        $this->authController->authenticate(["admin", "donor"]);
 
         $reciStatusModel = new RecipientsStatusModel();
         $reciStatusModel->setAttributes(["status"=>"approved", "table"=>"fsrecipients"]);
@@ -52,10 +49,7 @@ class ListViewController extends Controller
 
     public function displayAidedReci(Request $request, Response $response)
     {
-        $auth = $this->authController->authenticate("admin");
-        if ($auth !== true){
-            return $auth;
-        }
+        $this->authController->authenticate(["admin"]);
 
         $reciStatusModel = new RecipientsStatusModel();
         $reciStatusModel->setAttributes(["status"=>"aided", "table"=>"fsrecipients"]);
@@ -78,10 +72,8 @@ class ListViewController extends Controller
 
     public function displayFSReci(Request $request, Response $response)
     {
-        $auth = $this->authController->authenticate("admin");
-        if ($auth !== true){
-            return $auth;
-        }
+        $this->authController->authenticate(["admin"]);
+
         $reciStatusModel = new RecipientsStatusModel();
         $reciStatusModel->setAttributes(["status"=>"pending", "table"=>"fsrecipients"]);
         $details = $reciStatusModel->retrieve_records();
@@ -91,10 +83,8 @@ class ListViewController extends Controller
 
     public function displayMSReci(Request $request, Response $response)
     {
-        $auth = $this->authController->authenticate("admin");
-        if ($auth !== true){
-            return $auth;
-        }
+        $this->authController->authenticate(["admin"]);
+
 
         $reciStatusModel = new RecipientsStatusModel();
         $reciStatusModel->setAttributes(["status"=>"pending", "table"=>"msrecipients"]);
@@ -104,10 +94,8 @@ class ListViewController extends Controller
 
     public function displayVolunteers(Request $request, Response $response)
     {
-        $auth = $this->authController->authenticate("admin");
-        if ($auth !== true){
-            return $auth;
-        }
+        $this->authController->authenticate(["admin"]);
+
         $volunteerModel = new VolunteerDetails();
         $details = $volunteerModel->retrieve_all();
         return $this->displayListView($details, 'name', 'status', 'Volunteers', 'volunteers', 'volunteer_id');
@@ -115,10 +103,8 @@ class ListViewController extends Controller
 
     public function displayDonors(Request $request, Response $response)
     {
-        $auth = $this->authController->authenticate("admin");
-        if ($auth !== true){
-            return $auth;
-        }
+        $this->authController->authenticate(["admin"]);
+
         $donorModel = new DonorDetailsModel();
         $details = $donorModel->retrieve_all();
         return $this->displayListView($details, 'name', 'district', 'Donors', 'donors', 'donor_id');

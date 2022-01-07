@@ -1,11 +1,15 @@
 <?php
 
 namespace app\core;
+use app\controller\SiteController;
 use app\core\Request;
 use app\core\Response;
 use app\core\Router;
 use app\core\Session;
+use app\exception\ForbiddenException;
 use app\exception\NotFoundException;
+use app\exception\ServiceUnavailableException;
+use app\exception\UnauthorizedException;
 
 class App
 {
@@ -36,12 +40,29 @@ class App
     public function run(){
         try {
             echo $this->router->resolve();
-        } catch (NotFoundException $error){
-            $this->response->setStatus(404);
+        } catch (NotFoundException $exception){
+            $this->response->setStatus($exception->getCode());
             $this->response->redirect("http://localhost:8080/notFound");
             exit;
-        } catch (\Exception $error){
+        } catch (ForbiddenException $exception)  {
+            $this->response->setStatus($exception->getCode());
+            $siteController = new SiteController();
+            echo $siteController->errorForbidden();
 
+        } catch (UnauthorizedException $exception) {
+            $this->response->setStatus($exception->getCode());
+            $siteController = new SiteController();
+            echo $siteController->errorUnauthorized();
+
+        } catch (ServiceUnavailableException $exception) {
+            $this->response->setStatus($exception->getCode());
+            $this->response->redirect("http://localhost:8080/serviceUnavailable");
+            exit;
+        }
+        catch (\Exception $exception){
+            $this->response->setStatus($exception->getCode());
+            $siteController = new SiteController();
+            echo $siteController->internalServerError();
         }
 
 

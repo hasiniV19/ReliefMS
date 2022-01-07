@@ -37,20 +37,16 @@ class SiteController extends Controller
 
     public function addAdminHome()
     {
-        $auth = $this->authController->authenticate("admin");
-        if ($auth !== true){
-            return $auth;
-        }
+        $this->authController->authenticate("admin");
+
 
         return $this->render("adminHome","main");
     }
 
     public function addDonorHome()
     {
-        $auth = $this->authController->authenticate("donor");
-        if ($auth !== true){
-            return $auth;
-        }
+        $this->authController->authenticate("donor");
+
 
         return $this->render("donorHome","main");
     }
@@ -62,6 +58,21 @@ class SiteController extends Controller
 
     public function errorServiceUnavailable()
     {
-        return $this->render("serviceUnavailable", "main");
+        return $this->render("error", "main", ["errorCode"=>503, "errorMsg"=>"OOPS &#128533; The server is currently unable to handle the request due to a temporary overloading or maintenance of the server."]);
+    }
+
+    public function errorForbidden()
+    {
+        return $this->render("error", "main", ["errorCode"=>403, "errorMsg"=>"You don't have permission to access / on this server"]);
+    }
+
+    public function errorUnauthorized()
+    {
+        return $this->render("error", "main", ["errorCode"=>401, "errorMsg"=>"Not Authorized"]);
+    }
+
+    public function internalServerError()
+    {
+        return $this->render("error", "main", ["errorCode"=>500, "errorMsg"=>"Oops &#128533; something went wrong"]);
     }
 }
