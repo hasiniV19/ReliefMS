@@ -208,14 +208,14 @@
             to{ bottom:0; opacity:1 }
         }
 
-        #myDiv {
+        #main-page {
             display: none;
-            text-align: center;
+            /*text-align: center;*/
         }
     </style>
     <title>Homepage</title>
 </head>
-<body onload="myFunction()">
+<body onload="load()">
 
 <div id="loader" class="justify-content-center">
     <div class="cssload-tri cssload-invert"></div>
@@ -228,7 +228,7 @@
     <div class="cssload-tri"></div>
     <div class="cssload-tri cssload-invert"></div>
 </div>
-<div style="display: none" class="animate-bottom" id="myDiv">
+<div style="display: none" class="animate-bottom" id="main-page">
 <header>
     <nav id="navbar" class="navbar navbar-expand-lg   fixed-top">
         <a id="logo" href="<?php echo 'http://localhost:8080/'?>" class="d-none d-md-block d-lg-block">
@@ -297,13 +297,13 @@
 <script>
     let myVar;
 
-    function myFunction() {
+    function load() {
         myVar = setTimeout(showPage, 3000);
     }
 
     function showPage() {
         document.getElementById("loader").style.display = "none";
-        document.getElementById("myDiv").style.display = "block";
+        document.getElementById("main-page").style.display = "block";
     }
 </script>
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>

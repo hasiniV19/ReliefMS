@@ -21,28 +21,175 @@ use app\core\App;
     <style>
         /* Center the loader */
         #loader {
+            transform: translate(-50%, -50%);
+            -o-transform: translate(-50%, -50%);
+            -ms-transform: translate(-50%, -50%);
+            -webkit-transform: translate(-50%, -50%);
+            -moz-transform: translate(-50%, -50%);
+            height: 65px;
+            width: 72px;
             position: absolute;
-            left: 50%;
             top: 50%;
-            z-index: 1;
-            width: 120px;
-            height: 120px;
-            margin: -76px 0 0 -76px;
-            border: 16px solid #f3f3f3;
-            border-radius: 50%;
-            border-top: 16px solid #3498db;
-            -webkit-animation: spin 2s linear infinite;
-            animation: spin 2s linear infinite;
+            margin-left: 48.5%;
+            margin-right: 48.5%;
         }
 
-        @-webkit-keyframes spin {
-            0% { -webkit-transform: rotate(0deg); }
-            100% { -webkit-transform: rotate(360deg); }
+        .cssload-tri {
+            position: absolute;
+            animation: cssload-pulse 862.5ms ease-in infinite;
+            -o-animation: cssload-pulse 862.5ms ease-in infinite;
+            -ms-animation: cssload-pulse 862.5ms ease-in infinite;
+            -webkit-animation: cssload-pulse 862.5ms ease-in infinite;
+            -moz-animation: cssload-pulse 862.5ms ease-in infinite;
+            border-top: 22px solid rgb(110, 66, 193);
+            border-left: 12px solid transparent;
+            border-right: 12px solid transparent;
+            border-bottom: 0px;
         }
 
-        @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
+        .cssload-tri.cssload-invert {
+            border-top: 0px;
+            border-bottom: 22px solid rgb(110, 66, 193);
+            border-left: 12px solid transparent;
+            border-right: 12px solid transparent;
+        }
+
+        .cssload-tri:nth-child(1) {
+            left: 24px;
+        }
+
+        .cssload-tri:nth-child(2) {
+            left: 12px;
+            top: 22px;
+            animation-delay: -143.75ms;
+            -o-animation-delay: -143.75ms;
+            -ms-animation-delay: -143.75ms;
+            -webkit-animation-delay: -143.75ms;
+            -moz-animation-delay: -143.75ms;
+        }
+
+        .cssload-tri:nth-child(3) {
+            left: 24px;
+            top: 22px;
+        }
+
+        .cssload-tri:nth-child(4) {
+            left: 36px;
+            top: 22px;
+            animation-delay: -718.75ms;
+            -o-animation-delay: -718.75ms;
+            -ms-animation-delay: -718.75ms;
+            -webkit-animation-delay: -718.75ms;
+            -moz-animation-delay: -718.75ms;
+        }
+
+        .cssload-tri:nth-child(5) {
+            top: 43px;
+            animation-delay: -287.5ms;
+            -o-animation-delay: -287.5ms;
+            -ms-animation-delay: -287.5ms;
+            -webkit-animation-delay: -287.5ms;
+            -moz-animation-delay: -287.5ms;
+        }
+
+        .cssload-tri:nth-child(6) {
+            top: 43px;
+            left: 12px;
+            animation-delay: -287.5ms;
+            -o-animation-delay: -287.5ms;
+            -ms-animation-delay: -287.5ms;
+            -webkit-animation-delay: -287.5ms;
+            -moz-animation-delay: -287.5ms;
+        }
+
+        .cssload-tri:nth-child(7) {
+            top: 43px;
+            left: 24px;
+            animation-delay: -431.25ms;
+            -o-animation-delay: -431.25ms;
+            -ms-animation-delay: -431.25ms;
+            -webkit-animation-delay: -431.25ms;
+            -moz-animation-delay: -431.25ms;
+        }
+
+        .cssload-tri:nth-child(8) {
+            top: 43px;
+            left: 36px;
+            animation-delay: -575ms;
+            -o-animation-delay: -575ms;
+            -ms-animation-delay: -575ms;
+            -webkit-animation-delay: -575ms;
+            -moz-animation-delay: -575ms;
+        }
+
+        .cssload-tri:nth-child(9) {
+            top: 43px;
+            left: 48px;
+            animation-delay: -575ms;
+            -o-animation-delay: -575ms;
+            -ms-animation-delay: -575ms;
+            -webkit-animation-delay: -575ms;
+            -moz-animation-delay: -575ms;
+        }
+
+        @keyframes cssload-pulse {
+            0% {
+                opacity: 1;
+            }
+            16.666% {
+                opacity: 1;
+            }
+            100% {
+                opacity: 0;
+            }
+        }
+
+        @-o-keyframes cssload-pulse {
+            0% {
+                opacity: 1;
+            }
+            16.666% {
+                opacity: 1;
+            }
+            100% {
+                opacity: 0;
+            }
+        }
+
+        @-ms-keyframes cssload-pulse {
+            0% {
+                opacity: 1;
+            }
+            16.666% {
+                opacity: 1;
+            }
+            100% {
+                opacity: 0;
+            }
+        }
+
+        @-webkit-keyframes cssload-pulse {
+            0% {
+                opacity: 1;
+            }
+            16.666% {
+                opacity: 1;
+            }
+            100% {
+                opacity: 0;
+            }
+        }
+
+        @-moz-keyframes cssload-pulse {
+            0% {
+                opacity: 1;
+            }
+            16.666% {
+                opacity: 1;
+            }
+            100% {
+                opacity: 0;
+            }
         }
 
         /* Add animation to "page content" */
@@ -64,18 +211,28 @@ use app\core\App;
             to{ bottom:0; opacity:1 }
         }
 
-        #myDiv {
+        #main-page {
             display: none;
-            text-align: center;
+            /*text-align: center;*/
         }
     </style>
     <title>Homepage</title>
 </head>
 
-<body onload="myFunction()"  class="d-flex flex-column min-vh-100">
+<body onload="load()"  class="d-flex flex-column min-vh-100">
 
-<div id="loader"></div>
-<div style="display: none" class="animate-bottom" id="myDiv">
+<div id="loader" class="justify-content-center">
+    <div class="cssload-tri cssload-invert"></div>
+    <div class="cssload-tri cssload-invert"></div>
+    <div class="cssload-tri"></div>
+    <div class="cssload-tri cssload-invert"></div>
+    <div class="cssload-tri cssload-invert"></div>
+    <div class="cssload-tri"></div>
+    <div class="cssload-tri cssload-invert"></div>
+    <div class="cssload-tri"></div>
+    <div class="cssload-tri cssload-invert"></div>
+</div>
+<div style="display: none" class="animate-bottom" id="main-page">
 <header>
     <nav id="navbar" class="navbar navbar-expand-lg   fixed-top">
         <a id="logo" href="<?php echo 'http://localhost:8080/'?>" class="d-none d-md-block d-lg-block">
@@ -160,13 +317,13 @@ use app\core\App;
 <script>
     let myVar;
 
-    function myFunction() {
-        myVar = setTimeout(showPage, 3000);
+    function load() {
+        myVar = setTimeout(showPage, 1000);
     }
 
     function showPage() {
         document.getElementById("loader").style.display = "none";
-        document.getElementById("myDiv").style.display = "block";
+        document.getElementById("main-page").style.display = "block";
     }
 </script>
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
