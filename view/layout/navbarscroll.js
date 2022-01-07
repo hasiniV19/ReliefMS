@@ -12,3 +12,14 @@ function scrollFunction() {
 
     }
 }
+
+$(function () { // Same as document.addEventListener("DOMContentLoaded"...
+
+    // Same as document.querySelector("#navbarToggle").addEventListener("blur",...
+    $("#nav-tog").blur(function (event) {
+        var screenWidth = window.innerWidth;
+        if (screenWidth < 990) {
+            $("#navbarSupportedContent").collapse('hide');
+        }
+    });
+});
