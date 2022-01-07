@@ -10,9 +10,9 @@
     <div id="banner" class="container">
         <div class="row align-items-center">
             <div class="col-lg-6 mr-auto text-center text-lg-left">
-                <span class="d-block subheading">Covid-19 Awareness</span>
-                <h1 class="heading mb-3">Stay Safe. Stay Home.</h1>
-                <p class="mb-5">Doing Nothing is Not An Option of Our Life</p>
+                <span class="d-block subheading">Covid-19 Relief Fund</span>
+                <h1 class="heading mb-3">For People. For Change</h1>
+                <h5 class="mb-5">Alone we can do so little. Together we can do so much.</h5>
             </div>
             <div class="col-lg-6">
                 <figure class="illustration">
