@@ -65,13 +65,13 @@ use app\handlers\ValidateRequest;
                 <label for="available_day" class="input-label">Available Day</label>
                 <select name="available_day" id="inputState" class="form-control input-field" >
 <!--                    <option selected disabled hidden>Choose here</option>-->
-                    <option value="sunday" selected <?php if(isset($available_day) && $available_day->getValue() == "sunday") echo "selected"?>>Sunday</option>
-                    <option value="monday" <?php if(isset($available_day) && $available_day->getValue() == "monday") echo "selected"?>>Monday</option>
-                    <option value="tuesday" <?php if(isset($available_day) && $available_day->getValue() == "tuesday") echo "selected"?>>Tuesday</option>
-                    <option value="wednesday" <?php if(isset($available_day) && $available_day->getValue() == "wednesday") echo "selected"?>>Wednesday</option>
-                    <option value="thursday" <?php if(isset($available_day) && $available_day->getValue() == "thursday") echo "selected"?>>Thursday</option>
-                    <option value="friday" <?php if(isset($available_day) && $available_day->getValue() == "friday") echo "selected"?>>Friday</option>
-                    <option value="saturday <?php if(isset($available_day) && $available_day->getValue() == "saturday") echo "selected"?>">Saturday</option>
+                    <option value="Sunday" selected <?php if(isset($available_day) && strtolower($available_day->getValue()) == "sunday") echo "selected"?>>Sunday</option>
+                    <option value="Monday" <?php if(isset($available_day) && strtolower($available_day->getValue()) == "monday") echo "selected"?>>Monday</option>
+                    <option value="Tuesday" <?php if(isset($available_day) && strtolower($available_day->getValue()) == "tuesday") echo "selected"?>>Tuesday</option>
+                    <option value="Wednesday" <?php if(isset($available_day) && strtolower($available_day->getValue()) == "wednesday") echo "selected"?>>Wednesday</option>
+                    <option value="Thursday" <?php if(isset($available_day) && strtolower($available_day->getValue()) == "thursday") echo "selected"?>>Thursday</option>
+                    <option value="Friday" <?php if(isset($available_day) && strtolower($available_day->getValue()) == "friday") echo "selected"?>>Friday</option>
+                    <option value="Saturday <?php if(isset($available_day) && strtolower($available_day->getValue()) == "saturday") echo "selected"?>">Saturday</option>
                 </select>
             </div>
         </div>
@@ -81,16 +81,16 @@ use app\handlers\ValidateRequest;
                 <label for="gender" class="input-label">Gender</label>
                 <div class="form-control input-field" style="height: 4.4rem;">
                     <div class="contact-form-radio ">
-                        <input class="input-radio100" id="radio1" type="radio" name="gender" value="male" checked
-                            <?php if(isset($gender) && $gender->getValue() == "male") echo "checked"?>>
+                        <input class="input-radio100" id="radio1" type="radio" name="gender" value="Male" checked
+                            <?php if(isset($gender) && strtolower($gender->getValue()) == "male") echo "checked"?>>
                         <label class="label-radio100" for="radio1">
                             Male
                         </label>
                     </div>
 
                     <div class="contact-form-radio">
-                        <input class="input-radio100" id="radio2" type="radio" name="gender" value="female"
-                            <?php if(isset($gender) && $gender->getValue() == "female") echo "checked"?>>
+                        <input class="input-radio100" id="radio2" type="radio" name="gender" value="Female"
+                            <?php if(isset($gender) && strtolower($gender->getValue()) == "female") echo "checked"?>>
                         <label class="label-radio100" for="radio2">
                             Female
                         </label>
