@@ -57,6 +57,7 @@ class AuthController extends Controller
             }
             return $this->render("login", "login_layout");
         } catch (ServiceUnavailableException $exception) {
+            $response->setStatus(503);
             $response->redirect("http://localhost:8080/serviceUnavailable");
             exit;
         }

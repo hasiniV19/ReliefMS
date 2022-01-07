@@ -4,7 +4,7 @@ namespace app\applications;
 
 use app\core\DBModel;
 
-class AidDonationApplication extends ApplicationDecorator
+class AidDonationApplication extends ComplexApplication
 {
     private ReciApplication $recipientApplication;
     public function __construct(IApplication $decoratedApplication, ReciApplication $recipientApplication)
