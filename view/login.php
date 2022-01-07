@@ -13,7 +13,7 @@
     <?php include "css/login.css";?>
 </style>
 
-<div class="container">
+<!--<div class="container animate-bottom" style="display: none" id="main-page">-->
     <div class="forms-container">
         <div class="signin-signup">
             <form action="/login" method="POST" class="sign-in-form">
@@ -90,7 +90,7 @@
             </div>
         </div>
     </div>
-</div>
+<!--</div>-->
 
 <script>
     <?php include "js/login.js";?>

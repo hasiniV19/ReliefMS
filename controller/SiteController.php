@@ -57,7 +57,7 @@ class SiteController extends Controller
 
     public function errorNotFound()
     {
-        return $this->render("notFound", "main");
+        return $this->render("error", "main", ["errorCode"=>404, "errorMsg"=>"OOPS. Looks like the page you're looking for no longer exists"]);
     }
 
     public function errorServiceUnavailable()
