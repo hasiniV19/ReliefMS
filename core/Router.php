@@ -5,6 +5,7 @@ namespace app\core;
 
 
 
+use app\controller\FormController;
 use app\controller\SiteController;
 use app\exception\NotFoundException;
 //use NotFoundException;
@@ -42,6 +43,10 @@ class Router
             }
 
             if (App::$app->session->get("user_type") === "donor") {
+                if (App::$app->session->get("donor_state") === "pending") {
+                    $controller = new FormController();
+                    return $controller->addDonorApplication($this->request, $this->response);
+                }
                 $controller = new SiteController();
                 return $controller->addDonorHome();
             }

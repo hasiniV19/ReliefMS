@@ -80,6 +80,7 @@ class AuthController extends Controller
             if ($saveToUsers && $saveToAuth){
                 App::$app->session->set("user_id", $userId);
                 App::$app->session->set("user_type", "donor");
+                App::$app->session->set("donor_state", "pending");
                 $response->redirect("http://localhost:8080/donorApplication");
                 exit;
             }

@@ -31,9 +31,7 @@ use app\handlers\ValidateRequest;
 <!--                <option selected disabled hidden>Choose here</option>-->
                 <option value="Galle" selected>Galle</option>
                 <option value="Matara">Matara</option>
-                <option value="Colombo">Colombo</option>
-                <option value="Gampaha">Gampaha</option>
-                <option value="Ampara">Ampara</option>
+                <option value="Colombo">Hambanthota</option>
             </select>
         </div>
 
