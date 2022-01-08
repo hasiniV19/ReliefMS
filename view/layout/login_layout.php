@@ -208,7 +208,7 @@
             /*text-align: center;*/
         }
     </style>
-    <title>Sign in & Sign up Form</title>
+    <title>Epsilon Foundation</title>
 </head>
 
 <body onload="load()">

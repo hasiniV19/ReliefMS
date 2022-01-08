@@ -213,7 +213,7 @@
             /*text-align: center;*/
         }
     </style>
-    <title>Homepage</title>
+    <title>Epsilon Foundation</title>
 </head>
 <body onload="load()">
 

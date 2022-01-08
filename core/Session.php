@@ -43,7 +43,7 @@ class Session
 
     public function close()
     {
-        session_destroy();
+        session_unset();
     }
 
     public function __destruct()

@@ -42,7 +42,7 @@ use app\handlers\ValidateRequest;
                 <div class="form-group">
                     <label for="no-members" class="input-label">Number of Covid Patients</label>
                     <input type="number" name="num_quarant_residents" class="form-control input-field" placeholder="How covid patients in your family" min="1" max="6" id="no-patients" aria-describedby=""
-                           value="<?php if (isset($num_quarant_residents)) echo $num_quarant_residents->getValue();?>" required>
+                           value="" required>
                 </div>
 
             </div>

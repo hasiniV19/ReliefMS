@@ -216,7 +216,7 @@ use app\core\App;
             /*text-align: center;*/
         }
     </style>
-    <title>Homepage</title>
+    <title>Epsilon Foundation</title>
 </head>
 
 <body onload="load()"  >
@@ -239,7 +239,9 @@ use app\core\App;
             <img src="img/logo2.png" class="img-fluid " width="80">
         </a>
 
-        <a id="name" class="navbar-brand" href="<?php echo 'http://localhost:8080/'?>">Epsilon Foundation</a>
+        <a id="name" class="navbar-brand" href="<?php if (App::$app->session->get('donor_state') === 'pending'){
+            echo 'http://localhost:8080/donorApplication';
+        }else echo 'http://localhost:8080/'?>">Epsilon Foundation</a>
         <button class="navbar-toggler navbar-light" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -249,7 +251,9 @@ use app\core\App;
                 <li class="nav-item active">
                     <?php $user_type = App::$app->session->get('user_type') ?>
                     <a class="nav-link" href="<?php if($user_type === 'admin') echo 'http://localhost:8080/adminHome';
-                    elseif ($user_type === 'donor') echo 'http://localhost:8080/donorHome';
+                    elseif (App::$app->session->get('donor_state') === 'pending'){
+                        echo 'http://localhost:8080/donorApplication';
+                    }elseif ($user_type === 'donor') echo 'http://localhost:8080/donorHome';
                     else echo 'http://localhost:8080/'?>">Home <span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item">
@@ -258,18 +262,22 @@ use app\core\App;
                 </li>
                 <li class="nav-item">
                     <?php if( $user_type === 'donor'){ ?>
-                        <a class="nav-link" href="<?php echo 'http://localhost:8080/donorHome'?>">Donate</a>
+                        <a class="nav-link" href="<?php if (App::$app->session->get('donor_state') === 'pending'){
+                            echo 'http://localhost:8080/donorApplication';
+                        }else echo 'http://localhost:8080/donorHome'?>">Donate</a>
                     <?php }else{?>
                         <a class="nav-link" href="<?php echo 'http://localhost:8080/login'?>">Donate</a>
                     <?php } ?>
 
                 </li>
                 <li class="nav-item">
+                    <?php if (App::$app->session->get('donor_state') !== 'pending'):?>
                     <?php if($user_type === 'admin' || $user_type === 'donor'){ ?>
                         <a class="nav-link" href="<?php echo 'http://localhost:8080/logout'?>">Logout</a>
                     <?php }else{ ?>
                         <a class="nav-link" href="<?php echo 'http://localhost:8080/login'?>">Login</a>
                     <?php } ?>
+                    <?php endif ?>
                 </li>
 
                 <li class="nav-item">
@@ -289,28 +297,36 @@ use app\core\App;
         <div class="row justify-content-center">
             <div class="col-md-9 text-center">
                 <div class="footer-site-logo mb-4">
-                    <a href="#">Epsilon Foundation</a>
+                    <a style="color: #ff6666">Epsilon Foundation</a>
                 </div>
                 <ul class="list-unstyled nav-links mb-5">
                     <?php $user_type = App::$app->session->get('user_type') ?>
                     <li><a href="<?php if($user_type === 'admin') echo 'http://localhost:8080/adminHome';
-                        elseif ($user_type === 'donor') echo 'http://localhost:8080/donorHome';
+                        elseif ($user_type === 'donor') {if (App::$app->session->get('donor_state') === 'pending'){
+            echo 'http://localhost:8080/donorApplication';
+        }else echo 'http://localhost:8080/donorHome';}
                         else echo 'http://localhost:8080/'?>">Home</a></li>
                     <li><a href="https://www.facebook.com/Epsilon-Foundation-109819364909796
 " target ="_blank">About</a></li>
                     <li>
                         <?php if( $user_type === 'donor'){ ?>
-                            <a class="" href="<?php echo 'http://localhost:8080/donorHome'?>">Donate</a>
+                            <a class="" href="<?php if (App::$app->session->get('donor_state') === 'pending'){
+                                echo 'http://localhost:8080/donorApplication';
+                            }else echo 'http://localhost:8080/donorHome'?>">Donate</a>
                         <?php }else{?>
                             <a class="" href="<?php echo 'http://localhost:8080/login'?>">Donate</a>
                         <?php } ?>
 
                     </li>
-                    <li>    <?php if($user_type === 'admin' || $user_type === 'donor'){ ?>
+                    <li>
+                        <?php if (App::$app->session->get('donor_state') !== 'pending'):?>
+                        <?php if($user_type === 'admin' || $user_type === 'donor'){ ?>
                             <a class="" href="<?php echo 'http://localhost:8080/logout'?>">Logout</a>
                         <?php }else{ ?>
                             <a class="" href="<?php echo 'http://localhost:8080/login'?>">Login</a>
-                        <?php } ?></li>
+                        <?php } ?>
+                        <?php endif ?>
+                    </li>
                     <li><a href="https://www.facebook.com/Epsilon-Foundation-109819364909796
 " target ="_blank">Contact</a></li>
                 </ul>
