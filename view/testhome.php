@@ -72,7 +72,8 @@
         <div class="row  align-items-center py-5">
             <div class="col-lg-6" >
                 <h1 class="display-4">About Us</h1>
-                <p class="lead text-muted mb-0 font-weight-bold font-italic">We are a non-profit organization working towards the betterment of the people around the world. </p>
+<!--                <p class="lead text-muted mb-0 font-weight-bold font-italic">We are a non-profit organization working towards the betterment of the people around the world. </p>-->
+                <h6 class="lead text-muted mb-0 font-weight-bold font-italic">We are a non-profit organization working towards the betterment of the people around the world.</h6>
             </div>
             <div class="col-lg-6 d-none d-lg-block"><img src="https://bootstrapious.com/i/snippets/sn-about/illus.png" alt="" class="img-fluid"></div>
         </div>
@@ -84,7 +85,7 @@
         <div class="row align-items-center mb-5">
             <div class="col-lg-6 order-2 order-lg-1"><i class="fa fa-bar-chart fa-2x mb-3 text-primary"></i>
                 <h2 class="font-weight-light">Our Aim</h2>
-                <p class="font-italic text-muted mb-4 font-weight-bold font-italic">Providing a platform for the people who need support and the people who are willing to give a helping hand during this pandemic.</p><a href="https://www.facebook.com/Epsilon-Foundation-109819364909796
+                <h6 class="font-italic text-muted mb-4 font-weight-bold font-italic">Providing a platform for the people who need support and the people who are willing to give a helping hand during this pandemic.</h6><a href="https://www.facebook.com/Epsilon-Foundation-109819364909796
 " target ="_blank" class="btn btn-light px-5 rounded-pill shadow-sm">Learn More</a>
             </div>
             <div class="col-lg-5 px-5 mx-auto order-1 order-lg-2"><img src="https://bootstrapious.com/i/snippets/sn-about/img-1.jpg" alt="" class="img-fluid mb-4 mb-lg-0"></div>
@@ -93,9 +94,9 @@
             <div class="col-lg-5 px-5 mx-auto"><img src="https://bootstrapious.com/i/snippets/sn-about/img-2.jpg" alt="" class="img-fluid mb-4 mb-lg-0"></div>
             <div class="col-lg-6"><i class="fa fa-leaf fa-2x mb-3 text-primary"></i>
                 <h2 class="font-weight-light">Beneficiary</h2>
-                <p class="font-italic text-muted mb-4 font-weight-bold font-italic">People who are suffering from financial difficulties </p>
-                <p class="font-italic text-muted mb-4 font-weight-bold font-italic">People who have been in home quarantine </p>
-                <p class="font-italic text-muted mb-4 font-weight-bold font-italic">People who are willing to give a helping hand</p>
+                <h6 class="font-italic text-muted mb-4 font-weight-bold font-italic">People who are suffering from financial difficulties </h6>
+                <h6 class="font-italic text-muted mb-4 font-weight-bold font-italic">People who have been in home quarantine </h6>
+                <h6 class="font-italic text-muted mb-4 font-weight-bold font-italic">People who are willing to give a helping hand</h6>
                 <a href="https://www.facebook.com/Epsilon-Foundation-109819364909796
 " target ="_blank" class="btn btn-light px-5 rounded-pill shadow-sm">Learn More</a>
             </div>
@@ -112,12 +113,12 @@
                 <!--Grid column-->
 <!---->
                     <ul class="list-unstyled pl-md-5 mb-5">
-                        <li class="d-flex text-black mb-2">
+                        <li class="d-flex text-black mb-2 font-weight-bold text-muted">
                             <span class="mr-3"><span class="fas fa-map-marker-alt"></span></span> No.85B Colombo - Galle Main Rd, Galle 80000
 
                         </li>
-                        <li class="d-flex text-black mb-2"><span class="mr-3"><span class="fas fa-phone-alt"></span></span> +94 912 230 737</li>
-                        <li class="d-flex text-black"><span class="mr-3"><span class="fas fa-envelope"></span></span> contact_us@epsilonfoundation.com </li>
+                        <li class="d-flex text-black mb-2 font-weight-bold text-muted"><span class="mr-3"><span class="fas fa-phone-alt"></span></span> +94 912 230 737</li>
+                        <li class="d-flex text-black font-weight-bold text-muted"><span class="mr-3"><span class="fas fa-envelope"></span></span> contact_us@epsilonfoundation.com </li>
                     </ul>
 
 
