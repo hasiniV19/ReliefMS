@@ -2,6 +2,7 @@
 
 namespace app\controller;
 
+use app\core\App;
 use app\core\BoxView;
 use app\factory\BoxFactory;
 use app\core\Controller;
@@ -44,6 +45,7 @@ class ListViewController extends Controller
         }
 
         $details = array_merge($detailsFSR, $detailsMSR);
+        App::$app->session->set("view_type", "approvedRecipients");
         return $this->displayListView($details, 'name', 'recipient_type', 'Recipients', 'approvedRecipients', 'recipient_id');
     }
 
@@ -66,6 +68,7 @@ class ListViewController extends Controller
 
         $details = array_merge($detailsFSR, $detailsMSR);
 
+        App::$app->session->set("view_type", "aidedRecipients");
         //$details = [["reciName"=>"Hasini", "reciType"=>"financial"], ["reciName"=>"Dinithi", "reciType"=>"medical"]];
         return $this->displayListView($details, 'name', 'recipient_type', 'Aided Recipients', 'aidedRecipients', 'recipient_id');
     }
@@ -77,6 +80,7 @@ class ListViewController extends Controller
         $reciStatusModel = new RecipientsStatusModel();
         $reciStatusModel->setAttributes(["status"=>"pending", "table"=>"fsrecipients"]);
         $details = $reciStatusModel->retrieve_records();
+        App::$app->session->set("view_type", "fsRecipients");
         return $this->displayListView($details, 'name', 'status', 'Financial Recipients', 'fsRecipient', 'recipient_id');
 
     }
@@ -89,6 +93,7 @@ class ListViewController extends Controller
         $reciStatusModel = new RecipientsStatusModel();
         $reciStatusModel->setAttributes(["status"=>"pending", "table"=>"msrecipients"]);
         $details = $reciStatusModel->retrieve_records();
+        App::$app->session->set("view_type", "msRecipients");
         return $this->displayListView($details, 'name', 'status', 'Medical Support Recipients', 'msRecipients', 'recipient_id');
     }
 
@@ -98,6 +103,7 @@ class ListViewController extends Controller
 
         $volunteerModel = new VolunteerDetails();
         $details = $volunteerModel->retrieve_all();
+        App::$app->session->set("view_type", "volunteers");
         return $this->displayListView($details, 'name', 'status', 'Volunteers', 'volunteers', 'volunteer_id');
     }
 
@@ -107,6 +113,7 @@ class ListViewController extends Controller
 
         $donorModel = new DonorDetailsModel();
         $details = $donorModel->retrieve_all();
+        App::$app->session->set("view_type", "donors");
         return $this->displayListView($details, 'name', 'district', 'Donors', 'donors', 'donor_id');
     }
 

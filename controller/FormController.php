@@ -202,6 +202,7 @@ class FormController extends Controller
                 $model->setAttributes($body);
                 if ($model->save()) {
                     App::$app->session->setFlash("success","Your Application was Successfully Submitted");
+                    App::$app->session->set("donor_state", "registered");
                     $response->redirect("http://localhost:8080/donorHome");
                     exit;
                 }
