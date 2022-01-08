@@ -232,7 +232,7 @@ use app\core\App;
     <div class="cssload-tri"></div>
     <div class="cssload-tri cssload-invert"></div>
 </div>
-<div style="display: none" class="animate-bottom d-flex flex-column min-vh-100" id="main-page">
+<div style="display: none" class="animate-bottom flex-column min-vh-100" id="main-page">
 <header>
     <nav id="navbar" class="navbar navbar-expand-lg   fixed-top">
         <a id="logo" href="<?php echo 'http://localhost:8080/'?>" class="d-none d-md-block d-lg-block">
@@ -339,7 +339,7 @@ use app\core\App;
 
     function showPage() {
         document.getElementById("loader").style.display = "none";
-        document.getElementById("main-page").style.display = "block";
+        document.getElementById("main-page").style.display = "flex";
     }
 </script>
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>

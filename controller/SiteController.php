@@ -37,7 +37,7 @@ class SiteController extends Controller
 
     public function addAdminHome()
     {
-        $this->authController->authenticate("admin");
+        $this->authController->authenticate(["admin"]);
 
 
         return $this->render("adminHome","main");
@@ -45,7 +45,7 @@ class SiteController extends Controller
 
     public function addDonorHome()
     {
-        $this->authController->authenticate("donor");
+        $this->authController->authenticate(["donor"]);
 
 
         return $this->render("donorHome","main");
