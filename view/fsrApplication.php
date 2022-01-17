@@ -28,7 +28,7 @@ use app\handlers\ValidateRequest;
                 <h2 class="title">Common Details</h2>
                 <div class="form-group">
                     <label for="name" class="input-label">Full Name</label>
-                    <input type="text" name="name" class="form-control input-field" placeholder="Enter Your Name" id="name" aria-describedby=""
+                    <input type="text" name="name" class="form-control input-field" placeholder="Enter Your Name" id="name-reci" aria-describedby=""
                            value="<?php if (isset($name)) echo $name->getValue();?>">
                     <span class="err-msg"><?php if (isset($name)) echo $name->getValidError();?></span>
                 </div>

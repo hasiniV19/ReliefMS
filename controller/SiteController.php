@@ -32,6 +32,7 @@ class SiteController extends Controller
                 exit;
             }
         }
+        App::$app->session->unset_var("app_state");
         return $this->render("testhome","homeLayout");
     }
 

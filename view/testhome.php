@@ -61,7 +61,7 @@
             </div>
         </div>
 
-        <hr>
+        <br>
 
     </div> <!-- /container -->
 
