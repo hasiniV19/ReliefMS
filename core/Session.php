@@ -27,6 +27,10 @@ class Session
         return $_SESSION[$key] ?? false;
     }
 
+    public function unset_var($key)
+    {
+        unset($_SESSION[$key]);
+    }
 
     public function setFlash($key, $message)
     {

@@ -52,8 +52,38 @@ class Router
             }
         }
 
+        if ($path === "/volunteerApplication" && $method === "get" && App::$app->session->get("app_state") === "completed") {
+                App::$app->session->unset_var("app_state");
+                $controller = new SiteController();
+                return $controller->homepage($this->request, $this->response);
+        }
 
-        $callback = $this->routes[$method][$path] ?? false;
+        if ($path === "/msrApplication" && $method === "get" && App::$app->session->get("app_state") === "completed") {
+            App::$app->session->unset_var("app_state");
+            $controller = new SiteController();
+            return $controller->homepage($this->request, $this->response);
+        }
+
+        if ($path === "/fsrApplication" && $method === "get" && App::$app->session->get("app_state") === "completed") {
+            App::$app->session->unset_var("app_state");
+            $controller = new SiteController();
+            return $controller->homepage($this->request, $this->response);
+        }
+
+        if ($path === "/donorApplication" && $method === "get" && App::$app->session->get("app_state") === "completed") {
+            App::$app->session->unset_var("app_state");
+            $controller = new SiteController();
+            return $controller->addDonorHome();
+        }
+
+//        if ($path === "/aidDonationRequest" && $method === "get" && App::$app->session->get("app_state") === "completed") {
+//            App::$app->session->unset_var("app_state");
+//            $controller = new SiteController();
+//            return $controller->addDonorHome();
+//        }
+
+
+            $callback = $this->routes[$method][$path] ?? false;
 
 
 
