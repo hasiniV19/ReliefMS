@@ -50,7 +50,35 @@ use app\handlers\ValidateRequest;
                 <button name="edit" type="button" id="edit" class="btn float-right" style="color: #6f42c1; font-weight: bold">Edit</button>
             </div>
         </div>
+        <div class="mt-5">
+            <h4 style="color: #6f42c1">Our Stations,</h4>
+        </div>
+        <div class="row mt-3">
 
+            <div class="col-md-6 col-lg-6 col-12">
+                <div class="f-margin py-2">
+                    <h5>Galle Station</h5>
+                    30/1, Colombo Road, Galle.
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-6 col-12">
+                <div class="f-margin py-2">
+                    <h5>Matara Station</h5>
+                    25/4, Nupe Road, Matara.
+                </div>
+            </div>
+            <div class="col-md-12 col-lg-12 col-12">
+                <div class="f-margin py-2">
+                    <h5>Hambanthota Station</h5>
+                    30/1, Tangalle Road, Hambanthota.
+                </div>
+            </div>
+        </div>
+<!--        <div class="row">-->
+<!--            <div class="container col-lg-4 col-md-4 col-12">34/1, Colombo road, Galle</div>-->
+<!--            <div class="container col-lg-4 col-md-4 col-12">34/1, Colombo road, Galle</div>-->
+<!--            <div class="container col-lg-4 col-md-4 col-12">34/1, Colombo road, Galle</div>-->
+<!--        </div>-->
         <div class="text-center py-5">
             <button type="submit" class="btn btn-primary submit-button">Submit</button>
         </div>
