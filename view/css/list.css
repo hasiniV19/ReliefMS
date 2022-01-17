@@ -37,11 +37,13 @@ body{
     padding: 5px;
     float: right;
     /* margin-bottom: 10px; */
+    border-radius: 7px;
 }
 
 .status-bar {
-    padding: 2px;
+    padding: 3px;
     display: inline-block;
+    border-radius: 7px;
 }
 
 .link {

@@ -9,7 +9,7 @@ use app\core\App;
 <style>
     <?php include "css/list.css" ?>
 </style>
-<div class="container">
+<div class="container py-5">
     <h1 class="title"><?php echo $title?></h1>
     <?php if(App::$app->session->getFlash("aidDonationSuccess")): ?>
         <div class="alert alert-success text-center" role="alert">
@@ -17,12 +17,21 @@ use app\core\App;
         </div>
     <?php endif;?>
     <div class="row">
-        <?php foreach ($boxes as $box){
+
+        <?php
+        $num = 1;
+        foreach ($boxes as $box){
+
             echo "
                 <div class='box-container col-12 col-lg-4 col-md-6'>
                     <div class='box'>
                         <h2 class=''>";
-            echo $box->getBoxTitle();
+            if ($box->getBoxType() === "approvedRecipients" && App::$app->session->get("user_type") === "donor") {
+                echo "Recipient ".$num;
+            } else {
+                echo $box->getBoxTitle();
+            }
+            $num++;
 
             echo "</h2>";
             $boxStatus = strtolower($box->getBoxStatus());

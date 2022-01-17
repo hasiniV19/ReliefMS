@@ -12,6 +12,10 @@
 /*** @var $needs */
 /*** @var $date */
 /*** @var $status */
+/*** @var $recipient_id*/
+/*** @var $fsr_id*/
+
+use app\view\DateConverter;
 
 ?>
 
@@ -20,7 +24,7 @@
 </style>
 
 <div class="row">
-    <form class="container form-container col-lg-6 col-md-8 col-10">
+    <form class="container form-container col-lg-6 col-md-8 col-10" action="/fsrDetailsAdmin" method="post">
         <h2 class="title">FSR Details</h2>
 
         <div class="form-row">
@@ -73,7 +77,9 @@
                 <label for="gms-certificate-title" class="input-title">Gramasewaka Certificate</label>
             </div>
             <div class=" col-md-7">
-                <label for="gms-certificate" class="input-label"><?php if (isset($gms_certificate)) echo $gms_certificate; ?></label>
+                <label for="gms-certificate" class="input-label" ><a href="<?php echo 'http://localhost:8080/uploads/';
+                    if (isset($recipient_id) && isset($gms_certificate)) echo $fsr_id.$gms_certificate;
+                    ?>"target ="_blank"><?php if (isset($gms_certificate)) echo $gms_certificate; ?></a></label>
             </div>
         </div>
 
@@ -109,7 +115,8 @@
                 <label for="submitted-date-title" class="input-title">Submitted Date</label>
             </div>
             <div class=" col-md-7">
-                <label for="submit-date" class="input-label"><?php if (isset($date)) echo $date; ?></label>
+<!--                <label for="submit-date" class="input-label">--><?php //if (isset($date)) echo date('d/m/Y', strtotime($date)); ?><!--</label>-->
+                <label for="submit-date" class="input-label"><?php if (isset($date)) echo DateConverter::convertdate($date); ?></label>
             </div>
         </div>
 
@@ -125,13 +132,13 @@
 
         <div class="form-btn-row form-row text-center">
             <div class="col-md-4 btn-row">
-                <button type="submit" class="btn btn-primary submit-button">Go Back</button>
+                <a href="<?php echo 'http://localhost:8080/fsRecipients'?>" class="btn btn-primary submit-button">Go Back</a>
             </div>
             <div class="col-md-4 btn-row ">
-                <button type="submit" class="btn btn-danger submit-button">Decline</button>
+                <button name= 'decline' type="submit" class="btn btn-danger submit-button">Decline</button>
             </div>
             <div class="col-md-4  btn-row">
-                <button type="submit" class="btn btn-success submit-button">Approve</button>
+                <button name="approve" type="submit" class="btn btn-success submit-button">Approve</button>
             </div>
 
 

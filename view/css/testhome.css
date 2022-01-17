@@ -1,3 +1,7 @@
+html {
+    scroll-behavior: smooth;
+}
+
 .hero-v1 {
     padding-top: 0;
     border-bottom-right-radius: 50%;
@@ -85,6 +89,9 @@ p{
 a.btn.btn-secondary{
     text-align: center;
 }
+a.btn.btn-secondary:hover{
+    background-color: #4b2b88;
+}
 
 #banner{
     padding-top: 100px;
@@ -92,4 +99,35 @@ a.btn.btn-secondary{
 
 #three{
     padding-top: 6vw;
+    /*background-color: white;*/
 }
+
+
+.card {
+    padding: 10px;
+    height: 250px;
+    border: none;
+    -webkit-box-shadow: 0px 1px 9px 3px rgba(219, 210, 219, 1);
+    -moz-box-shadow: 0px 1px 9px 3px rgba(219, 210, 219, 1);
+    box-shadow: 0px 1px 9px 3px rgba(219, 210, 219, 1);
+    display: flex;
+    justify-content: center;
+    align-items: center
+}
+
+.drop{
+    background-color: #6f42c1;
+    color: white;
+}
+
+.drop:hover{
+    background-color: #4b2b88;
+    color: white;
+}
+
+.dropdown-menu{
+    background-color: rgba(111,66,193,0.2);
+    color: white;
+}
+
+

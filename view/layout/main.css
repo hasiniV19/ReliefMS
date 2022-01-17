@@ -3,8 +3,13 @@
 body {
     font-family: 'Rubik', sans-serif;
     height: 100% !important;
+    margin: 0;
     /*background-color: #F8F9FB !important*/
 }
+html {
+    scroll-behavior: smooth;
+}
+
 h1, h2, h3, h4, h5, h6,
 .h1, .h2, .h3, .h4, .h5, .h6 {
     font-family: "Roboto", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji"; }
@@ -30,7 +35,10 @@ p {
 
 
 footer {
-    color: #caced1 !important
+    color: #caced1 !important;
+    bottom: 0;
+    width: 100%;
+
 }
 
 li {
@@ -78,14 +86,13 @@ a, a:hover {
 .footer-16371 {
     background-color: white;
     padding-top: 5rem ;
-
     font-family: "Poppins", sans-serif; }
 .footer-16371 .footer-site-logo {
     text-align: center;
     font-size: 2rem;
     font-weight: 900; }
 .footer-16371 .footer-site-logo a {
-    color: #4200ff; }
+    color: #ff6666; }
 .footer-16371 .nav-links {
     padding: 0;
     margin: 0; }
@@ -93,13 +100,13 @@ a, a:hover {
     display: inline-block; }
 .footer-16371 .nav-links li a {
     padding: 10px;
-    color: #000; }
+    color: #6f42c1; }
 .footer-16371 .nav-links li a:hover {
     color: #4200ff; }
 .footer-16371 .social h3 {
     font-weight: bold;
     font-size: 18px;
-    color: #000; }
+    color: #6f42c1; }
 .footer-16371 .social ul li {
     display: inline-block; }
 .footer-16371 .social ul li a {
@@ -107,4 +114,48 @@ a, a:hover {
     padding: 10px; }
 .footer-16371 .copyright {
     color: #999999; }
+
+
+button.navbar-toggler{
+    border: 2px solid #6f42c1;
+}
+
+.navbar-light .navbar-toggler-icon {
+    /*background-image: url("data:image/svg+xml;..");*/
+    background-image: url(https://mdbootstrap.com/img/svg/hamburger7.svg?color=6f42c1)!important;
+
+    /*background-image: url(data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEAAkGBwgIBwcICAgIBwcHBwoHBwcHCA8ICQcKFhEYIiAREx8YKDQsJBoxJx8fJDgtMS43OjEwHCtIRD04NzQtLi0BCgoKDg0NGg8QGjMlHiU3MTcwNTc3NTU4Mi0uNSs1NDcxLS43NysvKy0rKys3KysrNSstNTgtLS03KysrNys3K//AABEIAKcBLQMBIgACEQEDEQH/xAAbAAEBAQEBAQEBAAAAAAAAAAAAAQcGBAUDAv/EACwQAQAABAQGAQMFAQAAAAAAAAABAgMFBAcVVRdUk5SV0RExUfEGEiEiQRT/xAAYAQEBAQEBAAAAAAAAAAAAAAAAAQQCBv/EACERAQABAwQDAQEAAAAAAAAAAAABEVFSAhIToQMUkSEx/9oADAMBAAIRAxEAPwDklB6JuRQBBQAAAABFAEUAAAABBQAABFARQAAAABBQAAEUAEUAAAAAAAAAAAAAAAAABAUAAAAAAAAAAAAAAAAAARQAAAAAAAAAAAAAAAAAAAAAAAAAABFAAAAAAAAAAAEAUQBQQFEAUQBRAFeu0z4KnccFPcaU9e3yYiWbGUqUfieen9njEmKxRGnatltt0OwqmrZa7dDx9VmIz+tGU/XHHF5adq2Wu3Q7Cqatlrt0OwqsxD1oyn6ccXlp2rZa7dDsKpq2Wu3Q7CqzEPWjKfpxxeWnatlrt0PH1TVsttuh2FVmIetGU/Tji8tO1bLXbodhVNWy126HYVWYh60ZT9OOLy07Vstduh2FU1bLXbodhVZiHrRlP044vL6P6hq22rdcXUtFGfD2yeaWOHpVIRhGH9YfMYQj9IfPz/H4fPQaIikUdqIKqiAKIAogCiAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAPXaamCpXHBVLhSnxFvkxEs2LoU4/E1Sn9kmaRVHkGm63lxtMvjYrreXG0y+Niz884S43zaWYjTtby42mXxsTW8uNpl8bE55wk3zaWYjTtby42mXxsTW8uNpl8bE55wk3zaWYjTtby42mXxsTW8uNpl8bE59WEm+bSzEadreXG0y+Nia3lxtMvjYnPqwk3zaWYjTtby42mXxsTW8uNpl8bE55wk3zaWYj6P6hrW2vdcXVtNCfC22eaX/no1IftjD+sPmMIf5D5+Y/H4fOaImsVdgCqAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACgIKAgoCKAIoAiooIKAgoCCgIKAIoCCgIKAIoCAoCKAgoCCgIKgKgAoACKAigCKAIoAPVasBVuVwwmAozU5K2Mry0Kc9aP7ackY/wCxeUhGMIwjCMYTSxhNLGEfiMI/dJ/n4jQ+E9w3TB9CocJ7humD6FRw2pXDn8d3lX2alcOfx3eVfbPs8+fTimu7ueE9w3TB9CocJ7humD6FRw2pXDn8d3lX2alcOfx3eVfZs8+fRTXd3PCe4bpg+hUOE9w3TB9Co4bUrhz+O7yr7NSuHP47vKvs2efPopru7nhPcN0wfQqHCe4bpg+hUcLqVw5/Hd5V9rqVw5/Hd5V9mzz59FNd3c8J7humD6FQ4T3DdMH0KjhtSuHP47vKvs1K4c/ju8q+zZ58+imu7ueE9w3TB9CocJ7humD6FRwupXDn8d3lX2upXDn8d3lX2bPPn0U13frfrTWs9zxNur1KVarhoyfNWjGMZJ4TSwjD6/T+Ivnv6nmmnmmnnmmnnnjGaaeeaM000fvH5RoitP12goqgAIKAgoAigAICiKAAAIoAigigCKICiACgAAAIAoAAICggKigCKgKCAqCgAAIoAAAigIoAAAAAAAAAigAACKAAAIoAAAAAAAAAIoAAD//Z);*/
+
+}
+
+
+@media screen and (max-width: 470px) {
+    #name {
+        font-size: 7vw;
+    }
+    /*button.navbar-toggler, button.navbar-toggler.navbar-toggler-icon{*/
+    /*    max-height: 5vw;*/
+    /*    max-width: 5vw;*/
+
+    /*}*/
+    .navbar-light .navbar-toggler-icon {
+        max-height: 5vw;
+        max-width: 5vw;
+        background-image: url(https://mdbootstrap.com/img/svg/hamburger7.svg?color=6f42c1)!important;
+    }
+    button.navbar-toggler{
+        border: none;
+    }
+
+}
+
+@media screen and (max-width: 390px) {
+    #name {
+        font-size: 6vw;
+    }
+    button.navbar-toggler, button.navbar-toggler.navbar-toggler-icon{
+        max-height: 5vw;
+        max-width: 6vw;
+    }
+}
 

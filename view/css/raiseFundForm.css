@@ -39,6 +39,22 @@ body{
     border-color: #6f42c1;
     text-align: center;
 }
+.info{
+
+    color: #393939;
+    text-transform: uppercase;
+    font-weight: 700;
+    margin-bottom: 0.05rem;
+}
+
+.fields{
+    font-size: 17px;
+}
+
+.err-msg{
+    color: crimson;
+}
+
 /*.input-label {
     font-size: 0.7rem;
     color: #393939;

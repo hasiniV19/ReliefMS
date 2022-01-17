@@ -5,10 +5,11 @@ namespace app\core;
 
 
 use app\core\database\Database;
+use app\core\database\GenericDB;
 
 abstract class DBModel
 {
-    protected Database $connection;
+    protected GenericDB $connection; // Database should be GenericDB
     protected $lastId;
     public function __construct(){
         $this->connection = Database::getInstance();

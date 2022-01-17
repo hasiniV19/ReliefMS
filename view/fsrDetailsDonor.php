@@ -2,7 +2,6 @@
 
 /*** @var $no_members */
 /*** @var $monthly_income */
-/*** @var $gms_certificate */
 /*** @var $is_there_students */
 /*** @var $no_students */
 /*** @var $needs */
@@ -62,14 +61,6 @@
             </div>
         </div>
 
-        <div class="form-row">
-            <div class=" col-md-5">
-                <label for="gms-certificate-title" class="input-title">Gramasewaka Certificate</label>
-            </div>
-            <div class=" col-md-7">
-                <label for="gms-certificate" class="input-label"><?php if (isset($gms_certificate)) echo $gms_certificate; ?></label>
-            </div>
-        </div>
 
         <div class="form-row">
             <div class=" col-md-5">
@@ -97,6 +88,8 @@
                 <label for="other-needs" class="input-label"><?php if (isset($needs)) echo $needs; ?></label>
             </div>
         </div>
+
+        <span style="color: #ff6666;" class="mb-3 font-italic ">If you want to donate to this person, you should agree to provide the items in <a href="<?php echo 'http://localhost:8080/package/list.pdf';?>"target ="_blank">this</a> list</span>
 
         <!-- <div class="form-row">
           <div class=" col-md-8">

@@ -14,7 +14,7 @@ use app\handlers\DayValidateHandler;
 use app\handlers\GSDivisionValidateHandler;
 use app\handlers\DistrictValidateHandler;
 use app\handlers\FileValidator;
-use app\handlers\FileValidateRequest;
+//use app\handlers\FileValidateRequest;
 use app\handlers\FinalValidateHandler;
 use app\handlers\GenderValidateHandler;
 use app\handlers\HaveVehicleValidateHandler;
@@ -53,7 +53,14 @@ use http\Message\Body;
 class FormController extends Controller
 {
     private array $validateRequests;
-    private Application $application;
+//    private Application $application;
+
+    private AuthController $authController;
+
+    public function __construct()
+    {
+        $this->authController = new AuthController();
+    }
 
     public function addApplication(Request $request, Response $response)
     {
@@ -70,7 +77,6 @@ class FormController extends Controller
                 if ($model->save()) {
                     $response->redirect("http://localhost:8080/");
                     exit;
-                    echo "saved successfully";
                 }
             }
         }
@@ -80,6 +86,9 @@ class FormController extends Controller
 
     public function updateDonorProfile(Request $request, Response $response)
     {
+        $this->authController->authenticate(["donor"]);
+
+
         $user_id = App::$app->session->get("user_id");
         $donorModel = new DonorModel();
         $donorModel->setAttributes(["user_id"=>$user_id]);
@@ -139,11 +148,11 @@ class FormController extends Controller
 
         foreach ($data as $key => $value) {
 //            if ($key === "name" || $key === "address" ||$key === "age" ||$key === "mobile" ||$key === "occupation") {
-                $validateRequest = new ValidateRequest($key, $value);
-                $nameValidateHandler->validateRequest($validateRequest);
-                $data[$key] = $validateRequest->getValue();
-                $isValid = $validateRequest->getIsValid();
-                $this->validateRequests[$key] = $validateRequest;
+            $validateRequest = new ValidateRequest($key, $value);
+            $nameValidateHandler->validateRequest($validateRequest);
+            $data[$key] = $validateRequest->getValue();
+            $isValid = $validateRequest->getIsValid();
+            $this->validateRequests[$key] = $validateRequest;
 
             if ($isValid === false) {
 
@@ -180,6 +189,9 @@ class FormController extends Controller
 
     public function addDonorApplication(Request $request, Response $response)
     {
+        $this->authController->authenticate(["donor"]);
+
+
         if ($request->isPost()) {
             $body = $request->getBody();
             //var_dump($body);
@@ -190,6 +202,7 @@ class FormController extends Controller
                 $model->setAttributes($body);
                 if ($model->save()) {
                     App::$app->session->setFlash("success","Your Application was Successfully Submitted");
+                    App::$app->session->set("donor_state", "registered");
                     $response->redirect("http://localhost:8080/donorHome");
                     exit;
                 }
@@ -212,10 +225,6 @@ class FormController extends Controller
                 $bodyRecipient['recipient_type'] = 'msr';
                 $recipientModel = new RecipientApplication();
                 $recipientModel->setAttributes($bodyRecipient);
-
-                for ($i = 1; $i <= 5; $i++) {
-
-                }
 
                 if ($recipientModel->save()) {
                     $recipient_id = $recipientModel->getLastID();
@@ -343,6 +352,9 @@ class FormController extends Controller
 
     public function addAidDonation(Request $request, Response $response)
     {
+        $this->authController->authenticate(["donor"]);
+
+
         $user_id = App::$app->session->get("user_id");
         $donorModel = new DonorModel();
         $donorModel->setAttributes(["user_id"=>$user_id]);
@@ -352,9 +364,6 @@ class FormController extends Controller
 
         if ($request->isPost()){
             $body = $request->getBody();
-
-            if ($this->validate($body)){
-
                 $collectingMethod = $body["collecting_method"];
                 if ($collectingMethod === "station"){
                     $donationModel = new DonationModel();
@@ -373,33 +382,39 @@ class FormController extends Controller
                         }
                     }
 
-
-
                 } elseif ($collectingMethod === "home") {
-                    $donationModel = new DonationModel();
-                    $donationModel->setAttributes(["donor_id"=>$donorId, "donation_type"=>"aid"]);
-                    if ($donationModel->save()){
-                        $donationId = $donationModel->getLastID();
-                        $recipientId = (int) App::$app->session->get("recipient_id");
-                        $aidDonationModel = new AidDonationModel();
-                        $aidDonationDetails = ["donation_id"=>$donationId, "recipient_id"=>$recipientId,
-                            "collecting_method"=>"home", "station"=>$body["address"]];
-                        $aidDonationModel->setAttributes($aidDonationDetails);
-                        if ($aidDonationModel->save()) {
-                            App::$app->session->setFlash("aidDonationSuccess",
-                                "Thank You for Agreeing to Help this Person &#10084; We are grateful for your contribution!");
-                            $response->redirect("http://localhost:8080/approvedRecipients");
+                    if ($this->validate($body)) {
+                        $donationModel = new DonationModel();
+                        $donationModel->setAttributes(["donor_id"=>$donorId, "donation_type"=>"aid"]);
+                        if ($donationModel->save()){
+                            $donationId = $donationModel->getLastID();
+                            $recipientId = (int) App::$app->session->get("recipient_id");
+                            $aidDonationModel = new AidDonationModel();
+                            $aidDonationDetails = ["donation_id"=>$donationId, "recipient_id"=>$recipientId,
+                                "collecting_method"=>"home", "station"=>$body["address"]];
+                            $aidDonationModel->setAttributes($aidDonationDetails);
+                            if ($aidDonationModel->save()) {
+                                App::$app->session->setFlash("aidDonationSuccess",
+                                    "Thank You for Agreeing to Help this Person &#10084; We are grateful for your contribution!");
+                                $response->redirect("http://localhost:8080/approvedRecipients");
+                            }
                         }
                     }
-                }
+                    else {
+                        return $this->render("aidDonationReq","main", $this->validateRequests);
+                    }
+
             }
+
         }
-        return $this->render("aidDonationReq", "main", ["address"=>$address]);
+        return $this->render("aidDonationReq", "main", ["addressOriginal"=>$address]);
     }
 
 
     public function raiseFundForm(Request $request,Response $response)
     {
+        $this->authController->authenticate(["donor"]);
+
         if ($request->isPost()) {
             $body = $request->getBody();
 

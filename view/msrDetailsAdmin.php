@@ -11,6 +11,8 @@
 /*** @var $date */
 /*** @var $status */
 /*** @var $quarantResidents */
+
+use app\view\DateConverter;
 ?>
 
 <style>
@@ -18,7 +20,7 @@
 </style>
 
 <div class="row">
-    <form class="container form-container col-lg-6 col-md-8 col-10">
+    <form action="/msrDetailsAdmin" method="post" class="container form-container col-lg-6 col-md-8 col-10">
         <h2 class="title">MSR Details</h2>
 
         <div class="form-row">
@@ -103,7 +105,7 @@
                 <label for="submitted-date-title" class="input-title">Submitted Date</label>
             </div>
             <div class=" col-md-7">
-                <label for="submit-date" class="input-label"><?php if (isset($date)) echo $date; ?></label>
+                <label for="submit-date" class="input-label"><?php if (isset($date)) echo DateConverter::convertdate($date); ?></label>
             </div>
         </div>
 
@@ -192,13 +194,13 @@
 
         <div class="form-btn-row form-row text-center">
             <div class="col-md-4 btn-row">
-                <button type="submit" class="btn btn-primary submit-button">Go Back</button>
+                <a href="<?php echo 'http://localhost:8080/msRecipients'?>" class="btn btn-primary submit-button">Go Back</a>
             </div>
             <div class="col-md-4 btn-row ">
-                <button type="submit" class="btn btn-danger submit-button">Decline</button>
+                <button name="decline" type="submit" class="btn btn-danger submit-button">Decline</button>
             </div>
             <div class="col-md-4  btn-row">
-                <button type="submit" class="btn btn-success submit-button">Approve</button>
+                <button name="approve" type="submit" class="btn btn-success submit-button">Approve</button>
             </div>
 
 

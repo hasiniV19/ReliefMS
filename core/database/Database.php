@@ -3,6 +3,7 @@
 namespace app\core\database;
 
 
+use app\exception\ServiceUnavailableException;
 use mysqli;
 
 
@@ -24,12 +25,11 @@ class Database implements GenericDB
         $this->set_db_attributes();
         $this->conn = new mysqli($this->_host, $this->_username, $this->_password, $this->_database);
         if ($this->conn->connect_error) {
-            echo "Fail" . $this->conn->connect_error;
+            throw new ServiceUnavailableException();
         }
-
     }
 
-    public static function getInstance()
+    public static function getInstance():GenericDB
     {
         if(!self::$_instance){
             self::$_instance = new self();
@@ -40,11 +40,6 @@ class Database implements GenericDB
     public function __clone()
     {
         trigger_error('Clone is not allowed.',E_USER_ERROR);
-    }
-
-    public function getConnection()
-    {
-        return $this->conn;
     }
 
     public function set_db_attributes(){
@@ -95,8 +90,6 @@ class Database implements GenericDB
     public function get_all($query)
     {
         $statement = $this->conn->prepare($query);
-//        $types = $this->get_types($data);
-//        $statement->bind_param($types,... $data);
         $statement->execute();
         $result = $statement->get_result();
         $data =[];
@@ -112,7 +105,6 @@ class Database implements GenericDB
     public function set_status($sql, $status, $id)
     {
         $statement = $this->conn->prepare($sql);
-        var_dump($statement);
         $statement->bind_param('si', $status, $id);
         $statement->execute();
     }
