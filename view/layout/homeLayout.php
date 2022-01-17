@@ -280,7 +280,7 @@
                 </ul>
 
                 <div class="social mb-4">
-                    <h3>Stay Safe. Stay home.</h3>
+                    <h3>For People. For Change</h3>
 
                 </div>
 
