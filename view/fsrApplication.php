@@ -63,7 +63,7 @@ use app\handlers\ValidateRequest;
                     <span class="err-msg"><?php if (isset($monthly_income)) echo $monthly_income->getValidError();?></span>
                 </div>
                 <div class="form-group">
-                    <label for="exampleFormControlFile1" class="input-label">Gramasewaka Certificate</label>
+                    <label for="exampleFormControlFile1" class="input-label">Gramasewaka Certificate ( To clarify your montly income )</label>
 
                     <input type="file" name="fileToUpload" id="fileToUpload" class="form-control-file">
                     <span class="err-msg"><?php if (isset($fileToUpload)) echo $fileToUpload->getValidError();?></span>
