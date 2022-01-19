@@ -54,20 +54,26 @@ class Router
 
         if ($path === "/volunteerApplication" && $method === "get" && App::$app->session->get("app_state") === "completed") {
                 App::$app->session->unset_var("app_state");
-                $controller = new SiteController();
-                return $controller->homepage($this->request, $this->response);
+//                $controller = new SiteController();
+//                return $controller->homepage($this->request, $this->response);
+            $this->response->redirect("http://localhost:8080/");
+            exit;
         }
 
         if ($path === "/msrApplication" && $method === "get" && App::$app->session->get("app_state") === "completed") {
             App::$app->session->unset_var("app_state");
-            $controller = new SiteController();
-            return $controller->homepage($this->request, $this->response);
+//            $controller = new SiteController();
+//            return $controller->homepage($this->request, $this->response);
+            $this->response->redirect("http://localhost:8080/");
+            exit;
         }
 
         if ($path === "/fsrApplication" && $method === "get" && App::$app->session->get("app_state") === "completed") {
             App::$app->session->unset_var("app_state");
-            $controller = new SiteController();
-            return $controller->homepage($this->request, $this->response);
+//            $controller = new SiteController();
+//            return $controller->homepage($this->request, $this->response);
+            $this->response->redirect("http://localhost:8080/");
+            exit;
         }
 
         if ($path === "/donorApplication" && $method === "get" && App::$app->session->get("app_state") === "completed") {
