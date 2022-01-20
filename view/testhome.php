@@ -133,10 +133,10 @@
                 <div class="bg-white rounded shadow-sm py-5 px-4"><img id="pp" src="img/p2.jpg" alt="" width="100" class="img-fluid rounded-circle mb-3 img-thumbnail shadow-sm">
                     <h5 class="mb-0">Piyumi Chan</h5><span class="small text-uppercase text-muted">CEO - Founder</span>
                     <ul class="social mb-0 list-inline mt-3">
-                        <li class="list-inline-item"><a href="https://www.facebook.com/piyumichan.mahaarachchi" class="social-link"><i class="fa fa-facebook-f"></i></a></li>
-                        <li class="list-inline-item"><a href="https://twitter.com/Yume_Chan98" class="social-link"><i class="fa fa-twitter"></i></a></li>
-                        <li class="list-inline-item"><a href="https://www.instagram.com/__yume_chan__/?hl=en" class="social-link"><i class="fa fa-instagram"></i></a></li>
-                        <li class="list-inline-item"><a href="https://www.linkedin.com/in/piyumi-chan/" class="social-link"><i class="fa fa-linkedin"></i></a></li>
+                        <li class="list-inline-item"><a href="https://www.facebook.com/piyumichan.mahaarachchi" target ="_blank" class="social-link"><i class="fa fa-facebook-f"></i></a></li>
+                        <li class="list-inline-item"><a href="https://twitter.com/Yume_Chan98" target ="_blank" class="social-link"><i class="fa fa-twitter"></i></a></li>
+                        <li class="list-inline-item"><a href="https://www.instagram.com/__yume_chan__/?hl=en" target ="_blank" class="social-link"><i class="fa fa-instagram"></i></a></li>
+                        <li class="list-inline-item"><a href="https://www.linkedin.com/in/piyumi-chan/" target ="_blank" class="social-link"><i class="fa fa-linkedin"></i></a></li>
                     </ul>
                 </div>
             </div>
@@ -147,10 +147,10 @@
                 <div class="bg-white rounded shadow-sm py-5 px-4"><img id="pp" src="img/d.jpg" alt="" width="100" class="img-fluid rounded-circle mb-3 img-thumbnail shadow-sm">
                     <h5 class="mb-0">Dasith Samarasinghe</h5><span class="small text-uppercase text-muted">CEO - Founder</span>
                     <ul class="social mb-0 list-inline mt-3">
-                        <li class="list-inline-item"><a href="https://www.facebook.com/dasith.kawmal" class="social-link"><i class="fa fa-facebook-f"></i></a></li>
-                        <li class="list-inline-item"><a href="https://twitter.com/DasithSamare" class="social-link"><i class="fa fa-twitter"></i></a></li>
-                        <li class="list-inline-item"><a href="https://www.instagram.com/dasith_98/?hl=en" class="social-link"><i class="fa fa-instagram"></i></a></li>
-                        <li class="list-inline-item"><a href="https://www.linkedin.com/in/dasith-samarasinghe/" class="social-link"><i class="fa fa-linkedin"></i></a></li>
+                        <li class="list-inline-item"><a href="https://www.facebook.com/dasith.kawmal" target ="_blank" class="social-link"><i class="fa fa-facebook-f"></i></a></li>
+                        <li class="list-inline-item"><a href="https://twitter.com/DasithSamare" target ="_blank" class="social-link"><i class="fa fa-twitter"></i></a></li>
+                        <li class="list-inline-item"><a href="https://www.instagram.com/dasith_98/?hl=en" target ="_blank" class="social-link"><i class="fa fa-instagram"></i></a></li>
+                        <li class="list-inline-item"><a href="https://www.linkedin.com/in/dasith-samarasinghe/" target ="_blank" class="social-link"><i class="fa fa-linkedin"></i></a></li>
                     </ul>
                 </div>
             </div>
@@ -161,10 +161,10 @@
                 <div class="bg-white rounded shadow-sm py-5 px-4"><img id="pp" src="img/hm.jpg" alt="" width="100" class="img-fluid rounded-circle mb-3 img-thumbnail shadow-sm">
                     <h5 class="mb-0">Hasini Vijayarathna</h5><span class="small text-uppercase text-muted">CEO - Founder</span>
                     <ul class="social mb-0 list-inline mt-3">
-                        <li class="list-inline-item"><a href="https://www.facebook.com/hasini.vijayarathna.3" class="social-link"><i class="fa fa-facebook-f"></i></a></li>
-                        <li class="list-inline-item"><a href="https://twitter.com/hasiniV19" class="social-link"><i class="fa fa-twitter"></i></a></li>
-                        <li class="list-inline-item"><a href="https://www.instagram.com/has.m19/?hl=en" class="social-link"><i class="fa fa-instagram"></i></a></li>
-                        <li class="list-inline-item"><a href="https://www.linkedin.com/in/hasini-madushika-b000a321b/" class="social-link"><i class="fa fa-linkedin"></i></a></li>
+                        <li class="list-inline-item"><a href="https://www.facebook.com/hasini.vijayarathna.3" target ="_blank" class="social-link"><i class="fa fa-facebook-f"></i></a></li>
+                        <li class="list-inline-item"><a href="https://twitter.com/hasiniV19" target ="_blank" class="social-link"><i class="fa fa-twitter"></i></a></li>
+                        <li class="list-inline-item"><a href="https://www.instagram.com/has.m19/?hl=en" target ="_blank" class="social-link"><i class="fa fa-instagram"></i></a></li>
+                        <li class="list-inline-item"><a href="https://www.linkedin.com/in/hasini-madushika-b000a321b/" target ="_blank" class="social-link"><i class="fa fa-linkedin"></i></a></li>
                     </ul>
                 </div>
             </div>
@@ -175,10 +175,10 @@
                 <div class="bg-white rounded shadow-sm py-5 px-4"><img id="pp" src="img/t2.jpg" alt="" width="100" class="img-fluid rounded-circle mb-3 img-thumbnail shadow-sm">
                     <h5 class="mb-0">Theshan Wijerathne</h5><span class="small text-uppercase text-muted">CEO - Founder</span>
                     <ul class="social mb-0 list-inline mt-3">
-                        <li class="list-inline-item"><a href="https://www.facebook.com/theshan.wijerathne98/" class="social-link"><i class="fa fa-facebook-f"></i></a></li>
-                        <li class="list-inline-item"><a href="https://twitter.com/hesh_w98" class="social-link"><i class="fa fa-twitter"></i></a></li>
-                        <li class="list-inline-item"><a href="https://www.instagram.com/hesh._98/?hl=en" class="social-link"><i class="fa fa-instagram"></i></a></li>
-                        <li class="list-inline-item"><a href="https://www.linkedin.com/in/theshan-wijerathne-8892a921b/" class="social-link"><i class="fa fa-linkedin"></i></a></li>
+                        <li class="list-inline-item"><a href="https://www.facebook.com/theshan.wijerathne98/"  target ="_blank"class="social-link"><i class="fa fa-facebook-f"></i></a></li>
+                        <li class="list-inline-item"><a href="https://twitter.com/hesh_w98" target ="_blank" class="social-link"><i class="fa fa-twitter"></i></a></li>
+                        <li class="list-inline-item"><a href="https://www.instagram.com/hesh._98/?hl=en" target ="_blank" class="social-link"><i class="fa fa-instagram"></i></a></li>
+                        <li class="list-inline-item"><a href="https://www.linkedin.com/in/theshan-wijerathne-8892a921b/" target ="_blank" class="social-link"><i class="fa fa-linkedin"></i></a></li>
                     </ul>
                 </div>
             </div>

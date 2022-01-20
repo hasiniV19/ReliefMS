@@ -177,7 +177,7 @@ class FormController extends Controller
                 $model->setAttributes($body);
                 if ($model->save()) {
                     App::$app->session->set("app_state", "completed");
-                    $response->redirect("http://localhost:8080/confirmation");
+                    $response->redirect("http://localhost:8080/thankYou");
                     exit;
                 }
             } else {

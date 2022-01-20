@@ -60,6 +60,10 @@ body{
     height: 100px;
 }
 
+.err-msg{
+    color: crimson;
+}
+
 
 
 

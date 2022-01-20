@@ -70,7 +70,8 @@
                             </div>
                             </a>
                             <div class="body">
-                                <a href="<?php echo 'http://localhost:8080/msRecipients'?>"><h3 class="text-center">Covid Patients</h3></a>
+                                <a href="<?php echo 'http://localhost:8080/msRecipients'?>"><h3 class="text-center">Medical
+                                        <br> Support</h3></a>
                                 <!--<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odio, debitis!</p>-->
                             </div>
                         </div>

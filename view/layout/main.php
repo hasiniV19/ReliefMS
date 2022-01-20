@@ -239,7 +239,7 @@ use app\core\App;
             <img src="img/logo2.png" class="img-fluid " width="80">
         </a>
 
-        <a id="name" class="navbar-brand" href="<?php if (App::$app->session->get('donor_state') === 'pending'){
+        <a id="name" class="navbar-brand font-weight-bold" href="<?php if (App::$app->session->get('donor_state') === 'pending'){
             echo 'http://localhost:8080/donorApplication';
         }else echo 'http://localhost:8080/'?>">Epsilon Foundation</a>
         <button class="navbar-toggler navbar-light" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">

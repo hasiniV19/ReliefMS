@@ -22,7 +22,7 @@ use app\view\DateConverter;
 
 <div class="row">
     <form method="post" action="/approvedMSRDetails" class="container form-container col-lg-6 col-md-8 col-10">
-        <h2 class="title">Approved MSR Details</h2>
+        <h2 class="title">Approved Medical Support Recipient Details</h2>
 
 
         <div class="form-row">
