@@ -33,7 +33,7 @@
                                 </div>
                             </a>
                             <div class="body">
-                                <a href="<?php echo 'http://localhost:8080/approvedRecipients'?>"><h3 class="text-center">Approved</h3></a>
+                                <a href="<?php echo 'http://localhost:8080/approvedRecipients'?>"><h3 class="text-center">Approved Recipients</h3></a>
                                 <!--<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odio, debitis!</p>-->
                             </div>
                         </div>
@@ -82,7 +82,8 @@
                             </div>
                             </a>
                             <div class="body">
-                                <a href="<?php echo 'http://localhost:8080/aidedRecipients'?>"><h3 class="text-center">Aided</h3></a>
+                                <a href="<?php echo 'http://localhost:8080/aidedRecipients'?>"><h3 class="text-center">Aided
+                                        <br> Recipients</h3></a>
                                <!-- <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odio, debitis!</p>-->
                             </div>
                         </div>
