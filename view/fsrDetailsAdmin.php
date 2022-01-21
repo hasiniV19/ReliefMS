@@ -25,7 +25,7 @@ use app\view\DateConverter;
 
 <div class="row">
     <form class="container form-container col-lg-6 col-md-8 col-10" action="/fsrDetailsAdmin" method="post">
-        <h2 class="title">FSR Details</h2>
+        <h2 class="title">Financial Support Recipient Details</h2>
 
         <div class="form-row">
             <div class=" col-md-5">

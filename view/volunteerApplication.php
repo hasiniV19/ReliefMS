@@ -23,8 +23,8 @@ use app\handlers\ValidateRequest;
         <h2 class="title py-lg-1 py-sm-8">Volunteer Application</h2>
 
         <div class="form-group">
-            <label for="name" class="input-label">Full Name</label>
-            <input pattern="^[a-zA-Z-' ]*$" name="name" type="text" class="form-control input-field" placeholder="Enter Your Name" id="namebox" aria-describedby=""
+            <label for="name" class="input-label">Full Name *</label>
+            <input name="name" type="text" class="form-control input-field" placeholder="Enter Your Name" id="namebox" aria-describedby=""
                    value="<?php if (isset($name)) echo $name->getValue();?>">
 
             <span class="err-msg"><?php if (isset($name)) echo $name->getValidError();?></span>
@@ -33,7 +33,7 @@ use app\handlers\ValidateRequest;
         </div>
 
         <div class="form-group">
-            <label for="address" class="input-label">Address</label>
+            <label for="address" class="input-label">Address *</label>
             <textarea name="address" class="form-control input-field" placeholder="Enter Address" id="address" aria-describedby="" rows="3"><?php if(isset($address)){echo $address->getValue();} ?></textarea>
             <span class="err-msg"><?php if (isset($address)) echo $address->getValidError();?></span>
         </div>
@@ -41,13 +41,13 @@ use app\handlers\ValidateRequest;
 
         <div class="form-row">
             <div class="form-group col-md-6">
-                <label for="age" class="input-label">Age</label>
+                <label for="age" class="input-label">Age *</label>
                 <input name="age" type="number" class="form-control input-field" placeholder="Enter Age" id="age" min="1" max="99" aria-describedby=""
                        value="<?php if (isset($age)) echo $age->getValue();?>">
                 <span class="err-msg"><?php if (isset($age)) echo $age->getValidError();?></span>
             </div>
             <div class="form-group col-md-6">
-                <label for="mobile" class="input-label">Mobile Number</label>
+                <label for="mobile" class="input-label">Mobile Number *</label>
                 <input name="mobile" type="tel" class="form-control input-field" placeholder="Enter Telephone Number" id="mobile" aria-describedby=""
                        value="<?php if (isset($mobile)) echo $mobile->getValue();?>">
                 <span class="err-msg"><?php if (isset($mobile)) echo $mobile->getValidError();?></span>
@@ -56,13 +56,13 @@ use app\handlers\ValidateRequest;
 
         <div class="form-row">
             <div class="form-group col-md-6">
-                <label for="occupation" class="input-label">Occupation</label>
+                <label for="occupation" class="input-label">Occupation *</label>
                 <input name="occupation" type="text" class="form-control input-field" placeholder="Enter Occupation" id="occupation" aria-describedby=""
                        value="<?php if (isset($occupation)) echo $occupation->getValue();?>">
                 <span class="err-msg"><?php if (isset($occupation)) echo $occupation->getValidError();?></span>
             </div>
             <div class="form-group col-md-6">
-                <label for="available_day" class="input-label">Available Day</label>
+                <label for="available_day" class="input-label">Available Day *</label>
                 <select name="available_day" id="inputState" class="form-control input-field" >
 <!--                    <option selected disabled hidden>Choose here</option>-->
                     <option value="Sunday" selected <?php if(isset($available_day) && strtolower($available_day->getValue()) == "sunday") echo "selected"?>>Sunday</option>
@@ -78,7 +78,7 @@ use app\handlers\ValidateRequest;
 
         <div class="form-row">
             <div class="form-group col-md-6">
-                <label for="gender" class="input-label">Gender</label>
+                <label for="gender" class="input-label">Gender *</label>
                 <div class="form-control input-field" style="height: 4.4rem;">
                     <div class="contact-form-radio ">
                         <input class="input-radio100" id="radio1" type="radio" name="gender" value="Male" checked
@@ -99,7 +99,7 @@ use app\handlers\ValidateRequest;
             </div>
 
             <div class="form-group col-md-6">
-                <label for="vehicle" class="input-label">Do You Have a Vehicle?</label>
+                <label for="vehicle" class="input-label">Do You Have a Vehicle? *</label>
                 <div class="form-control input-field" style="height: 4.4rem;">
                     <div class="contact-form-radio ">
                         <input class="input-radio100" id="radio3" type="radio" name="have_vehicle" value=0 checked

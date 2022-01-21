@@ -170,13 +170,14 @@ class FormController extends Controller
         if ($request->isPost()) {
 
             $body = $request->getBody();
-            var_dump("valid");
+//            var_dump("valid");
             if ($this->validate($body)) {
 
                 $model = new VolunteerApplicationModel();
                 $model->setAttributes($body);
                 if ($model->save()) {
-                    $response->redirect("http://localhost:8080/confirmation");
+                    App::$app->session->set("app_state", "completed");
+                    $response->redirect("http://localhost:8080/thankYou");
                     exit;
                 }
             } else {
@@ -184,6 +185,7 @@ class FormController extends Controller
                 return $this->render("volunteerApplication", "main", $this->validateRequests);
             }
         }
+        App::$app->session->set("app_state", "progress");
         return $this->render("volunteerApplication", "main");
     }
 
@@ -203,6 +205,7 @@ class FormController extends Controller
                 if ($model->save()) {
                     App::$app->session->setFlash("success","Your Application was Successfully Submitted");
                     App::$app->session->set("donor_state", "registered");
+                    App::$app->session->set("app_state", "completed");
                     $response->redirect("http://localhost:8080/donorHome");
                     exit;
                 }
@@ -211,7 +214,7 @@ class FormController extends Controller
                 return $this->render("donorApplication", "main", $this->validateRequests);
             }
         }
-
+        App::$app->session->set("app_state", "progress");
         return $this->render("donorApplication", "main");
     }
 
@@ -254,6 +257,7 @@ class FormController extends Controller
                             unset($body["need" . $i]);
                         }
 
+                        App::$app->session->set("app_state", "completed");
                         $response->redirect("http://localhost:8080/confirmation");
                         exit;
                     }
@@ -265,6 +269,7 @@ class FormController extends Controller
             }
 
         }
+        App::$app->session->set("app_state", "progress");
         return $this->render("msrApplication", "main");
     }
 
@@ -309,6 +314,7 @@ class FormController extends Controller
                                         }
                                         unset($body["need" . $i]);
                                     }
+                                    App::$app->session->set("app_state", "completed");
                                     $response->redirect("http://localhost:8080/confirmation");
                                     exit;
                                 }
@@ -340,6 +346,7 @@ class FormController extends Controller
                 return $this->render("fsrApplication", "main", $this->validateRequests);
             }
         }
+        App::$app->session->set("app_state", "progress");
         return $this->render("fsrApplication", "main");
     }
 
@@ -376,6 +383,7 @@ class FormController extends Controller
                             "collecting_method"=>"station", "station"=>$body["station"]];
                         $aidDonationModel->setAttributes($aidDonationDetails);
                         if ($aidDonationModel->save()){
+//                            App::$app->session->set("app_state", "completed");
                             App::$app->session->setFlash("aidDonationSuccess",
                                 "Thank You for Agreeing to Help this Person &#10084; We are grateful for your contribution!");
                             $response->redirect("http://localhost:8080/approvedRecipients");
@@ -394,6 +402,7 @@ class FormController extends Controller
                                 "collecting_method"=>"home", "station"=>$body["address"]];
                             $aidDonationModel->setAttributes($aidDonationDetails);
                             if ($aidDonationModel->save()) {
+//                                App::$app->session->set("app_state", "completed");
                                 App::$app->session->setFlash("aidDonationSuccess",
                                     "Thank You for Agreeing to Help this Person &#10084; We are grateful for your contribution!");
                                 $response->redirect("http://localhost:8080/approvedRecipients");
@@ -407,6 +416,7 @@ class FormController extends Controller
             }
 
         }
+//        App::$app->session->set("app_state", "progress");
         return $this->render("aidDonationReq", "main", ["addressOriginal"=>$address]);
     }
 

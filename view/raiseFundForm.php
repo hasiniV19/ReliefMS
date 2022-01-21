@@ -24,7 +24,7 @@ use app\handlers\ValidateRequest;
             <h4 class="mb-3">Payment</h4>
 
             <div class="mb-3">
-                <label for="donation-amount" class="input-label fields">Enter Your Donation Amount</label>
+                <label for="donation-amount" class="input-label fields">Enter Your Donation Amount *</label>
                 <div class="input-group">
                     <div class="input-group-prepend">
                         <span class="input-group-text">Rs.</span>
@@ -37,7 +37,7 @@ use app\handlers\ValidateRequest;
 
             <br>
             <div class="mb-3">
-                <label for="upload-title" class="input-label fields">Upload a copy(photo) of your deposit slip/transaction receipt.</label>
+                <label for="upload-title" class="input-label fields">Upload a copy(photo) of your deposit slip/transaction receipt. *</label>
                 <div class="input-group">
                     <div class="custom-file">
                         <input type="file" name="fileToUpload" id="fileToUpload" class="form-control-file" value="">
