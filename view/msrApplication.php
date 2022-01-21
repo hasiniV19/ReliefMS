@@ -28,19 +28,19 @@ use app\handlers\ValidateRequest;
             <div class="form-part">
 
                 <div class="form-group">
-                    <label for="name" class="input-label">Full Name</label>
+                    <label for="name" class="input-label">Full Name *</label>
                     <input type="text" name="name" class="form-control input-field" placeholder="Enter Your Name" id="name-reci" aria-describedby=""
                            value="<?php if (isset($name)) echo $name->getValue();?>">
                     <span class="err-msg"><?php if (isset($name)) echo $name->getValidError();?></span>
                 </div>
                 <div class="form-group">
-                    <label for="mobile" class="input-label">Mobile Number</label>
+                    <label for="mobile" class="input-label">Mobile Number *</label>
                     <input type="tel" name="mobile" class="form-control input-field" placeholder="Enter Telephone Number" id="mobile" aria-describedby=""
                            value="<?php if (isset($mobile)) echo $mobile->getValue();?>">
                     <span class="err-msg"><?php if (isset($mobile)) echo $mobile->getValidError();?></span>
                 </div>
                 <div class="form-group">
-                    <label for="no-members" class="input-label">Number of Covid Patients</label>
+                    <label for="no-members" class="input-label">Number of Covid Patients *</label>
                     <input type="number" name="num_quarant_residents" class="form-control input-field" placeholder="How covid patients in your family" min="1" max="6" id="no-patients" aria-describedby=""
                            value="" required>
                 </div>
@@ -52,14 +52,14 @@ use app\handlers\ValidateRequest;
             <div class="form-part">
 
                 <div class="form-group">
-                    <label for="gs-division" class="input-label">Gramasewaka Division</label>
+                    <label for="gs-division" class="input-label">Gramasewaka Division *</label>
                     <input type="text" name="gs_division" class="form-control input-field" placeholder="Enter Your Gramasewaka Division" id="gs-division" aria-describedby=""
                            value="<?php if (isset($gs_division)) echo $gs_division->getValue();?>">
                     <span class="err-msg"><?php if (isset($gs_division)) echo $gs_division->getValidError();?></span>
                 </div>
 
                 <div class="form-group">
-                    <label for="address" class="input-label">Address</label>
+                    <label for="address" class="input-label">Address *</label>
                     <textarea name="address" class="form-control input-field" placeholder="Enter Address" id="address" aria-describedby="" rows="3"><?php if(isset($address)){echo $address->getValue();} ?></textarea>
                     <span class="err-msg"><?php if (isset($address)) echo $address->getValidError();?></span>
                 </div>
@@ -74,7 +74,7 @@ use app\handlers\ValidateRequest;
     <div class="row btm-row">
         <div class="col-md-6 col-sm-12">
             <div>
-                <div class="input-label">Are there any students with learning material needs</div>
+                <div class="input-label">Are there any students with learning material needs? *</div>
                 <div class="form-check form-check-inline">
                     <input class="form-check-input input-field" type="radio" name="is_there_students" id="no" value=0 checked
                         <?php if(isset($is_there_students) && $is_there_students->getValue() == "0") echo "checked"?>>
@@ -87,7 +87,7 @@ use app\handlers\ValidateRequest;
                 </div>
             </div>
             <div class="form-group hidden" id="student-details">
-                <label for="no-students" class="input-label">Number of Students</label>
+                <label for="no-students" class="input-label">Number of Students *</label>
                 <input type="number" name="no_students" class="form-control input-field" placeholder="How many students in your family" min="1" max="4" id="no-students" aria-describedby=""
                        value="<?php if (isset($no_students)) echo $no_students->getValue();?>">
             </div>

@@ -15,7 +15,7 @@ use app\handlers\ValidateRequest;
     <form method="post" action="/aidDonationRequest" class="container form-container col-lg-5 col-md-7 col-9">
         <h2 class="title">Aid Donation Request</h2>
         <div class="form-group">
-            <label for="collect-method" class="input-label">Collecting Method</label>
+            <label for="collect-method" class="input-label">Collecting Method *</label>
             <select name="collecting_method" id="collect-method" class="form-control input-field">
 <!--                <option selected disabled hidden>Choose here</option>-->
                 <option value="home" selected>Home</option>
@@ -26,7 +26,7 @@ use app\handlers\ValidateRequest;
 
         <!-- stations dropdown -->
         <div class="form-group hidden" id="station-part">
-            <label for="station" class="input-label">Station</label>
+            <label for="station" class="input-label">Station *</label>
             <select name="station" id="station" class="form-control input-field">
 <!--                <option selected disabled hidden>Choose here</option>-->
                 <option value="Galle" selected>Galle</option>
@@ -37,7 +37,7 @@ use app\handlers\ValidateRequest;
 
         <!-- home address -->
         <div class="form-group" id="address-part">
-            <label for="address" class="input-label">Address</label>
+            <label for="address" class="input-label">Address *</label>
             <textarea name="address" class="form-control input-field" id="address" aria-describedby="" rows="3" readonly><?php
                 if (isset($address)) {
                     echo $address->getValue();

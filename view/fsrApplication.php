@@ -27,24 +27,24 @@ use app\handlers\ValidateRequest;
             <div class="form-part">
                 <h2 class="title">Common Details</h2>
                 <div class="form-group">
-                    <label for="name" class="input-label">Full Name</label>
+                    <label for="name" class="input-label">Full Name *</label>
                     <input type="text" name="name" class="form-control input-field" placeholder="Enter Your Name" id="name-reci" aria-describedby=""
                            value="<?php if (isset($name)) echo $name->getValue();?>">
                     <span class="err-msg"><?php if (isset($name)) echo $name->getValidError();?></span>
                 </div>
                 <div class="form-group">
-                    <label for="no-members" class="input-label">Number of Family Members</label>
+                    <label for="no-members" class="input-label">Number of Family Members *</label>
                     <input type="number" name="no_members" class="form-control input-field" placeholder="How many members in your family" min="1" max="6" id="no-members" aria-describedby=""
                            value="<?php if (isset($no_members)) echo $no_members->getValue();?>" required>
                 </div>
                 <div class="form-group">
-                    <label for="mobile" class="input-label">Mobile Number</label>
+                    <label for="mobile" class="input-label">Mobile Number *</label>
                     <input type="tel" name="mobile" class="form-control input-field" placeholder="Enter Telephone Number" id="mobile" aria-describedby=""
                            value="<?php if (isset($mobile)) echo $mobile->getValue();?>">
                     <span class="err-msg"><?php if (isset($mobile)) echo $mobile->getValidError();?></span>
                 </div>
                 <div class="form-group">
-                    <label for="address" class="input-label">Address</label>
+                    <label for="address" class="input-label">Address *</label>
                     <textarea name="address" class="form-control input-field" placeholder="Enter Address" id="address" aria-describedby="" rows="3"><?php if(isset($address)){echo $address->getValue();} ?></textarea>
                     <span class="err-msg"><?php if (isset($address)) echo $address->getValidError();?></span>
 
@@ -57,13 +57,13 @@ use app\handlers\ValidateRequest;
             <div class="form-part">
                 <h2 class="title">Financial Details</h2>
                 <div class="form-group">
-                    <label for="income" class="input-label">Monthly Income</label>
+                    <label for="income" class="input-label">Monthly Income *</label>
                     <input type="text" name="monthly_income" class="form-control input-field" placeholder="Enter Your Monthly Income" id="income" aria-describedby=""
                            value="<?php if (isset($monthly_income)) echo $monthly_income->getValue();?>">
                     <span class="err-msg"><?php if (isset($monthly_income)) echo $monthly_income->getValidError();?></span>
                 </div>
                 <div class="form-group">
-                    <label for="exampleFormControlFile1" class="input-label">Gramasewaka Certificate ( To clarify your monthly income )</label>
+                    <label for="exampleFormControlFile1" class="input-label">Gramasewaka Certificate * ( To clarify your monthly income )</label>
 
                     <input type="file" name="fileToUpload" id="fileToUpload" class="form-control-file">
                     <span class="err-msg"><?php if (isset($fileToUpload)) echo $fileToUpload->getValidError();?></span>
@@ -77,7 +77,7 @@ use app\handlers\ValidateRequest;
     <div class="row btm-row">
         <div class="col-md-6 col-sm-12">
             <div>
-                <div class="input-label">Are there any students with learning material needs</div>
+                <div class="input-label">Are there any students with learning material needs? *</div>
                 <div class="form-check form-check-inline">
                     <input class="form-check-input input-field" type="radio" name="is_there_students" id="no" value= 0 checked>
                     <label class="form-check-label input-label" for="inlineRadio1">No</label>
@@ -88,7 +88,7 @@ use app\handlers\ValidateRequest;
                 </div>
             </div>
             <div class="form-group hidden" id="student-details">
-                <label for="no-students" class="input-label">Number of Students</label>
+                <label for="no-students" class="input-label">Number of Students *</label>
                 <input type="number" name="no_students" class="form-control input-field" placeholder="How many students in your family" min="1" max="4" id="no-students" aria-describedby=""
                        value="<?php if (isset($no_students)) echo $no_students->getValue();?>">
 
