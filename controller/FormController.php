@@ -170,7 +170,7 @@ class FormController extends Controller
         if ($request->isPost()) {
 
             $body = $request->getBody();
-            var_dump("valid");
+//            var_dump("valid");
             if ($this->validate($body)) {
 
                 $model = new VolunteerApplicationModel();
